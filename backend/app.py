@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from flask_cors import CORS  # Permitir solicitudes desde Angular
 
 app = Flask(__name__)
@@ -6,7 +6,7 @@ CORS(app)  # Permitir solicitudes CORS (desde un servidor diferente)
 
 @app.route('/', methods=['GET'])
 def home():
-    return jsonify({"message": "Hola desde el Backend!"})
+    return render_template('index.html')
 
 @app.route('/api/dashboard', methods=['GET'])
 def dashboard():

@@ -1,0 +1,42 @@
+/* Import 8-bit font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Full-screen dark red background */
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: #9F2241;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Press Start 2P', cursive;
+}
+
+/* Centered container */
+.centered {
+    display: flex;
+    gap: 20px;
+}
+
+/* Stylized letters */
+.letter {
+    font-size: 4rem;
+    color: white;
+    text-shadow:
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000;
+    animation: wave 2s infinite;
+    animation-delay: calc(var(--i) * 0.3s);
+}
+
+/* Wave animation */
+@keyframes wave {
+    0%, 60%, 100% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-30px);
+    }
+}
