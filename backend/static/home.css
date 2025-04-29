@@ -12,26 +12,30 @@ body {
     font-family: 'Press Start 2P', cursive;
 }
 
-/* Centered container */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* para centrar UNRC */
+    gap: 30px;
+}
+
 .centered {
     display: flex;
     gap: 20px;
 }
 
-/* Stylized letters */
 .letter {
-    font-size: 4rem;
+    font-size: 10rem;
     color: white;
     text-shadow:
         -2px -2px 0 #000,
-        2px -2px 0 #000,
-        -2px 2px 0 #000,
-        2px 2px 0 #000;
+         2px -2px 0 #000,
+        -2px  2px 0 #000,
+         2px  2px 0 #000;
     animation: wave 2s infinite;
     animation-delay: calc(var(--i) * 0.3s);
 }
 
-/* Wave animation */
 @keyframes wave {
     0%, 60%, 100% {
         transform: translateY(0);
@@ -39,4 +43,23 @@ body {
     30% {
         transform: translateY(-30px);
     }
+}
+
+.names {
+    position: absolute;
+    top: 75%;
+    left: 30px;
+    font-family: Calibri, sans-serif;
+    color: white;
+    font-size: 2rem;
+    text-align: left;
+    text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+}
+
+.names p {
+    margin: 0;
 }
