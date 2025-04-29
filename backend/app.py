@@ -8,6 +8,10 @@ CORS(app)  # Permitir solicitudes CORS (desde un servidor diferente)
 def home():
     return render_template('index.html')
 
+@app.route('/content', methods=['GET'])
+def content_page():
+    return render_template('content.html')  
+
 @app.route('/api/dashboard', methods=['GET'])
 def dashboard():
     # Datos de ejemplo para el gráfico

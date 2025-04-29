@@ -33,7 +33,7 @@ body {
         -2px  2px 0 #000,
          2px  2px 0 #000;
     animation: wave 2s infinite;
-    animation-delay: calc(var(--i) * 0.3s);
+    animation-delay: calc(var(--i) * 0.2s);
 }
 
 @keyframes wave {

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scrollable Content Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow-y: scroll;
+        }
+
+        .section {
+            height: 100vh;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .section:nth-child(even) {
+            background-color: #f0f0f0;
+        }
+
+        .section:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="section">
+        <h2>Section 1</h2>
+        <p>This is static content in section 1.</p>
+    </div>
+    <div class="section">
+        <h2>Section 2</h2>
+        <p>More content in section 2. Keep scrolling.</p>
+    </div>
+    <div class="section">
+        <h2>Section 3</h2>
+        <p>Endless scrolling fun!</p>
+    </div>
+</body>
+</html>
