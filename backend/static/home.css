@@ -45,13 +45,23 @@ body {
     }
 }
 
+.proyecto {
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+}
+
 .names {
     position: absolute;
     top: 75%;
     left: 30px;
-    font-family: Calibri, sans-serif;
     color: white;
-    font-size: 2rem;
+    font-size: 1.2rem;
     text-align: left;
     text-shadow:
         -1px -1px 0 #000,
@@ -61,5 +71,5 @@ body {
 }
 
 .names p {
-    margin: 0;
+    margin: 1;
 }
