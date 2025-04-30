@@ -1,5 +1,3 @@
-# dashboard.py
-
 import plotly.graph_objs as go
 import plotly.io as pio
 
@@ -23,7 +21,6 @@ class Dashboard:
         self.figures.append(fig)
 
     def render_dashboard(self):
-        # Convert each figure to HTML and combine
         html_parts = [
             pio.to_html(fig, full_html=False, include_plotlyjs='cdn')
             for fig in self.figures
