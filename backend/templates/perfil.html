@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Scrollable Content Page</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/content.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/perfil.css') }}">
 </head>
 <body>
     <!-- Header -->
@@ -12,14 +12,14 @@
             <span></span>
             <span></span>
         </div>
-        <div class="site-title">Content Page</div>
+        <div class="site-title">Perfil de Riesgo</div>
     </header>
 
     <!-- Sidebar Menu -->
     <div class="sidebar" id="sidebar">
         <nav class="sidebar-menu">
             <li><a href="/dashboard">Dashboard</a></li>
-            <li><a href="/perfil">Perfil de Riesgo</a></li>
+            <li><a href="/content">Contenido</a></li>
             <li><a href="/trazabilidad">Trazabilidad</a></li>
         </nav>
     </div>
@@ -43,6 +43,6 @@
         </div>
     </div>
 
-    <script src="{{ url_for('static', filename='js/content.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/perfil.js') }}"></script>
 </body>
 </html>

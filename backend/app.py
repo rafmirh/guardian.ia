@@ -13,6 +13,10 @@ def home():
 def content_page():
     return render_template('content.html')  
 
+@app.route('/perfil', methods=['GET'])
+def perfil_page():
+    return render_template('perfil.html') 
+
 @app.route('/dashboard', methods=['GET'])
 def dashboard():
     dash = Dashboard()  
