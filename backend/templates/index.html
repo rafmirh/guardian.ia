@@ -5,7 +5,8 @@
     <title>PP701 g4</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
 </head>
-<body onclick="window.location.href='/content'">
+<body>
+    <div id="flash-effect"></div>
     <div class="main-container">
         <div class="centered">
             <span class="letter" style="--i:0">U</span>
@@ -24,6 +25,33 @@
             <p>- Manuel Nápoles Romero</p>
         </div>
     </div>
+    
+    <script>
+        document.body.addEventListener('click', function() {
+            const flashEffect = document.getElementById('flash-effect');
+            flashEffect.classList.add('active');
+            
+            // Configuración de los flashes GameBoy (típicamente 3-4 flashes rápidos)
+            let flashCount = 0;
+            const maxFlashes = 3;
+            
+            const flashInterval = setInterval(function() {
+                flashCount++;
+                if (flashCount % 2 === 1) {
+                    flashEffect.style.opacity = '1';
+                } else {
+                    flashEffect.style.opacity = '0';
+                }
+                
+                if (flashCount >= maxFlashes * 2) {
+                    clearInterval(flashInterval);
+                    // Redireccionar después de completar los flashes
+                    window.location.href = '/content';
+                }
+            }, 100); // 100ms entre cada cambio para un efecto rápido de flash
+            
+            return false; // Prevenir cualquier otro evento de clic
+        });
+    </script>
 </body>
 </html>
-
