@@ -27,5 +27,9 @@ def dashboard():
 
     return render_template('dashboard.html', plot_div=dashboard_html)
 
+@app.route('/analisis', methods=['GET'])
+def analisis_page():
+    return render_template('analisis.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
