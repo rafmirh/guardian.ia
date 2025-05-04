@@ -17,7 +17,7 @@ def content_page():
 def perfil_page():
     return render_template('perfil.html') 
 
-@app.route('/dashboard', methods=['GET'])
+@app.route('/prueba1', methods=['GET'])
 def dashboard():
     dash = Dashboard()  
     dash.add_bar_chart(['A', 'B', 'C'], [4, 7, 2], title="Sales by Category")
