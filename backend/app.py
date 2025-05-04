@@ -1,6 +1,7 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, render_template
 from flask_cors import CORS  # Permitir solicitudes desde Angular
 import pandas as pd
+from dashboard import create_dashboard_from_csv  # Importa la función
 
 app = Flask(__name__)
 CORS(app)  # Permitir solicitudes CORS (desde un servidor diferente)
@@ -18,20 +19,13 @@ def perfil_page():
     return render_template('perfil.html')
 
 @app.route('/dashboard', methods=['GET'])
-def prueba1():
-    try:
-        # Leer el archivo CSV
-        df = pd.read_csv('persona_fisica.csv')  # Asegúrate de que la ruta es correcta
-
-        # Convertir DataFrame a HTML con estilos de Bootstrap
-        tabla_html = df.to_html(classes='table table-striped', index=False)
-
-        # Renderizar el HTML en la plantilla dashboard.html
-        return render_template('dashboard.html', plot_div=tabla_html)
-    except FileNotFoundError:
-        return "Error: El archivo persona_fisica.csv no se encontró.", 404
-    except Exception as e:
-        return f"Ocurrió un error al leer el archivo CSV: {e}", 500
+def show_plotly_dashboard():
+    dashboard = create_dashboard_from_csv("persona_fisica.csv") # Especifica la ruta del CSV si es necesario
+    if dashboard:
+        plotly_html = dashboard.render_dashboard()
+        return render_template('tu_dashboard.html', plot_div=plotly_html)
+    else:
+        return "Error al generar el dashboard.", 500
 
 if __name__ == '__main__':
     app.run(debug=True)
