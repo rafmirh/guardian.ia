@@ -18,11 +18,8 @@ def perfil_page():
     return render_template('perfil.html') 
 
 @app.route('/prueba1', methods=['GET'])
-def dashboard():
-    dash = Dashboard()  
-    dash.add_bar_chart(['A', 'B', 'C'], [4, 7, 2], title="Sales by Category")
-    dash.add_line_chart([1, 2, 3], [10, 15, 5], title="Monthly Trend")
-
+def prueba1():
+    dash = prueba1() 
     dashboard_html = dash.render_dashboard()
 
     return render_template('dashboard.html', plot_div=dashboard_html)
