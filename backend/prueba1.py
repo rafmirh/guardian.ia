@@ -10,7 +10,7 @@ app = Dash()
 
 # App layout
 app.layout = [
-    html.Div(children='Mi Primera App en Dash'),
+    html.Div(children='Mi tabla en Dash'),
     dash_table.DataTable(data=df.to_dict('records'), page_size=10)
 ]
 
