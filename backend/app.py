@@ -20,7 +20,7 @@ def perfil_page():
 @app.route('/prueba1', methods=['GET'])
 def prueba1():
     dash = prueba1() 
-    dashboard_html = dash.render_dashboard()
+    dashboard_html = dash.render_dashboard('prueba.py')
 
     return render_template('dashboard.html', plot_div=dashboard_html)
 
