@@ -23,7 +23,7 @@ def show_plotly_dashboard():
     dashboard = create_dashboard_from_csv("persona_fisica.csv") # Especifica la ruta del CSV si es necesario
     if dashboard:
         plotly_html = dashboard.render_dashboard()
-        return render_template('tu_dashboard.html', plot_div=plotly_html)
+        return render_template('dashboard.html', plot_div=plotly_html)
     else:
         return "Error al generar el dashboard.", 500
 
