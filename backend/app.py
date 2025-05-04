@@ -17,7 +17,7 @@ def content_page():
 def perfil_page():
     return render_template('perfil.html')
 
-@app.route('/prueba1', methods=['GET'])
+@app.route('/dashboard', methods=['GET'])
 def prueba1():
     try:
         # Leer el archivo CSV
