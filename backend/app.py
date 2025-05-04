@@ -19,7 +19,7 @@ def perfil_page():
 
 @app.route('/prueba1', methods=['GET'])
 def prueba1():
-    dash = prueba1() 
+    dash = Dashboard()  # Aquí se instancia correctamente
     dashboard_html = dash.render_dashboard('prueba1.py')
 
     return render_template('dashboard.html', plot_div=dashboard_html)
