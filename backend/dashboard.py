@@ -1,42 +1,28 @@
-from flask import Flask, render_template
-import pandas as pd
-from dashboard import Dashboard  # Asegúrate de que 'dashboard.py' esté en el mismo directorio
+import plotly.graph_objs as go
+import plotly.io as pio
 
-app = Flask(__name__)
+class Dashboard:
+    def __init__(self):
+        self.figures = []
 
-@app.route('/dashboard')
-def show_plotly_dashboard():
-    try:
-        df = pd.read_csv('persona_fisica.csv')
+    def add_bar_chart(self, x, y, title="Bar Chart", xaxis_title="", yaxis_title=""):
+        fig = go.Figure(data=[go.Bar(x=x, y=y)])
+        fig.update_layout(title=title, xaxis_title=xaxis_title, yaxis_title=yaxis_title)
+        self.figures.append(fig)
 
-        dashboard = Dashboard()
+    def add_line_chart(self, x, y, title="Line Chart", xaxis_title="", yaxis_title=""):
+        fig = go.Figure(data=[go.Scatter(x=x, y=y, mode='lines+markers')])
+        fig.update_layout(title=title, xaxis_title=xaxis_title, yaxis_title=yaxis_title)
+        self.figures.append(fig)
 
-        # Gráfico de barras: Conteo de delitos
-        delito_counts = df['delito'].value_counts().nlargest(10) # Mostrar los 10 delitos más comunes
-        dashboard.add_bar_chart(x=delito_counts.index, y=delito_counts.values, title="Top 10 Delitos")
+    def add_pie_chart(self, labels, values, title="Pie Chart"):
+        fig = go.Figure(data=[go.Pie(labels=labels, values=values)])
+        fig.update_layout(title=title)
+        self.figures.append(fig)
 
-        # Gráfico de pastel: Distribución por sexo
-        sexo_counts = df['sexo'].value_counts()
-        dashboard.add_pie_chart(labels=sexo_counts.index, values=sexo_counts.values, title="Distribución por Sexo")
-
-        # Histograma: Distribución de edades
-        dashboard.add_bar_chart(x=df['edad'], y=[1]*len(df), title="Distribución de Edades", xaxis_title="Edad", yaxis_title="Frecuencia")
-
-        # Gráfico de barras: Conteo por tipo de persona
-        tipo_persona_counts = df['tipo_persona'].value_counts()
-        dashboard.add_bar_chart(x=tipo_persona_counts.index, y=tipo_persona_counts.values, title="Distribución por Tipo de Persona")
-
-        # Gráfico de barras: Conteo por alcaldía (top 10)
-        alcaldia_counts = df['alcaldia_catalogo'].value_counts().nlargest(10)
-        dashboard.add_bar_chart(x=alcaldia_counts.index, y=alcaldia_counts.values, title="Top 10 Alcaldías")
-
-        plotly_html = dashboard.render_dashboard()
-        return render_template('plotly_dashboard.html', plotly_div=plotly_html)
-
-    except FileNotFoundError:
-        return "Error: El archivo persona_fisica.csv no se encontró.", 404
-    except Exception as e:
-        return f"Ocurrió un error: {e}", 500
-
-if __name__ == '__main__':
-    app.run(debug=True)
+    def render_dashboard(self):
+        html_parts = [
+            pio.to_html(fig, full_html=False, include_plotlyjs='cdn')
+            for fig in self.figures
+        ]
+        return "\n".join(html_parts)
