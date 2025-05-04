@@ -1,29 +1,18 @@
-import plotly.graph_objs as go
-import plotly.io as pio
+from dash import Dash, html, dash_table
+import pandas as pd
 
-class Dashboard:
-    def __init__(self):
-        self.figures = []
+# Incorporate data
+df = pd.read_csv('persona_fisica.csv')
 
-    def add_bar_chart(self, x, y, title="Bar Chart"):
-        fig = go.Figure(data=[go.Bar(x=x, y=y)])
-        fig.update_layout(title=title)
-        self.figures.append(fig)
+# Initialize the app
+app = Dash()
 
-    def add_line_chart(self, x, y, title="Line Chart"):
-        fig = go.Figure(data=[go.Scatter(x=x, y=y, mode='lines+markers')])
-        fig.update_layout(title=title)
-        self.figures.append(fig)
+# App layout
+app.layout = [
+    html.Div(children='Mi tabla en Dash'),
+    dash_table.DataTable(data=df.to_dict('records'), page_size=10)
+]
 
-    def add_pie_chart(self, labels, values, title="Pie Chart"):
-        fig = go.Figure(data=[go.Pie(labels=labels, values=values)])
-        fig.update_layout(title=title)
-        self.figures.append(fig)
-
-    def render_dashboard(self):
-        html_parts = [
-            pio.to_html(fig, full_html=False, include_plotlyjs='cdn')
-            for fig in self.figures
-        ]
-        return "\n".join(html_parts)
-
+# Run the app
+if __name__ == '__main__':
+    app.run(debug=True)

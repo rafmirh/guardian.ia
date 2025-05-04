@@ -26,7 +26,7 @@ def prueba1():
     
     # Convertir DataFrame a HTML
     tabla_html = df.to_html(classes='table table-striped', index=False)
-    
+
     # Renderizar el HTML en una plantilla
     return render_template('dashboard.html', plot_div=tabla_html)
 
