@@ -19,10 +19,14 @@ def perfil_page():
 
 @app.route('/prueba1', methods=['GET'])
 def prueba1():
-    dash = prueba1() 
-    dashboard_html = dash.render_dashboard('prueba1.py')
+    # Leer el archivo CSV
+    df = pd.read_csv('persona_fisica.csv')  # Asegúrate de que la ruta es correcta
+    
+    # Convertir DataFrame a HTML
+    tabla_html = df.to_html(classes='table table-striped', index=False)
 
-    return render_template('dashboard.html', plot_div=dashboard_html)
+    # Renderizar el HTML en una plantilla
+    return render_template('dashboard.html', plot_div=tabla_html)
 
 if __name__ == '__main__':
     app.run(debug=True)
