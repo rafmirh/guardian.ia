@@ -74,7 +74,7 @@ body {
     margin: 1;
 }
 
-/* Efecto flash tipo GameBoy */
+/* Efecto flash*/
 #flash-effect {
     position: fixed;
     top: 0;
@@ -85,5 +85,5 @@ body {
     z-index: 999;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.04s ease; /* Transición muy rápida */
+    transition: opacity 0.04s ease;
 }
