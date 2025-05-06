@@ -33,21 +33,12 @@ def create_dashboard_from_csv(csv_filepath="persona_fisica.csv"):
         df = pd.read_csv(csv_filepath)
         dashboard = Dashboard()
 
-        # --- Aquí crea y agrega tus gráficas usando el DataFrame 'df' ---
-        if 'delito' in df.columns:
-            delito_counts = df['delito'].value_counts().nlargest(10)
-            dashboard.add_bar_chart(x=delito_counts.index, y=delito_counts.values, title="Top 10 Delitos")
-
         if 'sexo' in df.columns:
             sexo_counts = df['sexo'].value_counts()
             dashboard.add_pie_chart(labels=sexo_counts.index, values=sexo_counts.values, title="Distribución por Sexo")
 
         if 'edad' in df.columns:
             dashboard.add_bar_chart(x=df['edad'], y=[1]*len(df), title="Distribución de Edades", xaxis_title="Edad", yaxis_title="Frecuencia")
-
-        if 'tipo_persona' in df.columns:
-            tipo_persona_counts = df['tipo_persona'].value_counts()
-            dashboard.add_bar_chart(x=tipo_persona_counts.index, y=tipo_persona_counts.values, title="Distribución por Tipo de Persona")
 
         if 'alcaldia_catalogo' in df.columns:
             alcaldia_counts = df['alcaldia_catalogo'].value_counts().nlargest(10)
