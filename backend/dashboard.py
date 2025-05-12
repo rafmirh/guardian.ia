@@ -46,9 +46,19 @@ def create_dashboard_from_csv(csv_filepath="persona_fisica.csv"):
             # Si existe la columna (alcaldia_catalogo), cuenta cuántas veces aparece cada alcaldía.
             alcaldia_counts = df['alcaldia_catalogo'].value_counts().nlargest(10) # Selecciona las 10 más frecuentes
             dashboard.add_bar_chart(x=alcaldia_counts.index, y=alcaldia_counts.values, title="Top 10 Alcaldías") # Se muestra un gráfico con las 10 alcaldías
+        
+        if 'alcaldia_catalogo' in alcaldias: #Denuncias por alcaldia
+            # Datos de las alcaldías y el número de denuncias
+            alcaldias = ['BENITO JUAREZ', 'GUSTAVO A. MADERO', 'ALVARO OBREGON', 'CDMX (indeterminada)',
+             'TLALPAN', 'XOCHIMILCO', 'CUAJIMALPA DE MORELOS', 'MIGUEL HIDALGO',
+             'IZTACALCO', 'CUAUHTEMOC', 'COYOACAN', 'VENUSTIANO CARRANZA']
+            denuncias = [14, 1, 10, 4, 3, 3, 2, 20, 2, 15, 5, 3]
+            alcaldia_counts = df['alcaldias'].value_counts() 
+            dashboard.add_bar_chart(x=alcaldias, y=denuncias, title="Desnuncias por alcaldia") # Se muestra un gráfico con las 10 alcaldías
+
 
         return dashboard # Se devuelve el objeto (dashboard) con los gráficos agregados
-    
+
     # Manejo de errores
     except FileNotFoundError:
         return None  # Si el archivo csv no se encuentra, se duelve (None)
