@@ -34,9 +34,9 @@ def create_interactive_dashboard(csv_filepath="persona_fisica.csv"):
             # Si existe la columna (alcaldia_catalogo), cuenta cuántas veces aparece cada alcaldía.
             alcaldia_counts = df['alcaldia_catalogo'].value_counts().nlargest(10) # Selecciona las 10 más frecuentes
             # Crea un gráfico de barras con los nombres y frecuencias de esas alcaldías.
-            alcaldia_bar = go.Bar(x=alcaldia_counts.index, y=alcaldia_counts.values, name="Top 10 Alcaldías", visible=True)
+            alcaldia_bar = go.Bar(x=alcaldia_counts.index, y=alcaldia_counts.values, name="Top 10 Alcaldías", visible=False)
             data.append(alcaldia_bar) # Se agrega el gráfico a la lista data
-            visibility.append(True) # Se marca como visible incialmente
+            visibility.append(False) # Se marca como visible incialmente
 
         # Botones interactivos
         for i, trace in enumerate(data): # Se itera sobre cada gráfico (trace) en data
