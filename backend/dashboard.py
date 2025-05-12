@@ -1,93 +1,59 @@
 import plotly.graph_objs as go
-import plotly.io as pio
 import pandas as pd
-import dash
-from dash import html, dcc
-from dash.dependencies import Input, Output
-import dash_table
 
-# La función tiene parámetro opcional (csv_filepath), esta ruta se usará para leer un archivo csv
-def create_dashboard_from_csv(csv_filepath="persona_fisica.csv"):
-    try:  # Se ejecuta el código principal dentro del bloque (try), si ocurre algún error se pasa al bloque (except)
+def create_interactive_dashboard(csv_filepath="persona_fisica.csv"):
+    try:
         df = pd.read_csv(csv_filepath)
-        dashboard = {}  # Cambiamos a un diccionario para almacenar DataFrames
 
-        if 'sexo' in df.columns:  # Gráfico de pastel para sexo, si existe una columna llamada (sexo), ejecuta lo demás
-            sexo_counts = df['sexo'].value_counts()  # Se cuentan los valores de la columna
-            dashboard['sexo'] = pd.DataFrame({
-                'labels': sexo_counts.index,
-                'values': sexo_counts.values
-            })  # Se crea un DataFrame
+        # Listas para almacenar cada gráfico
+        data = []
+        buttons = []
+        visibility = []
 
-        if 'edad' in df.columns:  # Histograma de edades (como barra), si existe la columna (edad)
-            # Se crea un DataFrame con la distribución de edades
-            edad_df = df['edad'].value_counts().reset_index()
-            edad_df.columns = ['edad', 'frecuencia']
-            dashboard['edad'] = edad_df
+        # Gráfico de pastel: Distribución por Sexo
+        if 'sexo' in df.columns:
+            sexo_counts = df['sexo'].value_counts()
+            pie_chart = go.Pie(labels=sexo_counts.index, values=sexo_counts.values, name="Distribución por Sexo", visible=True)
+            data.append(pie_chart)
+            visibility.append(True)
 
-        if 'alcaldia_catalogo' in df.columns:  # Gráfico de barras Top 10 Alcaldías
-            # Si existe la columna (alcaldia_catalogo), cuenta cuántas veces aparece cada alcaldía.
-            alcaldia_counts = df['alcaldia_catalogo'].value_counts().nlargest(
-                10)  # Selecciona las 10 más frecuentes
-            dashboard['alcaldia'] = pd.DataFrame({
-                'alcaldia': alcaldia_counts.index,
-                'conteo': alcaldia_counts.values
-            })  # Se crea un DataFrame
+        # Gráfico de barras: Distribución de Edades
+        if 'edad' in df.columns:
+            edad_bar = go.Bar(x=df['edad'], y=[1]*len(df), name="Distribución de Edades", visible=False)
+            data.append(edad_bar)
+            visibility.append(False)
 
-        return dashboard  # Se devuelve el objeto (dashboard) con los DataFrames
+        # Gráfico de barras: Top 10 Alcaldías
+        if 'alcaldia_catalogo' in df.columns:
+            alcaldia_counts = df['alcaldia_catalogo'].value_counts().nlargest(10)
+            alcaldia_bar = go.Bar(x=alcaldia_counts.index, y=alcaldia_counts.values, name="Top 10 Alcaldías", visible=False)
+            data.append(alcaldia_bar)
+            visibility.append(False)
 
-    # Manejo de errores
-    except FileNotFoundError:
-        print(
-            f"Error: No se pudo encontrar el archivo CSV en la ruta especificada.")
-        return None  # Si el archivo csv no se encuentra, se duelve (None)
-    except Exception as e:
-        print(f"Error al crear el dashboard: {e}")
-        return None  # Para otros errores, se imprime el mensaje y también se devuelve (None)
+        # Botones para controlar visibilidad
+        for i, trace in enumerate(data):
+            vis = [False] * len(data)
+            vis[i] = True
+            button = dict(label=data[i].name,
+                          method="update",
+                          args=[{"visible": vis},
+                                {"title": data[i].name}])
+            buttons.append(button)
 
-
-
-def create_dash_app(dashboard_data):
-    app = dash.Dash(_name_)
-
-    # Define el diseño de la aplicación
-    app.layout = html.Div([
-        html.H1("Dashboard Interactivo", style={'textAlign': 'center'}),
-        dcc.Dropdown(
-            id='data-selection',
-            options=[{'label': k, 'value': k} for k in dashboard_data.keys()],
-            value=list(dashboard_data.keys())[0]  # Valor inicial
-        ),
-        html.Div(id='table-container')
-    ])
-
-    # Define la función de callback para actualizar la tabla
-    @app.callback(
-        Output('table-container', 'children'),
-        [Input('data-selection', 'value')]
-    )
-    def update_table(selected_data):
-        df = dashboard_data[selected_data]
-        return dash_table.DataTable(
-            id='data-table',
-            columns=[{'name': col, 'id': col} for col in df.columns],
-            data=df.to_dict('records'),
-            page_size=10,  # Define el número de filas por página
-            style_cell={'textAlign': 'left'},
-            style_header={
-                'backgroundColor': 'rgb(230, 230, 230)',
-                'fontWeight': 'bold'
-            }
+        # Layout con botones
+        layout = go.Layout(
+            title="Dashboard Interactivo",
+            updatemenus=[dict(type="buttons", direction="down", showactive=True, buttons=buttons)]
         )
 
-    return app
+        # Figura final
+        fig = go.Figure(data=data, layout=layout)
+        fig.show()
 
+    except FileNotFoundError:
+        print("Archivo CSV no encontrado.")
+    except Exception as e:
+        print(f"Error al crear el dashboard: {e}")
 
-
-if _name_ == "_main_":
-    dashboard_data = create_dashboard_from_csv()
-    if dashboard_data:
-        app = create_dash_app(dashboard_data)
-        app.run_server(debug=True)
-    else:
-        print("No se pudo crear el dashboard.")
+# Llamar a la función
+create_interactive_dashboard("persona_fisica.csv")
