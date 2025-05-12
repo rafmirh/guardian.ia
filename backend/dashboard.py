@@ -8,7 +8,7 @@ import pandas as pd
 df = pd.read_csv('persona_fisica.csv')
 
 # Crear app Flask principal
-server = Flask(_name_)
+server = Flask(__name__)
 
 # Template base de Flask (Home)
 @server.route("/")
@@ -16,7 +16,7 @@ def home():
     return "<h1>Bienvenido a mi sitio Flask</h1><p>Ir al <a href='/dashboard'>Dashboard</a></p>"
 
 # Inicializar Dash embebido en Flask
-dash_app = dash.Dash(_name_, server=server, url_base_pathname='/dashboard/')
+dash_app = dash.Dash(__name__, server=server, url_base_pathname='/dashboard/')
 
 # Función para crear gráficos
 def create_figure(graph_type):
@@ -71,5 +71,5 @@ def update_graph(selected_graph):
     return create_figure(selected_graph)
 
 # Correr Flask
-if _name_ == "_main_":
+if __name__ == "_main_":
     server.run(debug=True, port=5000)
