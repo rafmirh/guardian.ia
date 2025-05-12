@@ -3,7 +3,7 @@ import plotly.graph_objs as go
 import pandas as pd
 
 # Definición de la función, tiene un parámetro opcional (csv_filepath)
-def create_interactive_dashboard(csv_filepath="persona_fisica.csv"):
+def crear_grafica_interactiva(csv_filepath="persona_fisica.csv"):
     try: # Se ejecuta el código principal dentro del bloque (try), si ocurre algún error se pasa al bloque (except)
 
         df = pd.read_csv(csv_filepath)
@@ -70,4 +70,4 @@ def create_interactive_dashboard(csv_filepath="persona_fisica.csv"):
         print(f"Error al crear el dashboard: {e}")
 
 # Llamar a la función
-create_interactive_dashboard("persona_fisica.csv")
+crear_grafica_interactiva("persona_fisica.csv")
