@@ -37,11 +37,11 @@ def show_dashboard():
         pie_chart = go.Pie(labels=sexo_counts.index, values=sexo_counts.values, name="Distribución por Sexo", visible=True)
         data.append(pie_chart)
 
-    # Gráfico de barras para la distribución por edad
+   # Gráfico de barras para la distribución por edad
     if 'edad' in df.columns:
-        edad_counts = df['edad'].value_counts().sort_index()  # Ordenamos por edad
-        edad_bar = go.Bar(x=edad_counts.index, y=edad_counts.values, name="Distribución de Edades", visible=False)
-        data.append(edad_bar)
+       edad_counts = df['edad'].value_counts().sort_index(ascending=True)  # Ordenamos las edades de menor a mayor
+       edad_bar = go.Bar(x=edad_counts.index, y=edad_counts.values, name="Distribución de Edades", visible=False)
+       data.append(edad_bar)
 
     # Gráfico de barras para el Top 10 de Alcaldías
     if 'alcaldia_catalogo' in df.columns:
