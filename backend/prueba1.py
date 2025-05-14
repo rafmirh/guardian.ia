@@ -42,7 +42,7 @@ def show_dashboard():
         edad_counts = df['edad'].value_counts().sort_index()  # Ordenamos por edad
         edad_bar = go.Bar(x=edad_counts.index, y=edad_counts.values, name="Distribución de Edades", visible=False)
         data.append(edad_bar)
-
+        
     # Gráfico de barras para el Top 10 de Alcaldías
     if 'alcaldia_catalogo' in df.columns and df['alcaldia_catalogo'].notnull().any():
         alcaldia_counts = df['alcaldia_catalogo'].value_counts().nlargest(10)
