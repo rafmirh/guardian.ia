@@ -28,7 +28,7 @@ dash_app.layout = html.Div(children=[
 # Configuración del Dashboard Plotly
 @app.route('/dashboard')
 def show_dashboard():
-    df = pd.read_csv("persona_fisica.csv")
+    
     data = []
 
     # Gráfico de pastel para la distribución de 'sexo'
