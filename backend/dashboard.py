@@ -29,7 +29,8 @@ def create_dashboard_from_csv(csv_filepath="persona_fisica.csv"):
 
         # Gráfico de barras: Alcaldías (Top 10)
         if 'alcaldia_catalogo' in df.columns:
-            alcaldia_counts = df['alcaldia_catalogo'].value_counts().nlargest(10)
+            df['alcaldia_catalogo'] = df['alcaldia_catalogo'].astype(str).str.strip()
+            alcaldia_counts = df['alcaldia_catalogo'][df['alcaldia_catalogo'] != ''].value_counts().nlargest(10)
             alcaldia_bar = go.Bar(x=alcaldia_counts.index, y=alcaldia_counts.values, name="Top 10 Alcaldías", visible=False)
             data.append(alcaldia_bar)
 
