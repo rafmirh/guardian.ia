@@ -28,48 +28,34 @@ dash_app.layout = html.Div(children=[
 # Configuración del Dashboard Plotly
 @app.route('/dashboard')
 def show_dashboard():
-    
-    df = pd.read_csv('persona_fisica.csv')
-    df = df.dropna(subset=['alcaldia_catalogo'])
-
+    df = pd.read_csv("persona_fisica.csv")
     data = []
-    buttons = []
-    visibility = []
 
-    # Gráfico de pastel: Sexo
+    # Gráfico de pastel para la distribución de 'sexo'
     if 'sexo' in df.columns:
         sexo_counts = df['sexo'].value_counts()
         pie_chart = go.Pie(labels=sexo_counts.index, values=sexo_counts.values, name="Distribución por Sexo", visible=True)
         data.append(pie_chart)
-        visibility.append(True)
 
-    # Gráfico de barras: Edad con número de personas
+    # Gráfico de barras para la distribución por edad
     if 'edad' in df.columns:
-        edad_counts = df['edad'].value_counts().sort_index()
-        edad_bar = go.Bar(
-            x=edad_counts.index,
-            y=edad_counts.values,
-            name="Distribución de Edades",
-            visible=False,
-            hovertemplate="Edad: %{x}<br>Personas: %{y}"
-        )
+        edad_counts = df['edad'].value_counts().sort_index()  # Ordenamos por edad
+        edad_bar = go.Bar(x=edad_counts.index, y=edad_counts.values, name="Distribución de Edades", visible=False)
         data.append(edad_bar)
-        visibility.append(False)
 
-    # Gráfico de barras: Alcaldías con conteo, y solo si hay datos
-    if 'alcaldia_catalogo' in df.columns and not df['alcaldia_catalogo'].empty:
+    # Gráfico de barras para el Top 10 de Alcaldías
+    if 'alcaldia_catalogo' in df.columns:
         alcaldia_counts = df['alcaldia_catalogo'].value_counts().nlargest(10)
-        alcaldia_bar = go.Bar(
-            x=alcaldia_counts.index,
-            y=alcaldia_counts.values,
-            name="Top 10 Alcaldías",
-            visible=False,
-            hovertemplate="Alcaldía: %{x}<br>Conteo: %{y}"
-        )
+        alcaldia_bar = go.Bar(x=alcaldia_counts.index, y=alcaldia_counts.values, name="Top 10 Alcaldías", visible=False)
         data.append(alcaldia_bar)
-        visibility.append(False)
 
-    # Botones de interacción
+    # Gráfico de dispersión para edad y salario (suponiendo que exista la columna 'salario')
+    if 'salario' in df.columns and 'edad' in df.columns:
+        scatter_plot = go.Scatter(x=df['edad'], y=df['salario'], mode='markers', name="Edad vs Salario", visible=False)
+        data.append(scatter_plot)
+
+    # Botones para cambiar entre gráficos
+    buttons = []
     for i, trace in enumerate(data):
         vis = [False] * len(data)
         vis[i] = True
@@ -80,7 +66,7 @@ def show_dashboard():
     layout = go.Layout(
         title="Dashboard Interactivo - Análisis Detallado",
         updatemenus=[dict(type="buttons", direction="down", showactive=True, buttons=buttons)],
-        hovermode='closest'
+        hovermode='closest',  # Para mostrar información sobre los puntos cuando se pasa el mouse
     )
 
     # Crear figura de Plotly
