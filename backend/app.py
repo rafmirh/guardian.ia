@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from flask_cors import CORS
 from dashboard import create_dashboard_from_csv
-from table_dash_app import create_dash_table  # Importar Dash Table si la quieres
+from dash import dash_table  # Importar Dash Table si la quieres
 import pandas as pd
 
 app = Flask(__name__)
