@@ -31,20 +31,48 @@ def show_dashboard():
     df = pd.read_csv("persona_fisica.csv")
     data = []
 
-    # Crear un gráfico de pastel para la distribución de 'sexo'
+    # Gráfico de pastel para la distribución de 'sexo'
     if 'sexo' in df.columns:
         sexo_counts = df['sexo'].value_counts()
         pie_chart = go.Pie(labels=sexo_counts.index, values=sexo_counts.values, name="Distribución por Sexo", visible=True)
         data.append(pie_chart)
 
-    # Crear el layout y gráfico de Plotly
+    # Gráfico de barras para la distribución por edad
+    if 'edad' in df.columns:
+        edad_counts = df['edad'].value_counts().sort_index()  # Ordenamos por edad
+        edad_bar = go.Bar(x=edad_counts.index, y=edad_counts.values, name="Distribución de Edades", visible=False)
+        data.append(edad_bar)
+
+    # Gráfico de barras para el Top 10 de Alcaldías
+    if 'alcaldia_catalogo' in df.columns:
+        alcaldia_counts = df['alcaldia_catalogo'].value_counts().nlargest(10)
+        alcaldia_bar = go.Bar(x=alcaldia_counts.index, y=alcaldia_counts.values, name="Top 10 Alcaldías", visible=False)
+        data.append(alcaldia_bar)
+
+    # Gráfico de dispersión para edad y salario (suponiendo que exista la columna 'salario')
+    if 'salario' in df.columns and 'edad' in df.columns:
+        scatter_plot = go.Scatter(x=df['edad'], y=df['salario'], mode='markers', name="Edad vs Salario", visible=False)
+        data.append(scatter_plot)
+
+    # Botones para cambiar entre gráficos
+    buttons = []
+    for i, trace in enumerate(data):
+        vis = [False] * len(data)
+        vis[i] = True
+        button = dict(label=data[i].name, method="update", args=[{"visible": vis}, {"title": data[i].name}])
+        buttons.append(button)
+
+    # Layout de Plotly
     layout = go.Layout(
-        title="Dashboard Interactivo"
+        title="Dashboard Interactivo - Análisis Detallado",
+        updatemenus=[dict(type="buttons", direction="down", showactive=True, buttons=buttons)],
+        hovermode='closest',  # Para mostrar información sobre los puntos cuando se pasa el mouse
     )
 
+    # Crear figura de Plotly
     fig = go.Figure(data=data, layout=layout)
 
-    # Renderizar el gráfico en el HTML
+    # Renderizar el gráfico interactivo
     plot_div = fig.to_html(full_html=False)
 
     return render_template('dashboard.html', plot_div=plot_div)
