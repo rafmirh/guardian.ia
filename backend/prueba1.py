@@ -1,19 +1,16 @@
-# Import packages
+# table_dash_app.py
+
 from dash import Dash, html, dash_table
 import pandas as pd
 
-# Incorporate data
-df = pd.read_csv('persona_fisica.csv')
+def create_dash_table(server):
+    df = pd.read_csv('persona_fisica.csv')
 
-# Initialize the app
-app = Dash(_name)  # Es buena práctica pasar __name_
+    dash_app = Dash(__name__, server=server, url_base_pathname='/table_dash/')
 
-# App layout
-app.layout = html.Div(children=[
-    html.H1('Mi tabla en Dash'),
-    dash_table.DataTable(data=df.to_dict('records'), page_size=10)
-])
+    dash_app.layout = html.Div(children=[
+        html.H1('Mi tabla en Dash'),
+        dash_table.DataTable(data=df.to_dict('records'), page_size=10)
+    ])
 
-# Run the app
-if _name_ == '_main_':
-    app.run_server(debug=True)
+    return dash_app

@@ -161,7 +161,7 @@
 <!-- Dashboard Container -->
 <div id="dashboard-container" class="modal-blur">
   <h1>DASHBOARD INTERACTIVO</h1>
-  {{ plot_div|safe }}
+  {{ plot_div | safe }}
 </div>
 
 <script>
@@ -170,18 +170,20 @@
     document.getElementById('dashboard-container').classList.remove('modal-blur');
   }
 
-  // Enable button after scrolling to bottom
-  const scrollBox = document.getElementById('modal-scrollbox');
-  const acceptBtn = document.getElementById('accept-btn');
+  document.addEventListener('DOMContentLoaded', function () {
+    const scrollBox = document.getElementById('modal-scrollbox');
+    const acceptBtn = document.getElementById('accept-btn');
 
-  scrollBox.addEventListener('scroll', function () {
-    const atBottom = scrollBox.scrollTop + scrollBox.clientHeight >= scrollBox.scrollHeight - 5;
-    if (atBottom) {
-      acceptBtn.disabled = false;
-      acceptBtn.classList.add('enabled');
+    if (scrollBox && acceptBtn) {
+      scrollBox.addEventListener('scroll', function () {
+        const atBottom = scrollBox.scrollTop + scrollBox.clientHeight >= scrollBox.scrollHeight - 5;
+        if (atBottom) {
+          acceptBtn.disabled = false;
+          acceptBtn.classList.add('enabled');
+        }
+      });
+
+      acceptBtn.addEventListener('click', closeModal);
     }
   });
 </script>
-
-</body>
-</html>

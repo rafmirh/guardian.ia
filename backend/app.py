@@ -1,10 +1,14 @@
 from flask import Flask, render_template
-from flask_cors import CORS  # Permitir solicitudes desde Angular
+from flask_cors import CORS
+from dashboard import create_dashboard_from_csv
+from table_dash_app import create_dash_table  # Importar Dash Table si la quieres
 import pandas as pd
-from dashboard import create_dashboard_from_csv  # Importa la función
 
 app = Flask(__name__)
-CORS(app)  # Permitir solicitudes CORS (desde un servidor diferente)
+CORS(app)
+
+# Integrar Dash Table en Flask
+create_dash_table(app)
 
 @app.route('/', methods=['GET'])
 def home():
@@ -20,7 +24,7 @@ def perfil_page():
 
 @app.route('/dashboard', methods=['GET'])
 def show_plotly_dashboard():
-    dashboard = create_dashboard_from_csv("persona_fisica.csv") # Especifica la ruta del CSV si es necesario
+    dashboard = create_dashboard_from_csv("persona_fisica.csv")
     if dashboard:
         plotly_html = dashboard.render_dashboard()
         return render_template('dashboard.html', plot_div=plotly_html)
