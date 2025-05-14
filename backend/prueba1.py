@@ -39,7 +39,7 @@ def show_dashboard():
 
     # Gráfico de barras para la distribución por edad
     if 'edad' in df.columns:
-        edad_counts = df['edad'].value_counts().sort_index()  # Ordenamos por edad
+        edad_counts = df['edad'].value_counts().sort_index(ascending=True)  # Ordenamos las edades de menor a mayor
         edad_bar = go.Bar(x=edad_counts.index, y=edad_counts.values, name="Distribución de Edades", visible=False)
         data.append(edad_bar)
 
@@ -48,7 +48,7 @@ def show_dashboard():
         alcaldia_counts = df['alcaldia_catalogo'].value_counts().nlargest(10)
         alcaldia_bar = go.Bar(x=alcaldia_counts.index, y=alcaldia_counts.values, name="Top 10 Alcaldías", visible=False)
         data.append(alcaldia_bar)
-        
+
     # Botones para cambiar entre gráficos
     buttons = []
     for i, trace in enumerate(data):
