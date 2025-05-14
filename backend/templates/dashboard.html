@@ -159,31 +159,23 @@
 </div>
 
 <!-- Dashboard Container -->
-<div id="dashboard-container" class="modal-blur">
-  <h1>DASHBOARD INTERACTIVO</h1>
-  {{ plot_div | safe }}
+<div id="dashboard-container" class="dashboard-section modal-blur">
+    <h1>DASHBOARD INTERACTIVO</h1>
+    {{ plot_div|safe }}
+</div>
+
+<!-- Tabla Dash Table embebida -->
+<div id="datatable-container" class="datatable-section">
+    <h1>Mi tabla en Dash</h1>
+    <iframe src="/dash/" width="100%" height="600px" style="border:none;"></iframe>
 </div>
 
 <script>
-  function closeModal() {
-    document.getElementById('privacy-modal').style.display = 'none';
-    document.getElementById('dashboard-container').classList.remove('modal-blur');
-  }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    const scrollBox = document.getElementById('modal-scrollbox');
-    const acceptBtn = document.getElementById('accept-btn');
-
-    if (scrollBox && acceptBtn) {
-      scrollBox.addEventListener('scroll', function () {
-        const atBottom = scrollBox.scrollTop + scrollBox.clientHeight >= scrollBox.scrollHeight - 5;
-        if (atBottom) {
-          acceptBtn.disabled = false;
-          acceptBtn.classList.add('enabled');
-        }
-      });
-
-      acceptBtn.addEventListener('click', closeModal);
+    function closeModal() {
+        document.getElementById('privacy-modal').style.display = 'none';
+        document.getElementById('dashboard-container').classList.remove('modal-blur');
     }
-  });
 </script>
+
+</body>
+</html>
