@@ -44,16 +44,11 @@ def show_dashboard():
        data.append(edad_bar)
 
     # Gráfico de barras para el Top 10 de Alcaldías
-    if 'alcaldia_catalogo' in df.columns:
+    if 'alcaldia_catalogo' in df.columns and df['alcaldia_catalogo'].notnull().any():
         alcaldia_counts = df['alcaldia_catalogo'].value_counts().nlargest(10)
         alcaldia_bar = go.Bar(x=alcaldia_counts.index, y=alcaldia_counts.values, name="Top 10 Alcaldías", visible=False)
         data.append(alcaldia_bar)
-
-    # Gráfico de dispersión para edad y salario (suponiendo que exista la columna 'salario')
-    if 'salario' in df.columns and 'edad' in df.columns:
-        scatter_plot = go.Scatter(x=df['edad'], y=df['salario'], mode='markers', name="Edad vs Salario", visible=False)
-        data.append(scatter_plot)
-
+        
     # Botones para cambiar entre gráficos
     buttons = []
     for i, trace in enumerate(data):
