@@ -3,16 +3,6 @@
 <head>
     <title>Scrollable Content Page</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/content.css') }}">
-    <style>
-        .section-content {
-            display: none; /* Ocultar contenido por defecto */
-        }
-        .section-title {
-            cursor: pointer; /* Cambia el cursor al pasar sobre el título */
-            color: #007BFF; /* Color para indicar que es clickeable */
-            margin: 20px 0;
-        }
-    </style>
 </head>
 <body>
     <!-- Header -->
@@ -37,65 +27,75 @@
     <!-- Overlay -->
     <div class="overlay" id="overlay"></div>
 
-    <!-- Main Content -->
-    <div class="main-content">
+<!-- Main Content -->
+<div class="main-content">
 
-        <!-- Modelado y Simulación -->
-        <div class="section">
-            <h2 class="section-title">Modelado y Simulación</h2>
-            <div class="section-content">
-                <h3>Diagrama de Bloques</h3>
-                <img src="https://i.postimg.cc/pVzqh3vP/Captura-de-pantalla-2025-05-15-233028.png" alt="Diagrama de Bloques" style="max-width: 100%;">
-                <ul>
-                   <!-- Aquí va tu lista tal como la pusiste -->
-                    <li>Usuarios (Víctimas) → Recopilación de Información</li>
-                    <li>Atacantes (Suplantadores) → Recopilación de Información</li>
-                    <li>Recopilación de Información → Creación de Perfiles Falsos</li>
-                    <li>Creación de Perfiles Falsos → Interacción con Contactos</li>
-                    <li>Interacción con Contactos → Difusión de Información Falsa</li>
-                    <li>Difusión de Información Falsa → Detección y Reporte</li>
-                    <li>Usuarios (Víctimas) → Detección y Reporte</li>
-                    <li>Plataformas de Redes Sociales → Detección y Reporte</li>
-                    <li>Analistas de Datos → Detección y Reporte</li>
-                    <li>Detección y Reporte → Acciones de Mitigación</li>
-                    <li>Plataformas de Redes Sociales → Acciones de Mitigación</li>
-                    <li>Acciones de Mitigación → Usuarios (Víctimas)</li>
-                    <li>Analistas de Datos → Análisis de Datos</li>
-                    <li>Plataformas de Redes Sociales → Análisis de Datos</li>
-                    <li>Análisis de Datos → Detección y Reporte</li>
-                    <li>Autoridades Reguladoras → Regulación</li>
-                    <li>Regulación → Plataformas de Redes Sociales</li>
-                    <li>Número de Conexiones — Influencia → Interacción con Contactos</li>
-                    <li>Medidas de Seguridad — Influencia → Acciones de Mitigación</li>
-                    <li>Nivel de Conciencia del Usuario — Influencia → Detección y Reporte</li>
-                    <li>Tecnologías de IA Generativa — Influencia → Creación de Perfiles Falsos</li>
-                    <li>Velocidad de Detección — Influencia → Acciones de Mitigación</li>
-                    <li>Legislación — Influencia → Regulación</li>
-                </ul>
-            </div>
+    <!-- Modelado y Simulación -->
+    <div class="section modelado">
+        <h2 style="text-align: center;">Modelado y Simulación</h2>
+        <h3 style="text-align: center;">Diagrama de Bloques</h3>
+        <div style="display: flex; align-items: flex-start; gap: 220px; flex-wrap: wrap;">
+            
+            <!-- Imagen a la izquierda -->
+            <img src="https://i.postimg.cc/pVzqh3vP/Captura-de-pantalla-2025-05-15-233028.png" 
+                 alt="Diagrama de Bloques" style="flex: 1; max-width: 780px; height: auto;">
+            
+            <!-- Lista a la derecha -->
+            <ul style="flex: 1; min-width: 500px;">
+                <!-- Aquí va tu lista tal como la pusiste -->
+                <li>Usuarios (Víctimas) → Recopilación de Información</li>
+                <li>Atacantes (Suplantadores) → Recopilación de Información</li>
+                <li>Recopilación de Información → Creación de Perfiles Falsos</li>
+                <li>Creación de Perfiles Falsos → Interacción con Contactos</li>
+                <li>Interacción con Contactos → Difusión de Información Falsa</li>
+                <li>Difusión de Información Falsa → Detección y Reporte</li>
+                <li>Usuarios (Víctimas) → Detección y Reporte</li>
+                <li>Plataformas de Redes Sociales → Detección y Reporte</li>
+                <li>Analistas de Datos → Detección y Reporte</li>
+                <li>Detección y Reporte → Acciones de Mitigación</li>
+                <li>Plataformas de Redes Sociales → Acciones de Mitigación</li>
+                <li>Acciones de Mitigación → Usuarios (Víctimas)</li>
+                <li>Analistas de Datos → Análisis de Datos</li>
+                <li>Plataformas de Redes Sociales → Análisis de Datos</li>
+                <li>Análisis de Datos → Detección y Reporte</li>
+                <li>Autoridades Reguladoras → Regulación</li>
+                <li>Regulación → Plataformas de Redes Sociales</li>
+                <li>Número de Conexiones — Influencia → Interacción con Contactos</li>
+                <li>Medidas de Seguridad — Influencia → Acciones de Mitigación</li>
+                <li>Nivel de Conciencia del Usuario — Influencia → Detección y Reporte</li>
+                <li>Tecnologías de IA Generativa — Influencia → Creación de Perfiles Falsos</li>
+                <li>Velocidad de Detección — Influencia → Acciones de Mitigación</li>
+                <li>Legislación — Influencia → Regulación</li>
+            </ul>
         </div>
-
-        <!-- Emprendimiento -->
-        <div class="section">
-            <h2 class="section-title">Emprendimiento y Desarrollo de Negocios</h2>
-            <div class="section-content">
-                <p>Exploramos cómo transformar ideas en oportunidades de negocio, impulsando la innovación y el crecimiento sostenible.</p>
-            </div>
-        </div>
-
-        <!-- Más secciones aquí... -->
-
     </div>
 
-    <script src="{{ url_for('static', filename='js/content.js') }}"></script>
-    <script>
-        // Script para mostrar/ocultar contenido
-        document.querySelectorAll('.section-title').forEach(title => {
-            title.addEventListener('click', () => {
-                const content = title.nextElementSibling;
-                content.style.display = content.style.display === 'block' ? 'none' : 'block';
-            });
-        });
-    </script>
+    <!-- Emprendimiento -->
+    <div class="section emprendimiento">
+        <h2 style="text-align: center;">Emprendimiento y Desarrollo de Negocios</h2>
+        <p>Exploramos cómo transformar ideas en oportunidades de negocio, impulsando la innovación y el crecimiento sostenible.</p>
+    </div>
+
+    <!-- Inteligencia de Negocios -->
+    <div class="section inteligencia">
+        <h2 style="text-align: center;">Inteligencia de Negocios</h2>
+        <p>Herramientas y estrategias para convertir datos en información valiosa para la toma de decisiones estratégicas.</p>
+    </div>
+
+    <!-- Herramientas Avanzadas de Datos -->
+    <div class="section datos">
+        <h2 style="text-align: center;">Herramientas Avanzadas para la Gestión de Grandes Volúmenes de Datos</h2>
+        <p>Exploración de tecnologías de Big Data, análisis masivo de información y visualización de datos complejos.</p>
+    </div>
+
+    <!-- Aspectos Jurídicos y Normativos -->
+    <div class="section juridico">
+        <h2 style="text-align: center;">Aspectos Jurídicos y Normativos</h2>
+        <p>Análisis de la normativa, leyes y regulaciones que impactan en el ámbito digital y la gestión de datos personales.</p>
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/content.js') }}"></script>
 </body>
 </html>
