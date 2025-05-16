@@ -106,7 +106,7 @@ body {
 
 /* Main content */
 .main-content {
-    margin-top: 60px; /* Same as header height */
+    margin-top: 60px; /* Igual que la altura del header */
 }
 
 .section {
@@ -114,9 +114,30 @@ body {
     padding: 80px;
     box-sizing: border-box;
     background-color: #ffffff; /* Fondo blanco para todas */
-    color: #000000; /* Texto negro para todas */
+    color: #000000; /* Texto negro general */
 }
 
-h2 {
+.section h2 {
     margin-top: 0;
+}
+
+/* Colores para títulos específicos por tema */
+.section:nth-of-type(1) h2 {
+    color: #66A7E1; /* Modelado y Simulación - Azul Aciano */
+}
+
+.section:nth-of-type(2) h2 {
+    color: #4CAF50; /* Emprendimiento - Verde Esmeralda */
+}
+
+.section:nth-of-type(3) h2 {
+    color: #FFC107; /* Inteligencia de Negocios - Amarillo Ámbar */
+}
+
+.section:nth-of-type(4) h2 {
+    color: #9C27B0; /* Gestión de Grandes Datos - Morado Amatista */
+}
+
+.section:nth-of-type(5) h2 {
+    color: #F44336; /* Aspectos Jurídicos - Rojo Carmesí */
 }
