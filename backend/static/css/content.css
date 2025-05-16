@@ -115,12 +115,16 @@ body {
     box-sizing: border-box;
 }
 
+/* Secciones pares: fondo oscuro y texto claro */
 .section:nth-child(even) {
     background-color: #5f6368;
+    color: #ffffff; /* texto blanco para contraste */
 }
 
+/* Secciones impares: fondo blanco y texto oscuro */
 .section:nth-child(odd) {
     background-color: #ffffff;
+    color: #000000; /* texto negro */
 }
 
 h2 {
