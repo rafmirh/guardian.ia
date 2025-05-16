@@ -109,20 +109,10 @@ body {
     margin-top: 60px; /* Igual que la altura del header */
 }
 
-/* Estilo base para las secciones */
 .section {
-    overflow: hidden;
-    max-height: 4.5rem; /* altura para mostrar solo el título (aprox. 3rem font + padding) */
-    padding: 1rem 5rem 1rem 5rem; /* padding arriba y abajo más pequeño */
+    height: 120vh;
+    padding: 80px;
     box-sizing: border-box;
-    transition: max-height 0.5s ease;
-    cursor: pointer;
-}
-
-/* Clase que se añade para expandir la sección */
-.section.expanded {
-    max-height: 120vh; /* o un valor alto para que pueda expandirse */
-    padding: 5rem 5rem 5rem 5rem; /* más padding cuando está expandido */
 }
 
 /* Sección 1: Modelado y Simulación */
@@ -183,7 +173,5 @@ body {
 /* Títulos */
 h2 {
     margin-top: 0;
-    user-select: none;
 }
-
 
