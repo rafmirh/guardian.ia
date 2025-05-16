@@ -110,13 +110,13 @@ body {
 }
 
 .section {
-    height: 150vh;
-    padding: 40px;
+    height: 100vh;
+    padding: 80px;
     box-sizing: border-box;
 }
 
 .section:nth-child(even) {
-    background-color: #f0f0f0;
+    background-color: #5f6368;
 }
 
 .section:nth-child(odd) {
