@@ -125,32 +125,4 @@ body {
 
 h2 {
     margin-top: 0;
-    text-align: center; /* Centra el título */
-}
-
-/* Nuevo: contenedor para lista + imagen */
-.flex-container {
-    display: flex;
-    align-items: flex-start; /* Alinea arriba la lista y la imagen */
-    gap: 20px; /* Espacio entre la lista y la imagen */
-}
-
-/* Estilo para la imagen */
-.flex-container img {
-    max-width: 400px; /* Tamaño máximo de la imagen */
-    height: auto;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-}
-
-/* Responsive: en pantallas pequeñas la imagen se pasa abajo */
-@media (max-width: 768px) {
-    .flex-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .flex-container img {
-        max-width: 100%;
-    }
 }
