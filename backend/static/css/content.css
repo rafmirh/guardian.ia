@@ -113,14 +113,8 @@ body {
     height: 100vh;
     padding: 80px;
     box-sizing: border-box;
-}
-
-.section:nth-child(even) {
-    background-color: #5f6368;
-}
-
-.section:nth-child(odd) {
-    background-color: #ffffff;
+    background-color: #ffffff; /* Fondo blanco para todas */
+    color: #000000; /* Texto negro para todas */
 }
 
 h2 {
