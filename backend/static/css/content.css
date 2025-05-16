@@ -113,28 +113,36 @@ body {
     height: 100vh;
     padding: 80px;
     box-sizing: border-box;
-    color: #000000; /* Texto negro para que contraste */
 }
 
-/* Fondo para cada sección según su tema */
+/* Sección 1: Modelado y Simulación */
 .section:nth-of-type(1) {
-    background-color: #66A7E1; /* Modelado y Simulación - Azul Aciano */
+    background-color: #66A7E1; /* Azul Aciano */
+    color: #ffffff; /* Blanco para buen contraste */
 }
 
+/* Sección 2: Emprendimiento y Desarrollo de Negocio */
 .section:nth-of-type(2) {
-    background-color: #4CAF50; /* Emprendimiento - Verde Esmeralda */
+    background-color: #4CAF50; /* Verde Esmeralda */
+    color: #ffffff; /* Blanco para contraste */
 }
 
+/* Sección 3: Inteligencia de Negocios */
 .section:nth-of-type(3) {
-    background-color: #FFC107; /* Inteligencia de Negocios - Amarillo Ámbar */
+    background-color: #FFC107; /* Amarillo Ámbar */
+    color: #000000; /* Negro, porque el fondo es muy claro */
 }
 
+/* Sección 4: Gestión de Grandes Volúmenes de Datos */
 .section:nth-of-type(4) {
-    background-color: #9C27B0; /* Gestión de Grandes Datos - Morado Amatista */
+    background-color: #9C27B0; /* Morado Amatista */
+    color: #ffffff; /* Blanco para que resalte */
 }
 
+/* Sección 5: Aspectos Jurídicos */
 .section:nth-of-type(5) {
-    background-color: #F44336; /* Aspectos Jurídicos - Rojo Carmesí */
+    background-color: #F44336; /* Rojo Carmesí */
+    color: #ffffff; /* Blanco para buen contraste */
 }
 
 /* Títulos */
