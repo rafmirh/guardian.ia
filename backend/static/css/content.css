@@ -127,3 +127,37 @@ h2 {
     margin-top: 0;
 }
 
+/* Fondo animado con burbujas guinda */
+.bubble-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at bottom, #1c1c1c 0%, #000000 100%);
+    overflow: hidden;
+    z-index: -1; /* Detrás de todo */
+}
+
+.bubble {
+    position: absolute;
+    bottom: -100px;
+    background-color: #800020; /* Color guinda */
+    border-radius: 50%;
+    opacity: 0.4;
+    animation-name: floatBubbles;
+    animation-timing-function: ease-in;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+}
+
+@keyframes floatBubbles {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-1200px) scale(1.3);
+        opacity: 0;
+    }
+}
