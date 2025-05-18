@@ -24,6 +24,13 @@ body{
     width: 100%;
 }
 
+.header_nav .contenedor{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
 .header_nav h1{
     color: #fff;
     font-family: 'Gagalin';
