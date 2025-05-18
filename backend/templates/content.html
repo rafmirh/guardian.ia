@@ -2,12 +2,9 @@
 <html>
 <head>
     <title>Scrollable Content Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/content.css') }}">
 </head>
 <body>
-    <!-- Fondo burbujas -->
-    <div class="bubble-background"></div>
-
     <!-- Header -->
     <header class="header">
         <div class="menu-btn" id="menuBtn">
@@ -30,44 +27,49 @@
     <!-- Overlay -->
     <div class="overlay" id="overlay"></div>
 
-    <!-- Main Content -->
-    <div class="main-content">
-        <!-- Modelado y Simulación -->
-        <div class="section modelado">
-            <h2 style="text-align: center;">Modelado y Simulación</h2>
-            <h3 style="text-align: center;">Diagrama de Bloques</h3>
-            <div style="display: flex; align-items: flex-start; gap: 220px; flex-wrap: wrap;">
-                <img src="https://i.postimg.cc/pVzqh3vP/Captura-de-pantalla-2025-05-15-233028.png" 
-                     alt="Diagrama de Bloques" style="flex: 1; max-width: 780px; height: auto;">
-                <ul style="flex: 1; min-width: 500px;">
-                    <li>Usuarios (Víctimas) → Recopilación de Información</li>
-                    <li>Atacantes (Suplantadores) → Recopilación de Información</li>
-                    <li>Recopilación de Información → Creación de Perfiles Falsos</li>
-                    <li>Creación de Perfiles Falsos → Interacción con Contactos</li>
-                    <li>Interacción con Contactos → Difusión de Información Falsa</li>
-                    <li>Difusión de Información Falsa → Detección y Reporte</li>
-                    <li>Usuarios (Víctimas) → Detección y Reporte</li>
-                    <li>Plataformas de Redes Sociales → Detección y Reporte</li>
-                    <li>Analistas de Datos → Detección y Reporte</li>
-                    <li>Detección y Reporte → Acciones de Mitigación</li>
-                    <li>Plataformas de Redes Sociales → Acciones de Mitigación</li>
-                    <li>Acciones de Mitigación → Usuarios (Víctimas)</li>
-                    <li>Analistas de Datos → Análisis de Datos</li>
-                    <li>Plataformas de Redes Sociales → Análisis de Datos</li>
-                    <li>Análisis de Datos → Detección y Reporte</li>
-                    <li>Autoridades Reguladoras → Regulación</li>
-                    <li>Regulación → Plataformas de Redes Sociales</li>
-                    <li>Número de Conexiones — Influencia → Interacción con Contactos</li>
-                    <li>Medidas de Seguridad — Influencia → Acciones de Mitigación</li>
-                    <li>Nivel de Conciencia del Usuario — Influencia → Detección y Reporte</li>
-                    <li>Tecnologías de IA Generativa — Influencia → Creación de Perfiles Falsos</li>
-                    <li>Velocidad de Detección — Influencia → Acciones de Mitigación</li>
-                    <li>Legislación — Influencia → Regulación</li>
-                </ul>
-            </div>
+<!-- Main Content -->
+<div class="main-content">
+
+    <!-- Modelado y Simulación -->
+    <div class="section modelado">
+        <h2 style="text-align: center;">Modelado y Simulación</h2>
+        <h3 style="text-align: center;">Diagrama de Bloques</h3>
+        <div style="display: flex; align-items: flex-start; gap: 220px; flex-wrap: wrap;">
+            
+            <!-- Imagen a la izquierda -->
+            <img src="https://i.postimg.cc/pVzqh3vP/Captura-de-pantalla-2025-05-15-233028.png" 
+                 alt="Diagrama de Bloques" style="flex: 1; max-width: 780px; height: auto;">
+            
+            <!-- Lista a la derecha -->
+            <ul style="flex: 1; min-width: 500px;">
+                <!-- Aquí va tu lista tal como la pusiste -->
+                <li>Usuarios (Víctimas) → Recopilación de Información</li>
+                <li>Atacantes (Suplantadores) → Recopilación de Información</li>
+                <li>Recopilación de Información → Creación de Perfiles Falsos</li>
+                <li>Creación de Perfiles Falsos → Interacción con Contactos</li>
+                <li>Interacción con Contactos → Difusión de Información Falsa</li>
+                <li>Difusión de Información Falsa → Detección y Reporte</li>
+                <li>Usuarios (Víctimas) → Detección y Reporte</li>
+                <li>Plataformas de Redes Sociales → Detección y Reporte</li>
+                <li>Analistas de Datos → Detección y Reporte</li>
+                <li>Detección y Reporte → Acciones de Mitigación</li>
+                <li>Plataformas de Redes Sociales → Acciones de Mitigación</li>
+                <li>Acciones de Mitigación → Usuarios (Víctimas)</li>
+                <li>Analistas de Datos → Análisis de Datos</li>
+                <li>Plataformas de Redes Sociales → Análisis de Datos</li>
+                <li>Análisis de Datos → Detección y Reporte</li>
+                <li>Autoridades Reguladoras → Regulación</li>
+                <li>Regulación → Plataformas de Redes Sociales</li>
+                <li>Número de Conexiones — Influencia → Interacción con Contactos</li>
+                <li>Medidas de Seguridad — Influencia → Acciones de Mitigación</li>
+                <li>Nivel de Conciencia del Usuario — Influencia → Detección y Reporte</li>
+                <li>Tecnologías de IA Generativa — Influencia → Creación de Perfiles Falsos</li>
+                <li>Velocidad de Detección — Influencia → Acciones de Mitigación</li>
+                <li>Legislación — Influencia → Regulación</li>
+            </ul>
         </div>
     </div>
 
-    <script src="scripts.js"></script>
+<script src="{{ url_for('static', filename='js/content.js') }}"></script>
 </body>
 </html>
