@@ -33,7 +33,7 @@ def show_plotly_dashboard():
         return "Error al generar el dashboard.", 500
 
 @app.route('/trazabilidad')
-def trazabilidad_page():
+def content_page():
     return render_template('trazabilidad.html')
 
 # Tabla con Dash (respetando tus códigos base)
