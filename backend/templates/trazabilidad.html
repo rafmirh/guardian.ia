@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trazabilidad - Guardian IA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/trazabilidad.css') }}">
+</head>
+<body>
+    <!-- Header estilo Guardian IA -->
+    <header class="bg_animate">
+        <div class="header_nav">
+            <div class="contenedor">
+                <h1>Guardian IA</h1>
+                <nav>
+                    <a href="/dashboard">Dashboard</a>
+                    <a href="/content">Contenido</a>
+                    <a href="/trazabilidad">Trazabilidad</a>
+                </nav>
+            </div>
+        </div>
+
+        <section class="banner contenedor">
+            <section class="banner_title">
+                <h2>Trazabilidad</h2>
+                <p>Consulta el seguimiento detallado y análisis de la trazabilidad digital.</p>
+            </section>
+            <div class="banner_img">
+                <img src="https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/core-512.png" alt="IA">
+            </div>
+        </section>
+    </header>
+
+    <!-- Sidebar Menu -->
+    <div class="sidebar" id="sidebar">
+        <nav class="sidebar-menu">
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/content">Contenido</a></li>
+            <li><a href="/trazabilidad">Trazabilidad</a></li>
+        </nav>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="section">
+            <h2>Sección 1</h2>
+            <p>Esta es información estática en la sección 1.</p>
+        </div>
+        <div class="section">
+            <h2>Sección 2</h2>
+            <p>Más contenido en la sección 2. Continúa desplazándote.</p>
+        </div>
+        <div class="section">
+            <h2>Sección 3</h2>
+            <p>¡Explora más contenido!</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/trazabilidad.js') }}"></script>
+</body>
+</html>
