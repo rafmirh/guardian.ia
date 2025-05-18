@@ -23,6 +23,10 @@ def content_page():
 def perfil_page():
     return render_template('perfil.html')
 
+@app.route('/trazabilidad')
+def content_page():
+    return render_template('trazabilidad.html')
+
 @app.route('/dashboard')
 def show_plotly_dashboard():
     dashboard = create_dashboard_from_csv("persona_fisica.csv")
