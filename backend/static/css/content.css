@@ -55,15 +55,6 @@ body {
     height: 100%;
 }
 
-.Inteligencia {
-    color: #fff;
-    font-size: 20px;
-    text-decoration: none;
-    display: inline-block;
-    background: #1a2849;
-    padding: 20px;
-}
-
 .banner_img {
     animation: movimiento 2.5s linear infinite;
 }
