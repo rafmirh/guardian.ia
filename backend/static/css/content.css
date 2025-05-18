@@ -80,7 +80,7 @@ body{
     opacity: .3;
 
     position: absolute;
-    bottom: -150;
+    bottom: -150px;
     
     animation: burbujas 3s linear infinite ;
 }
@@ -182,7 +182,7 @@ body{
     }
 }
 
-@keyframes movimientos{
+@keyframes movimiento{
     0%{
         transform: translateY(0);
     }
