@@ -19,3 +19,28 @@ body{
     height: 100vh;
     background: linear-gradient(to right, #005c98, #505bda);
 }
+
+.header_nav{
+    width: 100%;
+}
+
+.header_nav h1{
+    color: #fff;
+    font-family: 'Gagalin';
+    font-size: 40px;
+}
+
+.header_nav nav a{
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.banner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.banner_title .Inteligencia
