@@ -1,37 +1,177 @@
-/* Fondo animado */
-body, html {
+/* Base styles */
+body {
     margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
 }
 
-.hero {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #53354a);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
+/* Header styles */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #9F2241;
     color: white;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.hero h1 {
-    font-size: 5rem;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+/* Hamburger menu button */
+.menu-btn {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-right: 20px;
 }
 
-@keyframes gradientBG {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+.menu-btn span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 3px;
+    transition: all 0.3s ease;
 }
+
+/* Site title */
+.site-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Sidebar menu */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: white;
+    z-index: 200;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    padding-top: 70px;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    padding: 0;
+}
+
+.sidebar-menu a {
+    display: block;
+    padding: 15px 20px;
+    color: #5f6368;
+    text-decoration: none;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s;
+}
+
+.sidebar-menu a:hover {
+    background-color: #f5f5f5;
+}
+
+/* Overlay when menu is open */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 150;
+    display: none;
+}
+
+.overlay.open {
+    display: block;
+}
+
+/* Main content */
+.main-content {
+    margin-top: 60px; /* Igual que la altura del header */
+}
+
+.section {
+    height: 120vh;
+    padding: 80px;
+    box-sizing: border-box;
+}
+
+/* Sección 1: Modelado y Simulación */
+.section:nth-of-type(1) {
+    background-color: #66A7E1; /* Azul Aciano */
+    color: #ffffff; /* Blanco para buen contraste */
+    font-size: 1.4rem; /* Tamaño general del texto */
+}
+
+.section:nth-of-type(1) h2 {
+    font-size: 3rem; /* Título grande */
+}
+
+/* Sección 2: Emprendimiento y Desarrollo de Negocio */
+.section:nth-of-type(2) {
+    background-color: #4CAF50; /* Verde Esmeralda */
+    color: #ffffff; /* Blanco para contraste */
+    font-size: 1.15rem;
+}
+
+.section:nth-of-type(2) h2 {
+    font-size: 2.8rem;
+}
+
+/* Sección 3: Inteligencia de Negocios */
+.section:nth-of-type(3) {
+    background-color: #FFC107; /* Amarillo Ámbar */
+    color: #000000; /* Negro, porque el fondo es muy claro */
+    font-size: 1.1rem;
+}
+
+.section:nth-of-type(3) h2 {
+    font-size: 2.6rem;
+}
+
+/* Sección 4: Gestión de Grandes Volúmenes de Datos */
+.section:nth-of-type(4) {
+    background-color: #9C27B0; /* Morado Amatista */
+    color: #ffffff; /* Blanco para que resalte */
+    font-size: 1.15rem;
+}
+
+.section:nth-of-type(4) h2 {
+    font-size: 2.8rem;
+}
+
+/* Sección 5: Aspectos Jurídicos */
+.section:nth-of-type(5) {
+    background-color: #F44336; /* Rojo Carmesí */
+    color: #ffffff; /* Blanco para buen contraste */
+    font-size: 1.2rem;
+}
+
+.section:nth-of-type(5) h2 {
+    font-size: 3rem;
+}
+
+/* Títulos */
+h2 {
+    margin-top: 0;
+}
+
