@@ -1,241 +1,192 @@
-/* Estilos generales (asumiendo algunos estilos base en content.css) */
-body {
+* {
     margin: 0;
-    font-family: sans-serif;
-    background-color: #f0f0f0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
 }
 
 .contenedor {
+    width: 90%;
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    margin: auto;
 }
 
 .bg_animate {
-    background: linear-gradient(45deg, #49a09d, #5f2c82, #49a09d, #5f2c82);
-    background-size: 400% 400%;
-    animation: animate 10s ease infinite;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to right, #9f2241, #e4b7b7);
     position: relative;
     overflow: hidden;
-    color: white;
-}
-
-@keyframes animate {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
 }
 
 .header_nav {
-    padding: 20px 0;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .header_nav .contenedor {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px 0;
 }
 
 .header_nav h1 {
-    margin: 0;
+    color: #fff;
+    font-family: 'Gagalin';
+    font-size: 40px;
 }
 
-/* Estilos del menú de hamburguesa */
-.menu-btn {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 30px;
-    height: 25px;
-    cursor: pointer;
-    z-index: 1010; /* Asegura que esté por encima del sidebar */
-}
-
-.menu-btn span {
-    display: block;
-    height: 3px;
-    background-color: white;
-    border-radius: 3px;
-    transition: all 0.3s ease-in-out;
-}
-
-.menu-btn.open span:nth-child(1) {
-    transform: translateY(11px) rotate(45deg);
-}
-
-.menu-btn.open span:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-btn.open span:nth-child(3) {
-    transform: translateY(-11px) rotate(-45deg);
-}
-
-/* Estilos del sidebar */
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: -250px;
-    width: 250px;
-    height: 100%;
-    background-color: #333; /* Un color oscuro para el sidebar */
-    transition: left 0.3s ease-in-out;
-    z-index: 1000;
-    padding-top: 60px; /* Espacio para el header */
-    color: white; /* Color del texto del sidebar */
-}
-
-.sidebar.open {
-    left: 0;
-}
-
-.sidebar-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.sidebar-menu li a {
-    display: block;
-    padding: 15px 20px;
+.header_nav nav a {
+    color: #fff;
     text-decoration: none;
-    color: white;
-    transition: background-color 0.2s ease-in-out;
+    margin-right: 10px;
 }
 
-.sidebar-menu li a:hover {
-    background-color: #555;
-}
-
-/* Estilos del banner (asumiendo algunos estilos base en content.css) */
 .banner {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 50px 0;
+    height: 100%;
 }
 
-.banner_title {
-    flex: 1;
-    padding-right: 20px;
-}
-
-.banner_title h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-}
-
-.banner_title a {
-    display: inline-block;
-    background-color: #49a09d;
-    color: white;
-    padding: 10px 20px;
+.Inteligencia {
+    color: #fff;
+    font-size: 20px;
     text-decoration: none;
-    border-radius: 5px;
+    display: inline-block;
+    background: #1a2849;
+    padding: 20px;
 }
 
 .banner_img {
-    flex: 1;
-    text-align: center;
+    animation: movimiento 2.5s linear infinite;
 }
 
 .banner_img img {
-    max-width: 100%;
-    height: auto;
+    width: 600px;
+    display: block;
 }
 
-/* Estilos de las burbujas (asumiendo algunos estilos base en content.css) */
-.burbujas {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
+/* burbujas */
 .burbuja {
-    position: absolute;
-    bottom: -100px;
-    width: 40px;
-    height: 40px;
-    background: white;
     border-radius: 50%;
-    opacity: 0.15;
-    animation: flotar 4s linear infinite;
+    background: #fff;
+    opacity: 0.3;
+    position: absolute;
+    bottom: -150px;
+    animation: burbujas 3s linear infinite;
 }
 
 .burbuja:nth-child(1) {
-    left: 20%;
-    animation-delay: 0s;
+    width: 80px;
+    height: 80px;
+    left: 5%;
+    animation-duration: 3s;
 }
 
 .burbuja:nth-child(2) {
+    width: 100px;
+    height: 100px;
     left: 35%;
-    animation-delay: 1s;
+    animation-duration: 3s;
+    animation-delay: 5s;
 }
 
 .burbuja:nth-child(3) {
-    left: 55%;
-    animation-delay: 0.5s;
+    width: 200px;
+    height: 200px;
+    left: 15%;
+    animation-duration: 1.5s;
+    animation-delay: 7s;
 }
 
 .burbuja:nth-child(4) {
-    left: 70%;
-    animation-delay: 1.5s;
-}
-
-.burbuja:nth-child(5) {
+    width: 50px;
+    height: 50px;
     left: 90%;
-    animation-delay: 0s;
-}
-
-.burbuja:nth-child(6) {
-    left: 5%;
-    animation-delay: 2s;
-}
-
-.burbuja:nth-child(7) {
-    left: 45%;
+    animation-duration: 6s;
     animation-delay: 3s;
 }
 
-.burbuja:nth-child(8) {
+.burbuja:nth-child(5) {
+    width: 70px;
+    height: 70px;
     left: 65%;
-    animation-delay: 2.5s;
+    animation-duration: 6s;
+    animation-delay: 5s;
+}
+
+.burbuja:nth-child(6) {
+    width: 20px;
+    height: 20px;
+    left: 50%;
+    animation-duration: 4s;
+    animation-delay: 5s;
+}
+
+.burbuja:nth-child(7) {
+    width: 20px;
+    height: 20px;
+    left: 45%;
+    animation-duration: 4s;
+    animation-delay: 5s;
+}
+
+.burbuja:nth-child(8) {
+    width: 100px;
+    height: 100px;
+    left: 52%;
+    animation-duration: 3s;
+    animation-delay: 3s;
 }
 
 .burbuja:nth-child(9) {
-    left: 80%;
-    animation-delay: 1s;
+    width: 65px;
+    height: 65px;
+    left: 51%;
+    animation-duration: 3s;
+    animation-delay: 2s;
 }
 
 .burbuja:nth-child(10) {
-    left: 15%;
-    animation-delay: 3.5s;
+    width: 40px;
+    height: 40px;
+    left: 35%;
+    animation-duration: 3s;
+    animation-delay: 4s;
 }
 
-.burbuja:nth-child(11) {
-    left: 50%;
-    animation-delay: 0.5s;
-}
-
-@keyframes flotar {
+@keyframes burbujas {
     0% {
-        transform: translateY(0);
-        opacity: 0.15;
+        bottom: 0;
+        opacity: 0;
+    }
+    30% {
+        transform: translateX(30px);
     }
     50% {
-        opacity: 0.5;
+        opacity: 0.4;
     }
     100% {
-        transform: translateY(-800px);
+        bottom: 100vh;
         opacity: 0;
+    }
+}
+
+@keyframes movimiento {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(30px);
+    }
+    100% {
+        transform: translateY(0);
     }
 }
