@@ -95,7 +95,7 @@ body {
     height: 100px;
     left: 35%;
     animation-duration: 3s;
-    animation-delay: 5s;
+    animation-delay: 2s;
 }
 
 .burbuja:nth-child(3) {
