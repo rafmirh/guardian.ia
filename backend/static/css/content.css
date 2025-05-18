@@ -64,6 +64,9 @@ body{
     padding: 20px;
 }
 
+.banner_img{
+    animation: movimiento 2.5s linear infinite;
+}
 .banner_img img{
     width: 600px;
     display: block;
@@ -176,5 +179,17 @@ body{
     100%{
         bottom: 100vh;
         opacity: 0;
+    }
+}
+
+@keyframes movimientos{
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(30);
+    }
+    100%{
+        transform: translateY(0);
     }
 }
