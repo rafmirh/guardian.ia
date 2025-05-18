@@ -1,101 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Scrollable Content Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Identidad Digital</title>
+
+    <!-- Fuente Lato -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&display=swap" rel="stylesheet">
+
+    <!-- Estilos unificados -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/content.css') }}">
+
 </head>
 <body>
-    <!-- Header -->
+
+    <!-- Fondo animado -->
+    <div id="particles-js"></div>
+
+    <!-- Encabezado -->
     <header class="header">
-        <div class="menu-btn" id="menuBtn">
+        <div class="menu-btn" onclick="toggleMenu()">
             <span></span>
             <span></span>
             <span></span>
         </div>
-        <div class="site-title">Content Page</div>
+        <div class="site-title">Identidad Digital</div>
     </header>
 
-    <!-- Sidebar Menu -->
-    <div class="sidebar" id="sidebar">
-        <nav class="sidebar-menu">
-            <li><a href="/dashboard">Dashboard</a></li>
-            <li><a href="/perfil">Perfil de Riesgo</a></li>
-            <li><a href="/trazabilidad">Trazabilidad</a></li>
-        </nav>
-    </div>
+    <!-- Menú lateral -->
+    <nav class="sidebar" id="sidebar">
+        <ul class="sidebar-menu">
+            <li><a href="#seccion1">Dashboard</a></li>
+            <li><a href="#seccion2">Perfil de Riesgo</a></li>
+            <li><a href="#seccion3">Trazabilidad</a></li>
+            <li><a href="#seccion4">Gestión de Datos</a></li>
+            <li><a href="#seccion5">Aspectos Jurídicos</a></li>
+        </ul>
+    </nav>
 
-    <!-- Overlay -->
-    <div class="overlay" id="overlay"></div>
+    <!-- Capa de fondo oscuro al abrir menú -->
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
-<!-- Main Content -->
-<div class="main-content">
+    <!-- Contenido principal -->
+    <main class="main-content">
 
-    <!-- Modelado y Simulación -->
-    <div class="section modelado">
-        <h2 style="text-align: center;">Modelado y Simulación</h2>
-        <h3 style="text-align: center;">Diagrama de Bloques</h3>
-        <div style="display: flex; align-items: flex-start; gap: 220px; flex-wrap: wrap;">
-            
-            <!-- Imagen a la izquierda -->
-            <img src="https://i.postimg.cc/pVzqh3vP/Captura-de-pantalla-2025-05-15-233028.png" 
-                 alt="Diagrama de Bloques" style="flex: 1; max-width: 780px; height: auto;">
-            
-            <!-- Lista a la derecha -->
-            <ul style="flex: 1; min-width: 500px;">
-                <!-- Aquí va tu lista tal como la pusiste -->
-                <li>Usuarios (Víctimas) → Recopilación de Información</li>
-                <li>Atacantes (Suplantadores) → Recopilación de Información</li>
-                <li>Recopilación de Información → Creación de Perfiles Falsos</li>
-                <li>Creación de Perfiles Falsos → Interacción con Contactos</li>
-                <li>Interacción con Contactos → Difusión de Información Falsa</li>
-                <li>Difusión de Información Falsa → Detección y Reporte</li>
-                <li>Usuarios (Víctimas) → Detección y Reporte</li>
-                <li>Plataformas de Redes Sociales → Detección y Reporte</li>
-                <li>Analistas de Datos → Detección y Reporte</li>
-                <li>Detección y Reporte → Acciones de Mitigación</li>
-                <li>Plataformas de Redes Sociales → Acciones de Mitigación</li>
-                <li>Acciones de Mitigación → Usuarios (Víctimas)</li>
-                <li>Analistas de Datos → Análisis de Datos</li>
-                <li>Plataformas de Redes Sociales → Análisis de Datos</li>
-                <li>Análisis de Datos → Detección y Reporte</li>
-                <li>Autoridades Reguladoras → Regulación</li>
-                <li>Regulación → Plataformas de Redes Sociales</li>
-                <li>Número de Conexiones — Influencia → Interacción con Contactos</li>
-                <li>Medidas de Seguridad — Influencia → Acciones de Mitigación</li>
-                <li>Nivel de Conciencia del Usuario — Influencia → Detección y Reporte</li>
-                <li>Tecnologías de IA Generativa — Influencia → Creación de Perfiles Falsos</li>
-                <li>Velocidad de Detección — Influencia → Acciones de Mitigación</li>
-                <li>Legislación — Influencia → Regulación</li>
-            </ul>
-        </div>
-    </div>
+        <section class="section" id="seccion1">
+            <h2>Modelado y Simulación</h2>
+            <p>Se analiza el flujo de información entre usuarios, redes sociales y algoritmos. Se utilizan técnicas de modelado de datos para identificar patrones sospechosos que podrían indicar suplantación de identidad.</p>
+            <a href="#seccion2" class="btn-link">Siguiente</a>
+        </section>
 
-    <!-- Emprendimiento -->
-    <div class="section emprendimiento">
-        <h2 style="text-align: center;">Emprendimiento y Desarrollo de Negocios</h2>
-        <p>Exploramos cómo transformar ideas en oportunidades de negocio, impulsando la innovación y el crecimiento sostenible.</p>
-    </div>
+        <section class="section" id="seccion2">
+            <h2>Emprendimiento y Desarrollo de Negocio</h2>
+            <p>Este proyecto tiene aplicaciones en empresas tecnológicas, consultorías de seguridad digital y startups de protección de identidad. Se plantea como una solución escalable basada en modelos de suscripción.</p>
+            <a href="#seccion3" class="btn-link">Siguiente</a>
+        </section>
 
-    <!-- Inteligencia de Negocios -->
-    <div class="section inteligencia">
-        <h2 style="text-align: center;">Inteligencia de Negocios</h2>
-        <p>Herramientas y estrategias para convertir datos en información valiosa para la toma de decisiones estratégicas.</p>
-    </div>
+        <section class="section" id="seccion3">
+            <h2>Inteligencia de Negocios</h2>
+            <p>La recopilación y análisis de datos de comportamiento en línea permite generar perfiles de riesgo. Esto es clave para prevenir fraudes y mejorar la seguridad en plataformas digitales.</p>
+            <a href="#seccion4" class="btn-link">Siguiente</a>
+        </section>
 
-    <!-- Herramientas Avanzadas de Datos -->
-    <div class="section datos">
-        <h2 style="text-align: center;">Herramientas Avanzadas para la Gestión de Grandes Volúmenes de Datos</h2>
-        <p>Exploración de tecnologías de Big Data, análisis masivo de información y visualización de datos complejos.</p>
-    </div>
+        <section class="section" id="seccion4">
+            <h2>Gestión de Grandes Volúmenes de Datos</h2>
+            <p>Se utilizan herramientas como Python, Pandas y APIs de redes sociales para procesar datos masivos. Se incorporan dashboards interactivos con Plotly y Dash.</p>
+            <a href="#seccion5" class="btn-link">Siguiente</a>
+        </section>
 
-    <!-- Aspectos Jurídicos y Normativos -->
-    <div class="section juridico">
-        <h2 style="text-align: center;">Aspectos Jurídicos y Normativos</h2>
-        <p>Análisis de la normativa, leyes y regulaciones que impactan en el ámbito digital y la gestión de datos personales.</p>
-    </div>
+        <section class="section" id="seccion5">
+            <h2>Aspectos Jurídicos y Normativos</h2>
+            <p>Se abordan temas relacionados con la protección de datos personales, derechos digitales y cumplimiento de normativas como el GDPR y la Ley Federal de Protección de Datos.</p>
+            <a href="#seccion1" class="btn-link">Volver al inicio</a>
+        </section>
 
-</div>
+    </main>
 
-<script src="{{ url_for('static', filename='js/content.js') }}"></script>
+    <!-- Scripts -->
+    <script>
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('open');
+        }
+    </script>
+
+    <!-- particles.js -->
+    <script src="{{ url_for('static', filename='js/particles.min.js') }}"></script>
+    <script>
+        particlesJS.load('particles-js', '{{ url_for('static', filename='js/particles-config.json') }}', function () {
+            console.log('particles.js config loaded');
+        });
+    </script>
+
 </body>
 </html>
