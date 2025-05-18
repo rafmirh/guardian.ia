@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -38,8 +40,24 @@ body {
 
 .header_nav h1 {
     color: #fff;
-    font-family: 'Gagalin';
+    font-family: 'Audiowide', sans-serif; /* Cambiada la fuente a Audiowide con un fallback genérico */
     font-size: 40px;
+    margin-top: 20px;
+    font-weight: bold; /* Añadido para que el texto sea negrita */
+    text-shadow:
+        /* Efecto de neón verde lima (detrás del contorno negro) */
+        0 0 7px #02F7D8,
+        0 0 15px #02F7D8,
+        0 0 25px #02F7D8,
+        /* Contorno negro (sobre el neón, debajo del texto blanco) */
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000,
+        -1px  0   0 #000,
+         1px  0   0 #000,
+         0   -1px 0 #000,
+         0    1px 0 #000;
 }
 
 .header_nav nav a {
