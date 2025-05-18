@@ -56,7 +56,7 @@ body {
 }
 
 .banner_img {
-    /* animation eliminada */
+    animation: movimiento 2.5s linear infinite;
 }
 
 .banner_img img {
@@ -64,4 +64,14 @@ body {
     display: block;
 }
 
-/* Eliminado @keyframes movimiento porque ya no se usa */
+@keyframes movimiento {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(30px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
