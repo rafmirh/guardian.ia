@@ -122,41 +122,6 @@ body {
     font-size: 1.4rem; /* Tamaño general del texto */
 }
 
-/* Fondo animado con burbujas guinda */
-.bubble-background {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: -1;
-    background: transparent;
-    overflow: hidden;
-}
-
-.bubble {
-    position: absolute;
-    bottom: -100px;
-    background-color: #800020; /* guinda */
-    border-radius: 50%;
-    opacity: 0.4;
-    animation-name: floatBubbles;
-    animation-timing-function: ease-in;
-    animation-iteration-count: infinite;
-    animation-direction: normal;
-}
-
-@keyframes floatBubbles {
-    0% {
-        transform: translateY(0) scale(1);
-        opacity: 0.5;
-    }
-    100% {
-        transform: translateY(-1200px) scale(1.3);
-        opacity: 0;
-    }
-}
-
 /* Títulos */
 h2 {
     margin-top: 0;
