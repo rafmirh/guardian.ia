@@ -1,128 +1,79 @@
-/* Base styles */
-body {
+* {
     margin: 0;
-    font-family: Arial, sans-serif;
-    overflow-x: hidden;
-}
-
-/* Header styles */
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 60px;
-    background-color: #9F2241;
-    color: white;
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-    z-index: 100;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-/* Hamburger menu button */
-.menu-btn {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin-right: 20px;
-}
-
-.menu-btn span {
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: white;
-    border-radius: 3px;
-    transition: all 0.3s ease;
-}
-
-/* Site title */
-.site-title {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-/* Sidebar menu */
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: -300px;
-    width: 300px;
-    height: 100%;
-    background-color: white;
-    z-index: 200;
-    transition: left 0.3s ease;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-    padding-top: 70px;
-}
-
-.sidebar.open {
-    left: 0;
-}
-
-.sidebar-menu {
-    list-style: none;
     padding: 0;
-    margin: 0;
-}
-
-.sidebar-menu li {
-    padding: 0;
-}
-
-.sidebar-menu a {
-    display: block;
-    padding: 15px 20px;
-    color: #333;
-    text-decoration: none;
-    border-bottom: 1px solid #eee;
-    transition: background-color 0.2s;
-}
-
-.sidebar-menu a:hover {
-    background-color: #f5f5f5;
-}
-
-/* Overlay when menu is open */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 150;
-    display: none;
-}
-
-.overlay.open {
-    display: block;
-}
-
-/* Main content */
-.main-content {
-    margin-top: 60px; /* Same as header height */
-}
-
-.section {
-    height: 100vh;
-    padding: 40px;
     box-sizing: border-box;
 }
 
-.section:nth-child(even) {
-    background-color: #f0f0f0;
+body {
+    font-family: Arial, sans-serif;
 }
 
-.section:nth-child(odd) {
-    background-color: #ffffff;
+.contenedor {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
 }
 
-h2 {
-    margin-top: 0;
+.bg_animate {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to right, #9f2241, #e4b7b7);
+    position: relative;
+    overflow: hidden;
 }
+
+.header_nav {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.header_nav .contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.header_nav h1 {
+    color: #fff;
+    font-family: 'Gagalin';
+    font-size: 40px;
+}
+
+.header_nav nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.banner_img {
+    animation: movimiento 2.5s linear infinite;
+}
+
+.banner_img img {
+    width: 600px;
+    display: block;
+}
+
+@keyframes movimiento {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(30px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Puedes añadir aquí estilos para .sidebar, .overlay y .main-content si lo necesitas */
