@@ -1,18 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Scrollable Content Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Riesgo - Guardian IA</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/perfil.css') }}">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="menu-btn" id="menuBtn">
-            <span></span>
-            <span></span>
-            <span></span>
+    <!-- Header estilo Guardian IA -->
+    <header class="bg_animate">
+        <div class="header_nav">
+            <div class="contenedor">
+                <h1>Guardian IA</h1>
+                <nav>
+                    <a href="/dashboard">Dashboard</a>
+                    <a href="/perfil">Perfil de Riesgo</a>
+                    <a href="/trazabilidad">Trazabilidad</a>
+                </nav>
+            </div>
         </div>
-        <div class="site-title">Perfil de Riesgo</div>
+
+        <section class="banner contenedor">
+            <section class="banner_title">
+                <h2>Perfil de Riesgo</h2>
+                <p>Consulta la evaluación de perfiles potencialmente riesgosos en el entorno digital.</p>
+            </section>
+            <div class="banner_img">
+                <img src="https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/core-512.png" alt="IA">
+            </div>
+        </section>
     </header>
 
     <!-- Sidebar Menu -->
@@ -30,16 +46,16 @@
     <!-- Main Content -->
     <div class="main-content">
         <div class="section">
-            <h2>Section 1</h2>
-            <p>This is static content in section 1.</p>
+            <h2>Sección 1</h2>
+            <p>Esta es información estática en la sección 1.</p>
         </div>
         <div class="section">
-            <h2>Section 2</h2>
-            <p>More content in section 2. Keep scrolling.</p>
+            <h2>Sección 2</h2>
+            <p>Más contenido en la sección 2. Continúa desplazándote.</p>
         </div>
         <div class="section">
-            <h2>Section 3</h2>
-            <p>Endless scrolling fun!</p>
+            <h2>Sección 3</h2>
+            <p>¡Explora más contenido!</p>
         </div>
     </div>
 
