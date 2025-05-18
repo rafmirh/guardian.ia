@@ -44,5 +44,15 @@ body{
 }
 
 .banner_title .Inteligencia{
-    
+    color: #fff;
+    font-size: 20px;
+    text-decoration: none;
+    display: inline-block;
+    background: #1a2849;
+    padding: 20px;
+}
+
+.banner_img img{
+    width: 600px;
+    display: block;
 }
