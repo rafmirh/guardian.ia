@@ -15,7 +15,7 @@ try:
     dash_app = create_dashboard(app)
     dashboard_error = None
 except Exception as e:
-    # Capturar el error para mostrar un mensaje mejor
+    # Capturar el error para mostrar un mensaje
     dashboard_error = str(e)
     traceback.print_exc()
     print(f"Error al cargar el dashboard: {e}", file=sys.stderr)

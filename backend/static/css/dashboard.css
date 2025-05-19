@@ -18,7 +18,7 @@ body {
 
 .bg_animate {
     width: 100%;
-    height: 100vh;
+    height: 17vh;
     background: linear-gradient(#000, #390c53,  #000);
     position: relative;
     overflow: hidden;
