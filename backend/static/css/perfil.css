@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap'); 
+
 * {
     margin: 0;
     padding: 0;
@@ -38,14 +40,33 @@ body {
 
 .header_nav h1 {
     color: #fff;
-    font-family: 'Gagalin';
-    font-size: 40px;
+    font-family: 'Audiowide', sans-serif; /* Cambiada la fuente a Audiowide con un fallback genérico */
+    font-size: 60px;
+    margin-top: 20px;
+    font-weight: bold; 
+    text-shadow:
+        /* Efecto de neón */
+        0 0 7px #FAED27,
+        0 0 15px #FAED27,
+        0 0 25px #FAED27,
+        /* Contorno negro */
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000,
+        -1px  0   0 #000,
+         1px  0   0 #000,
+         0   -1px 0 #000,
+         0    1px 0 #000;
 }
 
 .header_nav nav a {
     color: #fff;
+    font-size: 20px;
+    font-weight: bold; 
     text-decoration: none;
     margin-right: 10px;
+    margin-top: 20px;   
 }
 
 .banner {
