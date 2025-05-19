@@ -1,8 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
 <head>
-  <meta charset="UTF-8" />
-  <title>Aviso de Privacidad | Guardia IA</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard incidencias</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+      <header class="bg_animate">
+        <div class="header_nav">
+            <div class="contenedor">
+                <h1>Guardian IA</h1>
+                <nav>
+                    <a href="/content">Contenido</a>
+                    <a href="/perfil">Perfil de Riesgo</a>
+                    <a href="/trazabilidad">Trazabilidad</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <script src="{{ url_for('static', filename='js/perfil.js') }}"></script>
+  
+  
   <style>
     /* Reset */
     * {
@@ -205,12 +223,6 @@
     </div>
     <button class="close-button" id="accept-btn" onclick="closeModal()" disabled>Aceptar y continuar</button>
   </div>
-</div>
-
-<!-- Dashboard Principal -->
-<div id="dashboard-container" class="modal-blur">
-  <h1>DASHBOARD INTERACTIVO</h1>
-  {{ plot_div|safe }}
 </div>
 
 <script>
