@@ -1,1 +1,0 @@
-#Modelo de clusterización por factores de riesgo
