@@ -56,11 +56,43 @@ body { font-family: Arial, sans-serif; }
 #heatmap-container iframe { border: none; width: 100%; height: 100%; background-color: #222; }
 
 /* Efecto neón para títulos en las tarjetas */ .card-header { border-bottom-color: 
-#B026FF !important; box-shadow: 0 0 5px rgba(176, 38, 255, 0.5); }
+#B026FF !important;
+    box-shadow: 0 0 10px rgba(176, 38, 255, 0.5); /* Initial shadow */
+    /* Add neon glow animation */
+    animation: header-neon-glow 2s infinite alternate ease-in-out;
+}
 
-/* Mejorar la visualización de los contenedores de tarjetas */ .card { border-radius: 6px; overflow: hidden; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(176, 38, 255, 0.3); transition: all 0.3s ease; }
+/* Keyframes for the card hover glow animation */
+@keyframes card-hover-glow {
+    0% {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(176, 38, 255, 0.3); /* Base card shadow */
+    }
+    50% {
+        box-shadow: 0 0 18px rgba(0, 0, 0, 0.6), 0 0 25px rgba(176, 38, 255, 0.6); /* Intensified glow */
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(176, 38, 255, 0.3); /* Base card shadow */
+    }
+}
 
-.card:hover { box-shadow: 0 0 15px rgba(0, 0, 0, 0.7), 0 0 20px rgba(176, 38, 255, 0.5); transform: translateY(-3px); }
+/* Keyframes for the header neon glow animation */
+@keyframes header-neon-glow {
+    0% { box-shadow: 0 0 5px rgba(176, 38, 255, 0.5), 0 0 10px rgba(176, 38, 255, 0.3); }
+    50% { box-shadow: 0 0 15px rgba(176, 38, 255, 0.8), 0 0 25px rgba(176, 38, 255, 0.6); }
+    100% { box-shadow: 0 0 5px rgba(176, 38, 255, 0.5), 0 0 10px rgba(176, 38, 255, 0.3); }
+}
+/* Mejorar la visualización de los contenedores de tarjetas */
+.card {
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(176, 38, 255, 0.3); /* Base shadow */
+    transition: transform 0.3s ease; /* Keep transform transition separate */
+}
+
+.card:hover {
+    animation: card-hover-glow 1.5s infinite alternate ease-in-out; /* Apply animation on hover */
+    transform: translateY(-3px); /* Keep existing transform */
+}
 
 /* Animations */ @keyframes glow { 0% { text-shadow: 0 0 5px 
 #B026FF, 0 0 10px 
@@ -69,6 +101,41 @@ body { font-family: Arial, sans-serif; }
 #B026FF; } 100% { text-shadow: 0 0 5px 
 #B026FF, 0 0 10px 
 #B026FF; } }
+
+/* Neon effect for interactive elements (dropdowns, inputs, buttons) */
+.neon-interactive {
+    transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+    border: 1px solid #555; /* Default border, can be subtle */
+    border-radius: 4px; /* Consistent rounding */
+    /* Let the element itself define its background-color and color */
+}
+
+.neon-interactive:hover {
+    border-color: #B026FF; /* Purple neon */
+    box-shadow: 0 0 8px rgba(176, 38, 255, 0.6), 0 0 12px rgba(176, 38, 255, 0.4);
+}
+
+/* Keyframes for the interactive element focus glow animation */
+@keyframes neon-focus-glow {
+    0% {
+        border-color: #B026FF; /* Start with purple */
+        box-shadow: 0 0 8px rgba(88, 250, 244, 0.4), 0 0 12px rgba(176, 38, 255, 0.3); /* Mix of cyan and purple */
+    }
+    50% {
+        border-color: #58FAF4; /* Transition to cyan */
+        box-shadow: 0 0 15px rgba(88, 250, 244, 0.8), 0 0 25px rgba(88, 250, 244, 0.6); /* Strong cyan glow */
+    }
+    100% {
+        border-color: #B026FF; /* Back to purple */
+        box-shadow: 0 0 8px rgba(88, 250, 244, 0.4), 0 0 12px rgba(176, 38, 255, 0.3); /* Mix of cyan and purple */
+    }
+}
+
+.neon-interactive:focus,
+.neon-interactive:focus-within { /* focus-within for components like Dropdown that contain an input */
+    animation: neon-focus-glow 2s infinite alternate ease-in-out;
+    outline: none; /* Remove default browser outline */
+}
 
 /* Media queries para responsividad */ @media (max-width: 768px) { .header_nav h1 { font-size: 40px; }
 
@@ -93,4 +160,3 @@ body { font-family: Arial, sans-serif; }
     margin-bottom: 5px;
 }
 }
-
