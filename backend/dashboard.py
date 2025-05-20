@@ -7,6 +7,8 @@ from flask import Flask
 import numpy as np
 from dash.exceptions import PreventUpdate
 import os
+from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import PolynomialFeatures # Importación añadida
 
 # Cargar y preparar datos
 def load_data():
@@ -32,8 +34,8 @@ def load_data():
         df = pd.read_csv(file_path)
 
     df['sexo_texto'] = df['sexo'].map({0: 'Hombre', 1: 'Mujer'})
-    bins = [0, 18, 30, 40, 50, 60, 100]
-    labels = ['0-18', '19-30', '31-40', '41-50', '51-60', '61+']
+    bins = [18, 30, 40, 50, 60, 100] # Modificado: el primer bin ahora empieza en 17
+    labels = ['18-29', '30-39', '40-49', '50-59', '60+'] # Modificado: etiquetas ajustadas a los nuevos bins
     df['rango_edad'] = pd.cut(df['edad'], bins=bins, labels=labels, right=False)
     return df
 
@@ -183,12 +185,64 @@ def init_dashboard(server):
         anio_counts = filtered_df.groupby(['anio_hecho', 'mes_hecho']).size().reset_index(name='Cantidad')
         anio_counts['Fecha'] = pd.to_datetime(anio_counts['anio_hecho'].astype(str) + '-' + anio_counts['mes_hecho'].astype(str) + '-01')
         anio_counts = anio_counts[anio_counts['anio_hecho'] >= 2018].sort_values('Fecha')
+        
         line_fig = px.line(anio_counts, x='Fecha', y='Cantidad',
                            markers=True, color_discrete_sequence=['#B026FF'])
         line_fig.update_layout(plot_bgcolor='#222', paper_bgcolor='#222', font=dict(color='white'),
                                margin=dict(t=10, b=10, l=10, r=10),
+                               showlegend=False, # Ocultar leyenda para este gráfico
                                xaxis=dict(title='Fecha', title_font=dict(color='white')),
                                yaxis=dict(title='Frecuencia', title_font=dict(color='white')))
+
+        # Añadir línea de tendencia polinómica de 3er grado si hay suficientes datos (al menos 4 puntos)
+        if not anio_counts.empty and len(anio_counts) >= 4:
+            # Preparar datos para la regresión (X original son los números ordinales de las fechas)
+            X_reg = anio_counts['Fecha'].map(pd.Timestamp.toordinal).values.reshape(-1, 1)
+            y_reg = anio_counts['Cantidad'].values
+
+            # Crear características polinómicas de grado 3
+            poly = PolynomialFeatures(degree=3)
+            X_poly_reg = poly.fit_transform(X_reg)
+
+            model = LinearRegression()
+            model.fit(X_poly_reg, y_reg)
+
+            # Generar fechas para la línea de tendencia extendida (Ene 2018 - Ago 2024)
+            start_date_trend = pd.Timestamp('2018-01-01')
+            end_date_trend = pd.Timestamp('2025-12-01') # Extender hasta Diciembre de 2025
+            trend_dates = pd.date_range(start=start_date_trend, end=end_date_trend, freq='MS') # MS para inicio de mes
+
+            X_trend_ordinal = trend_dates.map(pd.Timestamp.toordinal).values.reshape(-1, 1)
+            # Transformar las fechas de la tendencia a características polinómicas
+            X_poly_trend = poly.transform(X_trend_ordinal)
+            y_trend_pred = model.predict(X_poly_trend)
+            y_trend_pred = np.maximum(0, y_trend_pred) # Evitar predicciones negativas para cantidades
+
+            # Simular efecto neón: línea de brillo (detrás)
+            line_fig.add_trace(go.Scatter(
+                x=trend_dates,
+                y=y_trend_pred,
+                mode='lines',
+                line=dict(color='rgba(255, 255, 150, 0.4)', width=7), # Amarillo pálido, más ancho, semitransparente
+                hoverinfo='skip',
+                showlegend=False 
+            ))
+            # Línea de tendencia principal (amarilla, encima)
+            line_fig.add_trace(go.Scatter(
+                x=trend_dates,
+                y=y_trend_pred,
+                mode='lines',
+                line=dict(color='yellow', width=3),
+                showlegend=False # Asegurar que esta traza no aparezca en leyenda
+            ))
+            
+            # Ajustar el rango del eje X para asegurar que toda la tendencia sea visible
+            min_data_date = anio_counts['Fecha'].min()
+            max_data_date = anio_counts['Fecha'].max()
+            
+            overall_min_x = min(min_data_date, start_date_trend)
+            overall_max_x = max(max_data_date, end_date_trend)
+            line_fig.update_xaxes(range=[overall_min_x, overall_max_x])
 
         colonia_counts = filtered_df['colonia_catalogo'].value_counts().reset_index()
         colonia_counts.columns = ['Colonia', 'Cantidad']
