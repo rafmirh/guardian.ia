@@ -15,6 +15,8 @@ from branca.element import Figure
 import json
 import base64
 from io import BytesIO
+from sklearn.neighbors import BallTree
+import numpy as np
 
 # Cargar y preparar datos
 def load_data():
@@ -81,6 +83,34 @@ def create_heatmap(df, zoom_start=11):
             min_opacity=0.5
         ).add_to(m)
         
+        
+        # Convertir coordenadas a radianes (requisito de BallTree con haversine)
+        coords = np.radians(valid_data[['latitud', 'longitud']].to_numpy())
+
+        # Crear árbol con métrica haversine (distancia en esfera)
+        tree = BallTree(coords, metric='haversine')
+
+        # 5 km en radianes (la Tierra tiene radio ~6371 km)
+        radius_km = 5
+        radius_rad = radius_km / 6371.0
+
+        # Contar vecinos dentro de 5 km para cada punto
+        counts = tree.query_radius(coords, r=radius_rad, count_only=True)
+
+        # Obtener el índice del punto con mayor cantidad de vecinos
+        max_idx = np.argmax(counts)
+        top_location = valid_data.iloc[max_idx]
+
+        # Añadir el marcador al mapa
+        folium.Marker(
+            location=[top_location['latitud'], top_location['longitud']],
+            popup=f"Mayor concentración en 5 km: {counts[max_idx]} casos",
+            icon=folium.Icon(color='purple', icon='info-sign')
+        ).add_to(m)
+
+
+
+        '''
         # Añadir un pequeño marcador para la ubicación con mayor intensidad
         if len(valid_data) > 0:
             # Crear un mapa de frecuencia de coordenadas
@@ -95,6 +125,9 @@ def create_heatmap(df, zoom_start=11):
                     popup=f"Punto de mayor incidencia: {top_location['count']} casos",
                     icon=folium.Icon(color='purple', icon='info-sign')
                 ).add_to(m)
+        '''
+
+
     
     # Convertir el mapa a HTML
     return m._repr_html_()
