@@ -50,8 +50,8 @@ def create_heatmap(df, zoom_start=11):
     # Coordenadas centrales de CDMX
     cdmx_coords = [19.36, -99.13]
     
-    # Crear una figura de Folium con tema oscuro
-    fig = Figure(width='100%', height='100%')
+    # Figura de Folium con tema oscuro 
+    fig = Figure(width=475, height=545)
     m = folium.Map(
         location=cdmx_coords,
         zoom_start=zoom_start,
@@ -69,13 +69,13 @@ def create_heatmap(df, zoom_start=11):
         # Añadir el mapa de calor a la visualización con colores en tema neón
         HeatMap(
             heat_data,
-            radius=15,
-            blur=10,
+            radius=2,
+            blur=2,
             gradient={
-                0.2: '#390c53',  # Morado oscuro
-                0.4: '#6a0dad',  # Morado
-                0.6: '#9500ff',  # Morado brillante
-                0.8: '#b026ff',  # Violeta
+                0.1: '#390c53',  # Morado oscuro
+                0.2: '#6a0dad',  # Morado
+                0.5: '#9500ff',  # Morado brillante
+                0.7: '#b026ff',  # Violeta
                 1.0: '#e0aaff'   # Lavanda claro
             },
             min_opacity=0.5
