@@ -123,6 +123,20 @@ def init_dashboard(server):
         # CSS adicional
         html.Link(rel='stylesheet', href='/static/css/dashboard.css'),
 
+                # Header personalizado
+        html.Div([
+            html.Div(className='header_nav', children=[
+                html.Div(className='contenedor', children=[
+                    html.H1("Guardián IA", style={'fontFamily': 'Audiowide, cursive'}),
+                    html.Nav([
+                        html.A("Contenido", href="/content"),
+                        html.A("Perfil de riesgo", href="/perfil"),
+                        html.A("Trazabilidad", href="/trazabilidad")
+                    ])
+                ])
+            ])
+        ], className='bg_animate'),
+
         # Contenido del dashboard
         dbc.Container([
             
