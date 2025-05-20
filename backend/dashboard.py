@@ -378,7 +378,7 @@ def init_dashboard(server):
 
         return pie_fig, bar_fig, line_fig, treemap_fig, heatmap_container
 
-        # Eliminar el callback del índice de riesgo ya que ese componente ya no existe
+       
 
     return dash_app
 
