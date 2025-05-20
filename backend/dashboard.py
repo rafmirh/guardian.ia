@@ -105,14 +105,14 @@ def init_dashboard(server):
                 dbc.Col([
                     dbc.Card([
                         dbc.CardHeader("Distribución por Sexo", style={'backgroundColor': '#390c53', 'color': 'white'}),
-                        dbc.CardBody([dcc.Graph(id='pie-sexo', style={'height': '30vh', 'width': '62vh'})])
+                        dbc.CardBody([dcc.Graph(id='pie-sexo', style={'height': '30vh'}, config={'responsive': True})])
                     ], style={'height': '100%', 'backgroundColor': '#222', 'borderColor': '#B026FF'})
                 ], width=4),
 
                 dbc.Col([
                     dbc.Card([
                         dbc.CardHeader("Distribución por Edad", style={'backgroundColor': '#390c53', 'color': 'white'}),
-                        dbc.CardBody([dcc.Graph(id='bar-edad', style={'height': '30vh', 'width': '62vh'})])
+                        dbc.CardBody([dcc.Graph(id='bar-edad', style={'height': '30vh'}, config={'responsive': True})])
                     ], style={'height': '100%', 'backgroundColor': '#222', 'borderColor': '#B026FF'})
                 ], width=4)
             ], className="mb-4"),
@@ -121,14 +121,14 @@ def init_dashboard(server):
                 dbc.Col([
                     dbc.Card([
                         dbc.CardHeader("Tendencia por Año", style={'backgroundColor': '#390c53', 'color': 'white'}),
-                        dbc.CardBody([dcc.Graph(id='line-anio', style={'height': '30vh', 'width': '62vh'})])
+                        dbc.CardBody([dcc.Graph(id='line-anio', style={'height': '30vh'}, config={'responsive': True})])
                     ], style={'height': '100%', 'backgroundColor': '#222', 'borderColor': '#B026FF'})
                 ], width=4),
 
                 dbc.Col([
                     dbc.Card([
                         dbc.CardHeader("Distribución por Colonia", style={'backgroundColor': '#390c53', 'color': 'white'}),
-                        dbc.CardBody([dcc.Graph(id='treemap-colonia', style={'height': '30vh', 'width': '62vh'})])
+                        dbc.CardBody([dcc.Graph(id='treemap-colonia', style={'height': '30vh'}, config={'responsive': True})])
                     ], style={'height': '100%', 'backgroundColor': '#222', 'borderColor': '#B026FF'})
                 ], width=4)
             ])
@@ -182,7 +182,7 @@ def init_dashboard(server):
 
         anio_counts = filtered_df.groupby(['anio_hecho', 'mes_hecho']).size().reset_index(name='Cantidad')
         anio_counts['Fecha'] = pd.to_datetime(anio_counts['anio_hecho'].astype(str) + '-' + anio_counts['mes_hecho'].astype(str) + '-01')
-        anio_counts = anio_counts[anio_counts['anio_hecho'] >= 2015].sort_values('Fecha')
+        anio_counts = anio_counts[anio_counts['anio_hecho'] >= 2018].sort_values('Fecha')
         line_fig = px.line(anio_counts, x='Fecha', y='Cantidad',
                            markers=True, color_discrete_sequence=['#B026FF'])
         line_fig.update_layout(plot_bgcolor='#222', paper_bgcolor='#222', font=dict(color='white'),
