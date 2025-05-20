@@ -33,7 +33,7 @@ def load_data():
     else:
         df = pd.read_csv(file_path)
 
-    df['sexo_texto'] = df['sexo'].map({0: 'Hombre', 1: 'Mujer'})
+    df['sexo_texto'] = df['sexo'].map({0: 'Mujer', 1: 'Hombre'})
     bins = [18, 30, 40, 50, 60, 100] # Modificado: el primer bin ahora empieza en 17
     labels = ['18-29', '30-39', '40-49', '50-59', '60+'] # Modificado: etiquetas ajustadas a los nuevos bins
     df['rango_edad'] = pd.cut(df['edad'], bins=bins, labels=labels, right=False)
