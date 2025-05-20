@@ -8,7 +8,13 @@ import numpy as np
 from dash.exceptions import PreventUpdate
 import os
 from sklearn.linear_model import LinearRegression
-from sklearn.preprocessing import PolynomialFeatures # Importación añadida
+from sklearn.preprocessing import PolynomialFeatures
+import folium
+from folium.plugins import HeatMap
+from branca.element import Figure
+import json
+import base64
+from io import BytesIO
 
 # Cargar y preparar datos
 def load_data():
@@ -34,10 +40,64 @@ def load_data():
         df = pd.read_csv(file_path)
 
     df['sexo_texto'] = df['sexo'].map({0: 'Mujer', 1: 'Hombre'})
-    bins = [18, 30, 40, 50, 60, 100] # Modificado: el primer bin ahora empieza en 17
-    labels = ['18-29', '30-39', '40-49', '50-59', '60+'] # Modificado: etiquetas ajustadas a los nuevos bins
+    bins = [18, 30, 40, 50, 60, 100]
+    labels = ['18-29', '30-39', '40-49', '50-59', '60+']
     df['rango_edad'] = pd.cut(df['edad'], bins=bins, labels=labels, right=False)
     return df
+
+# Función para crear el mapa de calor
+def create_heatmap(df, zoom_start=11):
+    # Coordenadas centrales de CDMX
+    cdmx_coords = [19.36, -99.13]
+    
+    # Crear una figura de Folium con tema oscuro
+    fig = Figure(width='100%', height='100%')
+    m = folium.Map(
+        location=cdmx_coords,
+        zoom_start=zoom_start,
+        tiles='CartoDB dark_matter',  # Tema oscuro
+        control_scale=True
+    )
+    fig.add_child(m)
+    
+    # Verificar si hay datos de coordenadas válidos
+    valid_data = df.dropna(subset=['latitud', 'longitud'])
+    if not valid_data.empty:
+        # Convertir las coordenadas en una lista para el mapa de calor
+        heat_data = [[row['latitud'], row['longitud']] for _, row in valid_data.iterrows()]
+        
+        # Añadir el mapa de calor a la visualización con colores en tema neón
+        HeatMap(
+            heat_data,
+            radius=15,
+            blur=10,
+            gradient={
+                0.2: '#390c53',  # Morado oscuro
+                0.4: '#6a0dad',  # Morado
+                0.6: '#9500ff',  # Morado brillante
+                0.8: '#b026ff',  # Violeta
+                1.0: '#e0aaff'   # Lavanda claro
+            },
+            min_opacity=0.5
+        ).add_to(m)
+        
+        # Añadir un pequeño marcador para la ubicación con mayor intensidad
+        if len(valid_data) > 0:
+            # Crear un mapa de frecuencia de coordenadas
+            coord_freq = valid_data.groupby(['latitud', 'longitud']).size().reset_index(name='count')
+            # Ordenar por frecuencia descendente
+            coord_freq = coord_freq.sort_values('count', ascending=False)
+            
+            if not coord_freq.empty:
+                top_location = coord_freq.iloc[0]
+                folium.Marker(
+                    location=[top_location['latitud'], top_location['longitud']],
+                    popup=f"Punto de mayor incidencia: {top_location['count']} casos",
+                    icon=folium.Icon(color='purple', icon='info-sign')
+                ).add_to(m)
+    
+    # Convertir el mapa a HTML
+    return m._repr_html_()
 
 # Aplicación Dash
 def init_dashboard(server):
@@ -62,20 +122,6 @@ def init_dashboard(server):
     dash_app.layout = html.Div([
         # CSS adicional
         html.Link(rel='stylesheet', href='/static/css/dashboard.css'),
-
-        # Header personalizado
-        html.Div([
-            html.Div(className='header_nav', children=[
-                html.Div(className='contenedor', children=[
-                    html.H1("Guardian IA", style={'fontFamily': 'Audiowide, cursive'}),
-                    html.Nav([
-                        html.A("Contenido", href="/content"),
-                        html.A("Perfil de riesgo", href="/perfil"),
-                        html.A("Trazabilidad", href="/trazabilidad")
-                    ])
-                ])
-            ])
-        ], className='bg_animate'),
 
         # Contenido del dashboard
         dbc.Container([
@@ -103,37 +149,50 @@ def init_dashboard(server):
                 ], width=3)
             ], className="mb-4"),
 
+            # Main row for the chart grid and heatmap
             dbc.Row([
+                # Left column for the 2x2 grid of charts
                 dbc.Col([
-                    dbc.Card([
-                        dbc.CardHeader("Distribución por Sexo", style={'backgroundColor': '#390c53', 'color': 'white'}),
-                        dbc.CardBody([dcc.Graph(id='pie-sexo', style={'height': '30vh'}, config={'responsive': True})])
-                    ], style={'height': '100%', 'backgroundColor': '#222', 'borderColor': '#B026FF'})
-                ], width=4),
+                    dbc.Row([
+                        dbc.Col([
+                            dbc.Card([
+                                dbc.CardHeader("Distribución por Sexo", style={'backgroundColor': '#390c53', 'color': 'white'}),
+                                dbc.CardBody([dcc.Graph(id='pie-sexo', style={'height': '30vh'}, config={'responsive': True})])
+                            ], style={'height': '100%', 'backgroundColor': '#222', 'borderColor': '#B026FF'})
+                        ], md=6),
+                        dbc.Col([
+                            dbc.Card([
+                                dbc.CardHeader("Distribución por Edad", style={'backgroundColor': '#390c53', 'color': 'white'}),
+                                dbc.CardBody([dcc.Graph(id='bar-edad', style={'height': '30vh'}, config={'responsive': True})])
+                            ], style={'height': '100%', 'backgroundColor': '#222', 'borderColor': '#B026FF'})
+                        ], md=6)
+                    ], className="mb-4"),
+                    dbc.Row([
+                        dbc.Col([
+                            dbc.Card([
+                                dbc.CardHeader("Tendencia por Año", style={'backgroundColor': '#390c53', 'color': 'white'}),
+                                dbc.CardBody([dcc.Graph(id='line-anio', style={'height': '30vh'}, config={'responsive': True})])
+                            ], style={'height': '100%', 'backgroundColor': '#222', 'borderColor': '#B026FF'})
+                        ], md=6),
+                        dbc.Col([
+                            dbc.Card([
+                                dbc.CardHeader("Distribución por Colonia", style={'backgroundColor': '#390c53', 'color': 'white'}),
+                                dbc.CardBody([dcc.Graph(id='treemap-colonia', style={'height': '30vh'}, config={'responsive': True})])
+                            ], style={'height': '100%', 'backgroundColor': '#222', 'borderColor': '#B026FF'})
+                        ], md=6)
+                    ])
+                ], md=8),
 
+                # Right column for the Heatmap
                 dbc.Col([
                     dbc.Card([
-                        dbc.CardHeader("Distribución por Edad", style={'backgroundColor': '#390c53', 'color': 'white'}),
-                        dbc.CardBody([dcc.Graph(id='bar-edad', style={'height': '30vh'}, config={'responsive': True})])
-                    ], style={'height': '100%', 'backgroundColor': '#222', 'borderColor': '#B026FF'})
-                ], width=4)
-            ], className="mb-4"),
-
-            dbc.Row([
-                dbc.Col([
-                    dbc.Card([
-                        dbc.CardHeader("Tendencia por Año", style={'backgroundColor': '#390c53', 'color': 'white'}),
-                        dbc.CardBody([dcc.Graph(id='line-anio', style={'height': '30vh'}, config={'responsive': True})])
-                    ], style={'height': '100%', 'backgroundColor': '#222', 'borderColor': '#B026FF'})
-                ], width=4),
-
-                dbc.Col([
-                    dbc.Card([
-                        dbc.CardHeader("Distribución por Colonia", style={'backgroundColor': '#390c53', 'color': 'white'}),
-                        dbc.CardBody([dcc.Graph(id='treemap-colonia', style={'height': '30vh'}, config={'responsive': True})])
-                    ], style={'height': '100%', 'backgroundColor': '#222', 'borderColor': '#B026FF'})
-                ], width=4)
-            ])
+                        dbc.CardHeader("Mapa de riesgo - CDMX", style={'backgroundColor': '#390c53', 'color': 'dark'}),
+                        dbc.CardBody([
+                            html.Div(id='heatmap-container', style={'height': '100%', 'width': '100%'}) # Ensure heatmap div fills card body
+                        ])
+                    ], style={'height': '100%', 'backgroundColor': '#222', 'borderColor': '#B026FF'}) # Card fills the column height
+                ], md=4)
+            ], className="mb-4")
         ], fluid=True, style={'backgroundColor': '#0d1117', 'minHeight': '100vh', 'padding': '20px'})
     ])
 
@@ -141,7 +200,8 @@ def init_dashboard(server):
         [Output('pie-sexo', 'figure'),
          Output('bar-edad', 'figure'),
          Output('line-anio', 'figure'),
-         Output('treemap-colonia', 'figure')],
+         Output('treemap-colonia', 'figure'),
+         Output('heatmap-container', 'children')],  # Conservamos este output pero eliminamos risk-index
         [Input('sexo-filter', 'value'),
          Input('alcaldia-filter', 'value'),
          Input('anio-filter', 'value'),
@@ -162,7 +222,9 @@ def init_dashboard(server):
                 title_text='No hay datos para los filtros seleccionados',
                 title_font=dict(color='#B026FF')
             )
-            return empty_fig, empty_fig, empty_fig, empty_fig
+            empty_heatmap = html.Div("No hay datos para mostrar en el mapa", 
+                                    style={'color': 'white', 'text-align': 'center', 'padding-top': '50px'})
+            return empty_fig, empty_fig, empty_fig, empty_fig, empty_heatmap
 
         sexo_counts = filtered_df['sexo_texto'].value_counts().reset_index()
         sexo_counts.columns = ['Sexo', 'Cantidad']
@@ -190,7 +252,7 @@ def init_dashboard(server):
                            markers=True, color_discrete_sequence=['#B026FF'])
         line_fig.update_layout(plot_bgcolor='#222', paper_bgcolor='#222', font=dict(color='white'),
                                margin=dict(t=10, b=10, l=10, r=10),
-                               showlegend=False, # Ocultar leyenda para este gráfico
+                               showlegend=False,
                                xaxis=dict(title='Fecha', title_font=dict(color='white')),
                                yaxis=dict(title='Frecuencia', title_font=dict(color='white')))
 
@@ -207,7 +269,7 @@ def init_dashboard(server):
             model = LinearRegression()
             model.fit(X_poly_reg, y_reg)
 
-            # Generar fechas para la línea de tendencia extendida (Ene 2018 - Ago 2024)
+            # Generar fechas para la línea de tendencia extendida (Ene 2018 - Dic 2025)
             start_date_trend = pd.Timestamp('2018-01-01')
             end_date_trend = pd.Timestamp('2025-12-01') # Extender hasta Diciembre de 2025
             trend_dates = pd.date_range(start=start_date_trend, end=end_date_trend, freq='MS') # MS para inicio de mes
@@ -251,8 +313,25 @@ def init_dashboard(server):
                                  color='Cantidad', color_continuous_scale=['#390c53', '#B026FF', '#E0AAFF'])
         treemap_fig.update_layout(plot_bgcolor='#222', paper_bgcolor='#222', font=dict(color='white'),
                                   margin=dict(t=10, b=10, l=10, r=10))
+        
+        # Crear mapa de calor con los datos filtrados
+        heatmap_html = create_heatmap(filtered_df)
+        
+        # Incluir el HTML del mapa de calor en un iframe responsivo
+        heatmap_container = html.Iframe(
+            srcDoc=heatmap_html,
+            style={
+                'width': '100%',
+                'height': '100%',
+                'border': 'none',
+                'borderRadius': '5px',
+                'backgroundColor': '#222'
+            }
+        )
 
-        return pie_fig, bar_fig, line_fig, treemap_fig
+        return pie_fig, bar_fig, line_fig, treemap_fig, heatmap_container
+
+        # Eliminar el callback del índice de riesgo ya que ese componente ya no existe
 
     return dash_app
 
