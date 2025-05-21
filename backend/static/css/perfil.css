@@ -107,3 +107,55 @@ body {
     transform: translateY(4px);
     transition: 100ms;
   }
+
+   /*guardian*/
+.button {
+  --border-right: 8px;
+  --text-stroke-color: rgba(255, 255, 255, 0.685);
+  --animation-color: #37FF8B;
+  --fs-size: 2em;
+  letter-spacing: 3px;
+  font-size: var(--fs-size);
+  font-family: "Arial", sans-serif;
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  text-transform: uppercase;
+  white-space: nowrap;
+  display: inline-block;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-stroke-color);
+}
+
+/* Texto estático visible */
+.actual-text {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  pointer-events: none;
+}
+
+/* Texto animado */
+.hover-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--animation-color);
+  border-right: var(--border-right) solid var(--animation-color);
+  overflow: hidden;
+  width: 0%;
+  white-space: nowrap;
+  transition: width 0.5s ease;
+  -webkit-text-stroke: 1px var(--animation-color);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Al pasar el mouse */
+.button:hover .hover-text {
+  width: 100%;
+  filter: drop-shadow(0 0 23px var(--animation-color));
+}
