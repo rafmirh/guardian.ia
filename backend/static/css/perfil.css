@@ -76,6 +76,13 @@ body {
     }
 }
 
+@keyframes multiColorShift {
+  0% { background-color: hsl(204, 81%, 27%); }
+  25% { background-color: hsl(300, 60%, 50%); }
+  50% { background-color: hsl(150, 60%, 45%); }
+  75% { background-color: hsl(30, 80%, 55%); }
+  100% { background-color: hsl(204, 81%, 27%); }
+}
 /*BOTONES NAV*/
 .nav-button {
     display: inline-block;
