@@ -94,20 +94,21 @@ body {
   }
 
   .nav-button:hover {
-    letter-spacing: 3px;
-    background-color: hsl(204, 81%, 27%);
-    color: hsl(0, 9%, 96%);
-    box-shadow: rgb(90, 48, 168) 0px 7px 29px 0px;
-  }
+  letter-spacing: 3px;
+  color: hsl(0, 9%, 96%);
+  animation: multiColorShift 5s infinite;
+  box-shadow: rgb(90, 48, 168) 0px 7px 29px 0px;
+  transition: background-color 0.3s ease;
+}
 
-  .nav-button:active {
-    letter-spacing: 3px;
-    background-color: hsl(261, 20%, 49%);
-    color: hsl(0, 100%, 99%);
-    box-shadow: rgb(97, 99, 199) 0px 0px 0px 0px;
-    transform: translateY(4px);
-    transition: 100ms;
-  }
+.nav-button:active {
+  letter-spacing: 3px;
+  background-color: hsl(261, 20%, 49%);
+  color: hsl(0, 100%, 99%);
+  box-shadow: rgb(97, 99, 199) 0px 0px 0px 0px;
+  transform: translateY(4px);
+  transition: 100ms;
+}
 
    /*guardian*/
 .button {
