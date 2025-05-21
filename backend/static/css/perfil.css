@@ -99,7 +99,7 @@ button:hover {
 button:active {
   letter-spacing: 3px;
   background-color: hsl(261, 61%, 67%);
-  color: hsl(0, 100%, 99%);
+  color: hsl(0, 1%, 22%);
   box-shadow: rgb(97, 99, 199) 0px 0px 0px 0px;
   transform: translateY(10px);
   transition: 100ms;
