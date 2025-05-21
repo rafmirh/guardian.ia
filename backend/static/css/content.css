@@ -235,88 +235,51 @@ body {
   /*guardian*/
   /* === removing default button style ===*/
 .button {
-  margin: 0;
-  height: auto;
-  background: transparent;
-  padding: 0;
-  border: none;
-  cursor: pointer;
-}
-
-/* button styling */
-.button {
   --border-right: 6px;
-  --text-stroke-color: rgba(255,255,255,0.6);
+  --text-stroke-color: rgba(255, 255, 255, 0.6);
   --animation-color: #37FF8B;
   --fs-size: 2em;
   letter-spacing: 3px;
-  text-decoration: none;
   font-size: var(--fs-size);
-  font-family: "Arial";
+  font-family: "Arial", sans-serif;
   position: relative;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
   text-transform: uppercase;
+  white-space: nowrap;
+  display: inline-block;
   color: transparent;
   -webkit-text-stroke: 1px var(--text-stroke-color);
 }
-/* this is the text, when you hover on button */
-.button {
-  position: relative;
-  display: inline-block;
-  padding: 12px 24px;
-  font-size: 18px;
-  font-weight: bold;
-  color: white;
-  background-color: black;
-  border: 2px solid var(--animation-color);
-  border-radius: 10px;
-  overflow: hidden;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: 0.3s;
-  min-width: 160px; /* Ajusta según el largo del texto */
-}
 
-.actual-text {
-  display: inline-block;
-  position: relative;
-  z-index: 1;
-}
-
-.button {
-  position: relative;
-  display: inline-block;
-  padding: 12px 24px;
-  font-size: 18px;
-  font-weight: bold;
-  color: white;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  overflow: visible; /* para que no se oculte el contenido absoluto */
-  white-space: nowrap; /* evitar que el texto se divida */
-}
-
+/* Texto estático visible */
 .actual-text {
   position: relative;
   z-index: 1;
-  white-space: nowrap;
+  display: inline-block;
+  pointer-events: none;
 }
 
+/* Texto animado */
 .hover-text {
   position: absolute;
-  box-sizing: border-box;
+  top: 0;
+  left: 0;
   color: var(--animation-color);
-  width: 0%;
-  inset: 0;
-  border-right: var(--border-right, 2px) solid var(--animation-color);
+  border-right: var(--border-right) solid var(--animation-color);
   overflow: hidden;
+  width: 0%;
+  white-space: nowrap;
   transition: width 0.5s ease;
   -webkit-text-stroke: 1px var(--animation-color);
-  white-space: nowrap;
+  pointer-events: none;
   z-index: 2;
 }
 
-/* Hover */
+/* Al pasar el mouse */
 .button:hover .hover-text {
   width: 100%;
   filter: drop-shadow(0 0 23px var(--animation-color));
