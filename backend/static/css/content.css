@@ -235,7 +235,7 @@ body {
   /*guardian*/
   /* === removing default button style ===*/
 .button {
-  --border-right: 6px;
+  --border-right: 8px;
   --text-stroke-color: rgba(255, 255, 255, 0.6);
   --animation-color: #37FF8B;
   --fs-size: 2em;
