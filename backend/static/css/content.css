@@ -202,7 +202,7 @@ body {
 
 @keyframes multiColorShift {
    0%   { background-color: hsl(14, 90%, 55%); }   
-  25%  { background-color: hsl(60, 100%, 50%); }
+  25%  { background-color: hsl(0, 59%, 65%); }
   50%  { background-color: hsl(330, 80%, 60%); }
   75%  { background-color: hsl(120, 70%, 45%); } 
   100% { background-color: hsl(14, 90%, 55%); } 
