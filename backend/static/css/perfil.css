@@ -81,7 +81,7 @@ button {
   border-radius: 50px;
   cursor: pointer;
   border: 0;
-  background-color: white;
+  background-color: rgb(26, 25, 25);
   box-shadow: rgba(24, 23, 23, 0.705) 0 0 8px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -99,7 +99,7 @@ button:hover {
 button:active {
   letter-spacing: 3px;
   background-color: hsl(261, 61%, 67%);
-  color: hsl(0, 100%, 99%);
+  color: hsl(0, 0%, 6%);
   box-shadow: rgb(97, 99, 199) 0px 0px 0px 0px;
   transform: translateY(10px);
   transition: 100ms;
