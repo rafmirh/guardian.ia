@@ -16,7 +16,7 @@ import json
 import base64
 from io import BytesIO
 from sklearn.neighbors import BallTree
-import numpy as np
+
 
 # Cargar y preparar datos
 def load_data():
@@ -177,22 +177,22 @@ def init_dashboard(server):
                 dbc.Col([
                     html.Label("Sexo:", style={'color': '#ffffff'}),
                     dcc.Dropdown(id='sexo-filter', options=sexos, value='Todos', 
-                        className='mb-3', style={'backgroundColor': '#222', 'color': '#000'})
+                        className='mb-3 neon-interactive', style={'backgroundColor': '#222', 'color': '#000'})
                 ], width=3),
                 dbc.Col([
                     html.Label("Alcaldía:", style={'color': '#ffffff'}),
                     dcc.Dropdown(id='alcaldia-filter', options=alcaldias, value='Todas', 
-                        className='mb-3', style={'backgroundColor': '#222', 'color': '#000'})
+                        className='mb-3 neon-interactive', style={'backgroundColor': '#222', 'color': '#000'})
                 ], width=3),
                 dbc.Col([
                     html.Label("Año:", style={'color': '#ffffff'}),
                     dcc.Dropdown(id='anio-filter', options=años, value='Todos', 
-                        className='mb-3', style={'backgroundColor': '#222', 'color': '#000'})
+                        className='mb-3 neon-interactive', style={'backgroundColor': '#222', 'color': '#000'})
                 ], width=3),
                 dbc.Col([
                     html.Label("Mes:", style={'color': '#ffffff'}),
                     dcc.Dropdown(id='mes-filter', options=meses, value='Todos', 
-                        className='mb-3', style={'backgroundColor': '#222', 'color': '#000'})
+                        className='mb-3 neon-interactive', style={'backgroundColor': '#222', 'color': '#000'})
                 ], width=3)
             ], className="mb-4"),
 
