@@ -76,6 +76,15 @@ body {
     }
 }
 
+@keyframes multiColorShift {
+   0%   { background-color: hsl(14, 90%, 55%); }   
+  25%  { background-color: hsl(0, 59%, 65%); }
+  50%  { background-color: hsl(330, 80%, 60%); }
+  75%  { background-color: hsl(346, 70%, 80%); } 
+  100% { background-color: hsl(14, 90%, 55%); } 
+  }
+
+
 .nav-button {
     display: inline-block;
     padding: 17px 30px;
@@ -92,18 +101,19 @@ body {
     margin: 8px;
   }
 
-  .nav-button:hover {
-    letter-spacing: 3px;
-    background-color: hsl(261deg 80% 48%);
-    color: hsl(0, 9%, 96%);
-    box-shadow: rgb(142, 95, 230) 0px 7px 29px 0px;
-  }
+ .nav-button:hover {
+  letter-spacing: 3px;
+  color: hsl(0, 9%, 96%);
+  animation: multiColorShift 5s infinite;
+  box-shadow: rgb(90, 48, 168) 0px 7px 29px 0px;
+  transition: background-color 0.3s ease;
+}
 
-  .nav-button:active {
-    letter-spacing: 3px;
-    background-color: hsl(261, 61%, 67%);
-    color: hsl(0, 100%, 99%);
-    box-shadow: rgb(97, 99, 199) 0px 0px 0px 0px;
-    transform: translateY(4px);
-    transition: 100ms;
-  }
+.nav-button:active {
+  letter-spacing: 3px;
+  background-color: hsl(261, 20%, 49%);
+  color: hsl(0, 100%, 99%);
+  box-shadow: rgb(97, 99, 199) 0px 0px 0px 0px;
+  transform: translateY(4px);
+  transition: 100ms;
+}
