@@ -92,14 +92,14 @@ button {
 button:hover {
   letter-spacing: 3px;
   background-color: hsl(261deg 80% 48%);
-  color: hsl(0, 9%, 96%);
+  color: hsl(0, 0%, 13%);
   box-shadow: rgb(142, 95, 230) 0px 7px 29px 0px;
 }
 
 button:active {
   letter-spacing: 3px;
   background-color: hsl(261, 61%, 67%);
-  color: hsl(0, 1%, 22%);
+  color: hsl(0, 100%, 99%);
   box-shadow: rgb(97, 99, 199) 0px 0px 0px 0px;
   transform: translateY(10px);
   transition: 100ms;
