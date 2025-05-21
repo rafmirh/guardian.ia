@@ -259,20 +259,45 @@ body {
   -webkit-text-stroke: 1px var(--text-stroke-color);
 }
 /* this is the text, when you hover on button */
+.button {
+  position: relative;
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background-color: black;
+  border: 2px solid var(--animation-color);
+  border-radius: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: 0.3s;
+  min-width: 160px; /* Ajusta según el largo del texto */
+}
+
+.actual-text {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
 .hover-text {
   position: absolute;
   box-sizing: border-box;
-  content: attr(data-text);
   color: var(--animation-color);
   width: 0%;
   inset: 0;
   border-right: var(--border-right) solid var(--animation-color);
   overflow: hidden;
-  transition: 0.5s;
+  transition: width 0.5s ease;
   -webkit-text-stroke: 1px var(--animation-color);
+  white-space: nowrap;
+  z-index: 2;
 }
-/* hover */
+
+/* Hover animación */
 .button:hover .hover-text {
   width: 100%;
-  filter: drop-shadow(0 0 23px var(--animation-color))
+  filter: drop-shadow(0 0 8px var(--animation-color));
 }
