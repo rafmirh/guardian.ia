@@ -43,7 +43,7 @@ body {
 }
 
 .header_nav nav a {
-    color: #fff;
+    color: #070707;
     text-decoration: none;
     margin-right: 10px;
 }
@@ -76,4 +76,34 @@ body {
     }
 }
 
-/* Puedes agregar más estilos para sidebar, overlay y main-content si lo deseas */
+.nav-button {
+    display: inline-block;
+    padding: 17px 30px;
+    border-radius: 50px;
+    background-color: white;
+    box-shadow: rgba(211, 205, 205, 0.705) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-family: Arial, sans-serif;
+    color: black;
+    text-decoration: none;
+    transition: all 0.5s ease;
+    margin: 8px;
+  }
+
+  .nav-button:hover {
+    letter-spacing: 3px;
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 9%, 96%);
+    box-shadow: rgb(142, 95, 230) 0px 7px 29px 0px;
+  }
+
+  .nav-button:active {
+    letter-spacing: 3px;
+    background-color: hsl(261, 61%, 67%);
+    color: hsl(0, 100%, 99%);
+    box-shadow: rgb(97, 99, 199) 0px 0px 0px 0px;
+    transform: translateY(4px);
+    transition: 100ms;
+  }
