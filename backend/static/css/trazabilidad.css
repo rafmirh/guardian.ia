@@ -87,11 +87,11 @@ body {
 
   /*botones sombra*/
   @keyframes multiColorShift {
-  0%   { background-color: hsl(14, 90%, 55%); box-shadow: 0 0 15px hsl(14, 90%, 55%); }    /* Naranja */
-  25%  { background-color: hsl(60, 100%, 50%); box-shadow: 0 0 15px hsl(60, 100%, 50%); }  /* Amarillo brillante */
-  50%  { background-color: hsl(330, 80%, 60%); box-shadow: 0 0 15px hsl(330, 80%, 60%); }  /* Rosa intenso */
-  75%  { background-color: hsl(120, 70%, 45%); box-shadow: 0 0 15px hsl(120, 70%, 45%); }  /* Verde limón */
-  100% { background-color: hsl(14, 90%, 55%); box-shadow: 0 0 15px hsl(14, 90%, 55%); }    /* Regresa a naranja */
+  0%   { background-color: hsl(14, 90%, 55%); box-shadow: 0 0 15px hsl(14, 90%, 55%); }    
+  25%  { background-color: hsl(271, 85%, 55%); box-shadow: 0 0 15px hsl(60, 100%, 50%); }  
+  50%  { background-color: hsl(330, 80%, 60%); box-shadow: 0 0 15px hsl(330, 80%, 60%); }  
+  75%  { background-color: hsl(120, 70%, 45%); box-shadow: 0 0 15px hsl(120, 70%, 45%); }  
+  100% { background-color: hsl(14, 90%, 55%); box-shadow: 0 0 15px hsl(14, 90%, 55%); }    
 }
 
 .nav-button {
