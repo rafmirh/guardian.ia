@@ -206,7 +206,7 @@ button {
   cursor: pointer;
   border: 0;
   background-color: white;
-  box-shadow: rgba(226, 221, 221, 0.05) 0 0 8px;
+  box-shadow: rgb(236, 235, 235) 0 0 8px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   font-size: 13px;
@@ -217,7 +217,7 @@ button:hover {
   letter-spacing: 3px;
   background-color: hsl(261deg 80% 48%);
   color: hsl(0, 0%, 0%);
-  box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+  box-shadow: rgb(142, 95, 230) 0px 7px 29px 0px;
 }
 
 button:active {
