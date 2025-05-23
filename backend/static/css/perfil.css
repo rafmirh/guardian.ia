@@ -241,7 +241,7 @@ body {
 /* Botón de cerrar/aceptar */
 .close-button {
     background-color: #007bff; /* Color primario de tu tema (ej. azul) */
-    color: white;
+    color: rgb(7, 7, 7);
     padding: 12px 25px;
     border: none;
     border-radius: 5px;
