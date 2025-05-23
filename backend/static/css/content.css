@@ -1,4 +1,4 @@
-/* FUENTES Y RESET */
+/* FUENTES */
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Fredoka+One&family=Play&display=swap');
 
 * {
@@ -212,7 +212,7 @@ body {
     margin-bottom: 10px;
 }
 
-/* SCROLL PERSONALIZADO */
+/* SCROLL BARRA */
 .banner_title::-webkit-scrollbar {
     width: 6px;
 }
@@ -227,7 +227,7 @@ body {
     border-radius: 3px;
 }
 
-/* MEDIA QUERIES PARA RESPONSIVIDAD */
+/* RESPONSIVIDAD */
 @media (min-width: 768px) {
     .banner_title {
         padding: 25px;
@@ -277,7 +277,7 @@ body {
     animation: burbujas 3s linear infinite;
 }
 
-/* Posiciones y tamaños de burbujas */
+/* burbujas */
 .burbuja:nth-child(1) { width: 80px; height: 80px; left: 5%; animation-duration: 3s; }
 .burbuja:nth-child(2) { width: 100px; height: 100px; left: 35%; animation-duration: 3s; animation-delay: 2s; }
 .burbuja:nth-child(3) { width: 200px; height: 200px; left: 15%; animation-duration: 1.5s; animation-delay: 4s; }
@@ -347,7 +347,7 @@ body {
     100% { transform: translateY(0); }
 }
 
-/* MEDIA QUERIES PARA RESPONSIVIDAD */
+/* RESPONSIVIDAD */
 @media (min-width: 768px) {
     .header_nav .contenedor {
         flex-direction: row;
