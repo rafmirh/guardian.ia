@@ -348,3 +348,85 @@ body {
     font-size: 1.5em;
     margin: 0 5px;
 }
+
+/*BOTON GUARDIA*/
+.button {
+    --border-right: 6px;
+    --text-stroke-color: rgba(255,255,255,0.6);
+    --animation-color: #37FF8B;
+    --fs-size: 1.8rem;
+    letter-spacing: 3px;
+    font-size: var(--fs-size);
+    font-family: 'Audiowide', sans-serif;
+    position: relative;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--text-stroke-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.actual-text {
+    position: relative;
+}
+
+.hover-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--animation-color);
+    border-right: var(--border-right) solid var(--animation-color);
+    overflow: hidden;
+    width: 0%;
+    white-space: nowrap;
+    -webkit-text-stroke: 1px var(--animation-color);
+    transition: width 0.6s ease;
+}
+
+.button:hover .hover-text {
+    width: 100%;
+    filter: drop-shadow(0 0 23px var(--animation-color));
+}
+
+.header_nav nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+/*BOTONES BARRA*/
+.nav-button {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.411);
+    box-shadow: rgba(211, 205, 205, 0.7) 0 0 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-family: Arial, sans-serif;
+    color: black;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 140px;
+}
+
+.nav-button:hover {
+    letter-spacing: 2px;
+    color: #080808;
+    animation: multiColorShift 5s infinite;
+    box-shadow: 0 0 15px rgba(2, 247, 216, 0.7);
+}
+
+@keyframes multiColorShift {
+    0% { background-color: hsl(14, 90%, 55%); box-shadow: 0 0 15px hsl(14, 90%, 55%); }
+    25% { background-color: hsl(271, 85%, 55%); box-shadow: 0 0 15px hsl(271, 85%, 55%); }
+    50% { background-color: hsl(330, 80%, 60%); box-shadow: 0 0 15px hsl(330, 80%, 60%); }
+    75% { background-color: hsl(120, 70%, 45%); box-shadow: 0 0 15px hsl(120, 70%, 45%); }
+    100% { background-color: hsl(14, 90%, 55%); box-shadow: 0 0 15px hsl(14, 90%, 55%); }
+}
