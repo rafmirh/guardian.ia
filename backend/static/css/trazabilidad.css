@@ -305,27 +305,46 @@ body {
     }
 }
 
-/*BOTONES BARRA*/
-.nav-button {
-    display: inline-block;
-    padding: 12px 20px;
-    border-radius: 50px;
-    background-color: rgba(255, 255, 255, 0.411);
-    box-shadow: rgba(211, 205, 205, 0.7) 0 0 8px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    font-family: Arial, sans-serif;
-    color: black;
-    text-decoration: none;
-    transition: all 0.3s ease;
+/* FOOTER */
+.footer {
+    background: #000;
+    padding: 15px 0;
+    font-family: 'Play', sans-serif;
     text-align: center;
-    min-width: 140px;
+    margin-top: auto;
 }
 
-.nav-button:hover {
-    letter-spacing: 2px;
-    color: #080808;
-    animation: multiColorShift 5s infinite;
-    box-shadow: 0 0 15px rgba(2, 247, 216, 0.7);
-    }
+.footer .row {
+    width: 100%;
+    margin: 1% 0;
+    padding: 0.6% 0;
+    color: gray;
+    font-size: 0.8em;
+}
+
+.footer .row a {
+    text-decoration: none;
+    color: gray;
+    transition: 0.3s;
+    margin: 0 10px;
+}
+
+.footer .row a:hover {
+    color: #02F7D8;
+}
+
+.footer .row ul {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+}
+
+.footer .row ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.footer .row a i {
+    font-size: 1.5em;
+    margin: 0 5px;
+}
