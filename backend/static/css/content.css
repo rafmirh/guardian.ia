@@ -152,47 +152,46 @@ body {
     display: block;
 }
 
-/* SECCIÓN SOBRE NOSOTROS */
+/* SECCIÓN SOBRE NOSOTROS - VERSIÓN COMPACTA */
 .banner_title {
     width: 100%;
     max-width: 800px;
-    padding: 25px;
-    background-color: rgba(13, 27, 42, 0.85);
+    padding: 20px;
+    background-color: rgba(13, 27, 42, 0.9);
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(5px);
     color: #e0e1dd;
-    font-size: 1rem;
-    line-height: 1.7;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 20px auto;
+    overflow-y: auto;
+    max-height: 70vh;
 }
 
 .banner_title h2 {
     color: #02F7D8;
-    margin: 20px 0 15px;
-    font-size: 1.6rem;
-    border-bottom: 2px solid #02F7D8;
-    padding-bottom: 8px;
+    margin: 15px 0 10px;
+    font-size: 1.4rem;
+    border-bottom: 1px solid #02F7D8;
+    padding-bottom: 5px;
     font-family: 'Audiowide', sans-serif;
-    text-shadow: 0 0 5px rgba(2, 247, 216, 0.5);
-}
-
-.banner_title h2:first-child {
-    margin-top: 0;
 }
 
 .banner_title p {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     text-align: justify;
+    padding: 0 5px;
 }
 
 .banner_title strong {
     color: #e9c46a;
     font-weight: bold;
     display: block;
-    margin: 25px 0 10px;
-    font-size: 1.1rem;
+    margin: 15px 0 8px;
+    font-size: 1rem;
     position: relative;
-    padding-left: 25px;
+    padding-left: 18px;
 }
 
 .banner_title strong::before {
@@ -200,8 +199,62 @@ body {
     color: #02F7D8;
     position: absolute;
     left: 0;
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     line-height: 1;
+}
+
+/* AJUSTES PARA CONTENIDO LARGO */
+.info-section {
+    margin-bottom: 15px;
+}
+
+.info-section p {
+    margin-bottom: 10px;
+}
+
+/* SCROLL PERSONALIZADO */
+.banner_title::-webkit-scrollbar {
+    width: 6px;
+}
+
+.banner_title::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1);
+    border-radius: 3px;
+}
+
+.banner_title::-webkit-scrollbar-thumb {
+    background: #02F7D8;
+    border-radius: 3px;
+}
+
+/* MEDIA QUERIES PARA RESPONSIVIDAD */
+@media (min-width: 768px) {
+    .banner_title {
+        padding: 25px;
+        font-size: 1rem;
+        max-height: 65vh;
+    }
+    
+    .banner_title h2 {
+        font-size: 1.5rem;
+        margin: 18px 0 12px;
+    }
+    
+    .banner_title strong {
+        font-size: 1.1rem;
+        margin: 18px 0 10px;
+    }
+}
+
+@media (min-width: 992px) {
+    .banner_title {
+        padding: 30px;
+        max-height: 70vh;
+    }
+    
+    .banner_title h2 {
+        font-size: 1.6rem;
+    }
 }
 
 /* BURBUJAS ANIMADAS */
