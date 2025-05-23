@@ -50,13 +50,19 @@ body {
     font-family: 'Audiowide', sans-serif;
     position: relative;
     text-transform: uppercase;
-    color: transparent;
-    -webkit-text-stroke: 1px var(--text-stroke-color);
+    color: white; /* Cambiado de transparent a blanco */
+    -webkit-text-stroke: 1px transparent; /* Borde transparente al inicio */
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
     margin: 10px 0;
+    transition: color 0.3s ease, -webkit-text-stroke 0.3s ease; /* Agregada transición */
+}
+
+.button:hover {
+    color: var(--animation-color); /* Color al hacer hover */
+    -webkit-text-stroke: 1px var(--animation-color);
 }
 
 .actual-text {
