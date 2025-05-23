@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+/* FUENTES Y RESET */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Fredoka+One&family=Play&display=swap');
 
 * {
     margin: 0;
@@ -9,112 +10,166 @@
 body {
     font-family: Arial, sans-serif;
     overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
+/* ESTRUCTURA PRINCIPAL */
 .contenedor {
     width: 90%;
     max-width: 1200px;
-    margin: auto;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
-/* HEADER Y NAVEGACIÓN RESPONSIVE */
+/* HEADER Y NAVEGACIÓN */
 .header_nav {
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 100;
+    padding: 15px 0;
 }
 
 .header_nav .contenedor {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 15px 0;
+    gap: 15px;
 }
 
-.header_nav h1 {
-    color: #fff;
+.button {
+    --border-right: 6px;
+    --text-stroke-color: rgba(255,255,255,0.6);
+    --animation-color: #37FF8B;
+    --fs-size: 1.8rem;
+    letter-spacing: 3px;
+    font-size: var(--fs-size);
     font-family: 'Audiowide', sans-serif;
-    font-size: 2rem;
+    position: relative;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--text-stroke-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
     margin: 10px 0;
-    font-weight: bold;
-    text-align: center;
-    text-shadow: 
-        0 0 7px #02F7D8,
-        0 0 15px #02F7D8,
-        0 0 25px #02F7D8,
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000,
-        -1px 0 0 #000,
-        1px 0 0 #000,
-        0 -1px 0 #000,
-        0 1px 0 #000;
+}
+
+.actual-text {
+    position: relative;
+}
+
+.hover-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--animation-color);
+    border-right: var(--border-right) solid var(--animation-color);
+    overflow: hidden;
+    width: 0%;
+    white-space: nowrap;
+    -webkit-text-stroke: 1px var(--animation-color);
+    transition: width 0.6s ease;
+}
+
+.button:hover .hover-text {
+    width: 100%;
+    filter: drop-shadow(0 0 23px var(--animation-color));
 }
 
 .header_nav nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 10px;
+    gap: 10px;
 }
 
-/* BANNER PRINCIPAL RESPONSIVE */
+.nav-button {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 50px;
+    background-color: white;
+    box-shadow: rgba(211, 205, 205, 0.7) 0 0 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-family: Arial, sans-serif;
+    color: black;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 140px;
+}
+
+.nav-button:hover {
+    letter-spacing: 2px;
+    color: #fff;
+    animation: multiColorShift 5s infinite;
+    box-shadow: 0 0 15px rgba(2, 247, 216, 0.7);
+}
+
+@keyframes multiColorShift {
+    0% { background-color: hsl(14, 90%, 55%); box-shadow: 0 0 15px hsl(14, 90%, 55%); }
+    25% { background-color: hsl(271, 85%, 55%); box-shadow: 0 0 15px hsl(271, 85%, 55%); }
+    50% { background-color: hsl(330, 80%, 60%); box-shadow: 0 0 15px hsl(330, 80%, 60%); }
+    75% { background-color: hsl(120, 70%, 45%); box-shadow: 0 0 15px hsl(120, 70%, 45%); }
+    100% { background-color: hsl(14, 90%, 55%); box-shadow: 0 0 15px hsl(14, 90%, 55%); }
+}
+
+/* BANNER PRINCIPAL */
 .bg_animate {
     width: 100%;
     min-height: 100vh;
     background: linear-gradient(to right, #1A237E, #6d7092);
     position: relative;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding-top: 100px;
+    padding-bottom: 60px;
 }
 
 .banner {
     display: flex;
-    flex-direction: column-reverse;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding: 80px 0;
+    gap: 30px;
+    height: 100%;
 }
 
 .banner_img {
-    animation: movimiento 2.5s linear infinite;
-    text-align: center;
-    margin-bottom: 30px;
+    animation: movimiento 2.5s ease-in-out infinite;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .banner_img img {
     width: 100%;
-    max-width: 600px;
     height: auto;
     display: block;
-    margin: 0 auto;
 }
 
-/* SECCIÓN SOBRE NOSOTROS RESPONSIVE */
+/* SECCIÓN SOBRE NOSOTROS */
 .banner_title {
-    width: 90%;
+    width: 100%;
     max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
+    padding: 25px;
     background-color: rgba(13, 27, 42, 0.85);
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(5px);
     color: #e0e1dd;
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 .banner_title h2 {
     color: #02F7D8;
     margin: 20px 0 15px;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     border-bottom: 2px solid #02F7D8;
     padding-bottom: 8px;
     font-family: 'Audiowide', sans-serif;
@@ -128,7 +183,6 @@ body {
 .banner_title p {
     margin-bottom: 20px;
     text-align: justify;
-    padding: 0 5px;
 }
 
 .banner_title strong {
@@ -138,7 +192,7 @@ body {
     margin: 25px 0 10px;
     font-size: 1.1rem;
     position: relative;
-    padding-left: 20px;
+    padding-left: 25px;
 }
 
 .banner_title strong::before {
@@ -146,29 +200,21 @@ body {
     color: #02F7D8;
     position: absolute;
     left: 0;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    line-height: 1;
 }
 
-/* BOTONES RESPONSIVE */
-.nav-button {
-    display: inline-block;
-    padding: 12px 20px;
-    border-radius: 50px;
-    background-color: white;
-    box-shadow: rgba(211, 205, 205, 0.705) 0 0 8px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    font-family: Arial, sans-serif;
-    color: black;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    margin: 5px;
-    text-align: center;
-    min-width: 120px;
+/* BURBUJAS ANIMADAS */
+.burbujas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
 }
 
-/* BURBUJAS DE FONDO */
 .burbuja {
     border-radius: 50%;
     background: #fff;
@@ -178,18 +224,31 @@ body {
     animation: burbujas 3s linear infinite;
 }
 
-/* FOOTER RESPONSIVE */
+/* Posiciones y tamaños de burbujas */
+.burbuja:nth-child(1) { width: 80px; height: 80px; left: 5%; animation-duration: 3s; }
+.burbuja:nth-child(2) { width: 100px; height: 100px; left: 35%; animation-duration: 3s; animation-delay: 2s; }
+.burbuja:nth-child(3) { width: 200px; height: 200px; left: 15%; animation-duration: 1.5s; animation-delay: 4s; }
+.burbuja:nth-child(4) { width: 50px; height: 50px; left: 90%; animation-duration: 6s; animation-delay: 3s; }
+.burbuja:nth-child(5) { width: 70px; height: 70px; left: 65%; animation-duration: 6s; animation-delay: 5s; }
+.burbuja:nth-child(6) { width: 20px; height: 20px; left: 50%; animation-duration: 4s; animation-delay: 5s; }
+.burbuja:nth-child(7) { width: 20px; height: 20px; left: 45%; animation-duration: 4s; animation-delay: 5s; }
+.burbuja:nth-child(8) { width: 100px; height: 100px; left: 52%; animation-duration: 3s; animation-delay: 3s; }
+.burbuja:nth-child(9) { width: 65px; height: 65px; left: 51%; animation-duration: 3s; animation-delay: 2s; }
+.burbuja:nth-child(10) { width: 40px; height: 40px; left: 35%; animation-duration: 3s; animation-delay: 4s; }
+
+/* FOOTER */
 .footer {
     background: #000;
-    padding: 20px 0;
+    padding: 30px 0;
     font-family: 'Play', sans-serif;
     text-align: center;
+    margin-top: auto;
 }
 
 .footer .row {
     width: 100%;
-    margin: 1% 0%;
-    padding: 0.6% 0%;
+    margin: 1% 0;
+    padding: 0.6% 0;
     color: gray;
     font-size: 0.8em;
 }
@@ -197,12 +256,33 @@ body {
 .footer .row a {
     text-decoration: none;
     color: gray;
-    transition: 0.5s;
+    transition: 0.3s;
+    margin: 0 10px;
+}
+
+.footer .row a:hover {
+    color: #02F7D8;
+}
+
+.footer .row ul {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+}
+
+.footer .row ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.footer .row a i {
+    font-size: 1.5em;
+    margin: 0 5px;
 }
 
 /* ANIMACIONES */
 @keyframes burbujas {
-    0% { bottom: 0; opacity: 0; }
+    0% { bottom: 0; opacity: 0; transform: translateX(0); }
     30% { transform: translateX(30px); }
     50% { opacity: 0.4; }
     100% { bottom: 100vh; opacity: 0; }
@@ -214,41 +294,44 @@ body {
     100% { transform: translateY(0); }
 }
 
-/* MEDIA QUERIES PARA DISPOSITIVOS MÁS GRANDES */
+/* MEDIA QUERIES PARA RESPONSIVIDAD */
 @media (min-width: 768px) {
     .header_nav .contenedor {
         flex-direction: row;
         justify-content: space-between;
-        padding: 15px 0;
-    }
-    
-    .header_nav h1 {
-        font-size: 2.5rem;
-        margin-top: 20px;
-        text-align: left;
-    }
-    
-    .header_nav nav {
-        margin-top: 0;
+        align-items: center;
     }
     
     .banner {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        height: auto;
-        padding: 100px 0;
     }
     
     .banner_img {
-        margin-bottom: 0;
-        flex: 1;
+        max-width: 45%;
+        margin: 0;
     }
     
     .banner_title {
-        flex: 1;
-        margin: 0 20px;
+        max-width: 50%;
         padding: 30px;
+    }
+    
+    .nav-button {
+        padding: 15px 25px;
+        font-size: 0.9rem;
+        min-width: 160px;
+    }
+    
+    .button {
+        --fs-size: 2.2rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .banner_title {
+        padding: 40px;
         font-size: 1.1rem;
     }
     
@@ -257,23 +340,11 @@ body {
     }
     
     .nav-button {
-        padding: 15px 25px;
-        font-size: 0.9rem;
-        margin: 8px;
-    }
-}
-
-@media (min-width: 992px) {
-    .header_nav h1 {
-        font-size: 3rem;
-    }
-    
-    .banner_title {
-        padding: 40px;
-    }
-    
-    .nav-button {
         padding: 17px 30px;
         font-size: 1rem;
+    }
+    
+    .button {
+        --fs-size: 2.5rem;
     }
 }
