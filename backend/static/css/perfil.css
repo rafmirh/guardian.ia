@@ -38,7 +38,7 @@ body {
 
 .header_nav h1 {
     color: #0f0f0f;
-    font-family: 'Gagalin';
+    font-family: 'Gagalin'; /* Asegúrate de que esta fuente esté importada si es personalizada */
     font-size: 40px;
 }
 
@@ -76,104 +76,213 @@ body {
     }
 }
 
-/*botones centro*/
+/* Botones de navegación */
 @keyframes multiColorShift {
-   0%   { background-color: hsl(14, 90%, 55%); }   
-  25%  { background-color: hsl(0, 59%, 65%); }
-  50%  { background-color: hsl(330, 80%, 60%); }
-  75%  { background-color: hsl(346, 70%, 80%); } 
-  100% { background-color: hsl(14, 90%, 55%); } 
-  }
+    0%   { background-color: hsl(14, 90%, 55%); }
+    25%  { background-color: hsl(0, 59%, 65%); }
+    50%  { background-color: hsl(330, 80%, 60%); }
+    75%  { background-color: hsl(346, 70%, 80%); }
+    100% { background-color: hsl(14, 90%, 55%); }
+}
 
-  /*botones sombra*/
-  @keyframes multiColorShift {
-  0%   { background-color: hsl(14, 90%, 55%); box-shadow: 0 0 15px hsl(14, 90%, 55%); }    
-  25%  { background-color: hsl(271, 85%, 55%); box-shadow: 0 0 15px hsl(60, 100%, 50%); }  
-  50%  { background-color: hsl(330, 80%, 60%); box-shadow: 0 0 15px hsl(330, 80%, 60%); }  
-  75%  { background-color: hsl(120, 70%, 45%); box-shadow: 0 0 15px hsl(120, 70%, 45%); }  
-  100% { background-color: hsl(14, 90%, 55%); box-shadow: 0 0 15px hsl(14, 90%, 55%); }    
+@keyframes multiColorShiftShadow { /* Renombrada para evitar conflicto */
+    0%   { background-color: hsl(14, 90%, 55%); box-shadow: 0 0 15px hsl(14, 90%, 55%); }
+    25%  { background-color: hsl(271, 85%, 55%); box-shadow: 0 0 15px hsl(60, 100%, 50%); }
+    50%  { background-color: hsl(330, 80%, 60%); box-shadow: 0 0 15px hsl(330, 80%, 60%); }
+    75%  { background-color: hsl(120, 70%, 45%); box-shadow: 0 0 15px hsl(120, 70%, 45%); }
+    100% { background-color: hsl(14, 90%, 55%); box-shadow: 0 0 15px hsl(14, 90%, 55%); }
 }
 
 .nav-button {
-  display: inline-block;
-  padding: 17px 30px;
-  border-radius: 50px;
-  background-color: white;
-  box-shadow: rgba(211, 205, 205, 0.705) 0 0 8px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  font-size: 13px;
-  font-family: Arial, sans-serif;
-  color: black;
-  text-decoration: none;
-  transition: all 0.5s ease;
-  margin: 8px;
+    display: inline-block;
+    padding: 17px 30px;
+    border-radius: 50px;
+    background-color: white;
+    box-shadow: rgba(211, 205, 205, 0.705) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-family: Arial, sans-serif;
+    color: black;
+    text-decoration: none;
+    transition: all 0.5s ease;
+    margin: 8px;
 }
 
 .nav-button:hover {
-  letter-spacing: 3px;
-  color: hsl(0, 9%, 96%);
-  animation: multiColorShift 5s infinite;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    letter-spacing: 3px;
+    color: hsl(0, 9%, 96%);
+    animation: multiColorShiftShadow 5s infinite; /* Usar la animación con sombra */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .nav-button:active {
-  letter-spacing: 3px;
-  background-color: hsl(261, 20%, 49%);
-  color: hsl(0, 100%, 99%);
-  box-shadow: 0px 0px 0px rgba(97, 99, 199, 0.5);
-  transform: translateY(4px);
-  transition: 100ms;
+    letter-spacing: 3px;
+    background-color: hsl(261, 20%, 49%);
+    color: hsl(0, 100%, 99%);
+    box-shadow: 0px 0px 0px rgba(97, 99, 199, 0.5);
+    transform: translateY(4px);
+    transition: 100ms;
 }
 
-   /*guardian*/
+/* Estilos del botón "Guardián IA" */
 .button {
-  --border-right: 8px;
-  --text-stroke-color: rgba(255, 255, 255, 0.877);
-  --animation-color: #4c16c9;
-  --fs-size: 2em;
-  letter-spacing: 3px;
-  font-size: var(--fs-size);
-  font-family: "Arial", sans-serif;
-  position: relative;
-  background: transparent;
-  border: none;
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
-  text-transform: uppercase;
-  white-space: nowrap;
-  display: inline-block;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--text-stroke-color);
+    --border-right: 8px;
+    --text-stroke-color: rgba(255, 255, 255, 0.877);
+    --animation-color: #4c16c9;
+    --fs-size: 2em;
+    letter-spacing: 3px;
+    font-size: var(--fs-size);
+    font-family: "Arial", sans-serif;
+    position: relative;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    text-transform: uppercase;
+    white-space: nowrap;
+    display: inline-block;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--text-stroke-color);
 }
 
-/* Texto estático visible */
 .actual-text {
-  position: relative;
-  z-index: 1;
-  display: inline-block;
-  pointer-events: none;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    pointer-events: none;
 }
 
-/* Texto animado */
 .hover-text {
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: var(--animation-color);
-  border-right: var(--border-right) solid var(--animation-color);
-  overflow: hidden;
-  width: 0%;
-  white-space: nowrap;
-  transition: width 0.5s ease;
-  -webkit-text-stroke: 1px var(--animation-color);
-  pointer-events: none;
-  z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--animation-color);
+    border-right: var(--border-right) solid var(--animation-color);
+    overflow: hidden;
+    width: 0%;
+    white-space: nowrap;
+    transition: width 0.5s ease;
+    -webkit-text-stroke: 1px var(--animation-color);
+    pointer-events: none;
+    z-index: 2;
 }
 
-/* Al pasar el mouse */
 .button:hover .hover-text {
-  width: 100%;
-  filter: drop-shadow(0 0 23px var(--animation-color));
+    width: 100%;
+    filter: drop-shadow(0 0 23px var(--animation-color));
+}
+
+/* --- ESTILOS DEL MODAL DE AVISO DE PRIVACIDAD --- */
+
+/* Estilos generales del modal */
+.modal {
+    display: none; /* Oculto por defecto, tu JS lo mostrará */
+    position: fixed; /* Permanece en su lugar, incluso al hacer scroll */
+    z-index: 1000; /* Se superpone a todo lo demás */
+    left: 0;
+    top: 0;
+    width: 100%; /* Cubre todo el ancho */
+    height: 100%; /* Cubre toda la altura */
+    overflow: auto; /* Habilita el scroll si el contenido es demasiado grande */
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente negro */
+    display: flex; /* Para centrar el contenido, tu JS cambiará `display: none` a `display: flex` */
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+}
+
+/* Contenido del modal */
+.modal-content {
+    background-color: #fefefe; /* Fondo blanco */
+    margin: auto; /* Para centrar, aunque con flexbox ya está centrado */
+    padding: 30px;
+    border: 1px solid #888;
+    width: 90%; /* Ancho responsivo */
+    max-width: 700px; /* Ancho máximo para pantallas grandes */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    border-radius: 8px; /* Bordes ligeramente redondeados */
+    display: flex; /* Para organizar los elementos internos (título, cuerpo, botón) */
+    flex-direction: column; /* Apila los elementos verticalmente */
+    max-height: 90vh; /* Altura máxima del modal, ocupa el 90% del viewport height */
+}
+
+/* Animación de entrada (opcional) */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+/* Título del modal */
+.modal-content h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+/* Cuerpo del modal (donde va el texto del aviso) */
+.modal-body {
+    flex-grow: 1; /* Permite que ocupe el espacio disponible */
+    overflow-y: auto; /* Hace que el contenido del aviso sea scrollable */
+    margin-bottom: 20px;
+    padding-right: 10px; /* Espacio para la barra de scroll si aparece */
+    line-height: 1.6;
+    color: #555;
+    font-size: 1em;
+}
+
+.modal-body p {
+    margin-bottom: 15px;
+}
+
+/* Botón de cerrar/aceptar */
+.close-button {
+    background-color: #007bff; /* Color primario de tu tema (ej. azul) */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    align-self: center; /* Centra el botón horizontalmente */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.close-button:hover:not(:disabled) {
+    background-color: #0056b3; /* Tono más oscuro al pasar el mouse */
+    transform: translateY(-2px); /* Pequeño efecto al pasar el mouse */
+}
+
+.close-button:disabled {
+    background-color: #cccccc; /* Gris cuando está deshabilitado */
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.close-button.enabled {
+    background-color: #28a745; /* Verde cuando está habilitado */
+}
+
+.close-button.enabled:hover {
+    background-color: #218838;
+}
+
+/* Responsive design para pantallas más pequeñas */
+@media screen and (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .modal-content h2 {
+        font-size: 1.5em;
+    }
+
+    .close-button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
 }
