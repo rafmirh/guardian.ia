@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
 
+/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -16,6 +17,7 @@ body {
     margin: auto;
 }
 
+/* Background Animation */
 .bg_animate {
     width: 100%;
     height: 100vh;
@@ -24,6 +26,7 @@ body {
     overflow: hidden;
 }
 
+/* Header Navigation */
 .header_nav {
     width: 100%;
     position: absolute;
@@ -58,6 +61,13 @@ body {
          0    1px 0 #000;
 }
 
+.header_nav nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
 .header_nav nav a {
     color: #fff;
     font-size: 20px;
@@ -67,6 +77,7 @@ body {
     margin-top: 20px;   
 }
 
+/* Banner Section */
 .banner {
     display: flex;
     justify-content: space-between;
@@ -95,7 +106,7 @@ body {
     }
 }
 
-/* Message Form Styles */
+/* Message Form Section */
 .message-section {
     background: #f8f9fa;
     padding: 60px 0;
@@ -188,6 +199,7 @@ body {
     margin-top: 20px;
 }
 
+/* Button Styles */
 .btn-simular {
     background: linear-gradient(135deg, #388E3C, #4CAF50);
     color: white;
@@ -280,32 +292,7 @@ body {
     border: 1px solid #bee5eb;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .header_nav h1 {
-        font-size: 40px;
-    }
-    
-    .banner_img img {
-        width: 300px;
-    }
-    
-    .message-form-container {
-        padding: 20px;
-        margin: 20px;
-    }
-    
-    .message-form-container h3 {
-        font-size: 24px;
-    }
-    
-    .btn-simular {
-        padding: 12px 30px;
-        font-size: 16px;
-    }
-}
-
-/* FOOTER */
+/* Footer */
 .footer {
     background: #000;
     padding: 15px 0;
@@ -349,7 +336,7 @@ body {
     margin: 0 5px;
 }
 
-/*BOTON GUARDIA*/
+/* Special Button Styles */
 .button {
     --border-right: 6px;
     --text-stroke-color: rgba(255,255,255,0.6);
@@ -391,14 +378,7 @@ body {
     filter: drop-shadow(0 0 23px var(--animation-color));
 }
 
-.header_nav nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-}
-
-/*BOTONES BARRA*/
+/* Nav Button Styles */
 .nav-button {
     display: inline-block;
     padding: 12px 20px;
@@ -429,4 +409,29 @@ body {
     50% { background-color: hsl(330, 80%, 60%); box-shadow: 0 0 15px hsl(330, 80%, 60%); }
     75% { background-color: hsl(120, 70%, 45%); box-shadow: 0 0 15px hsl(120, 70%, 45%); }
     100% { background-color: hsl(14, 90%, 55%); box-shadow: 0 0 15px hsl(14, 90%, 55%); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header_nav h1 {
+        font-size: 40px;
+    }
+    
+    .banner_img img {
+        width: 300px;
+    }
+    
+    .message-form-container {
+        padding: 20px;
+        margin: 20px;
+    }
+    
+    .message-form-container h3 {
+        font-size: 24px;
+    }
+    
+    .btn-simular {
+        padding: 12px 30px;
+        font-size: 16px;
+    }
 }
