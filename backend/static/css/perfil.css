@@ -174,8 +174,6 @@ body {
     filter: drop-shadow(0 0 23px var(--animation-color));
 }
 
-/* --- ESTILOS DEL MODAL DE AVISO DE PRIVACIDAD --- */
-
 /* Estilos generales del modal */
 .modal {
     display: none; /* Oculto por defecto, tu JS lo mostrará */
@@ -186,7 +184,7 @@ body {
     width: 100%; /* Cubre todo el ancho */
     height: 100%; /* Cubre toda la altura */
     overflow: auto; /* Habilita el scroll si el contenido es demasiado grande */
-    background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente negro */
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo semi-transparente negro más oscuro */
     display: flex; /* Para centrar el contenido, tu JS cambiará `display: none` a `display: flex` */
     justify-content: center; /* Centrado horizontal */
     align-items: center; /* Centrado vertical */
@@ -194,19 +192,19 @@ body {
 
 /* Contenido del modal */
 .modal-content {
-    background-color: #fefefe; /* Fondo blanco */
-    margin: auto; /* Para centrar, aunque con flexbox ya está centrado */
+    background-color: #1a1a1a; /* Fondo negro oscuro para el contenido */
+    margin: auto;
     padding: 30px;
-    border: 1px solid #888;
-    width: 90%; /* Ancho responsivo */
-    max-width: 700px; /* Ancho máximo para pantallas grandes */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border: 1px solid #444; /* Borde más oscuro */
+    width: 90%;
+    max-width: 700px;
+    box-shadow: 0 4px 15px 0 rgba(0,0,0,0.5), 0 6px 30px 0 rgba(0,0,0,0.3); /* Sombra más pronunciada */
     animation-name: animatetop;
     animation-duration: 0.4s;
-    border-radius: 8px; /* Bordes ligeramente redondeados */
-    display: flex; /* Para organizar los elementos internos (título, cuerpo, botón) */
-    flex-direction: column; /* Apila los elementos verticalmente */
-    max-height: 90vh; /* Altura máxima del modal, ocupa el 90% del viewport height */
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
 }
 
 /* Animación de entrada (opcional) */
@@ -217,7 +215,7 @@ body {
 
 /* Título del modal */
 .modal-content h2 {
-    color: #333;
+    color: #fefefe; /* Blanco para el título */
     text-align: center;
     margin-bottom: 20px;
     font-size: 1.8em;
@@ -225,12 +223,12 @@ body {
 
 /* Cuerpo del modal (donde va el texto del aviso) */
 .modal-body {
-    flex-grow: 1; /* Permite que ocupe el espacio disponible */
-    overflow-y: auto; /* Hace que el contenido del aviso sea scrollable */
+    flex-grow: 1;
+    overflow-y: auto;
     margin-bottom: 20px;
-    padding-right: 10px; /* Espacio para la barra de scroll si aparece */
+    padding-right: 10px;
     line-height: 1.6;
-    color: #555;
+    color: #e0e0e0; /* Blanco ligeramente grisáceo para el texto del cuerpo */
     font-size: 1em;
 }
 
@@ -240,30 +238,31 @@ body {
 
 /* Botón de cerrar/aceptar */
 .close-button {
-    background-color: #007bff; /* Color primario de tu tema (ej. azul) */
-    color: rgb(7, 7, 7);
+    background-color: #007bff; /* Puedes mantener este color o cambiarlo a uno que contraste con el negro */
+    color: white;
     padding: 12px 25px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1.1em;
-    align-self: center; /* Centra el botón horizontalmente */
+    align-self: center;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .close-button:hover:not(:disabled) {
-    background-color: #0056b3; /* Tono más oscuro al pasar el mouse */
-    transform: translateY(-2px); /* Pequeño efecto al pasar el mouse */
+    background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
 .close-button:disabled {
-    background-color: #cccccc; /* Gris cuando está deshabilitado */
+    background-color: #444444; /* Gris más oscuro cuando está deshabilitado */
+    color: #999999; /* Texto más claro para deshabilitado */
     cursor: not-allowed;
     opacity: 0.7;
 }
 
 .close-button.enabled {
-    background-color: #28a745; /* Verde cuando está habilitado */
+    background-color: #28a745; /* Verde para el estado habilitado */
 }
 
 .close-button.enabled:hover {
