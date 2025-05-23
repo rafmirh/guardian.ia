@@ -384,7 +384,6 @@ margin:0% 3%;
   margin-top: 30px;
 }
 
-/* Párrafos */
 .banner_title p {
   font-size: 1.1rem;
   line-height: 1.8;
@@ -392,13 +391,11 @@ margin:0% 3%;
   color: #e0e1dd;
 }
 
-/* Texto destacado */
 .banner_title strong {
   color: #e9c46a;
   font-weight: bold;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .banner.contenedor {
     padding: 20px;
