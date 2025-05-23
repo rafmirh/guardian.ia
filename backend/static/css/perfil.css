@@ -1,3 +1,7 @@
+/* FUENTES */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Fredoka+One&family=Play&family=Gagalin&display=swap');
+
+/* RESET Y ESTILOS BASE */
 * {
     margin: 0;
     padding: 0;
@@ -6,152 +10,79 @@
 
 body {
     font-family: Arial, sans-serif;
+    overflow-x: hidden; /* Added from original */
+    min-height: 100vh; /* Added from original */
+    display: flex; /* Added from original */
+    flex-direction: column; /* Added from original */
 }
 
+/* ESTRUCTURA PRINCIPAL */
 .contenedor {
     width: 90%;
     max-width: 1200px;
-    margin: auto;
+    margin: 0 auto; /* Changed to auto for centering */
+    padding: 0 15px; /* Added from original */
 }
 
-.bg_animate {
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(to right, #F57C00, #887867);
-    position: relative;
-    overflow: hidden;
-}
-
+/* HEADER Y NAVEGACIÓN */
 .header_nav {
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 100; /* Added from original */
+    padding: 15px 0; /* Added from original */
 }
 
 .header_nav .contenedor {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
+    flex-direction: column; /* Changed to column for small screens, like original */
+    align-items: center; /* Added for alignment */
+    gap: 15px; /* Added for spacing */
 }
 
 .header_nav h1 {
-    color: #0f0f0f;
-    font-family: 'Gagalin'; /* Asegúrate de que esta fuente esté importada si es personalizada */
-    font-size: 40px;
+    color: #fff; /* Changed to white for consistency */
+    font-family: 'Audiowide', sans-serif; /* Changed to Audiowide */
+    font-size: 60px; /* Increased font size */
+    margin-top: 20px; /* Added margin-top */
+    font-weight: bold; /* Ensures boldness */
+    text-shadow: /* Added text shadow for neon effect */
+        0 0 7px #25F005,
+        0 0 15px #25F005,
+        0 0 25px #25F005,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        -1px 0 0 #000,
+        1px 0 0 #000,
+        0 -1px 0 #000,
+        0 1px 0 #000;
 }
 
-.header_nav nav a {
-    color: #2c2b2b;
-    text-decoration: none;
-    margin-right: 10px;
-}
-
-.banner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-}
-
-.banner_img {
-    animation: movimiento 2.5s linear infinite;
-}
-
-.banner_img img {
-    width: 600px;
-    display: block;
-}
-
-@keyframes movimiento {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(30px);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
-/* Botones de navegación */
-@keyframes multiColorShift {
-    0%   { background-color: hsl(14, 90%, 55%); }
-    25%  { background-color: hsl(0, 59%, 65%); }
-    50%  { background-color: hsl(330, 80%, 60%); }
-    75%  { background-color: hsl(346, 70%, 80%); }
-    100% { background-color: hsl(14, 90%, 55%); }
-}
-
-@keyframes multiColorShiftShadow { /* Renombrada para evitar conflicto */
-    0%   { background-color: hsl(14, 90%, 55%); box-shadow: 0 0 15px hsl(14, 90%, 55%); }
-    25%  { background-color: hsl(271, 85%, 55%); box-shadow: 0 0 15px hsl(60, 100%, 50%); }
-    50%  { background-color: hsl(330, 80%, 60%); box-shadow: 0 0 15px hsl(330, 80%, 60%); }
-    75%  { background-color: hsl(120, 70%, 45%); box-shadow: 0 0 15px hsl(120, 70%, 45%); }
-    100% { background-color: hsl(14, 90%, 55%); box-shadow: 0 0 15px hsl(14, 90%, 55%); }
-}
-
-.nav-button {
-    display: inline-block;
-    padding: 17px 30px;
-    border-radius: 50px;
-    background-color: white;
-    box-shadow: rgba(211, 205, 205, 0.705) 0 0 8px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    font-size: 13px;
-    font-family: Arial, sans-serif;
-    color: black;
-    text-decoration: none;
-    transition: all 0.5s ease;
-    margin: 8px;
-}
-
-.nav-button:hover {
-    letter-spacing: 3px;
-    color: hsl(0, 9%, 96%);
-    animation: multiColorShiftShadow 5s infinite; /* Usar la animación con sombra */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.nav-button:active {
-    letter-spacing: 3px;
-    background-color: hsl(261, 20%, 49%);
-    color: hsl(0, 100%, 99%);
-    box-shadow: 0px 0px 0px rgba(97, 99, 199, 0.5);
-    transform: translateY(4px);
-    transition: 100ms;
-}
-
-/* Estilos del botón "Guardián IA" */
+/* BOTÓN "GUARDIÁN IA" (SIMILAR A BOTÓN GUARDIA) */
 .button {
-    --border-right: 8px;
-    --text-stroke-color: rgba(255, 255, 255, 0.877);
-    --animation-color: #4c16c9;
-    --fs-size: 2em;
+    --border-right: 6px; /* Adjusted border size */
+    --text-stroke-color: rgba(255,255,255,0.6); /* Adjusted transparency */
+    --animation-color: #37FF8B; /* Changed to a vibrant green */
+    --fs-size: 1.8rem; /* Adjusted font size unit */
     letter-spacing: 3px;
     font-size: var(--fs-size);
-    font-family: "Arial", sans-serif;
+    font-family: 'Audiowide', sans-serif; /* Changed to Audiowide */
     position: relative;
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
     text-transform: uppercase;
-    white-space: nowrap;
-    display: inline-block;
     color: transparent;
     -webkit-text-stroke: 1px var(--text-stroke-color);
+    background: none; /* Changed from transparent to none */
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 10px 0; /* Added margin */
 }
 
 .actual-text {
     position: relative;
-    z-index: 1;
-    display: inline-block;
-    pointer-events: none;
 }
 
 .hover-text {
@@ -163,10 +94,8 @@ body {
     overflow: hidden;
     width: 0%;
     white-space: nowrap;
-    transition: width 0.5s ease;
     -webkit-text-stroke: 1px var(--animation-color);
-    pointer-events: none;
-    z-index: 2;
+    transition: width 0.6s ease; /* Adjusted transition speed */
 }
 
 .button:hover .hover-text {
@@ -174,37 +103,114 @@ body {
     filter: drop-shadow(0 0 23px var(--animation-color));
 }
 
+.header_nav nav {
+    display: flex;
+    flex-wrap: wrap; /* Added flex-wrap */
+    justify-content: center; /* Centered navigation items */
+    gap: 10px; /* Added gap */
+}
+
+/* BOTONES BARRA */
+.nav-button {
+    display: inline-block;
+    padding: 12px 20px; /* Adjusted padding */
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.411); /* Semi-transparent white */
+    box-shadow: rgba(211, 205, 205, 0.7) 0 0 8px; /* Softer shadow */
+    letter-spacing: 1px; /* Adjusted letter spacing */
+    text-transform: uppercase;
+    font-size: 0.8rem; /* Adjusted font size */
+    font-family: Arial, sans-serif;
+    color: black;
+    text-decoration: none;
+    transition: all 0.3s ease; /* Adjusted transition speed */
+    text-align: center; /* Added text-align */
+    min-width: 140px; /* Added min-width */
+    margin: 0 5px; /* Reduced margin */
+}
+
+.nav-button:hover {
+    letter-spacing: 2px; /* Adjusted letter spacing on hover */
+    color: #080808; /* Darker text on hover */
+    animation: multiColorShift 5s infinite;
+    box-shadow: 0 0 15px rgba(2, 247, 216, 0.7); /* Adjusted hover shadow */
+}
+
+@keyframes multiColorShift {
+    0% { background-color: hsl(14, 90%, 55%); box-shadow: 0 0 15px hsl(14, 90%, 55%); }
+    25% { background-color: hsl(271, 85%, 55%); box-shadow: 0 0 15px hsl(271, 85%, 55%); }
+    50% { background-color: hsl(330, 80%, 60%); box-shadow: 0 0 15px hsl(330, 80%, 60%); }
+    75% { background-color: hsl(120, 70%, 45%); box-shadow: 0 0 15px hsl(120, 70%, 45%); }
+    100% { background-color: hsl(14, 90%, 55%); box-shadow: 0 0 15px hsl(14, 90%, 55%); }
+}
+
+/* BANNER PRINCIPAL */
+.bg_animate {
+    width: 100%;
+    min-height: 100vh; /* Changed from height to min-height */
+    background: linear-gradient(90deg,rgba(31, 111, 143, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(117, 204, 86, 1) 100%); /* Reverted to original gradient */
+    position: relative;
+    overflow: hidden;
+    padding-top: 100px; /* Added padding-top */
+    padding-bottom: 60px; /* Added padding-bottom */
+}
+
+.banner {
+    display: flex;
+    flex-direction: column; /* Changed to column for small screens */
+    align-items: center; /* Added alignment */
+    gap: 30px; /* Added gap */
+    height: 100%;
+}
+
+.banner_img {
+    animation: movimiento 2.5s ease-in-out infinite; /* Changed animation timing */
+    width: 100%; /* Added width */
+    max-width: 500px; /* Added max-width */
+    margin: 0 auto; /* Centered image */
+}
+
+.banner_img img {
+    width: 100%; /* Ensures image fills container */
+    height: auto; /* Maintains aspect ratio */
+    display: block;
+}
+
+/* Modal Styles - Retained most original characteristics while integrating design cues */
+
 /* Estilos generales del modal */
 .modal {
-    display: none; /* Oculto por defecto, tu JS lo mostrará */
-    position: fixed; /* Permanece en su lugar, incluso al hacer scroll */
-    z-index: 1000; /* Se superpone a todo lo demás */
+    display: none;
+    position: fixed;
+    z-index: 1000;
     left: 0;
     top: 0;
-    width: 100%; /* Cubre todo el ancho */
-    height: 100%; /* Cubre toda la altura */
-    overflow: auto; /* Habilita el scroll si el contenido es demasiado grande */
-    background-color: rgba(0, 0, 0, 0.8); /* Fondo semi-transparente negro más oscuro */
-    display: flex; /* Para centrar el contenido, tu JS cambiará `display: none` a `display: flex` */
-    justify-content: center; /* Centrado horizontal */
-    align-items: center; /* Centrado vertical */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Contenido del modal */
 .modal-content {
-    background-color: #1a1a1a; /* Fondo negro oscuro para el contenido */
+    background-color: #1a1a1a;
     margin: auto;
     padding: 30px;
-    border: 1px solid #444; /* Borde más oscuro */
+    border: 1px solid #444;
     width: 90%;
     max-width: 700px;
-    box-shadow: 0 4px 15px 0 rgba(0,0,0,0.5), 0 6px 30px 0 rgba(0,0,0,0.3); /* Sombra más pronunciada */
+    box-shadow: 0 4px 15px 0 rgba(0,0,0,0.5), 0 6px 30px 0 rgba(0,0,0,0.3);
     animation-name: animatetop;
     animation-duration: 0.4s;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     max-height: 90vh;
+    backdrop-filter: blur(5px); /* Added blur effect for consistency */
+    background-color: rgba(26, 26, 26, 0.9); /* Slightly translucent */
 }
 
 /* Animación de entrada (opcional) */
@@ -215,10 +221,11 @@ body {
 
 /* Título del modal */
 .modal-content h2 {
-    color: #fefefe; /* Blanco para el título */
+    color: #37FF8B; /* Changed to vibrant green for consistency */
     text-align: center;
     margin-bottom: 20px;
     font-size: 1.8em;
+    font-family: 'Audiowide', sans-serif; /* Changed font to Audiowide */
 }
 
 /* Cuerpo del modal (donde va el texto del aviso) */
@@ -228,7 +235,7 @@ body {
     margin-bottom: 20px;
     padding-right: 10px;
     line-height: 1.6;
-    color: #e0e0e0; /* Blanco ligeramente grisáceo para el texto del cuerpo */
+    color: #e0e0e0;
     font-size: 1em;
 }
 
@@ -238,7 +245,7 @@ body {
 
 /* Botón de cerrar/aceptar */
 .close-button {
-    background-color: #007bff; /* Puedes mantener este color o cambiarlo a uno que contraste con el negro */
+    background-color: #388E3C; /* Changed to a primary green */
     color: white;
     padding: 12px 25px;
     border: none;
@@ -250,99 +257,194 @@ body {
 }
 
 .close-button:hover:not(:disabled) {
-    background-color: #0056b3;
+    background-color: #2E7D32; /* Darker green on hover */
     transform: translateY(-2px);
 }
 
 .close-button:disabled {
-    background-color: #444444; /* Gris más oscuro cuando está deshabilitado */
-    color: #999999; /* Texto más claro para deshabilitado */
+    background-color: #444444;
+    color: #999999;
     cursor: not-allowed;
     opacity: 0.7;
 }
 
 .close-button.enabled {
-    background-color: #28a745; /* Verde para el estado habilitado */
+    background-color: #4CAF50; /* Lighter green for enabled */
 }
 
 .close-button.enabled:hover {
-    background-color: #218838;
+    background-color: #388E3C;
 }
 
-/* Responsive design para pantallas más pequeñas */
-@media screen and (max-width: 768px) {
+/* BURBUJAS ANIMADAS (Reinstated from original) */
+.burbujas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.burbuja {
+    border-radius: 50%;
+    background: #fff;
+    opacity: 0.3;
+    position: absolute;
+    bottom: -150px;
+    animation: burbujas 3s linear infinite;
+}
+
+.burbuja:nth-child(1) { width: 80px; height: 80px; left: 5%; animation-duration: 3s; }
+.burbuja:nth-child(2) { width: 100px; height: 100px; left: 35%; animation-duration: 3s; animation-delay: 2s; }
+.burbuja:nth-child(3) { width: 200px; height: 200px; left: 15%; animation-duration: 1.5s; animation-delay: 4s; }
+.burbuja:nth-child(4) { width: 50px; height: 50px; left: 90%; animation-duration: 6s; animation-delay: 3s; }
+.burbuja:nth-child(5) { width: 70px; height: 70px; left: 65%; animation-duration: 6s; animation-delay: 5s; }
+.burbuja:nth-child(6) { width: 20px; height: 20px; left: 50%; animation-duration: 4s; animation-delay: 5s; }
+.burbuja:nth-child(7) { width: 20px; height: 20px; left: 45%; animation-duration: 4s; animation-delay: 5s; }
+.burbuja:nth-child(8) { width: 100px; height: 100px; left: 52%; animation-duration: 3s; animation-delay: 3s; }
+.burbuja:nth-child(9) { width: 65px; height: 65px; left: 51%; animation-duration: 3s; animation-delay: 2s; }
+.burbuja:nth-child(10) { width: 40px; height: 40px; left: 35%; animation-duration: 3s; animation-delay: 4s; }
+
+
+/* FOOTER */
+.footer {
+    background: #000;
+    padding: 15px 0; /* Adjusted padding */
+    font-family: 'Play', sans-serif;
+    text-align: center;
+    margin-top: auto; /* Ensures footer sticks to bottom */
+}
+
+.footer .row {
+    width: 100%;
+    margin: 1% 0;
+    padding: 0.6% 0;
+    color: gray;
+    font-size: 0.8em;
+}
+
+.footer .row a {
+    text-decoration: none;
+    color: gray;
+    transition: 0.3s; /* Adjusted transition */
+    margin: 0 10px; /* Adjusted margin */
+}
+
+.footer .row a:hover {
+    color: #02F7D8; /* Changed hover color to match original accent */
+}
+
+.footer .row ul {
+    width: 100%;
+    list-style: none; /* Added list-style */
+    padding: 0; /* Added padding */
+}
+
+.footer .row ul li {
+    display: inline-block;
+    margin: 0 15px; /* Adjusted margin */
+}
+
+.footer .row a i {
+    font-size: 1.5em; /* Adjusted font size */
+    margin: 0 5px; /* Adjusted margin */
+}
+
+/* ANIMACIONES */
+@keyframes burbujas {
+    0% { bottom: 0; opacity: 0; transform: translateX(0); }
+    30% { transform: translateX(30px); }
+    50% { opacity: 0.4; }
+    100% { bottom: 100vh; opacity: 0; }
+}
+
+@keyframes movimiento {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(20px); } /* Adjusted movement distance */
+    100% { transform: translateY(0); }
+}
+
+@keyframes spin { /* Added spin animation for consistency */
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* RESPONSIVIDAD */
+@media (min-width: 768px) {
+    .header_nav .contenedor {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .banner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .banner_img {
+        max-width: 45%;
+        margin: 0;
+    }
+
+    /* Modal responsiveness */
     .modal-content {
-        width: 95%;
-        padding: 20px;
+        padding: 40px;
+    }
+
+    .nav-button {
+        padding: 15px 25px;
+        font-size: 0.9rem;
+        min-width: 160px;
+    }
+
+    .button {
+        --fs-size: 2.2rem;
+    }
+
+    .header_nav h1 {
+        font-size: 50px;
+    }
+}
+
+@media (min-width: 992px) {
+    .modal-content {
+        padding: 50px;
     }
 
     .modal-content h2 {
-        font-size: 1.5em;
+        font-size: 32px;
     }
 
-    .close-button {
-        padding: 10px 20px;
-        font-size: 1em;
+    .nav-button {
+        padding: 17px 30px;
+        font-size: 1rem;
+    }
+
+    .button {
+        --fs-size: 2.5rem;
+    }
+
+    .header_nav h1 {
+        font-size: 60px;
     }
 }
 
-/*footer*/
+@media (max-width: 480px) {
+    .header_nav h1 {
+        font-size: 36px;
+    }
 
-body{
-margin:0;
-overflow-x:hidden;
-}
+    /* Modal responsiveness for small screens */
+    .modal-content {
+        padding: 20px;
+    }
 
-.footer{
-background:#000;
-padding:30px 0px;
-font-family: 'Play', sans-serif;
-text-align:center;
-}
-
-.footer .row{
-width:100%;
-margin:1% 0%;
-padding:0.6% 0%;
-color:gray;
-font-size:0.8em;
-}
-
-.footer .row a{
-text-decoration:none;
-color:gray;
-transition:0.5s;
-}
-
-.footer .row a:hover{
-color:#fff;
-}
-
-.footer .row ul{
-width:100%;
-}
-
-.footer .row ul li{
-display:inline-block;
-margin:0px 30px;
-}
-
-.footer .row a i{
-font-size:2em;
-margin:0% 1%;
-}
-
-@media (max-width:720px){
-.footer{
-text-align:left;
-padding:5%;
-}
-.footer .row ul li{
-display:block;
-margin:10px 0px;
-text-align:left;
-}
-.footer .row a i{
-margin:0% 3%;
-}
+    .btn-simular { /* Re-added for consistency if you introduce this later */
+        padding: 12px 25px;
+        font-size: 16px;
+    }
 }
