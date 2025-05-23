@@ -42,7 +42,7 @@ body {
 
 .button {
     --border-right: 6px;
-    --text-stroke-color: rgba(255,255,255,0.6);
+    --text-stroke-color: rgba(2, 2, 2, 0.6);
     --animation-color: #37FF8B;
     --fs-size: 1.8rem;
     letter-spacing: 3px;
