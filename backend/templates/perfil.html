@@ -36,21 +36,8 @@
 </body>
 </html>
 
- <!-- Modal de Aviso de Privacidad -->
-    <div id="privacy-modal" class="modal">
-        <div class="modal-content">
-            <h2>Aviso de privacidad</h2>
-            <div class="modal-body" id="modal-scrollbox">
-                <p> <!-- Tu texto largo va aquí --> 
-                    [Aquí va todo el contenido del aviso que me diste. Puedes mantenerlo como está o separarlo si deseas que lo divida en secciones o pestañas.]
-                </p>
-            </div>
-            <button class="close-button" id="accept-btn" onclick="closeModal()" disabled>Aceptar y continuar</button>
-        </div>
-    </div>
-
-    <script>
-        // Función para cerrar el modal
+<script>
+  // Función para cerrar el modal
         function closeModal() {
             document.getElementById("privacy-modal").style.display = "none";
         }
