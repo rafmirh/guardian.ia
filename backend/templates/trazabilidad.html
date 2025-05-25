@@ -6,6 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trazabilidad - Guardián IA</title>
+     <link rel="stylesheet" href="static/css/trazabilidad.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="static/css/trazabilidad.css">
 </head>
 <body>
@@ -13,11 +17,14 @@
     <header class="bg_animate">
         <div class="header_nav">
             <div class="contenedor">
-                <h1>Guardián IA</h1>
+                <button class="button" data-text="Awesome">
+                    <span class="actual-text">&nbsp;Guardián IA&nbsp;</span>
+                    <span aria-hidden="true" class="hover-text">&nbsp;Guardián IA&nbsp;</span>
+                </button>
                 <nav>
-                    <a href="/dashboard">Dashboard</a>
-                    <a href="/content">Contenido</a>
-                    <a href="/perfil">Perfil de Riesgo</a>
+                     <a href="/dashboard" class="nav-button">Dashboard</a>
+                     <a href="/perfil" class="nav-button">Perfil de Riesgo</a>
+                     <a href="/content" class="nav-button">Contenido</a>
                 </nav>
             </div>
         </div>
@@ -32,6 +39,75 @@
             </div>
         </section>
     </header>
+
+    <!-- Message Form Section -->
+    <section class="message-section">
+        <div class="contenedor">
+            <div class="message-form-container">
+                <h3>Enviar Mensaje via Bluesky Bot</h3>
+                <p>Escribe un mensaje para enviar a tu lista de contactos en Bluesky</p>
+                
+                <form id="messageForm" class="message-form">
+                    <div class="form-group">
+                        <label for="messageText">Mensaje:</label>
+                        <textarea 
+                            id="messageText" 
+                            name="message" 
+                            placeholder="Escribe tu mensaje aquí..." 
+                            rows="4" 
+                            required></textarea>
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="includePublicPost" name="include_public">
+                            <span class="checkmark"></span>
+                            También publicar públicamente
+                        </label>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" id="simularBtn" class="btn-simular">
+                            <span class="btn-text">Simular</span>
+                            <span class="btn-loading" style="display: none;">
+                                <span class="spinner"></span>
+                                Enviando...
+                            </span>
+                        </button>
+                    </div>
+                </form>
+                
+                <!-- Results Display -->
+                <div id="resultsContainer" class="results-container" style="display: none;">
+                    <h4>Resultados del Envío</h4>
+                    <div id="resultsContent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script src="{{ url_for('static', filename='js/trazabilidad.js') }}"></script>
 </body>
+<footer>
+        <div class="footer">
+            <div class="row">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+            </div>
+            <div class="row">
+                <ul>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">Our Services</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Career</a></li>
+                </ul>
+            </div>
+            <div class="row">
+                **Guardián IA Copyright © 2025 Guardián IA - All rights reserved || Designed By: Mahesh**
+            </div>
+        </div>
+    </footer>
 </html>
