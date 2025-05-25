@@ -1,8 +1,7 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, jsonify
 from flask_cors import CORS
 import pandas as pd
-from dashboard import create_dashboard_from_csv
-import os
+import os, sys
 from bluesky_bot import BlueskyBot
 from dotenv import load_dotenv
 from datetime import datetime
@@ -19,12 +18,21 @@ bluesky_bot = BlueskyBot(BLUESKY_USERNAME, BLUESKY_PASSWORD)
 # Load contacts on startup
 bluesky_bot.load_contact_list()
 
-# Dash para la tabla
-from dash import Dash, html, dash_table
-
 # Crear la app Flask
 app = Flask(__name__)
 CORS(app)
+
+# Manejar posibles errores de importación
+try:
+    from dashboard import create_dashboard
+    # Register Dash app with Flask
+    dash_app = create_dashboard(app)
+    dashboard_error = None
+except Exception as e:
+    # Capturar el error para mostrar un mensaje
+    dashboard_error = str(e)
+    traceback.print_exc()
+    print(f"Error al cargar el dashboard: {e}", file=sys.stderr)
 
 # Rutas de Flask
 @app.route('/')
@@ -39,14 +47,22 @@ def content_page():
 def perfil_page():
     return render_template('perfil.html')
 
-@app.route('/dashboard')
-def show_plotly_dashboard():
-    dashboard = create_dashboard_from_csv("persona_fisica.csv")
-    if dashboard:
-        plotly_html = dashboard.render_dashboard()
-        return render_template('dashboard.html', plot_div=plotly_html)
+#@app.route('/dashboard')
+#def show_plotly_dashboard():
+#    dashboard = create_dashboard_from_csv("persona_fisica.csv")
+#    if dashboard:
+#        plotly_html = dashboard.render_dashboard()
+#        return render_template('dashboard.html', plot_div=plotly_html)
+#    else:
+#        return "Error al generar el dashboard.", 500
+    
+@app.route('/dashboard-status')
+def dashboard_status():
+    # Endpoint para verificar el estado del dashboard desde el frontend
+    if 'dashboard_error' in globals() and dashboard_error:
+        return jsonify({"status": "error", "message": dashboard_error})
     else:
-        return "Error al generar el dashboard.", 500
+        return jsonify({"status": "ok"})
 
 # Add these imports to your Flask app
 from flask import Flask, render_template, request, jsonify
@@ -223,16 +239,9 @@ def test_bot_connection():
             'error': f'Error de conexión: {str(e)}'
         }), 500
 
-
-# Tabla con Dash (respetando tus códigos base)
-dash_app = Dash(__name__, server=app, url_base_pathname='/table_dash/')
-
-df = pd.read_csv('persona_fisica.csv')
-
-dash_app.layout = html.Div(children=[
-    html.H1('Mi tabla en Dash'),
-    dash_table.DataTable(data=df.to_dict('records'), page_size=10)
-])
-
 if __name__ == '__main__':
+    # Verificar si el archivo CSV existe
+    if not os.path.exists('usurpacion_etl.csv'):
+        print("ADVERTENCIA: El archivo 'usurpacion_etl.csv' no se encuentra en el directorio. El dashboard utilizará datos de muestra.")
+        
     app.run(debug=True)
