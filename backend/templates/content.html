@@ -5,25 +5,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guardián IA</title>
+    <title>Perfil de Riesgo - Guardian IA</title>
     <link rel="stylesheet" href="static/css/trazabilidad.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="static/css/content.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/perfil.css') }}">
 </head>
 <body>
-    <header class="bg_animate">                             
+    <header class="bg_animate">
         <div class="header_nav">
             <div class="contenedor">
-                <button class="button" data-text="Awesome">
-                    <span class="actual-text">&nbsp;Guardián IA&nbsp;</span>
-                    <span aria-hidden="true" class="hover-text">&nbsp;Guardián IA&nbsp;</span>
-                </button>
+                   <button class="button" data-text="Awesome">
+                     <span class="actual-text">&nbsp;Guardián IA&nbsp;</span>
+                     <span aria-hidden="true" class="hover-text">&nbsp;Guardián IA&nbsp;</span>
+                 </button>
                 <nav>
-                     <a href="/dashboard" class="nav-button">Dashboard</a>
-                     <a href="/perfil" class="nav-button">Perfil de Riesgo</a>
-                     <a href="/trazabilidad" class="nav-button">Trazabilidad</a>
+                    <a href="/dashboard" class="nav-button">Dashboard</a>
+                    <a href="/perfil" class="nav-button">Perfil de riesgo</a>
+                    <a href="/trazabilidad" class="nav-button">Trazabilidad</a>
+                    
                 </nav>
             </div>
         </div>
