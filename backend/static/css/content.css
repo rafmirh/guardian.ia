@@ -359,22 +359,43 @@ body {
     }
 }
 
-/* IMAGENES CSS */
-.wrapper {
-    width: 100%;
-    height: 400px;
-    position: relative;
+/* ESTILOS GENERALES DEL CARRUSEL */
+.banner {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    perspective: 1200px;
-    margin: 0 auto;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 2rem 5%;
+    position: relative;
 }
 
+.banner_title {
+    width: 55%;
+    flex-shrink: 0;
+}
+
+.banner_img {
+    width: 40%;
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
+}
+
+/* CONTENEDOR 3D */
+.wrapper {
+    width: 100%;
+    max-width: 380px;
+    height: 400px;
+    position: relative;
+    margin-left: auto;
+    perspective: 1000px;
+}
+
+/* ANIMACIÓN DEL CARRUSEL */
 .inner {
     position: relative;
-    width: 150px;
-    height: 200px;
+    width: 100%;
+    height: 100%;
     transform-style: preserve-3d;
     animation: rotating 20s linear infinite;
 }
@@ -384,25 +405,85 @@ body {
     to { transform: rotateY(360deg); }
 }
 
+/* TARJETAS INDIVIDUALES */
 .card {
     position: absolute;
-    width: 180px;  /* Aumenté el ancho */
-    height: 240px; /* Aumenté el alto */
-    border-radius: 12px;
-    background: rgba(var(--color-card), 0.8);
+    width: 180px;
+    height: 220px;
+    border-radius: 15px;
+    background: rgba(var(--color-card), 0.85);
     transform: 
         rotateY(calc(var(--index) * (360deg / var(--quantity))))
-        translateZ(350px); /* Aumenté la distancia Z */
-    box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    overflow: visible; /* Cambiado de hidden a visible */
+        translateZ(320px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+    transition: transform 0.5s ease;
 }
 
+/* ESTILOS DE IMÁGENES */
 .img {
     width: 100%;
     height: 100%;
-    border-radius: 10px;
-    background-size: contain; /* Cambiado de 60% a contain */
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: rgba(var(--color-card), 0.3); /* Fondo de respaldo */
+    background-color: rgba(var(--color-card), 0.3);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+/* EFECTO HOVER PARA TARJETAS */
+.card:hover {
+    transform: 
+        rotateY(calc(var(--index) * (360deg / var(--quantity))))
+        translateZ(320px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+/* VERSIÓN RESPONSIVE */
+@media (max-width: 1200px) {
+    .wrapper {
+        max-width: 320px;
+    }
+    .card {
+        width: 160px;
+        height: 200px;
+        transform: 
+            rotateY(calc(var(--index) * (360deg / var(--quantity))))
+            translateZ(280px);
+    }
+}
+
+@media (max-width: 992px) {
+    .banner {
+        flex-direction: column;
+    }
+    .banner_title,
+    .banner_img {
+        width: 100%;
+    }
+    .wrapper {
+        max-width: 100%;
+        margin: 40px auto 0;
+    }
+    .inner {
+        transform: scale(0.9);
+    }
+}
+
+@media (max-width: 768px) {
+    .inner {
+        animation: rotating-mobile 20s linear infinite;
+    }
+    @keyframes rotating-mobile {
+        from { transform: rotateY(0) scale(0.8); }
+        to { transform: rotateY(360deg) scale(0.8); }
+    }
+    .card {
+        width: 140px;
+        height: 180px;
+        transform: 
+            rotateY(calc(var(--index) * (360deg / var(--quantity))))
+            translateZ(220px);
+    }
 }
