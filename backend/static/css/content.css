@@ -154,21 +154,18 @@ body {
     display: block;
 }
 
-/* SECCIÓN SOBRE NOSOTROS */
+/* SECCIÓN SOBRE NOSOTROS - VERSIÓN MODIFICADA */
 .banner_title {
     width: 100%;
     max-width: 800px;
     padding: 20px;
-    background-color: rgba(13, 27, 42, 0.9);
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(5px);
+    background-color: transparent; /* Quitamos el fondo */
     color: #e0e1dd;
     font-size: 0.95rem;
     line-height: 1.6;
     margin: 20px auto;
-    overflow-y: auto;
-    max-height: 70vh;
+    overflow-y: visible; /* Eliminamos el scroll */
+    max-height: none; /* Quitamos la altura máxima */
 }
 
 .banner_title h2 {
@@ -214,27 +211,13 @@ body {
     margin-bottom: 10px;
 }
 
-/* SCROLL BARRA */
-.banner_title::-webkit-scrollbar {
-    width: 6px;
-}
-
-.banner_title::-webkit-scrollbar-track {
-    background: rgba(0,0,0,0.1);
-    border-radius: 3px;
-}
-
-.banner_title::-webkit-scrollbar-thumb {
-    background: #02F7D8;
-    border-radius: 3px;
-}
+/* ELIMINAMOS LOS ESTILOS DE SCROLLBAR YA QUE NO SON NECESARIOS */
 
 /* RESPONSIVIDAD */
 @media (min-width: 768px) {
     .banner_title {
         padding: 25px;
         font-size: 1rem;
-        max-height: 65vh;
     }
     
     .banner_title h2 {
@@ -251,7 +234,6 @@ body {
 @media (min-width: 992px) {
     .banner_title {
         padding: 30px;
-        max-height: 70vh;
     }
     
     .banner_title h2 {
