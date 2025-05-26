@@ -70,43 +70,46 @@
                 <p>Se utilizó este porcentaje para estimar la población total de víctimas (denunciadas y no denunciadas) y generar un complemento del 93% de registros sintéticos, representando la "cifra negra".</p>
                 <p>Simulación de escenarios variando parámetros para entender cómo se propaga el robo de identidad y cómo las diferentes estrategias de mitigación afectan la situación.</p>
             </section>
-            <div class="banner_img">
-                <div class="wrapper">
-                    <div class="inner" style="--quantity: 10;">
-                        <div class="card" style="--index: 0;--color-card: 142, 249, 252;">
-                            <div class="img"></div>
-                        </div>
-                        <div class="card" style="--index: 1;--color-card: 142, 252, 204;">
-                            <div class="img"></div>
-                        </div>
-                        <div class="card" style="--index: 2;--color-card: 142, 252, 157;">
-                            <div class="img"></div>
-                        </div>
-                        <div class="card" style="--index: 3;--color-card: 215, 252, 142;">
-                            <div class="img"></div>
-                        </div>
-                        <div class="card" style="--index: 4;--color-card: 252, 252, 142;">
-                            <div class="img"></div>
-                        </div>
-                        <div class="card" style="--index: 5;--color-card: 252, 208, 142;">
-                            <div class="img"></div>
-                        </div>
-                        <div class="card" style="--index: 6;--color-card: 252, 142, 142;">
-                            <div class="img"></div>
-                        </div>
-                        <div class="card" style="--index: 7;--color-card: 252, 142, 239;">
-                            <div class="img"></div>
-                        </div>
-                        <div class="card" style="--index: 8;--color-card: 204, 142, 252;">
-                            <div class="img"></div>
-                        </div>
-                        <div class="card" style="--index: 9;--color-card: 142, 202, 252;">
-                            <div class="img"></div>
-                        </div>
+             <section class="bg_animate">
+        <!-- Banner con carrusel 3D -->
+        <div class="banner">
+            <!-- Carrusel 3D -->
+            <div class="wrapper">
+                <div class="inner">
+                    <div class="card" style="--index: 0; --quantity: 10">
+                        <div class="img"></div>
+                    </div>
+                    <div class="card" style="--index: 1; --quantity: 10">
+                        <div class="img"></div>
+                    </div>
+                    <div class="card" style="--index: 2; --quantity: 10">
+                        <div class="img"></div>
+                    </div>
+                    <div class="card" style="--index: 3; --quantity: 10">
+                        <div class="img"></div>
+                    </div>
+                    <div class="card" style="--index: 4; --quantity: 10">
+                        <div class="img"></div>
+                    </div>
+                    <div class="card" style="--index: 5; --quantity: 10">
+                        <div class="img"></div>
+                    </div>
+                    <div class="card" style="--index: 6; --quantity: 10">
+                        <div class="img"></div>
+                    </div>
+                    <div class="card" style="--index: 7; --quantity: 10">
+                        <div class="img"></div>
+                    </div>
+                    <div class="card" style="--index: 8; --quantity: 10">
+                        <div class="img"></div>
+                    </div>
+                    <div class="card" style="--index: 9; --quantity: 10">
+                        <div class="img"></div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
         <div class="burbujas">
             <div class="burbuja"></div>
@@ -146,5 +149,42 @@
     </footer>
 
     <script src="{{ url_for('static', filename='js/image-zoom.js') }}"></script>
+
+     <!-- Modal para Imágenes Ampliadas -->
+    <div class="image-modal" id="imageModal">
+        <div class="image-modal-content" id="modalImage"></div>
+    </div>
+
+    <!-- Script para el Modal -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.card .img');
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            
+            images.forEach(img => {
+                img.addEventListener('click', function() {
+                    const bgImage = window.getComputedStyle(img).backgroundImage;
+                    modalImage.style.backgroundImage = bgImage;
+                    document.body.classList.add('modal-open');
+                    modal.classList.add('open');
+                });
+            });
+            
+            modal.addEventListener('click', function() {
+                document.body.classList.remove('modal-open');
+                modal.classList.remove('open');
+            });
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('open')) {
+                    document.body.classList.remove('modal-open');
+                    modal.classList.remove('open');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
 </body>
 </html>

@@ -493,3 +493,57 @@ body.modal-open {
 .card:nth-child(10) .img {
     background-image: url('https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/ArtificialIntelligence1-512.png');
 }
+
+/* --- Estilos del Modal de Imagen --- */
+body.modal-open {
+    overflow: hidden;
+}
+
+.image-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1001;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+.image-modal.open {
+    display: flex;
+}
+
+.image-modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(2, 247, 216, 0.9);
+    transform: scale(0.7);
+    opacity: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.image-modal.open .image-modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* --- Estilos del Carrusel 3D (para que las imágenes sean clickeables) --- */
+.card .img {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card .img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(2, 247, 216, 0.7);
+}
