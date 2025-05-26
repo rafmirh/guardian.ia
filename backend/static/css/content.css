@@ -154,90 +154,87 @@ body {
     display: block;
 }
 
-/* SECCIÓN SOBRE NOSOTROS - VERSIÓN MODIFICADA */
+/* SECCIÓN SOBRE NOSOTROS - VERSIÓN MÁS ANCHA */
 .banner_title {
-    width: 100%;
-    max-width: 800px;
-    padding: 20px;
-    background-color: transparent; /* Quitamos el fondo */
+    width: 90%; /* Cambiado a porcentaje para mejor adaptación */
+    max-width: 1000px; /* Aumentamos el ancho máximo */
+    padding: 25px 40px; /* Más padding horizontal */
+    background-color: transparent;
     color: #e0e1dd;
     font-size: 0.95rem;
     line-height: 1.6;
     margin: 20px auto;
-    overflow-y: visible; /* Eliminamos el scroll */
-    max-height: none; /* Quitamos la altura máxima */
+    overflow-y: visible;
 }
 
 .banner_title h2 {
     color: #02F7D8;
-    margin: 15px 0 10px;
-    font-size: 1.4rem;
+    margin: 15px 0 20px; /* Más margen inferior para separación */
+    font-size: 1.6rem; /* Título un poco más grande */
     border-bottom: 1px solid #02F7D8;
-    padding-bottom: 5px;
+    padding-bottom: 8px;
     font-family: 'Audiowide', sans-serif;
+    text-align: center; /* Centrar el título */
 }
 
 .banner_title p {
-    margin-bottom: 15px;
+    margin-bottom: 20px; /* Más espacio entre párrafos */
     text-align: justify;
-    padding: 0 5px;
+    padding: 0 10px; /* Más padding horizontal */
 }
 
 .banner_title strong {
     color: #e9c46a;
     font-weight: bold;
     display: block;
-    margin: 15px 0 8px;
-    font-size: 1rem;
+    margin: 25px 0 15px; /* Más espacio alrededor de los strong */
+    font-size: 1.1rem;
     position: relative;
-    padding-left: 18px;
+    padding-left: 22px;
 }
 
 .banner_title strong::before {
     content: "•";
     color: #02F7D8;
     position: absolute;
-    left: 0;
-    font-size: 1.2rem;
-    line-height: 1;
+    left: 5px;
+    font-size: 1.4rem;
 }
 
-/* AJUSTES PARA CONTENIDO LARGO */
-.info-section {
-    margin-bottom: 15px;
-}
-
-.info-section p {
-    margin-bottom: 10px;
-}
-
-/* ELIMINAMOS LOS ESTILOS DE SCROLLBAR YA QUE NO SON NECESARIOS */
+/* Eliminamos los estilos de scrollbar */
 
 /* RESPONSIVIDAD */
 @media (min-width: 768px) {
     .banner_title {
-        padding: 25px;
-        font-size: 1rem;
+        width: 85%;
+        padding: 30px 50px;
+        font-size: 1.05rem;
     }
     
     .banner_title h2 {
-        font-size: 1.5rem;
-        margin: 18px 0 12px;
+        font-size: 1.8rem;
+        margin: 20px 0 25px;
     }
     
     .banner_title strong {
-        font-size: 1.1rem;
-        margin: 18px 0 10px;
+        font-size: 1.2rem;
+        margin: 30px 0 20px;
     }
 }
 
 @media (min-width: 992px) {
     .banner_title {
-        padding: 30px;
+        width: 80%;
+        max-width: 1200px; /* Aún más ancho en pantallas grandes */
+        padding: 35px 60px;
     }
     
     .banner_title h2 {
-        font-size: 1.6rem;
+        font-size: 2rem;
+    }
+    
+    .banner_title p {
+        font-size: 1.1rem;
     }
 }
 
