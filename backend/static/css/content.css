@@ -1,410 +1,201 @@
-/* ============================================= */
-/*                 FUENTES TIPOGRÁFICAS          */
-/* ============================================= */
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Fredoka+One&family=Play&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
 
-/* ============================================= */
-/*                 RESET GENERAL                 */
-/* ============================================= */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    overflow-x: hidden;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+html, body {
+  font-family: 'Play', sans-serif;
+  background-color: #111;
+  color: #fff;
+  width: 100%;
+  min-height: 100%;
+  line-height: 1.6;
 }
 
-/* ============================================= */
-/*                 ESTRUCTURA PRINCIPAL          */
-/* ============================================= */
+/* Encabezado animado o con fondo degradado */
+.bg_animate {
+  width: 100%;
+  background: linear-gradient(270deg, #1c1c1c, #121212);
+  padding: 80px 20px 60px;
+}
+
+/* Contenedor general */
 .contenedor {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* ============================================= */
-/*                 HEADER Y NAVEGACIÓN           */
-/* ============================================= */
-.header_nav {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    padding: 15px 0;
-}
-
+/* Navegación */
 .header_nav .contenedor {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-/* ============================================= */
-/*                 BOTÓN GUARDIA                 */
-/* ============================================= */
 .button {
-    --border-right: 6px;
-    --text-stroke-color: rgba(255,255,255,0.6);
-    --animation-color: #37FF8B;
-    --fs-size: 1.8rem;
-    letter-spacing: 3px;
-    font-size: var(--fs-size);
-    font-family: 'Audiowide', sans-serif;
-    position: relative;
-    text-transform: uppercase;
-    color: transparent;
-    -webkit-text-stroke: 1px var(--text-stroke-color);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    margin: 10px 0;
+  font-family: 'Audiowide', cursive;
+  position: relative;
+  padding: 10px 20px;
+  background: none;
+  border: 2px solid #00f2ff;
+  color: #00f2ff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  overflow: hidden;
+  transition: 0.3s;
 }
 
-.actual-text {
-    position: relative;
-}
-
-.hover-text {
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: var(--animation-color);
-    border-right: var(--border-right) solid var(--animation-color);
-    overflow: hidden;
-    width: 0%;
-    white-space: nowrap;
-    -webkit-text-stroke: 1px var(--animation-color);
-    transition: width 0.6s ease;
+.button .hover-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translateY(-100%);
+  transition: 0.3s;
+  color: #fff;
+  background-color: #00f2ff;
+  padding: 10px 0;
+  text-align: center;
 }
 
 .button:hover .hover-text {
-    width: 100%;
-    filter: drop-shadow(0 0 23px var(--animation-color));
+  transform: translateY(0%);
 }
 
-.header_nav nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+.button:hover .actual-text {
+  transform: translateY(100%);
+  visibility: hidden;
 }
 
-/* ============================================= */
-/*                 BOTONES BARRA                 */
-/* ============================================= */
 .nav-button {
-    display: inline-block;
-    padding: 12px 20px;
-    border-radius: 50px;
-    background-color: rgba(255, 255, 255, 0.411);
-    box-shadow: rgba(211, 205, 205, 0.7) 0 0 8px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    font-family: Arial, sans-serif;
-    color: black;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    text-align: center;
-    min-width: 140px;
+  margin: 0 10px;
+  text-decoration: none;
+  color: #00f2ff;
+  border-bottom: 2px solid transparent;
+  transition: 0.3s;
 }
 
 .nav-button:hover {
-    letter-spacing: 2px;
-    color: #080808;
-    animation: multiColorShift 5s infinite;
-    box-shadow: 0 0 15px rgba(2, 247, 216, 0.7);
+  border-bottom: 2px solid #00f2ff;
 }
 
-@keyframes multiColorShift {
-    0% { background-color: hsl(14, 90%, 55%); box-shadow: 0 0 15px hsl(14, 90%, 55%); }
-    25% { background-color: hsl(271, 85%, 55%); box-shadow: 0 0 15px hsl(271, 85%, 55%); }
-    50% { background-color: hsl(330, 80%, 60%); box-shadow: 0 0 15px hsl(330, 80%, 60%); }
-    75% { background-color: hsl(120, 70%, 45%); box-shadow: 0 0 15px hsl(120, 70%, 45%); }
-    100% { background-color: hsl(14, 90%, 55%); box-shadow: 0 0 15px hsl(14, 90%, 55%); }
-}
-
-/* ============================================= */
-/*                 BANNER PRINCIPAL              */
-/* ============================================= */
-.bg_animate {
-    width: 100%;
-    min-height: 100vh;
-    background: linear-gradient(90deg,rgba(0, 0, 48, 1) 0%, rgba(9, 9, 121, 1) 34%, rgba(0, 181, 217, 1) 100%);
-    position: relative;
-    overflow: hidden;
-    padding-top: 100px;
-    padding-bottom: 60px;
-}
-
+/* Banner */
 .banner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 40px 0;
+}
+
+.banner_title {
+  width: 100%;
+  font-size: 1rem;
+}
+
+.banner_title h2 {
+  font-family: 'Fredoka One', cursive;
+  color: #00f2ff;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.banner_title h3 {
+  color: #ccc;
+  margin-top: 20px;
 }
 
 .banner_img {
-    animation: movimiento 2.5s ease-in-out infinite;
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
+  width: 100%;
+  text-align: center;
 }
 
 .banner_img img {
-    width: 100%;
-    height: auto;
-    display: block;
+  max-width: 300px;
+  width: 100%;
+  height: auto;
 }
 
-/* ============================================= */
-/*                 SECCIÓN SOBRE NOSOTROS        */
-/* ============================================= */
-.banner_title h2 {
-    color: #02F7D8;
-    margin: 15px 0 10px;
-    font-size: 1.4rem;
-    border-bottom: 1px solid #02F7D8;
-    padding-bottom: 5px;
-    font-family: 'Audiowide', sans-serif;
-}
-
-.banner_title p {
-    margin-bottom: 15px;
-    text-align: justify;
-    padding: 0 5px;
-}
-
-.banner_title strong {
-    color: #e9c46a;
-    font-weight: bold;
-    display: block;
-    margin: 15px 0 8px;
-    font-size: 1rem;
-    position: relative;
-    padding-left: 18px;
-}
-
-.banner_title strong::before {
-    content: "•";
-    color: #02F7D8;
-    position: absolute;
-    left: 0;
-    font-size: 1.2rem;
-    line-height: 1;
-}
-
-/* ============================================= */
-/*                 AJUSTES DE CONTENIDO          */
-/* ============================================= */
-.info-section {
-    margin-bottom: 15px;
-}
-
-.info-section p {
-    margin-bottom: 10px;
-}
-
-/* ============================================= */
-/*                 SCROLL BARRA                  */
-/* ============================================= */
-.banner_title {
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
-.banner_title::-webkit-scrollbar {
-    width: 6px;
-}
-
-.banner_title::-webkit-scrollbar-track {
-    background: rgba(0,0,0,0.1);
-    border-radius: 3px;
-}
-
-.banner_title::-webkit-scrollbar-thumb {
-    background: #02F7D8;
-    border-radius: 3px;
-}
-
-/* ============================================= */
-/*                 BURBUJAS ANIMADAS            */
-/* ============================================= */
+/* Burbuja decorativa */
 .burbujas {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 1;
+  position: relative;
+  width: 100%;
+  height: 0;
 }
 
 .burbuja {
-    border-radius: 50%;
-    background: #fff;
-    opacity: 0.3;
-    position: absolute;
-    bottom: -150px;
-    animation: burbujas 3s linear infinite;
+  position: absolute;
+  background: rgba(0, 242, 255, 0.3);
+  border-radius: 50%;
+  animation: float 20s infinite ease-in-out;
 }
 
-/* Tamaños y posiciones de burbujas */
-.burbuja:nth-child(1) { width: 80px; height: 80px; left: 5%; animation-duration: 3s; }
-.burbuja:nth-child(2) { width: 100px; height: 100px; left: 35%; animation-duration: 3s; animation-delay: 2s; }
-.burbuja:nth-child(3) { width: 200px; height: 200px; left: 15%; animation-duration: 1.5s; animation-delay: 4s; }
-.burbuja:nth-child(4) { width: 50px; height: 50px; left: 90%; animation-duration: 6s; animation-delay: 3s; }
-.burbuja:nth-child(5) { width: 70px; height: 70px; left: 65%; animation-duration: 6s; animation-delay: 5s; }
-.burbuja:nth-child(6) { width: 20px; height: 20px; left: 50%; animation-duration: 4s; animation-delay: 5s; }
-.burbuja:nth-child(7) { width: 20px; height: 20px; left: 45%; animation-duration: 4s; animation-delay: 5s; }
-.burbuja:nth-child(8) { width: 100px; height: 100px; left: 52%; animation-duration: 3s; animation-delay: 3s; }
-.burbuja:nth-child(9) { width: 65px; height: 65px; left: 51%; animation-duration: 3s; animation-delay: 2s; }
-.burbuja:nth-child(10) { width: 40px; height: 40px; left: 35%; animation-duration: 3s; animation-delay: 4s; }
+@keyframes float {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-1000px) scale(0.5);
+    opacity: 0;
+  }
+}
 
-/* ============================================= */
-/*                 FOOTER                        */
-/* ============================================= */
+.burbuja:nth-child(1) { left: 10%; width: 40px; height: 40px; animation-delay: 0s; }
+.burbuja:nth-child(2) { left: 20%; width: 20px; height: 20px; animation-delay: 2s; }
+.burbuja:nth-child(3) { left: 35%; width: 25px; height: 25px; animation-delay: 4s; }
+.burbuja:nth-child(4) { left: 50%; width: 30px; height: 30px; animation-delay: 6s; }
+.burbuja:nth-child(5) { left: 65%; width: 15px; height: 15px; animation-delay: 8s; }
+.burbuja:nth-child(6) { left: 75%; width: 45px; height: 45px; animation-delay: 1s; }
+.burbuja:nth-child(7) { left: 85%; width: 20px; height: 20px; animation-delay: 3s; }
+.burbuja:nth-child(8) { left: 95%; width: 25px; height: 25px; animation-delay: 5s; }
+.burbuja:nth-child(9) { left: 5%; width: 30px; height: 30px; animation-delay: 7s; }
+.burbuja:nth-child(10) { left: 45%; width: 40px; height: 40px; animation-delay: 9s; }
+
+/* Footer */
 .footer {
-    background: #000;
-    padding: 15px 0;
-    font-family: 'Play', sans-serif;
-    text-align: center;
-    margin-top: auto;
+  width: 100%;
+  background-color: #0a0a0a;
+  color: #999;
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 0.9rem;
 }
 
 .footer .row {
-    width: 100%;
-    margin: 1% 0;
-    padding: 0.6% 0;
-    color: gray;
-    font-size: 0.8em;
+  margin-bottom: 20px;
 }
 
-.footer .row a {
-    text-decoration: none;
-    color: gray;
-    transition: 0.3s;
-    margin: 0 10px;
+.footer .fa {
+  padding: 10px;
+  color: #00f2ff;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
-.footer .row a:hover {
-    color: #02F7D8;
+.footer .fa:hover {
+  color: #fff;
 }
 
-.footer .row ul {
-    width: 100%;
-    list-style: none;
-    padding: 0;
+.footer ul {
+  list-style: none;
+  padding: 0;
 }
 
-.footer .row ul li {
-    display: inline-block;
-    margin: 0 15px;
+.footer ul li {
+  display: inline;
+  margin: 0 10px;
 }
 
-.footer .row a i {
-    font-size: 1.5em;
-    margin: 0 5px;
+.footer ul li a {
+  color: #999;
+  text-decoration: none;
 }
 
-/* ============================================= */
-/*                 ANIMACIONES                   */
-/* ============================================= */
-@keyframes burbujas {
-    0% { bottom: 0; opacity: 0; transform: translateX(0); }
-    30% { transform: translateX(30px); }
-    50% { opacity: 0.4; }
-    100% { bottom: 100vh; opacity: 0; }
-}
-
-@keyframes movimiento {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(20px); }
-    100% { transform: translateY(0); }
-}
-
-/* ============================================= */
-/*                 MEDIA QUERIES                 */
-/* ============================================= */
-@media (min-width: 768px) {
-    .header_nav .contenedor {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .banner {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .banner_img {
-        max-width: 45%;
-        margin: 0;
-    }
-
-    .banner_title {
-        max-width: 50%;
-        padding: 30px;
-        max-height: 65vh;
-        font-size: 1rem;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-
-    .banner_title h2 {
-        font-size: 1.5rem;
-        margin: 18px 0 12px;
-    }
-
-    .banner_title strong {
-        font-size: 1.1rem;
-        margin: 18px 0 10px;
-    }
-
-    .nav-button {
-        padding: 15px 25px;
-        font-size: 0.9rem;
-        min-width: 160px;
-    }
-
-    .button {
-        --fs-size: 2.2rem;
-    }
-}
-
-@media (min-width: 992px) {
-    .banner_title {
-        padding: 40px;
-        max-height: 70vh;
-        font-size: 1.1rem;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-
-    .banner_title h2 {
-        font-size: 1.8rem;
-    }
-
-    .nav-button {
-        padding: 17px 30px;
-        font-size: 1rem;
-    }
-
-    .button {
-        --fs-size: 2.5rem;
-    }
+.footer ul li a:hover {
+  color: #00f2ff;
 }
