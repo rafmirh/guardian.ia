@@ -149,64 +149,20 @@ body {
     margin-bottom: 40px;
 }
 
-/* CONTENEDOR DEL CARRUSEL */
 .banner_img {
+    animation: movimiento 2.5s ease-in-out infinite;
     width: 100%;
     max-width: 500px;
-    margin-left: auto;
-    margin-right: 5%;
-    position: relative;
-    z-index: 2;
+    margin: 0 auto;
 }
 
-/* CARRUSEL 3D */
-.wrapper {
+.banner_img img {
     width: 100%;
-    height: 400px;
-    position: relative;
-    perspective: 1200px;
-    margin-left: auto;
+    height: auto;
+    display: block;
 }
 
-.inner {
-    position: relative;
-    width: 150px;
-    height: 200px;
-    transform-style: preserve-3d;
-    animation: rotating 20s linear infinite;
-    margin-left: auto;
-    margin-right: 0;
-}
-
-@keyframes rotating {
-    from { transform: rotateY(0); }
-    to { transform: rotateY(360deg); }
-}
-
-.card {
-    position: absolute;
-    width: 180px;
-    height: 240px;
-    border-radius: 15px;
-    background: rgba(var(--color-card), 0.8);
-    transform: 
-        rotateY(calc(var(--index) * (360deg / var(--quantity))))
-        translateZ(350px);
-    box-shadow: 0 0 30px rgba(0,0,0,0.4);
-    overflow: visible;
-}
-
-.img {
-    width: 100%;
-    height: 100%;
-    border-radius: 12px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: rgba(var(--color-card), 0.3);
-}
-
-/* SECCIÓN DE TEXTO */
+/* SECCIÓN SOBRE NOSOTROS - SIN SCROLL */
 .banner_title {
     width: 100%;
     max-width: 800px;
@@ -215,8 +171,8 @@ body {
     font-size: 0.95rem;
     line-height: 1.6;
     margin: 20px auto;
-    z-index: 3;
-    position: relative;
+    overflow: visible;
+    height: auto;
 }
 
 .banner_title h2 {
@@ -234,6 +190,25 @@ body {
     padding: 0 5px;
 }
 
+.banner_title strong {
+    color: #e9c46a;
+    font-weight: bold;
+    display: block;
+    margin: 15px 0 8px;
+    font-size: 1rem;
+    position: relative;
+    padding-left: 18px;
+}
+
+.banner_title strong::before {
+    content: "•";
+    color: #02F7D8;
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
 /* BURBUJAS ANIMADAS */
 .burbujas {
     position: fixed;
@@ -244,6 +219,26 @@ body {
     pointer-events: none;
     z-index: 1;
 }
+
+.burbuja {
+    border-radius: 50%;
+    background: #fff;
+    opacity: 0.3;
+    position: absolute;
+    bottom: -150px;
+    animation: burbujas 3s linear infinite;
+}
+
+.burbuja:nth-child(1) { width: 80px; height: 80px; left: 5%; animation-duration: 3s; }
+.burbuja:nth-child(2) { width: 100px; height: 100px; left: 35%; animation-duration: 3s; animation-delay: 2s; }
+.burbuja:nth-child(3) { width: 200px; height: 200px; left: 15%; animation-duration: 1.5s; animation-delay: 4s; }
+.burbuja:nth-child(4) { width: 50px; height: 50px; left: 90%; animation-duration: 6s; animation-delay: 3s; }
+.burbuja:nth-child(5) { width: 70px; height: 70px; left: 65%; animation-duration: 6s; animation-delay: 5s; }
+.burbuja:nth-child(6) { width: 20px; height: 20px; left: 50%; animation-duration: 4s; animation-delay: 5s; }
+.burbuja:nth-child(7) { width: 20px; height: 20px; left: 45%; animation-duration: 4s; animation-delay: 5s; }
+.burbuja:nth-child(8) { width: 100px; height: 100px; left: 52%; animation-duration: 3s; animation-delay: 3s; }
+.burbuja:nth-child(9) { width: 65px; height: 65px; left: 51%; animation-duration: 3s; animation-delay: 2s; }
+.burbuja:nth-child(10) { width: 40px; height: 40px; left: 35%; animation-duration: 3s; animation-delay: 4s; }
 
 /* FOOTER */
 .footer {
@@ -257,6 +252,41 @@ body {
     z-index: 2;
 }
 
+.footer .row {
+    width: 100%;
+    margin: 1% 0;
+    padding: 0.6% 0;
+    color: gray;
+    font-size: 0.8em;
+}
+
+.footer .row a {
+    text-decoration: none;
+    color: gray;
+    transition: 0.3s;
+    margin: 0 10px;
+}
+
+.footer .row a:hover {
+    color: #02F7D8;
+}
+
+.footer .row ul {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+}
+
+.footer .row ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.footer .row a i {
+    font-size: 1.5em;
+    margin: 0 5px;
+}
+
 /* ANIMACIONES */
 @keyframes burbujas {
     0% { bottom: 0; opacity: 0; transform: translateX(0); }
@@ -265,44 +295,130 @@ body {
     100% { bottom: 100vh; opacity: 0; }
 }
 
+@keyframes movimiento {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(20px); }
+    100% { transform: translateY(0); }
+}
+
 /* RESPONSIVIDAD */
 @media (min-width: 768px) {
-    .banner {
+    .header_nav .contenedor {
         flex-direction: row;
-        align-items: flex-start;
         justify-content: space-between;
+        align-items: center;
     }
     
-    .banner_title {
-        width: 55%;
-        max-width: 600px;
-        margin: 0;
-        padding-right: 40px;
+    .banner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        min-height: calc(100vh - 180px);
     }
     
     .banner_img {
-        width: 40%;
-        max-width: 400px;
+        max-width: 45%;
+        margin: 0;
         position: sticky;
         top: 150px;
     }
     
-    .inner {
-        margin-right: -50px;
+    .banner_title {
+        max-width: 50%;
+        padding: 30px;
+    }
+    
+    .nav-button {
+        padding: 15px 25px;
+        font-size: 0.9rem;
+        min-width: 160px;
+    }
+    
+    .button {
+        --fs-size: 2.2rem;
     }
 }
 
 @media (min-width: 992px) {
     .banner_title {
+        padding: 40px;
         font-size: 1.1rem;
-        padding-right: 60px;
     }
     
-    .banner_img {
-        max-width: 450px;
+    .banner_title h2 {
+        font-size: 1.8rem;
     }
     
-    .inner {
-        margin-right: -80px;
+    .nav-button {
+        padding: 17px 30px;
+        font-size: 1rem;
     }
+    
+    .button {
+        --fs-size: 2.5rem;
+    }
+}
+
+/* IMAGENES CSS */
+.wrapper {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1200px;
+    margin: 0 auto;
+}
+
+.inner {
+    position: relative;
+    width: 150px;
+    height: 200px;
+    transform-style: preserve-3d;
+    animation: rotating 20s linear infinite;
+}
+
+@keyframes rotating {
+    from { transform: rotateY(0); }
+    to { transform: rotateY(360deg); }
+}
+
+.card {
+    position: absolute;
+    width: 150px;
+    height: 200px;
+    border-radius: 12px;
+    background: rgba(var(--color-card), 0.8);
+    transform: 
+        rotateY(calc(var(--index) * (360deg / var(--quantity))))
+        translateZ(300px);
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background: 
+        radial-gradient(
+            circle,
+            rgba(var(--color-card), 0.2) 0%,
+            rgba(var(--color-card), 0.6) 80%,
+            rgba(var(--color-card), 0.9) 100%
+        ),
+        var(--bg-image);
+}
+
+/* Asignamos imágenes específicas a cada tarjeta */
+.card:nth-child(1) .img {
+    --bg-image: url('https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/core-512.png');
+}
+
+.card:nth-child(2) .img {
+    --bg-image: url('https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/ArtificialIntelligence9-512.png');
 }
