@@ -154,55 +154,41 @@ body {
     display: block;
 }
 
-/* SECCIÓN SOBRE NOSOTROS */
+/* SECCIÓN SOBRE NOSOTROS - MODIFICADA SIN SCROLL */
 .banner_title {
     width: 100%;
     max-width: 800px;
     padding: 20px;
-    background-color: rgba(13, 27, 42, 0.9);
     border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(5px);
-    color: #e0e1dd;
+    color: #ffffff;
     font-size: 0.95rem;
     line-height: 1.6;
     margin: 20px auto;
-    overflow-y: auto;
-    max-height: 70vh;
+    /* Eliminamos las propiedades relacionadas con el scroll */
+    overflow-y: visible; /* Cambiado de auto a visible */
+    height: auto; /* Aseguramos que tome la altura necesaria */
+    max-height: none; /* Eliminamos el límite de altura */
 }
 
-.banner_title h2 {
-    color: #02F7D8;
-    margin: 15px 0 10px;
-    font-size: 1.4rem;
-    border-bottom: 1px solid #02F7D8;
-    padding-bottom: 5px;
-    font-family: 'Audiowide', sans-serif;
+/* Eliminamos la barra de scroll */
+.banner_title::-webkit-scrollbar {
+    display: none; /* Oculta completamente la barra */
 }
 
-.banner_title p {
-    margin-bottom: 15px;
-    text-align: justify;
-    padding: 0 5px;
+/* Ajustamos el contenedor principal para que no fuerce el scroll */
+.bg_animate {
+    overflow: visible; /* Cambiado de hidden a visible */
+    padding-bottom: 40px; /* Ajustamos el padding inferior */
 }
 
-.banner_title strong {
-    color: #e9c46a;
-    font-weight: bold;
-    display: block;
-    margin: 15px 0 8px;
-    font-size: 1rem;
-    position: relative;
-    padding-left: 18px;
-}
-
-.banner_title strong::before {
-    content: "•";
-    color: #02F7D8;
-    position: absolute;
-    left: 0;
-    font-size: 1.2rem;
-    line-height: 1;
+/* Ajustamos el banner para que fluya naturalmente */
+.banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    height: auto; /* Aseguramos altura automática */
+    min-height: auto; /* Eliminamos altura mínima fija */
 }
 
 /* AJUSTES PARA CONTENIDO LARGO */
