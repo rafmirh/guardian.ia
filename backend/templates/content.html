@@ -70,43 +70,28 @@
                 <p>Se utilizó este porcentaje para estimar la población total de víctimas (denunciadas y no denunciadas) y generar un complemento del 93% de registros sintéticos, representando la "cifra negra".</p>
                 <p>Simulación de escenarios variando parámetros para entender cómo se propaga el robo de identidad y cómo las diferentes estrategias de mitigación afectan la situación.</p>
             </section>
-            <div class="banner_img">
-                <div class="wrapper">
-                    <div class="inner" style="--quantity: 10;">
-                        <div class="card" style="--index: 0;--color-card: 142, 249, 252;">
-                            <div class="img"></div>
-                        </div>
-                        <div class="card" style="--index: 1;--color-card: 142, 252, 204;">
-                            <div class="img"></div>
-                        </div>
-                        <div class="card" style="--index: 2;--color-card: 142, 252, 157;">
-                            <div class="img"></div>
-                        </div>
-                        <div class="card" style="--index: 3;--color-card: 215, 252, 142;">
-                            <div class="img"></div>
-                        </div>
-                        <div class="card" style="--index: 4;--color-card: 252, 252, 142;">
-                            <div class="img"></div>
-                        </div>
-                        <div class="card" style="--index: 5;--color-card: 252, 208, 142;">
-                            <div class="img"></div>
-                        </div>
-                        <div class="card" style="--index: 6;--color-card: 252, 142, 142;">
-                            <div class="img"></div>
-                        </div>
-                        <div class="card" style="--index: 7;--color-card: 252, 142, 239;">
-                            <div class="img"></div>
-                        </div>
-                        <div class="card" style="--index: 8;--color-card: 204, 142, 252;">
-                            <div class="img"></div>
-                        </div>
-                        <div class="card" style="--index: 9;--color-card: 142, 202, 252;">
-                            <div class="img"></div>
-                        </div>
-                    </div>
+            <section>
+    <div class="banner_img">
+        <div class="wrapper">
+            <div class="inner" style="--quantity: 10;">
+                <!-- Tarjetas del carrusel (ahora con imágenes reales y eventos click) -->
+                <div class="card" style="--index: 0;--color-card: 142, 249, 252;">
+                    <div class="img" onclick="abrirModal('url_imagen1.jpg')"></div>
                 </div>
+                <div class="card" style="--index: 1;--color-card: 142, 252, 204;">
+                    <div class="img" onclick="abrirModal('url_imagen2.jpg')"></div>
+                </div>
+                <!-- Repite para las demás imágenes -->
             </div>
-        </section>
+        </div>
+    </div>
+
+    <!-- Modal para mostrar la imagen en grande -->
+    <div id="imagenModal" class="modal">
+        <span class="cerrar" onclick="cerrarModal()">&times;</span>
+        <img class="modal-contenido" id="imagenAmpliada">
+    </div>
+</section>
 
         <div class="burbujas">
             <div class="burbuja"></div>
