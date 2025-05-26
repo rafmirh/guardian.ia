@@ -16,6 +16,11 @@ body {
     background: #000;
 }
 
+/* Para evitar el scroll de fondo cuando la imagen esté ampliada */
+body.modal-open {
+    overflow: hidden;
+}
+
 /* ESTRUCTURA PRINCIPAL */
 .contenedor {
     width: 90%;
@@ -156,11 +161,11 @@ body {
     margin: 0 auto;
 }
 
-.banner_img img {
-    width: 100%;
+/* .banner_img img { /* Ya no necesario si las imágenes son fondos de .img */
+/* width: 100%;
     height: auto;
     display: block;
-}
+} */
 
 /* SECCIÓN SOBRE NOSOTROS - SIN SCROLL */
 .banner_title {
@@ -308,32 +313,32 @@ body {
         justify-content: space-between;
         align-items: center;
     }
-    
+
     .banner {
         flex-direction: row;
         justify-content: space-between;
         align-items: flex-start;
         min-height: calc(100vh - 180px);
     }
-    
+
     .banner_img {
         max-width: 45%;
         margin: 0;
         position: sticky;
         top: 150px;
     }
-    
+
     .banner_title {
         max-width: 50%;
         padding: 30px;
     }
-    
+
     .nav-button {
         padding: 15px 25px;
         font-size: 0.9rem;
         min-width: 160px;
     }
-    
+
     .button {
         --fs-size: 2.2rem;
     }
@@ -344,22 +349,22 @@ body {
         padding: 40px;
         font-size: 1.1rem;
     }
-    
+
     .banner_title h2 {
         font-size: 1.8rem;
     }
-    
+
     .nav-button {
         padding: 17px 30px;
         font-size: 1rem;
     }
-    
+
     .button {
         --fs-size: 2.5rem;
     }
 }
 
-/* IMAGENES CSS */
+/* IMAGENES CSS (Carrusel 3D) */
 .wrapper {
     width: 100%;
     height: 400px;
@@ -392,7 +397,7 @@ body {
     transform: rotateY(calc(var(--index) * (360deg / var(--quantity)))) translateZ(300px);
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    background: transparent;
+    background: transparent; /* No se necesita un background aquí, la imagen es el fondo del .img */
 }
 
 .img {
@@ -402,14 +407,92 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    background-image: var(--bg-image);
+    /* La variable --bg-image se definirá para cada tarjeta específica */
 }
 
-/* Imágenes individuales */
+/* Imágenes individuales (se aplicarán como background-image a los .img dentro de las .card) */
 .card:nth-child(1) .img {
-    --bg-image: url('https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/core-512.png');
+    background-image: url('https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/core-512.png');
 }
 
 .card:nth-child(2) .img {
-    --bg-image: url('https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/ArtificialIntelligence9-512.png');
+    background-image: url('https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/ArtificialIntelligence9-512.png');
+}
+.card:nth-child(3) .img {
+    background-image: url('https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/ArtificialIntelligence8-512.png');
+}
+.card:nth-child(4) .img {
+    background-image: url('https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/ArtificialIntelligence7-512.png');
+}
+.card:nth-child(5) .img {
+    background-image: url('https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/ArtificialIntelligence6-512.png');
+}
+.card:nth-child(6) .img {
+    background-image: url('https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/ArtificialIntelligence5-512.png');
+}
+.card:nth-child(7) .img {
+    background-image: url('https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/ArtificialIntelligence4-512.png');
+}
+.card:nth-child(8) .img {
+    background-image: url('https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/ArtificialIntelligence3-512.png');
+}
+.card:nth-child(9) .img {
+    background-image: url('https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/ArtificialIntelligence2-512.png');
+}
+.card:nth-child(10) .img {
+    background-image: url('https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/ArtificialIntelligence1-512.png');
+}
+
+/* Estilos para el modal/overlay de la imagen (¡NUEVOS!) */
+.image-modal {
+    display: none; /* Inicialmente oculto */
+    position: fixed; /* Fijo en la ventana */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo semi-transparente oscuro */
+    z-index: 1001; /* Asegura que esté por encima de todo lo demás, incluida la navegación */
+    justify-content: center; /* Centra horizontalmente la imagen */
+    align-items: center; /* Centra verticalmente la imagen */
+    cursor: pointer; /* Cambia el cursor para indicar que se puede hacer clic para cerrar */
+    -webkit-backdrop-filter: blur(5px); /* Para navegadores basados en Webkit */
+    backdrop-filter: blur(5px); /* Efecto de desenfoque en el fondo del modal */
+}
+
+/* Clase para mostrar el modal */
+.image-modal.open {
+    display: flex; /* Usa flexbox para centrar la imagen */
+}
+
+/* Estilos para la imagen dentro del modal */
+.image-modal-content {
+    max-width: 90%; /* Ancho máximo para la imagen ampliada */
+    max-height: 90%; /* Alto máximo para la imagen ampliada */
+    background-size: contain; /* Asegura que la imagen se ajuste dentro del contenedor */
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(2, 247, 216, 0.9); /* Sombra para resaltar la imagen, con color de tu tema */
+    transform: scale(0.7); /* Inicia un poco más pequeña para la animación */
+    opacity: 0; /* Inicia transparente para la animación */
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* Transición suave para la animación */
+}
+
+/* Cuando el modal está abierto, la imagen toma su tamaño normal */
+.image-modal.open .image-modal-content {
+    transform: scale(1); /* Escala a su tamaño normal (90% del viewport) */
+    opacity: 1; /* Se vuelve completamente visible */
+}
+
+/* Añade un cursor de "mano" a las imágenes del carrusel para indicar que son clicables */
+.card .img {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transición para efectos de hover */
+}
+
+/* Opcional: Pequeño efecto al pasar el mouse por encima de las imágenes del carrusel */
+.card .img:hover {
+    transform: scale(1.05); /* Ligeramente más grande al pasar el mouse */
+    box-shadow: 0 0 15px rgba(2, 247, 216, 0.7); /* Un pequeño brillo */
 }
