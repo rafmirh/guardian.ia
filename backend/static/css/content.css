@@ -13,6 +13,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background: #000;
 }
 
 /* ESTRUCTURA PRINCIPAL */
@@ -26,11 +27,13 @@ body {
 /* HEADER Y NAVEGACIÓN */
 .header_nav {
     width: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 1000;
     padding: 15px 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
 }
 
 .header_nav .contenedor {
@@ -40,7 +43,7 @@ body {
     gap: 15px;
 }
 
-/*BOTON GUARDIA*/
+/* BOTÓN GUARDIA */
 .button {
     --border-right: 6px;
     --text-stroke-color: rgba(255,255,255,0.6);
@@ -89,7 +92,7 @@ body {
     gap: 10px;
 }
 
-/*BOTONES BARRA*/
+/* BOTONES BARRA */
 .nav-button {
     display: inline-block;
     padding: 12px 20px;
@@ -122,23 +125,28 @@ body {
     100% { background-color: hsl(14, 90%, 55%); box-shadow: 0 0 15px hsl(14, 90%, 55%); }
 }
 
-/* BANNER PRINCIPAL */
+/* CONTENEDOR PRINCIPAL CON FONDO */
 .bg_animate {
     width: 100%;
     min-height: 100vh;
+    height: auto;
     background: linear-gradient(90deg,rgba(0, 0, 48, 1) 0%, rgba(9, 9, 121, 1) 34%, rgba(0, 181, 217, 1) 100%);
     position: relative;
-    overflow: hidden;
-    padding-top: 100px;
-    padding-bottom: 60px;
+    overflow: visible;
+    padding: 120px 0 60px;
+    display: flex;
+    flex-direction: column;
 }
 
+/* BANNER PRINCIPAL */
 .banner {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
-    height: 100%;
+    height: auto;
+    flex: 1 0 auto;
+    margin-bottom: 40px;
 }
 
 .banner_img {
@@ -154,100 +162,56 @@ body {
     display: block;
 }
 
-/* SECCIÓN SOBRE NOSOTROS - MODIFICADA SIN SCROLL */
+/* SECCIÓN SOBRE NOSOTROS - SIN SCROLL */
 .banner_title {
     width: 100%;
     max-width: 800px;
     padding: 20px;
-    border-radius: 15px;
     color: #ffffff;
     font-size: 0.95rem;
     line-height: 1.6;
     margin: 20px auto;
-    /* Eliminamos las propiedades relacionadas con el scroll */
-    overflow-y: visible; /* Cambiado de auto a visible */
-    height: auto; /* Aseguramos que tome la altura necesaria */
-    max-height: none; /* Eliminamos el límite de altura */
+    overflow: visible;
+    height: auto;
 }
 
-/* Eliminamos la barra de scroll */
-.banner_title::-webkit-scrollbar {
-    display: none; /* Oculta completamente la barra */
+.banner_title h2 {
+    color: #02F7D8;
+    margin: 15px 0 10px;
+    font-size: 1.4rem;
+    border-bottom: 1px solid #02F7D8;
+    padding-bottom: 5px;
+    font-family: 'Audiowide', sans-serif;
 }
 
-/* Ajustamos el contenedor principal para que no fuerce el scroll */
-.bg_animate {
-    overflow: visible; /* Cambiado de hidden a visible */
-    padding-bottom: 40px; /* Ajustamos el padding inferior */
-}
-
-/* Ajustamos el banner para que fluya naturalmente */
-.banner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    height: auto; /* Aseguramos altura automática */
-    min-height: auto; /* Eliminamos altura mínima fija */
-}
-
-/* AJUSTES PARA CONTENIDO LARGO */
-.info-section {
+.banner_title p {
     margin-bottom: 15px;
+    text-align: justify;
+    padding: 0 5px;
 }
 
-.info-section p {
-    margin-bottom: 10px;
+.banner_title strong {
+    color: #e9c46a;
+    font-weight: bold;
+    display: block;
+    margin: 15px 0 8px;
+    font-size: 1rem;
+    position: relative;
+    padding-left: 18px;
 }
 
-/* SCROLL BARRA */
-.banner_title::-webkit-scrollbar {
-    width: 6px;
-}
-
-.banner_title::-webkit-scrollbar-track {
-    background: rgba(0,0,0,0.1);
-    border-radius: 3px;
-}
-
-.banner_title::-webkit-scrollbar-thumb {
-    background: #02F7D8;
-    border-radius: 3px;
-}
-
-/* RESPONSIVIDAD */
-@media (min-width: 768px) {
-    .banner_title {
-        padding: 25px;
-        font-size: 1rem;
-        max-height: 65vh;
-    }
-    
-    .banner_title h2 {
-        font-size: 1.5rem;
-        margin: 18px 0 12px;
-    }
-    
-    .banner_title strong {
-        font-size: 1.1rem;
-        margin: 18px 0 10px;
-    }
-}
-
-@media (min-width: 992px) {
-    .banner_title {
-        padding: 30px;
-        max-height: 70vh;
-    }
-    
-    .banner_title h2 {
-        font-size: 1.6rem;
-    }
+.banner_title strong::before {
+    content: "•";
+    color: #02F7D8;
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+    line-height: 1;
 }
 
 /* BURBUJAS ANIMADAS */
 .burbujas {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     top: 0;
@@ -265,7 +229,6 @@ body {
     animation: burbujas 3s linear infinite;
 }
 
-/* burbujas */
 .burbuja:nth-child(1) { width: 80px; height: 80px; left: 5%; animation-duration: 3s; }
 .burbuja:nth-child(2) { width: 100px; height: 100px; left: 35%; animation-duration: 3s; animation-delay: 2s; }
 .burbuja:nth-child(3) { width: 200px; height: 200px; left: 15%; animation-duration: 1.5s; animation-delay: 4s; }
@@ -284,6 +247,9 @@ body {
     font-family: 'Play', sans-serif;
     text-align: center;
     margin-top: auto;
+    width: 100%;
+    position: relative;
+    z-index: 2;
 }
 
 .footer .row {
@@ -346,12 +312,15 @@ body {
     .banner {
         flex-direction: row;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
+        min-height: calc(100vh - 180px);
     }
     
     .banner_img {
         max-width: 45%;
         margin: 0;
+        position: sticky;
+        top: 150px;
     }
     
     .banner_title {
