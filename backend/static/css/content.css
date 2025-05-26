@@ -220,6 +220,11 @@ body {
 /* ============================================= */
 /*                 SCROLL BARRA                  */
 /* ============================================= */
+.banner_title {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 .banner_title::-webkit-scrollbar {
     width: 6px;
 }
@@ -339,41 +344,43 @@ body {
         justify-content: space-between;
         align-items: center;
     }
-    
+
     .banner {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
     }
-    
+
     .banner_img {
         max-width: 45%;
         margin: 0;
     }
-    
+
     .banner_title {
         max-width: 50%;
         padding: 30px;
         max-height: 65vh;
         font-size: 1rem;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
-    
+
     .banner_title h2 {
         font-size: 1.5rem;
         margin: 18px 0 12px;
     }
-    
+
     .banner_title strong {
         font-size: 1.1rem;
         margin: 18px 0 10px;
     }
-    
+
     .nav-button {
         padding: 15px 25px;
         font-size: 0.9rem;
         min-width: 160px;
     }
-    
+
     .button {
         --fs-size: 2.2rem;
     }
@@ -384,17 +391,19 @@ body {
         padding: 40px;
         max-height: 70vh;
         font-size: 1.1rem;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
-    
+
     .banner_title h2 {
         font-size: 1.8rem;
     }
-    
+
     .nav-button {
         padding: 17px 30px;
         font-size: 1rem;
     }
-    
+
     .button {
         --fs-size: 2.5rem;
     }
