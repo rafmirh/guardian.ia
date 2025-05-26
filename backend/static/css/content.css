@@ -154,95 +154,83 @@ body {
     display: block;
 }
 
-/* SECCIÓN SOBRE NOSOTROS - VERSIÓN MÁS AMPLIA Y CON BURBUJAS VISIBLES */
+/* CONTENEDOR PRINCIPAL - TEXTO AMPLIO */
+.about-container {
+    width: 100%;
+    max-width: 1400px; /* Más ancho que antes */
+    margin: 0 auto;
+    padding: 40px 5%;
+    position: relative;
+    z-index: 2;
+}
+
+/* SECCIÓN DE TEXTO - AHORA MÁS AMPLIA */
 .banner_title {
-    width: 95%; /* Ocupa casi todo el ancho disponible */
-    max-width: none; /* Eliminamos límite máximo */
-    padding: 40px 5%; /* Más padding y adaptativo */
-    background-color: transparent;
+    width: 100%;
+    background-color: rgba(13, 27, 42, 0.85); /* Fondo semitransparente */
+    border-radius: 12px;
+    padding: 40px;
     color: #e0e1dd;
-    font-size: 1rem;
-    line-height: 1.7; /* Mejor legibilidad */
-    margin: 0 auto; /* Sin márgenes que limiten */
-    overflow-y: visible;
-    box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+    font-size: 1.1rem;
+    line-height: 1.8;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* Contenedor principal para el texto (ahora más ancho) */
-.text-container {
-    max-width: 1900px; /* Ancho máximo del texto (ajustable) */
-    margin: 0 auto; /* Centrado pero más amplio */
-    padding: 20px;
+/* IMAGEN DE FONDO CON PARALLAX */
+.parallax-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url('tu-imagen-de-fondo.jpg');
+    background-attachment: fixed; /* Efecto parallax */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.6; /* Ajusta la opacidad según necesites */
 }
 
+/* TIPOGRAFÍA Y ESPACIADO MEJORADO */
 .banner_title h2 {
     color: #02F7D8;
-    margin: 0 0 25px;
-    font-size: 2rem;
-    border-bottom: 2px solid #02F7D8;
-    padding-bottom: 10px;
-    font-family: 'Audiowide', sans-serif;
+    font-size: 2.2rem;
+    margin-bottom: 30px;
     text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #02F7D8;
 }
 
 .banner_title p {
     margin-bottom: 25px;
+    font-size: 1.15rem;
     text-align: justify;
-    font-size: 1.1rem;
-    padding: 0 10px;
 }
 
-.banner_title strong {
-    color: #e9c46a;
-    font-weight: bold;
-    display: block;
-    margin: 30px 0 15px;
-    font-size: 1.3rem;
-    position: relative;
-    padding-left: 25px;
-}
-
-.banner_title strong::before {
-    content: "•";
-    color: #02F7D8;
-    position: absolute;
-    left: 0;
-    font-size: 1.5rem;
-}
-
-/* RESPONSIVIDAD - Pantallas grandes */
+/* RESPONSIVE */
 @media (min-width: 768px) {
+    .about-container {
+        padding: 60px 8%;
+    }
+    
     .banner_title {
-        padding: 50px 10%;
+        padding: 50px;
+        font-size: 1.2rem;
     }
     
     .banner_title h2 {
         font-size: 2.5rem;
     }
-    
-    .banner_title p {
-        font-size: 1.2rem;
-    }
-    
-    .text-container {
-        max-width: 1400px; /* Más ancho en desktop */
-    }
 }
 
-/* Asegurar que el fondo de burbujas sea visible */
-body, html {
-    width: 100%;
-    overflow-x: hidden; /* Evita scroll horizontal */
-}
-
-/* Si usas un fondo con burbujas (ejemplo) */
-.background-bubbles {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Detrás del contenido */
-    top: 0;
-    left: 0;
+@media (min-width: 1200px) {
+    .about-container {
+        padding: 80px 10%;
+    }
+    
+    .banner_title {
+        padding: 60px 80px;
+    }
 }
 
 /* BURBUJAS ANIMADAS */
