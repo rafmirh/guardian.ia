@@ -154,7 +154,6 @@ body {
     display: block;
 }
 
-/* Cambiar a layout horizontal en pantallas grandes */
 @media (min-width: 768px) {
     .banner {
         flex-direction: row;
@@ -182,7 +181,7 @@ body {
     color: #e0e1dd;
     font-size: 0.95rem;
     line-height: 1.6;
-    margin: 100px auto;
+    margin: 70px auto;
     overflow-y: auto;
     max-height: 100vh;
 }
