@@ -1,4 +1,4 @@
-/* FUENTES */
+* FUENTES */
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Fredoka+One&family=Play&display=swap');
 
 * {
@@ -141,39 +141,11 @@ body {
     height: 100%;
 }
 
-/* CONTENEDOR PRINCIPAL - TEXTO AMPLIO Y ALINEADO CON LA IMAGEN */
-.about-container {
-    width: 90%;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-}
-
-/* SECCIÓN DE TEXTO - AHORA MÁS AMPLIA */
-.banner_title {
-    flex: 1;
-    min-width: 300px;
-    background-color: rgba(13, 27, 42, 0.85);
-    border-radius: 12px;
-    padding: 40px;
-    color: #e0e1dd;
-    font-size: 1.1rem;
-    line-height: 1.8;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-/* IMAGEN EN LA SECCIÓN PRINCIPAL */
 .banner_img {
     animation: movimiento 2.5s ease-in-out infinite;
     width: 100%;
     max-width: 500px;
+    margin: 0 auto;
 }
 
 .banner_img img {
@@ -182,126 +154,108 @@ body {
     display: block;
 }
 
-/* IMAGEN DE FONDO CON PARALLAX */
-.parallax-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
+/* SECCIÓN SOBRE NOSOTROS */
+.banner_title {
     width: 100%;
-    height: 100%;
-    z-index: -1;
-    background-image: url('tu-imagen-de-fondo.jpg'); /* ¡IMPORTANTE: Cambia esto por la ruta de tu imagen! */
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-    opacity: 0.6;
+    max-width: 800px;
+    padding: 20px;
+    background-color: rgba(13, 27, 42, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    color: #e0e1dd;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 20px auto;
+    overflow-y: auto;
+    max-height: 70vh;
 }
 
-/* TIPOGRAFÍA Y ESPACIADO MEJORADO */
 .banner_title h2 {
     color: #02F7D8;
-    font-size: 2.2rem;
-    margin-bottom: 30px;
-    text-align: center;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #02F7D8;
+    margin: 15px 0 10px;
+    font-size: 1.4rem;
+    border-bottom: 1px solid #02F7D8;
+    padding-bottom: 5px;
+    font-family: 'Audiowide', sans-serif;
 }
 
 .banner_title p {
-    margin-bottom: 25px;
-    font-size: 1.15rem;
+    margin-bottom: 15px;
     text-align: justify;
+    padding: 0 5px;
 }
 
-/* RESPONSIVE */
-@media (min-width: 768px) {
-    .about-container {
-        flex-direction: row;
-        justify-content: space-around;
-        padding: 60px 5%;
-    }
-    
-    .banner_img {
-        max-width: 40%;
-    }
+.banner_title strong {
+    color: #e9c46a;
+    font-weight: bold;
+    display: block;
+    margin: 15px 0 8px;
+    font-size: 1rem;
+    position: relative;
+    padding-left: 18px;
+}
 
+.banner_title strong::before {
+    content: "•";
+    color: #02F7D8;
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+/* AJUSTES PARA CONTENIDO LARGO */
+.info-section {
+    margin-bottom: 15px;
+}
+
+.info-section p {
+    margin-bottom: 10px;
+}
+
+/* SCROLL BARRA */
+.banner_title::-webkit-scrollbar {
+    width: 6px;
+}
+
+.banner_title::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1);
+    border-radius: 3px;
+}
+
+.banner_title::-webkit-scrollbar-thumb {
+    background: #02F7D8;
+    border-radius: 3px;
+}
+
+/* RESPONSIVIDAD */
+@media (min-width: 768px) {
     .banner_title {
-        flex: 1;
-        max-width: 55%;
-        padding: 50px;
-        font-size: 1.2rem;
+        padding: 25px;
+        font-size: 1rem;
+        max-height: 65vh;
     }
     
     .banner_title h2 {
-        font-size: 2.5rem;
-    }
-
-    .header_nav .contenedor {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+        font-size: 1.5rem;
+        margin: 18px 0 12px;
     }
     
-    .banner {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .banner_img {
-        max-width: 45%;
-        margin: 0;
-    }
-    
-    .banner_title {
-        max-width: 50%;
-        padding: 30px;
-    }
-    
-    .nav-button {
-        padding: 15px 25px;
-        font-size: 0.9rem;
-        min-width: 160px;
-    }
-    
-    .button {
-        --fs-size: 2.2rem;
+    .banner_title strong {
+        font-size: 1.1rem;
+        margin: 18px 0 10px;
     }
 }
 
 @media (min-width: 992px) {
     .banner_title {
-        padding: 40px;
-        font-size: 1.1rem;
+        padding: 30px;
+        max-height: 70vh;
     }
     
     .banner_title h2 {
-        font-size: 1.8rem;
-    }
-    
-    .nav-button {
-        padding: 17px 30px;
-        font-size: 1rem;
-    }
-    
-    .button {
-        --fs-size: 2.5rem;
-    }
-}
-
-@media (min-width: 1200px) {
-    .about-container {
-        padding: 80px 8%;
-    }
-    
-    .banner_img {
-        max-width: 450px;
-    }
-
-    .banner_title {
-        padding: 60px 80px;
-        font-size: 1.15rem;
-        max-width: 700px;
+        font-size: 1.6rem;
     }
 }
 
@@ -393,4 +347,59 @@ body {
     0% { transform: translateY(0); }
     50% { transform: translateY(20px); }
     100% { transform: translateY(0); }
+}
+
+/* RESPONSIVIDAD */
+@media (min-width: 768px) {
+    .header_nav .contenedor {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .banner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .banner_img {
+        max-width: 45%;
+        margin: 0;
+    }
+    
+    .banner_title {
+        max-width: 50%;
+        padding: 30px;
+    }
+    
+    .nav-button {
+        padding: 15px 25px;
+        font-size: 0.9rem;
+        min-width: 160px;
+    }
+    
+    .button {
+        --fs-size: 2.2rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .banner_title {
+        padding: 40px;
+        font-size: 1.1rem;
+    }
+    
+    .banner_title h2 {
+        font-size: 1.8rem;
+    }
+    
+    .nav-button {
+        padding: 17px 30px;
+        font-size: 1rem;
+    }
+    
+    .button {
+        --fs-size: 2.5rem;
+    }
 }
