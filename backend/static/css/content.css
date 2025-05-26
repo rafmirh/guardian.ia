@@ -13,24 +13,29 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background: linear-gradient(90deg,rgba(0, 0, 48, 1) 0%, rgba(9, 9, 121, 1) 34%, rgba(0, 181, 217, 1) 100%);
+    color: #e0e1dd;
+    line-height: 1.6;
 }
 
 /* ESTRUCTURA PRINCIPAL */
 .contenedor {
-    width: 90%;
-    max-width: 1200px;
+    width: 95%;
+    max-width: 1400px; /* Más ancho que el original */
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 0 20px;
 }
 
 /* HEADER Y NAVEGACIÓN */
 .header_nav {
     width: 100%;
-    position: absolute;
+    position: fixed; /* Cambiado a fixed para que el header siga al scroll */
     top: 0;
     left: 0;
     z-index: 100;
     padding: 15px 0;
+    background: rgba(0, 0, 48, 0.8); /* Fondo semitransparente */
+    backdrop-filter: blur(5px);
 }
 
 .header_nav .contenedor {
@@ -122,30 +127,32 @@ body {
     100% { background-color: hsl(14, 90%, 55%); box-shadow: 0 0 15px hsl(14, 90%, 55%); }
 }
 
-/* BANNER PRINCIPAL */
-.bg_animate {
+/* CONTENIDO PRINCIPAL */
+.main-content {
+    margin-top: 120px; /* Espacio para el header fixed */
+    padding: 40px 0;
     width: 100%;
-    min-height: 100vh;
-    background: linear-gradient(90deg,rgba(0, 0, 48, 1) 0%, rgba(9, 9, 121, 1) 34%, rgba(0, 181, 217, 1) 100%);
-    position: relative;
-    overflow: hidden;
-    padding-top: 100px;
-    padding-bottom: 60px;
 }
 
+/* BANNER */
 .banner {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
-    height: 100%;
+    gap: 50px;
+    width: 100%;
 }
 
+/* IMAGEN QUE SIGUE EL SCROLL */
 .banner_img {
     animation: movimiento 2.5s ease-in-out infinite;
     width: 100%;
     max-width: 500px;
-    margin: 0 auto;
+    position: sticky;
+    top: 150px; /* Debajo del header */
+    align-self: flex-start;
+    margin-bottom: 30px;
+    z-index: 2;
 }
 
 .banner_img img {
@@ -154,46 +161,39 @@ body {
     display: block;
 }
 
-/* SECCIÓN SOBRE NOSOTROS */
+/* TEXTO SIN FONDO */
 .banner_title {
     width: 100%;
-    max-width: 800px;
-    padding: 20px;
-    background-color: rgba(13, 27, 42, 0.9);
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(5px);
+    max-width: 1000px; /* Más ancho */
     color: #e0e1dd;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin: 20px auto;
-    overflow-y: auto;
-    max-height: 70vh;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 .banner_title h2 {
     color: #02F7D8;
-    margin: 15px 0 10px;
-    font-size: 1.4rem;
+    margin: 25px 0 15px;
+    font-size: 1.8rem;
     border-bottom: 1px solid #02F7D8;
-    padding-bottom: 5px;
+    padding-bottom: 8px;
     font-family: 'Audiowide', sans-serif;
 }
 
 .banner_title p {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     text-align: justify;
-    padding: 0 5px;
 }
 
 .banner_title strong {
     color: #e9c46a;
     font-weight: bold;
     display: block;
-    margin: 15px 0 8px;
-    font-size: 1rem;
+    margin: 20px 0 10px;
+    font-size: 1.2rem;
     position: relative;
-    padding-left: 18px;
+    padding-left: 20px;
 }
 
 .banner_title strong::before {
@@ -201,67 +201,13 @@ body {
     color: #02F7D8;
     position: absolute;
     left: 0;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     line-height: 1;
-}
-
-/* AJUSTES PARA CONTENIDO LARGO */
-.info-section {
-    margin-bottom: 15px;
-}
-
-.info-section p {
-    margin-bottom: 10px;
-}
-
-/* SCROLL BARRA */
-.banner_title::-webkit-scrollbar {
-    width: 6px;
-}
-
-.banner_title::-webkit-scrollbar-track {
-    background: rgba(0,0,0,0.1);
-    border-radius: 3px;
-}
-
-.banner_title::-webkit-scrollbar-thumb {
-    background: #02F7D8;
-    border-radius: 3px;
-}
-
-/* RESPONSIVIDAD */
-@media (min-width: 768px) {
-    .banner_title {
-        padding: 25px;
-        font-size: 1rem;
-        max-height: 65vh;
-    }
-    
-    .banner_title h2 {
-        font-size: 1.5rem;
-        margin: 18px 0 12px;
-    }
-    
-    .banner_title strong {
-        font-size: 1.1rem;
-        margin: 18px 0 10px;
-    }
-}
-
-@media (min-width: 992px) {
-    .banner_title {
-        padding: 30px;
-        max-height: 70vh;
-    }
-    
-    .banner_title h2 {
-        font-size: 1.6rem;
-    }
 }
 
 /* BURBUJAS ANIMADAS */
 .burbujas {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     top: 0;
@@ -294,10 +240,12 @@ body {
 /* FOOTER */
 .footer {
     background: #000;
-    padding: 15px 0;
+    padding: 20px 0;
     font-family: 'Play', sans-serif;
     text-align: center;
     margin-top: auto;
+    position: relative;
+    z-index: 10;
 }
 
 .footer .row {
@@ -360,17 +308,18 @@ body {
     .banner {
         flex-direction: row;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
     }
     
     .banner_img {
-        max-width: 45%;
-        margin: 0;
+        max-width: 40%;
+        position: sticky;
+        top: 150px;
     }
     
     .banner_title {
-        max-width: 50%;
-        padding: 30px;
+        max-width: 55%;
+        padding: 0 30px;
     }
     
     .nav-button {
@@ -386,12 +335,11 @@ body {
 
 @media (min-width: 992px) {
     .banner_title {
-        padding: 40px;
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
     
     .banner_title h2 {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
     
     .nav-button {
