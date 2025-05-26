@@ -1,11 +1,6 @@
-/* ============================================= */
-/*                 FUENTES TIPOGRÁFICAS          */
-/* ============================================= */
+/* FUENTES */
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Fredoka+One&family=Play&display=swap');
 
-/* ============================================= */
-/*                 RESET GENERAL                 */
-/* ============================================= */
 * {
     margin: 0;
     padding: 0;
@@ -20,9 +15,7 @@ body {
     flex-direction: column;
 }
 
-/* ============================================= */
-/*                 ESTRUCTURA PRINCIPAL          */
-/* ============================================= */
+/* ESTRUCTURA PRINCIPAL */
 .contenedor {
     width: 90%;
     max-width: 1200px;
@@ -30,9 +23,7 @@ body {
     padding: 0 15px;
 }
 
-/* ============================================= */
-/*                 HEADER Y NAVEGACIÓN           */
-/* ============================================= */
+/* HEADER Y NAVEGACIÓN */
 .header_nav {
     width: 100%;
     position: absolute;
@@ -49,9 +40,7 @@ body {
     gap: 15px;
 }
 
-/* ============================================= */
-/*                 BOTÓN GUARDIA                 */
-/* ============================================= */
+/*BOTON GUARDIA*/
 .button {
     --border-right: 6px;
     --text-stroke-color: rgba(255,255,255,0.6);
@@ -100,9 +89,7 @@ body {
     gap: 10px;
 }
 
-/* ============================================= */
-/*                 BOTONES BARRA                 */
-/* ============================================= */
+/*BOTONES BARRA*/
 .nav-button {
     display: inline-block;
     padding: 12px 20px;
@@ -135,9 +122,7 @@ body {
     100% { background-color: hsl(14, 90%, 55%); box-shadow: 0 0 15px hsl(14, 90%, 55%); }
 }
 
-/* ============================================= */
-/*                 BANNER PRINCIPAL              */
-/* ============================================= */
+/* BANNER PRINCIPAL */
 .bg_animate {
     width: 100%;
     min-height: 100vh;
@@ -169,9 +154,23 @@ body {
     display: block;
 }
 
-/* ============================================= */
-/*                 SECCIÓN SOBRE NOSOTROS        */
-/* ============================================= */
+/* SECCIÓN SOBRE NOSOTROS */
+.banner_title {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    background-color: rgba(13, 27, 42, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    color: #e0e1dd;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 20px auto;
+    overflow-y: auto;
+    max-height: 70vh;
+}
+
 .banner_title h2 {
     color: #02F7D8;
     margin: 15px 0 10px;
@@ -206,9 +205,7 @@ body {
     line-height: 1;
 }
 
-/* ============================================= */
-/*                 AJUSTES DE CONTENIDO          */
-/* ============================================= */
+/* AJUSTES PARA CONTENIDO LARGO */
 .info-section {
     margin-bottom: 15px;
 }
@@ -217,14 +214,7 @@ body {
     margin-bottom: 10px;
 }
 
-/* ============================================= */
-/*                 SCROLL BARRA                  */
-/* ============================================= */
-.banner_title {
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
+/* SCROLL BARRA */
 .banner_title::-webkit-scrollbar {
     width: 6px;
 }
@@ -239,9 +229,37 @@ body {
     border-radius: 3px;
 }
 
-/* ============================================= */
-/*                 BURBUJAS ANIMADAS            */
-/* ============================================= */
+/* RESPONSIVIDAD */
+@media (min-width: 768px) {
+    .banner_title {
+        padding: 25px;
+        font-size: 1rem;
+        max-height: 65vh;
+    }
+    
+    .banner_title h2 {
+        font-size: 1.5rem;
+        margin: 18px 0 12px;
+    }
+    
+    .banner_title strong {
+        font-size: 1.1rem;
+        margin: 18px 0 10px;
+    }
+}
+
+@media (min-width: 992px) {
+    .banner_title {
+        padding: 30px;
+        max-height: 70vh;
+    }
+    
+    .banner_title h2 {
+        font-size: 1.6rem;
+    }
+}
+
+/* BURBUJAS ANIMADAS */
 .burbujas {
     position: absolute;
     width: 100%;
@@ -261,7 +279,7 @@ body {
     animation: burbujas 3s linear infinite;
 }
 
-/* Tamaños y posiciones de burbujas */
+/* burbujas */
 .burbuja:nth-child(1) { width: 80px; height: 80px; left: 5%; animation-duration: 3s; }
 .burbuja:nth-child(2) { width: 100px; height: 100px; left: 35%; animation-duration: 3s; animation-delay: 2s; }
 .burbuja:nth-child(3) { width: 200px; height: 200px; left: 15%; animation-duration: 1.5s; animation-delay: 4s; }
@@ -273,9 +291,7 @@ body {
 .burbuja:nth-child(9) { width: 65px; height: 65px; left: 51%; animation-duration: 3s; animation-delay: 2s; }
 .burbuja:nth-child(10) { width: 40px; height: 40px; left: 35%; animation-duration: 3s; animation-delay: 4s; }
 
-/* ============================================= */
-/*                 FOOTER                        */
-/* ============================================= */
+/* FOOTER */
 .footer {
     background: #000;
     padding: 15px 0;
@@ -319,9 +335,7 @@ body {
     margin: 0 5px;
 }
 
-/* ============================================= */
-/*                 ANIMACIONES                   */
-/* ============================================= */
+/* ANIMACIONES */
 @keyframes burbujas {
     0% { bottom: 0; opacity: 0; transform: translateX(0); }
     30% { transform: translateX(30px); }
@@ -335,52 +349,36 @@ body {
     100% { transform: translateY(0); }
 }
 
-/* ============================================= */
-/*                 MEDIA QUERIES                 */
-/* ============================================= */
+/* RESPONSIVIDAD */
 @media (min-width: 768px) {
     .header_nav .contenedor {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
     }
-
+    
     .banner {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
     }
-
+    
     .banner_img {
         max-width: 45%;
         margin: 0;
     }
-
+    
     .banner_title {
         max-width: 50%;
         padding: 30px;
-        max-height: 65vh;
-        font-size: 1rem;
-        overflow-y: auto;
-        overflow-x: hidden;
     }
-
-    .banner_title h2 {
-        font-size: 1.5rem;
-        margin: 18px 0 12px;
-    }
-
-    .banner_title strong {
-        font-size: 1.1rem;
-        margin: 18px 0 10px;
-    }
-
+    
     .nav-button {
         padding: 15px 25px;
         font-size: 0.9rem;
         min-width: 160px;
     }
-
+    
     .button {
         --fs-size: 2.2rem;
     }
@@ -389,21 +387,18 @@ body {
 @media (min-width: 992px) {
     .banner_title {
         padding: 40px;
-        max-height: 70vh;
         font-size: 1.1rem;
-        overflow-y: auto;
-        overflow-x: hidden;
     }
-
+    
     .banner_title h2 {
         font-size: 1.8rem;
     }
-
+    
     .nav-button {
         padding: 17px 30px;
         font-size: 1rem;
     }
-
+    
     .button {
         --fs-size: 2.5rem;
     }
