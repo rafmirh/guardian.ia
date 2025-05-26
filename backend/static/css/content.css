@@ -399,3 +399,21 @@ body {
         --fs-size: 2.5rem;
     }
 }
+
+@media (min-width: 768px) {
+    .banner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .banner_img {
+        max-width: 45%;
+        margin: 0;
+    }
+    
+    .banner_title {
+        max-width: 50%;
+        padding: 30px;
+    }
+}
