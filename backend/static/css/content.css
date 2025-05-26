@@ -168,7 +168,7 @@ body {
 }
 
 .banner_title h2 {
-    color: #131212;
+    color: #cfe5f3;
     margin: 15px 0 10px;
     font-size: 1.4rem;
     border-bottom: 1px solid #757575;
@@ -194,7 +194,7 @@ body {
 
 .banner_title strong::before {
     content: "•";
-    color: #141414;
+    color: #acbae2;
     position: absolute;
     left: 0;
     font-size: 1.2rem;
