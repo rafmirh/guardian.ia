@@ -144,7 +144,7 @@ body {
 .banner_img {
     animation: movimiento 2.5s ease-in-out infinite;
     width: 100%;
-    max-width: 200px;
+    max-width: 320px;
     margin: 0 auto;
 }
 
@@ -169,7 +169,7 @@ body {
     }
 
     .banner_img {
-        max-width: 35%;
+        max-width: 30%;
         margin: 0;
     }
 }
