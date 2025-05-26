@@ -170,7 +170,7 @@ body {
 
 /* Contenedor principal para el texto (ahora más ancho) */
 .text-container {
-    max-width: 1200px; /* Ancho máximo del texto (ajustable) */
+    max-width: 1900px; /* Ancho máximo del texto (ajustable) */
     margin: 0 auto; /* Centrado pero más amplio */
     padding: 20px;
 }
