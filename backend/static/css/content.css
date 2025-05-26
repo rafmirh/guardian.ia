@@ -16,10 +16,56 @@ body {
     background: #000;
 }
 
+/* --- Nuevas reglas para el Modal de Imagen --- */
 /* Para evitar el scroll de fondo cuando la imagen esté ampliada */
 body.modal-open {
     overflow: hidden;
 }
+
+/* Estilos para el modal/overlay de la imagen */
+.image-modal {
+    display: none; /* Inicialmente oculto */
+    position: fixed; /* Fijo en la ventana */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo semi-transparente oscuro */
+    z-index: 1001; /* Asegura que esté por encima de todo lo demás, incluida la navegación */
+    justify-content: center; /* Centra horizontalmente la imagen */
+    align-items: center; /* Centra verticalmente la imagen */
+    cursor: pointer; /* Cambia el cursor para indicar que se puede hacer clic para cerrar */
+    -webkit-backdrop-filter: blur(5px); /* Para navegadores basados en Webkit */
+    backdrop-filter: blur(5px); /* Efecto de desenfoque en el fondo del modal */
+}
+
+/* Clase para mostrar el modal */
+.image-modal.open {
+    display: flex; /* Usa flexbox para centrar la imagen */
+}
+
+/* Estilos para la imagen dentro del modal */
+.image-modal-content {
+    max-width: 90%; /* Ancho máximo para la imagen ampliada */
+    max-height: 90%; /* Alto máximo para la imagen ampliada */
+    background-size: contain; /* Asegura que la imagen se ajuste dentro del contenedor */
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(2, 247, 216, 0.9); /* Sombra para resaltar la imagen, con color de tu tema */
+    transform: scale(0.7); /* Inicia un poco más pequeña para la animación */
+    opacity: 0; /* Inicia transparente para la animación */
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* Transición suave para la animación */
+}
+
+/* Cuando el modal está abierto, la imagen toma su tamaño normal */
+.image-modal.open .image-modal-content {
+    transform: scale(1); /* Escala a su tamaño normal (90% del viewport) */
+    opacity: 1; /* Se vuelve completamente visible */
+}
+
+/* --- Fin de nuevas reglas para el Modal de Imagen --- */
+
 
 /* ESTRUCTURA PRINCIPAL */
 .contenedor {
@@ -160,12 +206,6 @@ body.modal-open {
     max-width: 500px;
     margin: 0 auto;
 }
-
-/* .banner_img img { /* Ya no necesario si las imágenes son fondos de .img */
-/* width: 100%;
-    height: auto;
-    display: block;
-} */
 
 /* SECCIÓN SOBRE NOSOTROS - SIN SCROLL */
 .banner_title {
@@ -364,7 +404,7 @@ body.modal-open {
     }
 }
 
-/* IMAGENES CSS (Carrusel 3D) */
+/* --- IMAGENES CSS (Carrusel 3D) --- */
 .wrapper {
     width: 100%;
     height: 400px;
@@ -397,7 +437,7 @@ body.modal-open {
     transform: rotateY(calc(var(--index) * (360deg / var(--quantity)))) translateZ(300px);
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    background: transparent; /* No se necesita un background aquí, la imagen es el fondo del .img */
+    background: transparent;
 }
 
 .img {
@@ -407,10 +447,21 @@ body.modal-open {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    /* La variable --bg-image se definirá para cada tarjeta específica */
+    /* --- Nuevo: Cursor y transición para el clic --- */
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
+/* Opcional: Pequeño efecto al pasar el mouse por encima de las imágenes del carrusel */
+.card .img:hover {
+    transform: scale(1.05); /* Ligeramente más grande al pasar el mouse */
+    box-shadow: 0 0 15px rgba(2, 247, 216, 0.7); /* Un pequeño brillo */
+}
+
+
 /* Imágenes individuales (se aplicarán como background-image a los .img dentro de las .card) */
+/* He cambiado el uso de 'var(--bg-image)' a un 'background-image' directo para cada .img.
+   Esto es más robusto cuando el JS lee el estilo computado. */
 .card:nth-child(1) .img {
     background-image: url('https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/core-512.png');
 }
@@ -441,58 +492,4 @@ body.modal-open {
 }
 .card:nth-child(10) .img {
     background-image: url('https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/ArtificialIntelligence1-512.png');
-}
-
-/* Estilos para el modal/overlay de la imagen (¡NUEVOS!) */
-.image-modal {
-    display: none; /* Inicialmente oculto */
-    position: fixed; /* Fijo en la ventana */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Fondo semi-transparente oscuro */
-    z-index: 1001; /* Asegura que esté por encima de todo lo demás, incluida la navegación */
-    justify-content: center; /* Centra horizontalmente la imagen */
-    align-items: center; /* Centra verticalmente la imagen */
-    cursor: pointer; /* Cambia el cursor para indicar que se puede hacer clic para cerrar */
-    -webkit-backdrop-filter: blur(5px); /* Para navegadores basados en Webkit */
-    backdrop-filter: blur(5px); /* Efecto de desenfoque en el fondo del modal */
-}
-
-/* Clase para mostrar el modal */
-.image-modal.open {
-    display: flex; /* Usa flexbox para centrar la imagen */
-}
-
-/* Estilos para la imagen dentro del modal */
-.image-modal-content {
-    max-width: 90%; /* Ancho máximo para la imagen ampliada */
-    max-height: 90%; /* Alto máximo para la imagen ampliada */
-    background-size: contain; /* Asegura que la imagen se ajuste dentro del contenedor */
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 12px;
-    box-shadow: 0 0 30px rgba(2, 247, 216, 0.9); /* Sombra para resaltar la imagen, con color de tu tema */
-    transform: scale(0.7); /* Inicia un poco más pequeña para la animación */
-    opacity: 0; /* Inicia transparente para la animación */
-    transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* Transición suave para la animación */
-}
-
-/* Cuando el modal está abierto, la imagen toma su tamaño normal */
-.image-modal.open .image-modal-content {
-    transform: scale(1); /* Escala a su tamaño normal (90% del viewport) */
-    opacity: 1; /* Se vuelve completamente visible */
-}
-
-/* Añade un cursor de "mano" a las imágenes del carrusel para indicar que son clicables */
-.card .img {
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transición para efectos de hover */
-}
-
-/* Opcional: Pequeño efecto al pasar el mouse por encima de las imágenes del carrusel */
-.card .img:hover {
-    transform: scale(1.05); /* Ligeramente más grande al pasar el mouse */
-    box-shadow: 0 0 15px rgba(2, 247, 216, 0.7); /* Un pequeño brillo */
 }
