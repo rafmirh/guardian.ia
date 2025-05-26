@@ -144,7 +144,7 @@ body {
 .banner_img {
     animation: movimiento 2.5s ease-in-out infinite;
     width: 100%;
-    max-width: 320px;
+    max-width: 280px;
     margin: 0 auto;
 }
 
@@ -167,11 +167,10 @@ body {
         padding: 20px;
         text-align: left;
     }
-
-    .banner_img {
-        max-width: 30%;
-        margin: 0;
-    }
+.banner_img {
+    max-width: 30%;
+    margin: 0;
+}
 }
 /* SECCIÓN SOBRE NOSOTROS */
 .banner_title {
