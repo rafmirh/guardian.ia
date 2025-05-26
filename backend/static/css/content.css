@@ -168,10 +168,10 @@ body {
 }
 
 .banner_title h2 {
-    color: #02F7D8;
+    color: #686868;
     margin: 15px 0 10px;
     font-size: 1.4rem;
-    border-bottom: 1px solid #02F7D8;
+    border-bottom: 1px solid #757575;
     padding-bottom: 5px;
     font-family: 'Audiowide', sans-serif;
 }
@@ -194,7 +194,7 @@ body {
 
 .banner_title strong::before {
     content: "•";
-    color: #02F7D8;
+    color: #8f8f8f;
     position: absolute;
     left: 0;
     font-size: 1.2rem;
@@ -221,7 +221,7 @@ body {
 }
 
 .banner_title::-webkit-scrollbar-thumb {
-    background: #02F7D8;
+    background: #04050585;
     border-radius: 3px;
 }
 
