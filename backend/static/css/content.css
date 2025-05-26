@@ -13,10 +13,6 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    font-size: 18px; /* Tamaño de fuente base aumentado */
-    line-height: 1.7; /* Mayor espacio entre líneas */
-    color: #e0e1dd;
-    background: linear-gradient(90deg,rgba(0, 0, 48, 1) 0%, rgba(9, 9, 121, 1) 34%, rgba(0, 181, 217, 1) 100%);
 }
 
 /* ESTRUCTURA PRINCIPAL */
@@ -24,7 +20,7 @@ body {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px 15px; /* Más padding para mejor espaciado */
+    padding: 0 15px;
 }
 
 /* HEADER Y NAVEGACIÓN */
@@ -49,7 +45,7 @@ body {
     --border-right: 6px;
     --text-stroke-color: rgba(255,255,255,0.6);
     --animation-color: #37FF8B;
-    --fs-size: 2.2rem; /* Tamaño aumentado */
+    --fs-size: 1.8rem;
     letter-spacing: 3px;
     font-size: var(--fs-size);
     font-family: 'Audiowide', sans-serif;
@@ -96,19 +92,19 @@ body {
 /*BOTONES BARRA*/
 .nav-button {
     display: inline-block;
-    padding: 14px 24px; /* Tamaño aumentado */
+    padding: 12px 20px;
     border-radius: 50px;
     background-color: rgba(255, 255, 255, 0.411);
     box-shadow: rgba(211, 205, 205, 0.7) 0 0 8px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    font-size: 1rem; /* Tamaño aumentado */
+    font-size: 0.8rem;
     font-family: Arial, sans-serif;
     color: black;
     text-decoration: none;
     transition: all 0.3s ease;
     text-align: center;
-    min-width: 160px; /* Ancho aumentado */
+    min-width: 140px;
 }
 
 .nav-button:hover {
@@ -130,9 +126,10 @@ body {
 .bg_animate {
     width: 100%;
     min-height: 100vh;
+    background: linear-gradient(90deg,rgba(0, 0, 48, 1) 0%, rgba(9, 9, 121, 1) 34%, rgba(0, 181, 217, 1) 100%);
     position: relative;
     overflow: hidden;
-    padding-top: 120px; /* Aumentado para header */
+    padding-top: 100px;
     padding-bottom: 60px;
 }
 
@@ -140,7 +137,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px; /* Espacio aumentado */
+    gap: 30px;
     height: 100%;
 }
 
@@ -157,33 +154,34 @@ body {
     display: block;
 }
 
-/* SECCIÓN DE CONTENIDO - MODIFICADA PRINCIPALMENTE AQUÍ */
+/* SECCIÓN SOBRE NOSOTROS */
 .banner_title {
     width: 100%;
     max-width: 800px;
-    padding: 30px;
-    background-color: rgba(13, 27, 42, 0.7);
+    padding: 20px;
+    background-color: rgba(13, 27, 42, 0.9);
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(5px);
     color: #e0e1dd;
-    font-size: 1.1rem; /* Tamaño aumentado */
-    line-height: 1.8; /* Espaciado aumentado */
+    font-size: 0.95rem;
+    line-height: 1.6;
     margin: 20px auto;
-    /* Eliminado el overflow-y y max-height para que el contenido fluya */
+    overflow-y: auto;
+    max-height: 70vh;
 }
 
 .banner_title h2 {
     color: #02F7D8;
-    margin: 20px 0 15px; /* Margen aumentado */
-    font-size: 1.8rem; /* Tamaño aumentado */
+    margin: 15px 0 10px;
+    font-size: 1.4rem;
     border-bottom: 1px solid #02F7D8;
-    padding-bottom: 8px; /* Aumentado */
+    padding-bottom: 5px;
     font-family: 'Audiowide', sans-serif;
 }
 
 .banner_title p {
-    margin-bottom: 20px; /* Aumentado */
+    margin-bottom: 15px;
     text-align: justify;
     padding: 0 5px;
 }
@@ -192,10 +190,10 @@ body {
     color: #e9c46a;
     font-weight: bold;
     display: block;
-    margin: 20px 0 12px; /* Aumentado */
-    font-size: 1.2rem; /* Tamaño aumentado */
+    margin: 15px 0 8px;
+    font-size: 1rem;
     position: relative;
-    padding-left: 22px; /* Aumentado */
+    padding-left: 18px;
 }
 
 .banner_title strong::before {
@@ -203,17 +201,62 @@ body {
     color: #02F7D8;
     position: absolute;
     left: 0;
-    font-size: 1.4rem; /* Aumentado */
+    font-size: 1.2rem;
     line-height: 1;
 }
 
 /* AJUSTES PARA CONTENIDO LARGO */
 .info-section {
-    margin-bottom: 25px; /* Aumentado */
+    margin-bottom: 15px;
 }
 
 .info-section p {
-    margin-bottom: 15px; /* Aumentado */
+    margin-bottom: 10px;
+}
+
+/* SCROLL BARRA */
+.banner_title::-webkit-scrollbar {
+    width: 6px;
+}
+
+.banner_title::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1);
+    border-radius: 3px;
+}
+
+.banner_title::-webkit-scrollbar-thumb {
+    background: #02F7D8;
+    border-radius: 3px;
+}
+
+/* RESPONSIVIDAD */
+@media (min-width: 768px) {
+    .banner_title {
+        padding: 25px;
+        font-size: 1rem;
+        max-height: 65vh;
+    }
+    
+    .banner_title h2 {
+        font-size: 1.5rem;
+        margin: 18px 0 12px;
+    }
+    
+    .banner_title strong {
+        font-size: 1.1rem;
+        margin: 18px 0 10px;
+    }
+}
+
+@media (min-width: 992px) {
+    .banner_title {
+        padding: 30px;
+        max-height: 70vh;
+    }
+    
+    .banner_title h2 {
+        font-size: 1.6rem;
+    }
 }
 
 /* BURBUJAS ANIMADAS */
@@ -251,7 +294,7 @@ body {
 /* FOOTER */
 .footer {
     background: #000;
-    padding: 20px 0; /* Aumentado */
+    padding: 15px 0;
     font-family: 'Play', sans-serif;
     text-align: center;
     margin-top: auto;
@@ -262,14 +305,14 @@ body {
     margin: 1% 0;
     padding: 0.6% 0;
     color: gray;
-    font-size: 1em; /* Tamaño aumentado */
+    font-size: 0.8em;
 }
 
 .footer .row a {
     text-decoration: none;
     color: gray;
     transition: 0.3s;
-    margin: 0 12px; /* Aumentado */
+    margin: 0 10px;
 }
 
 .footer .row a:hover {
@@ -284,12 +327,12 @@ body {
 
 .footer .row ul li {
     display: inline-block;
-    margin: 0 18px; /* Aumentado */
+    margin: 0 15px;
 }
 
 .footer .row a i {
-    font-size: 1.8em; /* Aumentado */
-    margin: 0 8px; /* Aumentado */
+    font-size: 1.5em;
+    margin: 0 5px;
 }
 
 /* ANIMACIONES */
@@ -317,7 +360,7 @@ body {
     .banner {
         flex-direction: row;
         justify-content: space-between;
-        align-items: flex-start; /* Cambiado a flex-start para mejor alineación */
+        align-items: center;
     }
     
     .banner_img {
@@ -327,41 +370,36 @@ body {
     
     .banner_title {
         max-width: 50%;
-        padding: 35px; /* Aumentado */
-        font-size: 1.2rem; /* Tamaño aumentado */
-    }
-    
-    .banner_title h2 {
-        font-size: 2rem; /* Tamaño aumentado */
+        padding: 30px;
     }
     
     .nav-button {
-        padding: 16px 28px; /* Aumentado */
-        font-size: 1.1rem; /* Tamaño aumentado */
-        min-width: 180px; /* Aumentado */
+        padding: 15px 25px;
+        font-size: 0.9rem;
+        min-width: 160px;
     }
     
     .button {
-        --fs-size: 2.5rem; /* Tamaño aumentado */
+        --fs-size: 2.2rem;
     }
 }
 
 @media (min-width: 992px) {
     .banner_title {
         padding: 40px;
-        font-size: 1.3rem; /* Tamaño aumentado */
+        font-size: 1.1rem;
     }
     
     .banner_title h2 {
-        font-size: 2.2rem; /* Tamaño aumentado */
+        font-size: 1.8rem;
     }
     
     .nav-button {
-        padding: 18px 32px; /* Aumentado */
-        font-size: 1.2rem; /* Tamaño aumentado */
+        padding: 17px 30px;
+        font-size: 1rem;
     }
     
     .button {
-        --fs-size: 2.8rem; /* Tamaño aumentado */
+        --fs-size: 2.5rem;
     }
 }
