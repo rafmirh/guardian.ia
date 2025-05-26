@@ -159,7 +159,6 @@ body {
     width: 100%;
     max-width: 800px;
     padding: 20px;
-    background-color: rgba(13, 27, 42, 0.9);
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(5px);
