@@ -154,16 +154,13 @@ body {
     display: block;
 }
 
-/* SECCIÓN SOBRE NOSOTROS */
+/* SECCIÓN SOBRE NOSOTROS - MODIFICADA */
 .banner_title {
     width: 100%;
     max-width: 800px;
     padding: 20px;
-    background-color: rgba(13, 27, 42, 0.9);
     border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(5px);
-    color: #e0e1dd;
+    color: #ffffff; /* Texto blanco para contrastar con el fondo oscuro */
     font-size: 0.95rem;
     line-height: 1.6;
     margin: 20px auto;
