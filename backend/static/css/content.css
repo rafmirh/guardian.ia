@@ -386,39 +386,23 @@ body {
 
 .card {
     position: absolute;
-    width: 150px;
-    height: 200px;
+    width: 180px;  /* Aumenté el ancho */
+    height: 240px; /* Aumenté el alto */
     border-radius: 12px;
     background: rgba(var(--color-card), 0.8);
     transform: 
         rotateY(calc(var(--index) * (360deg / var(--quantity))))
-        translateZ(300px);
+        translateZ(350px); /* Aumenté la distancia Z */
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    overflow: hidden;
+    overflow: visible; /* Cambiado de hidden a visible */
 }
 
 .img {
     width: 100%;
     height: 100%;
     border-radius: 10px;
-    background-size: 60%;
+    background-size: contain; /* Cambiado de 60% a contain */
     background-repeat: no-repeat;
     background-position: center;
-    background: 
-        radial-gradient(
-            circle,
-            rgba(var(--color-card), 0.2) 0%,
-            rgba(var(--color-card), 0.6) 80%,
-            rgba(var(--color-card), 0.9) 100%
-        ),
-        var(--bg-image);
-}
-
-/* Asignamos imágenes específicas a cada tarjeta */
-.card:nth-child(1) .img {
-    --bg-image: url('https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/core-512.png');
-}
-
-.card:nth-child(2) .img {
-    --bg-image: url('https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/ArtificialIntelligence9-512.png');
+    background-color: rgba(var(--color-card), 0.3); /* Fondo de respaldo */
 }
