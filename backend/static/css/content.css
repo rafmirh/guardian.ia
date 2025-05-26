@@ -176,31 +176,38 @@ body {
 /* SECCIÓN SOBRE NOSOTROS */
 .banner_title {
     width: 80%;
-    max-width: none;
-    padding: 20px;
+    padding: 30px;
     color: #e0e1dd;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin: 10px auto;  /* <- reducido de 70px a 20px */
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin: 20px auto;
     overflow-y: auto;
     max-height: 70vh;
+    font-family: 'Play', sans-serif; /* más estilizado */
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid #37FF8B;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 170, 0.2);
 }
 
+
 .banner_title h2 {
-    color: #cfe5f3;
-    margin: 15px 0 10px;
-    font-size: 1.4rem;
-    border-bottom: 1px solid #757575;
+    color: #37FF8B;
+    margin: 20px 0 15px;
+    font-size: 1.6rem;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
     padding-bottom: 5px;
     font-family: 'Audiowide', sans-serif;
+    letter-spacing: 1px;
 }
 
 .banner_title p {
     margin-bottom: 15px;
     text-align: justify;
-    padding: 0 5px;
+    padding: 0 10px;
+    font-size: 1.05rem;
+    color: #d8d9dd;
 }
-
 .banner_title strong {
     color: #e9c46a;
     font-weight: bold;
