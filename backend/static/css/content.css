@@ -164,7 +164,7 @@ body {
     line-height: 1.6;
     margin: 50px auto;
     overflow-y: auto;
-    max-height: 70vh;
+    max-height: 100vh;
 }
 
 .banner_title h2 {
