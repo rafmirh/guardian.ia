@@ -154,6 +154,26 @@ body {
     display: block;
 }
 
+/* Cambiar a layout horizontal en pantallas grandes */
+@media (min-width: 768px) {
+    .banner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .banner_title {
+        max-width: 50%;
+        padding: 20px;
+        text-align: left;
+    }
+
+    .banner_img {
+        max-width: 45%;
+        margin: 0;
+    }
+}
 /* SECCIÓN SOBRE NOSOTROS */
 .banner_title {
     width: 80%;
