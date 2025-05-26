@@ -158,11 +158,11 @@ body {
 .banner_title {
     width: 80%;
     max-width: none;
-    padding: 1000px;
+    padding: 20px;
     color: #e0e1dd;
     font-size: 0.95rem;
     line-height: 1.6;
-    margin: 50px auto;
+    margin: 100px auto;
     overflow-y: auto;
     max-height: 100vh;
 }
