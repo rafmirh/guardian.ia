@@ -157,14 +157,14 @@ body {
 /* SECCIÓN SOBRE NOSOTROS */
 .banner_title {
     width: 100%;
-    max-width: 800px;
-    padding: 20px;
+    max-width: 1200px;
+    padding: 50px;
     color: #e0e1dd;
     font-size: 0.95rem;
     line-height: 1.6;
     margin: 50px auto;
     overflow-y: auto;
-    max-height: 70vh;
+    max-height: 90vh;
 }
 
 .banner_title h2 {
