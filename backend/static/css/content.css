@@ -361,60 +361,46 @@ body {
 
 /*IMAGENES CSS*/
 
-/* From Uiverse.io by ilkhoeri */ 
 .wrapper {
   width: 100%;
-  height: 100%;
+  height: 400px; /* Alto fijo recomendado */
   position: relative;
-  text-align: center;
   display: flex;
-  align-items: center;
   justify-content: center;
-  overflow: hidden;
+  align-items: center;
+  perspective: 1200px;
+  margin: 0 auto;
 }
 
 .inner {
-  --w: 100px;
-  --h: 150px;
-  --translateZ: calc((var(--w) + var(--h)) + 0px);
-  --rotateX: -15deg;
-  --perspective: 1000px;
-  position: absolute;
-  width: var(--w);
-  height: var(--h);
-  top: 25%;
-  left: calc(50% - (var(--w) / 2) - 2.5px);
-  z-index: 2;
+  position: relative;
+  width: 150px;
+  height: 200px;
   transform-style: preserve-3d;
-  transform: perspective(var(--perspective));
-  animation: rotating 20s linear infinite; /* */
+  animation: rotating 20s linear infinite;
 }
+
 @keyframes rotating {
-  from {
-    transform: perspective(var(--perspective)) rotateX(var(--rotateX))
-      rotateY(0);
-  }
-  to {
-    transform: perspective(var(--perspective)) rotateX(var(--rotateX))
-      rotateY(1turn);
-  }
+  from { transform: rotateY(0); }
+  to { transform: rotateY(360deg); }
 }
 
 .card {
   position: absolute;
-  border: 2px solid rgba(var(--color-card));
+  width: 150px;
+  height: 200px;
   border-radius: 12px;
-  overflow: hidden;
-  inset: 0;
-  transform: rotateY(calc((360deg / var(--quantity)) * var(--index)))
-    translateZ(var(--translateZ));
+  background: rgba(var(--color-card), 0.8);
+  transform: 
+    rotateY(calc(var(--index) * (360deg / var(--quantity))))
+    translateZ(300px); /* Ajusta esta distancia */
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
 
 .img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  background: #0000
+  background: 
     radial-gradient(
       circle,
       rgba(var(--color-card), 0.2) 0%,
