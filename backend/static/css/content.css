@@ -145,7 +145,7 @@ body {
     display: flex;
     justify-content: 500px; /* centra horizontalmente */
     align-items: center;     /* centra verticalmente */
-    margin: 40px auto;       /* espacio arriba y abajo + centrar el contenedor */
+    margin: 100px auto;       /* espacio arriba y abajo + centrar el contenedor */
     height: 400px;
     position: relative;
     background-color: transparent;
