@@ -150,7 +150,7 @@ body {
     position: relative;
     background-color: transparent;
     max-width: 70%;
-    padding-right: 50px;          /* agrega espacio a la derecha para "empujar" la imagen un poco a la izquierda */
+    padding-right: 80px;          /* agrega espacio a la derecha para "empujar" la imagen un poco a la izquierda */
 }
 
 .banner_img img {
