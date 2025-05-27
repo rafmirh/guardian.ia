@@ -152,7 +152,7 @@ body {
 
 .banner_img img {
     max-width: 100%;         /* Que no se pase del tamaño del contenedor */
-    height: 200px;            /* Mantener proporción original */
+    height: 100px;            /* Mantener proporción original */
     width: 300px; 
     }
 
