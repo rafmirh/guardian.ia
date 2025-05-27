@@ -141,10 +141,11 @@ body {
     height: 100%;
 }
 
+/* ★★★ AJUSTES DE TAMAÑO DE IMAGEN ★★★ */
 .banner_img {
     animation: movimiento 2.5s ease-in-out infinite;
     width: 100%;
-    max-width: 200px; /* Tamaño intermedio para móvil */
+    max-width: 280px; /* ← Cambiar este valor para móvil (200px-400px) */
     margin: 0 auto;
 }
 
@@ -168,7 +169,7 @@ body {
         text-align: left;
     }
     .banner_img {
-        max-width: 280%; /* Tamaño intermedio para desktop */
+        max-width: 28%; /* ← Cambiar este valor para desktop (20%-35%) */
         margin: 0;
     }
 }
@@ -383,7 +384,7 @@ body {
     }
     
     .banner_img {
-        max-width: 20%;
+        max-width: 28%;
         margin: 0;
     }
     
