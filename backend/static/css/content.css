@@ -144,7 +144,7 @@ body {
 .banner_img {
     animation: movimiento 2.5s ease-in-out infinite;
     width: 100%;
-    max-width: 180px; /* Reducido de 280px a 180px */
+    max-width: 120px; /* Imagen más pequeña en móvil */
     margin: 0 auto;
 }
 
@@ -168,10 +168,11 @@ body {
         text-align: left;
     }
     .banner_img {
-        max-width: 25%; /* Reducido de 30% a 25% */
+        max-width: 15%; /* Imagen más pequeña en desktop */
         margin: 0;
     }
 }
+
 /* SECCIÓN SOBRE NOSOTROS */
 .banner_title {
     width: 80%;
@@ -185,7 +186,6 @@ body {
     font-family: 'Play', sans-serif;
     border-radius: 10px;
 }
-
 
 .banner_title h2 {
     color: #37FF8B;
@@ -204,6 +204,7 @@ body {
     font-size: 1.05rem;
     color: #d8d9dd;
 }
+
 .banner_title strong {
     color: #e9c46a;
     font-weight: bold;
@@ -382,7 +383,7 @@ body {
     }
     
     .banner_img {
-        max-width: 45%;
+        max-width: 15%;
         margin: 0;
     }
     
