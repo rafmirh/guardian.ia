@@ -143,22 +143,23 @@ body {
 
 .banner_img {
     display: flex;
-    justify-content: 500px; /* centra horizontalmente */
-    align-items: center;     /* centra verticalmente */
+    justify-content: center;  /* centra horizontalmente */
+    align-items: center;      /* centra verticalmente */
     margin: 100px auto;       /* espacio arriba y abajo + centrar el contenedor */
     height: 400px;
     position: relative;
     background-color: transparent;
-    max-width: 70%;          /* un poco más grande que antes */
+    max-width: 70%;           /* más grande */
 }
 
 .banner_img img {
-    width: 100%;             /* ocupa todo el ancho del contenedor */
-    max-width: 650px;        /* tamaño máximo que quieres */
+    width: 100%;              /* ocupa todo el ancho del contenedor */
+    max-width: 650px;         /* tamaño máximo */
     height: auto;
     object-fit: contain;
     display: block;
 }
+
 
 @media (min-width: 768px) {
     .banner {
