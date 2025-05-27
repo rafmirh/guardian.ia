@@ -143,7 +143,7 @@ body {
 
 .banner_img {
     display: flex;
-    justify-content: 800px; /* centra horizontalmente */
+    justify-content: 1200px; /* centra horizontalmente */
     align-items: center;     /* centra verticalmente */
     margin: 40px auto;       /* espacio arriba y abajo + centrar el contenedor */
     height: 400px;
