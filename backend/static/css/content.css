@@ -141,18 +141,25 @@ body {
     height: 100%;
 }
 
-.banner_img img {
-    width: 100%;
-    max-width: 250px;
-    height: auto;
-    object-fit: contain;
-    display: block;
+.banner_img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    height: 400px;
+    position: relative;
+    background-color: transparent;
+    max-width: 40%; /* aumenté de 28% a 40% para desktop */
+    margin: 0 auto; /* centrado en móvil */
 }
 
 .banner_img img {
-    width: 400px;           /* Tamaño más grande de la imagen */
-    height: auto;           /* Mantiene proporción de la imagen */
-    object-fit: contain;    /* Asegura que no se distorsione */
+    width: 100%;
+    max-width: 400px; /* más grande que antes */
+    height: auto;
+    object-fit: contain;
+    display: block;
 }
 
 @media (min-width: 768px) {
