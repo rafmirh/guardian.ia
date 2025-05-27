@@ -152,8 +152,8 @@ body {
 
 .banner_img img {
     max-width: 100%;         /* Que no se pase del tamaño del contenedor */
-    height:300px;            /* Mantener proporción original */
-    width: 300px; 
+    height:800px;            /* Mantener proporción original */
+    width: 800px; 
     }
 
 @media (min-width: 768px) {
