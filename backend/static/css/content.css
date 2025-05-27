@@ -144,7 +144,7 @@ body {
 .banner_img {
     animation: movimiento 2.5s ease-in-out infinite;
     width: 100%;
-    max-width: 120px; /* Imagen más pequeña en móvil */
+    max-width: 200px; /* Imagen más pequeña en móvil */
     margin: 0 auto;
 }
 
@@ -168,7 +168,7 @@ body {
         text-align: left;
     }
     .banner_img {
-        max-width: 15%; /* Imagen más pequeña en desktop */
+        max-width: 25%; /* Imagen más pequeña en desktop */
         margin: 0;
     }
 }
