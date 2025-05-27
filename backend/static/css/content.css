@@ -150,7 +150,7 @@ body {
 }
 
 .banner_img img {
-    width: 250px;           /* Tamaño más grande de la imagen */
+    width: 400px;           /* Tamaño más grande de la imagen */
     height: auto;           /* Mantiene proporción de la imagen */
     object-fit: contain;    /* Asegura que no se distorsione */
 }
