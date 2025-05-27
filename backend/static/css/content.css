@@ -149,13 +149,13 @@ body {
     height: 400px;
     position: relative;
     background-color: transparent;
-    max-width: 90%;                /* permite más espacio para crecer */
+    max-width: 100%;                /* permite más espacio para crecer */
     padding-right: 250px;
 }
 
 .banner_img img {
     width: 100%;
-    max-width: 900px;             /* Aumenta el tamaño máximo de la imagen */
+    max-width: 1200px;             /* Aumenta el tamaño máximo de la imagen */
     height: auto;
     object-fit: contain;
     display: block;
