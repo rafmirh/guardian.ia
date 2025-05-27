@@ -141,7 +141,7 @@ body {
     height: 100%;
 }
 
-/* ★★★ AJUSTES DE TAMAÑO DE IMAGEN ★★★ */
+/*AJUSTES DE TAMAÑO DE IMAGEN*/
 .banner_img {
     animation: movimiento 2.5s ease-in-out infinite;
     width: 100%;
