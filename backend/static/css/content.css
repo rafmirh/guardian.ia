@@ -141,15 +141,12 @@ body {
     height: 100%;
 }
 
-.banner_img {
-    display: flex;                /* Flexbox para centrar el contenido */
-    justify-content: center;     /* Centra horizontalmente */
-    align-items: center;         /* Centra verticalmente */
-    margin-top: 40px;            /* Espacio arriba del contenedor */
-    margin-bottom: 40px;         /* Espacio abajo del contenedor */
-    height: 400px;               /* Aumenta altura del contenedor si quieres más espacio */
-    position: relative;          /* Base para posicionamiento relativo */
-    background-color: transparent; /* Fondo opcional */
+.banner_img img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    object-fit: contain;
+    display: block;
 }
 
 .banner_img img {
