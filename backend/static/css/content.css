@@ -141,26 +141,21 @@ body {
     height: 100%;
 }
 
-/*AJUSTES DE TAMAÑO DE IMAGEN*/
 .banner_img {
-    display: flex;                /* Habilita Flexbox para centrar contenido */
-    justify-content: center;     /* Centra la imagen horizontalmente */
-    align-items: flex-start;     /* Alinea la imagen hacia la parte superior del contenedor (usa 'center' si quieres centrado vertical) */
-    margin-top: 20px;            /* Espacio arriba del contenedor */
-    margin-bottom: 20px;         /* Espacio abajo del contenedor */
-    height: 300px;               /* Puedes ajustar la altura del contenedor */
-    position: relative;          /* Necesario si vas a posicionar la imagen de forma absoluta dentro */
-    background-color: transparent; /* Puedes poner color de fondo si deseas */
-    padding: 10px;               /* Espacio interno opcional */
+    display: flex;                /* Flexbox para centrar el contenido */
+    justify-content: center;     /* Centra horizontalmente */
+    align-items: center;         /* Centra verticalmente */
+    margin-top: 40px;            /* Espacio arriba del contenedor */
+    margin-bottom: 40px;         /* Espacio abajo del contenedor */
+    height: 400px;               /* Aumenta altura del contenedor si quieres más espacio */
+    position: relative;          /* Base para posicionamiento relativo */
+    background-color: transparent; /* Fondo opcional */
 }
 
 .banner_img img {
-    width: 150px;           /* Ancho de la imagen, modifícalo a tu gusto */
-    height: auto;           /* Mantiene la proporción original de la imagen */
-    object-fit: contain;    /* Ajusta la imagen dentro de su caja sin deformarla */
-    position: relative;     /* Puedes cambiar a 'absolute' si quieres ubicarla con top/left */
-    top: 0;                 /* Solo si usas 'position: absolute' */
-    left: 0;
+    width: 250px;           /* Tamaño más grande de la imagen */
+    height: auto;           /* Mantiene proporción de la imagen */
+    object-fit: contain;    /* Asegura que no se distorsione */
 }
 
 @media (min-width: 768px) {
