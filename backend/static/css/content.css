@@ -154,7 +154,7 @@ body {
 
 .banner_img img {
     width: 100%;             /* ocupa todo el ancho del contenedor */
-    max-width: 450px;        /* tamaño máximo que quieres */
+    max-width: 650px;        /* tamaño máximo que quieres */
     height: auto;
     object-fit: contain;
     display: block;
