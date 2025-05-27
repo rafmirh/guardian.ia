@@ -144,22 +144,23 @@ body {
 .banner_img {
     display: flex;
     justify-content: flex-start;  /* alinea a la izquierda */
-    align-items: center;          /* centra verticalmente */
+    align-items: center;
     margin: 100px auto;
     height: 400px;
     position: relative;
     background-color: transparent;
-    max-width: 70%;
-    padding-right: 250px;          /* agrega espacio a la derecha para "empujar" la imagen un poco a la izquierda */
+    max-width: 90%;                /* permite más espacio para crecer */
+    padding-right: 250px;
 }
 
 .banner_img img {
     width: 100%;
-    max-width: 650px;
+    max-width: 900px;             /* Aumenta el tamaño máximo de la imagen */
     height: auto;
     object-fit: contain;
     display: block;
 }
+
 
 @media (min-width: 768px) {
     .banner {
