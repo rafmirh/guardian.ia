@@ -144,7 +144,7 @@ body {
 .banner_img {
     animation: movimiento 2.5s ease-in-out infinite;
     width: 100%;
-    max-width: 280px;
+    max-width: 180px; /* Reducido de 280px a 180px */
     margin: 0 auto;
 }
 
@@ -168,7 +168,7 @@ body {
         text-align: left;
     }
     .banner_img {
-        max-width: 30%;
+        max-width: 25%; /* Reducido de 30% a 25% */
         margin: 0;
     }
 }
