@@ -143,23 +143,23 @@ body {
 
 .banner_img {
     display: flex;
-    justify-content: center;  /* centra horizontalmente */
-    align-items: center;      /* centra verticalmente */
-    margin: 100px auto;       /* espacio arriba y abajo + centrar el contenedor */
+    justify-content: flex-start;  /* alinea a la izquierda */
+    align-items: center;          /* centra verticalmente */
+    margin: 100px auto;
     height: 400px;
     position: relative;
     background-color: transparent;
-    max-width: 70%;           /* más grande */
+    max-width: 70%;
+    padding-right: 50px;          /* agrega espacio a la derecha para "empujar" la imagen un poco a la izquierda */
 }
 
 .banner_img img {
-    width: 100%;              /* ocupa todo el ancho del contenedor */
-    max-width: 650px;         /* tamaño máximo */
+    width: 100%;
+    max-width: 650px;
     height: auto;
     object-fit: contain;
     display: block;
 }
-
 
 @media (min-width: 768px) {
     .banner {
