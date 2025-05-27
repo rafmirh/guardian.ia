@@ -143,10 +143,11 @@ body {
 
 /*AJUSTES DE TAMAÑO DE IMAGEN*/
 .banner_img {
-    animation: movimiento 2.5s ease-in-out infinite;
-    width: 100%;
-    max-width: 280px; /* ← Cambiar este valor para móvil (200px-400px) */
-    margin: 0 auto;
+    display: flex;            /* Centra la imagen dentro del contenedor */
+    justify-content: center; /* Horizontal */
+    align-items: center;     /* Vertical */
+    margin-top: 20px;        /* Espacio arriba de la imagen */
+    margin-bottom: 20px;     /* Espacio abajo de la imagen */
 }
 
 .banner_img img {
