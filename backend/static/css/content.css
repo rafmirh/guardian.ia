@@ -143,18 +143,25 @@ body {
 
 /*AJUSTES DE TAMAÑO DE IMAGEN*/
 .banner_img {
-    display: flex;            /* Centra la imagen dentro del contenedor */
-    justify-content: center; /* Horizontal */
-    align-items: center;     /* Vertical */
-    margin-top: 20px;        /* Espacio arriba de la imagen */
-    margin-bottom: 20px;     /* Espacio abajo de la imagen */
+    display: flex;                /* Habilita Flexbox para centrar contenido */
+    justify-content: center;     /* Centra la imagen horizontalmente */
+    align-items: flex-start;     /* Alinea la imagen hacia la parte superior del contenedor (usa 'center' si quieres centrado vertical) */
+    margin-top: 20px;            /* Espacio arriba del contenedor */
+    margin-bottom: 20px;         /* Espacio abajo del contenedor */
+    height: 300px;               /* Puedes ajustar la altura del contenedor */
+    position: relative;          /* Necesario si vas a posicionar la imagen de forma absoluta dentro */
+    background-color: transparent; /* Puedes poner color de fondo si deseas */
+    padding: 10px;               /* Espacio interno opcional */
 }
 
 .banner_img img {
-    max-width: 100%;         /* Que no se pase del tamaño del contenedor */
-    height:500px;            /* Mantener proporción original */
-    width: 500px; 
-    }
+    width: 150px;           /* Ancho de la imagen, modifícalo a tu gusto */
+    height: auto;           /* Mantiene la proporción original de la imagen */
+    object-fit: contain;    /* Ajusta la imagen dentro de su caja sin deformarla */
+    position: relative;     /* Puedes cambiar a 'absolute' si quieres ubicarla con top/left */
+    top: 0;                 /* Solo si usas 'position: absolute' */
+    left: 0;
+}
 
 @media (min-width: 768px) {
     .banner {
