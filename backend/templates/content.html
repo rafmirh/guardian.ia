@@ -34,20 +34,18 @@
     <p>
         Nosotros somos Guardián IA, somos estudiantes de la Licenciatura en Ciencia de Datos para Negocios de la Universidad Nacional Rosario Castellanos, tenemos el placer de presentarles Guardián IA, nuestro proyecto prototípico busca revolucionar la lucha contra el creciente robo de identidad en redes sociales.
     </p>
-
+    
     <h2>Modelo Conceptual</h2>
-<p>Comprender la dinámica de la suplantación de identidad en línea es crucial para desarrollar estrategias y mitigación efectivas.</p>
-<p>A continuación, se presenta un análisis de este ciclo, destacando las interacciones clave y los factores que influyen en cada fase.</p>
-
-<div style="display: flex; align-items: flex-start; gap: 20px; margin: 20px 0;">
-  <img id="modeloImg" src="https://i.postimg.cc/Tw9rrGQf/Captura-de-pantalla-2025-05-15-233028.png" alt="Modelo Conceptual" style="max-width: 300px; height: auto; border: 2px solid #ccc; border-radius: 8px; cursor: pointer;">
-  <p style="flex: 1;">Este diagrama visualiza las relaciones entre los distintos elementos implicados en los delitos de suplantación de identidad en redes sociales, ayudando a entender cómo se genera, replica y detecta este fenómeno en el entorno digital.</p>
-</div>
-
-<div id="modalImagen" class="modal">
-  <span class="cerrar">&times;</span>
-  <img class="modal-contenido" id="imgAmpliada">
-</div>
+    <p>Comprender la dinámica de la suplantación de identidad en línea es crucial para desarrollar estrategias y mitigación efectivas.</p>
+    <p>A continuación, se presenta un análisis de este ciclo, destacando las interacciones clave y los factores que influyen en cada fase.</p>
+    <div style="display: flex; align-items: flex-start; gap: 20px; margin: 20px 0;">
+        <img id="modeloImg" src="https://i.postimg.cc/Tw9rrGQf/Captura-de-pantalla-2025-05-15-233028.png" alt="Modelo Conceptual" style="max-width: 300px; height: auto; border: 2px solid #ccc; border-radius: 8px; cursor: pointer;">
+        <p style="flex: 1;">Este diagrama visualiza las relaciones entre los distintos elementos implicados en los delitos de suplantación de identidad en redes sociales, ayudando a entender cómo se genera, replica y detecta este fenómeno en el entorno digital.</p>
+    </div>
+    <div id="modalImagen" class="modal">
+        <span class="cerrar">&times;</span>
+        <img class="modal-contenido" id="imgAmpliada">
+    </div>
     
     <h2>Extrapolación de la Cifra Negra</h2>
     <p>Basado en la Encuesta Nacional de Victimización y Percepción sobre Seguridad Pública (ENVIPE) 2024 del INEGI se estableció que sólo el 7% de los delitos cometidos resultan en una carpeta de investigación iniciada.</p>
@@ -133,31 +131,29 @@
             <div class="burbuja"></div>
         </div>
     </header>
-
     <script>
-  const modal = document.getElementById("modalImagen");
-  const img = document.getElementById("modeloImg");
-  const modalImg = document.getElementById("imgAmpliada");
-  const cerrar = document.getElementsByClassName("cerrar")[0];
-
-  img.onclick = function () {
-    modal.style.display = "block";
-    modalImg.src = this.src;
-  }
-
-  cerrar.onclick = function () {
-    modal.style.display = "none";
-  }
-
-  window.onclick = function(event) {
-    if (event.target === modal) {
-      modal.style.display = "none";
+     const modal = document.getElementById("modalImagen");
+     const img = document.getElementById("modeloImg");
+     const modalImg = document.getElementById("imgAmpliada");
+     const cerrar = document.getElementsByClassName("cerrar")[0];
+     
+     img.onclick = function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
     }
-  }
-</script>
-</body>
-
-<footer>
+    
+    cerrar.onclick = function () {
+        modal.style.display = "none";
+    }
+    
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    }
+    </script>
+    </body>
+    <footer>
         <div class="footer">
             <div class="row">
                 <a href="#"><i class="fa fa-facebook"></i></a>
