@@ -149,7 +149,7 @@ body {
     height: 400px;
     position: relative;
     background-color: transparent;
-    max-width: 50%;          /* un poco más grande que antes */
+    max-width: 70%;          /* un poco más grande que antes */
 }
 
 .banner_img img {
