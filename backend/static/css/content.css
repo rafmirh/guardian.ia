@@ -168,7 +168,7 @@ body {
         text-align: left;
     }
     .banner_img {
-        max-width: 50%; /* Tamaño intermedio para desktop */
+        max-width: 350%; /* Tamaño intermedio para desktop */
         margin: 0;
     }
 }
