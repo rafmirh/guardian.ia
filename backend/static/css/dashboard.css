@@ -1,73 +1,38 @@
-/* Estilos para el dashboard de Usurpación de Identidad - Versión Clara */
+/* Estilos para el dashboard de Usurpación de Identidad */
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
 
 { margin: 0; padding: 0; box-sizing: border-box; }
-body { 
-    font-family: Arial, sans-serif; 
-    background-color: #f5f5f5; /* Fondo claro general */
-}
+body { font-family: Arial, sans-serif; }
 
 .contenedor { width: 90%; max-width: 1200px; margin: auto; }
 
-.bg_animate { 
-    width: 100%; 
-    height: 17vh; 
-    background: linear-gradient(#444, #8a63a5, #444); /* Gradiente más claro */
-    position: relative; 
-    overflow: hidden; 
-}
+.bg_animate { width: 100%; height: 17vh; background: linear-gradient(#000, 
+#6d3d8d, #000); position: relative; overflow: hidden; }
 
-/* Protección de colores para gráficas */
-.dash-graph,
-.js-plotly-plot,
-.plot-container,
-.plotly,
-.modebar-container,
-.apexcharts-canvas,
-.chartjs-render-monitor {
-    --primary-color: #B026FF !important;
-    --secondary-color: #390c53 !important;
-    --accent-color: #58FAF4 !important;
-    --chart-color-1: #B026FF !important;
-    --chart-color-2: #390c53 !important;
-    --chart-color-3: #58FAF4 !important;
-}
+.header_nav { width: 100%; position: absolute; top: 0; left: 0; }
 
-.header_nav { 
-    width: 100%; 
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    background: rgba(50, 50, 50, 0.85); /* Fondo semi-transparente más claro */
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid #c77dff; /* Borde morado claro */
-}
-
-.header_nav .contenedor { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 15px 0; 
-}
+.header_nav .contenedor { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
 
 .header_nav h1 {
     color: #fff;
-    font-family: 'Audiowide', sans-serif;
+    font-family: 'Audiowide', sans-serif; /* Cambiada la fuente a Audiowide con un fallback genérico */
     font-size: 60px;
     margin-top: 20px;
     font-weight: bold; 
     text-shadow:
-        0 0 7px #d37bff, /* Morado claro */
+        /* Efecto de neón */
+        0 0 7px #d37bff,
         0 0 15px #d37bff,
         0 0 25px #d37bff,
-        -1px -1px 0 #444, /* Contorno más claro */
-         1px -1px 0 #444,
-        -1px  1px 0 #444,
-         1px  1px 0 #444,
-        -1px  0   0 #444,
-         1px  0   0 #444,
-         0   -1px 0 #444,
-         0    1px 0 #444;
+        /* Contorno negro */
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000,
+        -1px  0   0 #000,
+         1px  0   0 #000,
+         0   -1px 0 #000,
+         0    1px 0 #000;
 }
 
 .header_nav nav a {
@@ -76,13 +41,7 @@ body {
     font-weight: bold; 
     text-decoration: none;
     margin-right: 10px;
-    margin-top: 20px;
-    transition: all 0.3s ease;
-}
-
-.header_nav nav a:hover {
-    color: #d37bff; /* Morado claro al hover */
-    text-shadow: 0 0 8px #d37bff;
+    margin-top: 20px;   
 }
 
 .banner { display: flex; justify-content: space-between; align-items: center; height: 100%; }
@@ -91,150 +50,114 @@ body {
 
 .banner_img img { width: 600px; display: block; }
 
-@keyframes movimiento { 
-    0% { transform: translateY(0); } 
-    50% { transform: translateY(30px); } 
-    100% { transform: translateY(0); } 
+@keyframes movimiento { 0% { transform: translateY(0); } 50% { transform: translateY(30px); } 100% { transform: translateY(0); } }
+
+/* Estilos para la visualización del mapa responsivo */ #heatmap-container { width: 100% !important; height: 100% !important; overflow: hidden; border-radius: 5px; }
+
+#heatmap-container iframe { border: none; width: 100%; height: 100%; background-color: #444; }
+
+/* Efecto neón para títulos en las tarjetas */ .card-header { border-bottom-color: 
+#d37bff !important;
+    box-shadow: 0 0 10px rgba(211, 123, 255, 0.5); /* Initial shadow */
+    /* Add neon glow animation */
+    animation: header-neon-glow 2s infinite alternate ease-in-out;
 }
 
-/* Contenedor del mapa */
-#heatmap-container { 
-    width: 100% !important; 
-    height: 100% !important; 
-    overflow: hidden; 
-    border-radius: 5px; 
-    background-color: #e8e8e8 !important; /* Fondo claro */
+/* Keyframes for the card hover glow animation */
+@keyframes card-hover-glow {
+    0% {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(211, 123, 255, 0.3); /* Base card shadow */
+    }
+    50% {
+        box-shadow: 0 0 18px rgba(0, 0, 0, 0.6), 0 0 25px rgba(211, 123, 255, 0.6); /* Intensified glow */
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(211, 123, 255, 0.3); /* Base card shadow */
+    }
 }
 
-#heatmap-container iframe { 
-    border: none; 
-    width: 100%; 
-    height: 100%; 
+/* Keyframes for the header neon glow animation */
+@keyframes header-neon-glow {
+    0% { box-shadow: 0 0 5px rgba(211, 123, 255, 0.5), 0 0 10px rgba(211, 123, 255, 0.3); }
+    50% { box-shadow: 0 0 15px rgba(211, 123, 255, 0.8), 0 0 25px rgba(211, 123, 255, 0.6); }
+    100% { box-shadow: 0 0 5px rgba(211, 123, 255, 0.5), 0 0 10px rgba(211, 123, 255, 0.3); }
 }
-
-/* Estilos de tarjetas */
+/* Mejorar la visualización de los contenedores de tarjetas */
 .card {
     border-radius: 6px;
     overflow: hidden;
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(211, 123, 255, 0.3); /* Base shadow */
+    transition: transform 0.3s ease; /* Keep transform transition separate */
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px rgba(211, 123, 255, 0.4); /* Sombra morada clara */
+    animation: card-hover-glow 1.5s infinite alternate ease-in-out; /* Apply animation on hover */
+    transform: translateY(-3px); /* Keep existing transform */
 }
 
-.card-header {
-    background-color: #f8f8f8;
-    border-bottom: 2px solid #d37bff !important; /* Borde morado claro */
-    padding: 15px;
-    font-weight: bold;
-    color: #555;
-    animation: header-glow 2s infinite alternate;
-}
+/* Animations */ @keyframes glow { 0% { text-shadow: 0 0 5px 
+#d37bff, 0 0 10px 
+#d37bff; } 50% { text-shadow: 0 0 20px 
+#d37bff, 0 0 30px 
+#d37bff; } 100% { text-shadow: 0 0 5px 
+#d37bff, 0 0 10px 
+#d37bff; } }
 
-@keyframes header-glow {
-    0% { box-shadow: 0 4px 8px rgba(211, 123, 255, 0.1); }
-    100% { box-shadow: 0 4px 15px rgba(211, 123, 255, 0.3); }
-}
-
-/* Elementos interactivos */
+/* Neon effect for interactive elements (dropdowns, inputs, buttons) */
 .neon-interactive {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 8px 12px;
-    background-color: #fff;
-    color: #555;
-    transition: all 0.3s ease;
+    transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+    border: 1px solid #777; /* Default border, can be subtle */
+    border-radius: 4px; /* Consistent rounding */
+    /* Let the element itself define its background-color and color */
 }
 
 .neon-interactive:hover {
-    border-color: #d37bff;
-    box-shadow: 0 0 10px rgba(211, 123, 255, 0.3);
+    border-color: #d37bff; /* Purple neon */
+    box-shadow: 0 0 8px rgba(211, 123, 255, 0.6), 0 0 12px rgba(211, 123, 255, 0.4);
 }
 
-.neon-interactive:focus {
-    outline: none;
-    border-color: #d37bff;
-    box-shadow: 0 0 15px rgba(211, 123, 255, 0.4);
-    animation: input-glow 1.5s infinite alternate;
+/* Keyframes for the interactive element focus glow animation */
+@keyframes neon-focus-glow {
+    0% {
+        border-color: #d37bff; /* Start with purple */
+        box-shadow: 0 0 8px rgba(152, 255, 250, 0.4), 0 0 12px rgba(211, 123, 255, 0.3); /* Mix of cyan and purple */
+    }
+    50% {
+        border-color: #98fffa; /* Transition to cyan */
+        box-shadow: 0 0 15px rgba(152, 255, 250, 0.8), 0 0 25px rgba(152, 255, 250, 0.6); /* Strong cyan glow */
+    }
+    100% {
+        border-color: #d37bff; /* Back to purple */
+        box-shadow: 0 0 8px rgba(152, 255, 250, 0.4), 0 0 12px rgba(211, 123, 255, 0.3); /* Mix of cyan and purple */
+    }
 }
 
-@keyframes input-glow {
-    0% { box-shadow: 0 0 8px rgba(211, 123, 255, 0.3); }
-    100% { box-shadow: 0 0 15px rgba(211, 123, 255, 0.5); }
+.neon-interactive:focus,
+.neon-interactive:focus-within { /* focus-within for components like Dropdown that contain an input */
+    animation: neon-focus-glow 2s infinite alternate ease-in-out;
+    outline: none; /* Remove default browser outline */
 }
 
-/* Efectos de carga */
-.loading-spinner {
-    width: 50px;
-    height: 50px;
-    border: 4px solid rgba(211, 123, 255, 0.2);
-    border-top: 4px solid #d37bff;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 20px auto;
-}
+/* Media queries para responsividad */ @media (max-width: 768px) { .header_nav h1 { font-size: 40px; }
 
-.loading-text {
-    color: #666;
-    text-align: center;
+.header_nav nav a {
     font-size: 16px;
-    margin-top: 10px;
+    margin-right: 5px;
 }
 
-/* Animaciones */
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+.card-header {
+    font-size: 14px;
+}
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+@media (max-width: 576px) { .header_nav h1 { font-size: 30px; }
+
+.header_nav nav {
+    display: flex;
+    flex-direction: column;
 }
 
-/* Media queries para responsividad */
-@media (max-width: 768px) {
-    .header_nav h1 {
-        font-size: 40px;
-        margin-top: 15px;
-    }
-    
-    .header_nav nav a {
-        font-size: 16px;
-        margin-right: 8px;
-    }
-    
-    .card {
-        margin-bottom: 15px;
-    }
+.header_nav nav a {
+    margin-bottom: 5px;
 }
-
-@media (max-width: 576px) {
-    .header_nav h1 {
-        font-size: 30px;
-    }
-    
-    .header_nav .contenedor {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .header_nav nav {
-        margin-top: 10px;
-    }
-    
-    .header_nav nav a {
-        display: block;
-        margin: 5px 0;
-    }
-    
-    .banner_img img {
-        width: 100%;
-    }
 }
