@@ -120,7 +120,7 @@ body { font-family: Arial, sans-serif; }
     }
     100% {
         border-color: #B026FF;
-        box-shadow: 0 0 8px rgba(88, 250, 244, 0.4), 0 0 12px rgba(176, 38, 255, 0.3);
+        box-shadow: 0 0 8px rgba(8, 130, 151, 0.4), 0 0 12px rgba(134, 9, 107, 0.3);
     }
 }
 
