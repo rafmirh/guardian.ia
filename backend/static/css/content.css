@@ -143,23 +143,24 @@ body {
 
 .banner_img {
     display: flex;
-    justify-content: flex-start;  /* alinea a la izquierda */
+    justify-content: center;     /* centra la imagen */
     align-items: center;
-    margin: 100px auto;
-    height: 400px;
-    position: relative;
+    margin: 50px auto;           /* margen superior/inferior */
+    height: auto;
+    width: 100%;
+    max-width: 100%;
     background-color: transparent;
-    max-width: 100%;                /* permite más espacio para crecer */
-    padding-right: 250px;
+    padding: 0;                  /* elimina padding que pueda limitar el espacio */
 }
 
 .banner_img img {
-    width: 100%;
-    max-width:2000px;             /* Aumenta el tamaño máximo de la imagen */
+    width: 100%;                 /* ocupa todo el ancho del contenedor */
+    max-width: none;             /* elimina límite de tamaño */
     height: auto;
     object-fit: contain;
     display: block;
 }
+
 
 
 @media (min-width: 768px) {
