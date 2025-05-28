@@ -276,7 +276,7 @@ def init_dashboard(server):
         sexo_counts = filtered_df['sexo_texto'].value_counts().reset_index()
         sexo_counts.columns = ['Sexo', 'Cantidad']
         pie_fig = px.pie(sexo_counts, values='Cantidad', names='Sexo',
-                         color_discrete_sequence=['#FF99DD', '#6A8DFF'], hole=0.4)
+                         color_discrete_sequence=["#A31674CE", "#3B58B8C3"], hole=0.4)
         pie_fig.update_layout(plot_bgcolor='#222', paper_bgcolor='#222', font=dict(color='white'),
                               margin=dict(t=10, b=10, l=10, r=10))
         pie_fig.update_traces(textinfo='percent+label')
