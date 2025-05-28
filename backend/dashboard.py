@@ -195,8 +195,7 @@ def init_dashboard(server):
                         className='mb-3 neon-interactive', style={'backgroundColor': '#222', 'color': '#000'})
                 ], width=3)
             ], className="mb-4"),
-
-           # Main row for the chart grid and heatmap
+            
            # Main row for the chart grid and heatmap
 dbc.Row([
     dbc.Col([
