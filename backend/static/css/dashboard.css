@@ -7,7 +7,7 @@ body { font-family: Arial, sans-serif; }
 .contenedor { width: 90%; max-width: 1200px; margin: auto; }
 
 .bg_animate { width: 100%; height: 17vh; background: linear-gradient(#000, 
-#6d3d8d, #000); position: relative; overflow: hidden; }
+#390c53, #000); position: relative; overflow: hidden; }
 
 .header_nav { width: 100%; position: absolute; top: 0; left: 0; }
 
@@ -15,16 +15,14 @@ body { font-family: Arial, sans-serif; }
 
 .header_nav h1 {
     color: #fff;
-    font-family: 'Audiowide', sans-serif; /* Cambiada la fuente a Audiowide con un fallback genérico */
+    font-family: 'Audiowide', sans-serif;
     font-size: 60px;
     margin-top: 20px;
     font-weight: bold; 
     text-shadow:
-        /* Efecto de neón */
-        0 0 7px #d37bff,
-        0 0 15px #d37bff,
-        0 0 25px #d37bff,
-        /* Contorno negro */
+        0 0 7px #B026FF,
+        0 0 15px #B026FF,
+        0 0 25px #B026FF,
         -1px -1px 0 #000,
          1px -1px 0 #000,
         -1px  1px 0 #000,
@@ -52,112 +50,95 @@ body { font-family: Arial, sans-serif; }
 
 @keyframes movimiento { 0% { transform: translateY(0); } 50% { transform: translateY(30px); } 100% { transform: translateY(0); } }
 
-/* Estilos para la visualización del mapa responsivo */ #heatmap-container { width: 100% !important; height: 100% !important; overflow: hidden; border-radius: 5px; }
+/* Estilos para la visualización del mapa responsivo */
+#heatmap-container { width: 100% !important; height: 100% !important; overflow: hidden; border-radius: 5px; }
 
-#heatmap-container iframe { border: none; width: 100%; height: 100%; background-color: #252525; }
+#heatmap-container iframe { border: none; width: 100%; height: 100%; background-color: #222; }
 
-/* Efecto neón para títulos en las tarjetas */ .card-header { border-bottom-color: 
-#d37bff !important;
-    box-shadow: 0 0 10px rgba(211, 123, 255, 0.5); /* Initial shadow */
-    /* Add neon glow animation */
+/* Efecto neón para títulos en las tarjetas */
+.card-header { border-bottom-color: 
+#B026FF !important;
+    box-shadow: 0 0 10px rgba(176, 38, 255, 0.5);
     animation: header-neon-glow 2s infinite alternate ease-in-out;
 }
 
-/* Keyframes for the card hover glow animation */
 @keyframes card-hover-glow {
     0% {
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(211, 123, 255, 0.3); /* Base card shadow */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(176, 38, 255, 0.3);
     }
     50% {
-        box-shadow: 0 0 18px rgba(0, 0, 0, 0.6), 0 0 25px rgba(211, 123, 255, 0.6); /* Intensified glow */
+        box-shadow: 0 0 18px rgba(0, 0, 0, 0.6), 0 0 25px rgba(176, 38, 255, 0.6);
     }
     100% {
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(211, 123, 255, 0.3); /* Base card shadow */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(176, 38, 255, 0.3);
     }
 }
 
-/* Keyframes for the header neon glow animation */
 @keyframes header-neon-glow {
-    0% { box-shadow: 0 0 5px rgba(211, 123, 255, 0.5), 0 0 10px rgba(211, 123, 255, 0.3); }
-    50% { box-shadow: 0 0 15px rgba(211, 123, 255, 0.8), 0 0 25px rgba(211, 123, 255, 0.6); }
-    100% { box-shadow: 0 0 5px rgba(211, 123, 255, 0.5), 0 0 10px rgba(211, 123, 255, 0.3); }
+    0% { box-shadow: 0 0 5px rgba(176, 38, 255, 0.5), 0 0 10px rgba(176, 38, 255, 0.3); }
+    50% { box-shadow: 0 0 15px rgba(176, 38, 255, 0.8), 0 0 25px rgba(176, 38, 255, 0.6); }
+    100% { box-shadow: 0 0 5px rgba(176, 38, 255, 0.5), 0 0 10px rgba(176, 38, 255, 0.3); }
 }
-/* Mejorar la visualización de los contenedores de tarjetas */
+
 .card {
     border-radius: 6px;
     overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(211, 123, 255, 0.3); /* Base shadow */
-    transition: transform 0.3s ease; /* Keep transform transition separate */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(176, 38, 255, 0.3);
+    transition: transform 0.3s ease;
 }
 
 .card:hover {
-    animation: card-hover-glow 1.5s infinite alternate ease-in-out; /* Apply animation on hover */
-    transform: translateY(-3px); /* Keep existing transform */
+    animation: card-hover-glow 1.5s infinite alternate ease-in-out;
+    transform: translateY(-3px);
 }
 
-/* Animations */ @keyframes glow { 0% { text-shadow: 0 0 5px 
-#d37bff, 0 0 10px 
-#d37bff; } 50% { text-shadow: 0 0 20px 
-#d37bff, 0 0 30px 
-#d37bff; } 100% { text-shadow: 0 0 5px 
-#d37bff, 0 0 10px 
-#d37bff; } }
+@keyframes glow { 
+    0% { text-shadow: 0 0 5px #B026FF, 0 0 10px #B026FF; } 
+    50% { text-shadow: 0 0 20px #B026FF, 0 0 30px #B026FF; } 
+    100% { text-shadow: 0 0 5px #B026FF, 0 0 10px #B026FF; } 
+}
 
-/* Neon effect for interactive elements (dropdowns, inputs, buttons) */
 .neon-interactive {
     transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
-    border: 1px solid #777; /* Default border, can be subtle */
-    border-radius: 4px; /* Consistent rounding */
-    /* Let the element itself define its background-color and color */
+    border: 1px solid #555;
+    border-radius: 4px;
 }
 
 .neon-interactive:hover {
-    border-color: #d37bff; /* Purple neon */
-    box-shadow: 0 0 8px rgba(211, 123, 255, 0.6), 0 0 12px rgba(211, 123, 255, 0.4);
+    border-color: #B026FF;
+    box-shadow: 0 0 8px rgba(176, 38, 255, 0.6), 0 0 12px rgba(176, 38, 255, 0.4);
 }
 
-/* Keyframes for the interactive element focus glow animation */
 @keyframes neon-focus-glow {
     0% {
-        border-color: #d37bff; /* Start with purple */
-        box-shadow: 0 0 8px rgba(152, 255, 250, 0.4), 0 0 12px rgba(211, 123, 255, 0.3); /* Mix of cyan and purple */
+        border-color: #B026FF;
+        box-shadow: 0 0 8px rgba(88, 250, 244, 0.4), 0 0 12px rgba(176, 38, 255, 0.3);
     }
     50% {
-        border-color: #98fffa; /* Transition to cyan */
-        box-shadow: 0 0 15px rgba(152, 255, 250, 0.8), 0 0 25px rgba(152, 255, 250, 0.6); /* Strong cyan glow */
+        border-color: #58FAF4;
+        box-shadow: 0 0 15px rgba(88, 250, 244, 0.8), 0 0 25px rgba(88, 250, 244, 0.6);
     }
     100% {
-        border-color: #d37bff; /* Back to purple */
-        box-shadow: 0 0 8px rgba(152, 255, 250, 0.4), 0 0 12px rgba(211, 123, 255, 0.3); /* Mix of cyan and purple */
+        border-color: #B026FF;
+        box-shadow: 0 0 8px rgba(88, 250, 244, 0.4), 0 0 12px rgba(176, 38, 255, 0.3);
     }
 }
 
 .neon-interactive:focus,
-.neon-interactive:focus-within { /* focus-within for components like Dropdown that contain an input */
+.neon-interactive:focus-within {
     animation: neon-focus-glow 2s infinite alternate ease-in-out;
-    outline: none; /* Remove default browser outline */
+    outline: none;
 }
 
-/* Media queries para responsividad */ @media (max-width: 768px) { .header_nav h1 { font-size: 40px; }
-
-.header_nav nav a {
-    font-size: 16px;
-    margin-right: 5px;
+/* Media queries */
+@media (max-width: 768px) {
+    .header_nav h1 { font-size: 40px; }
+    .header_nav nav a { font-size: 16px; margin-right: 5px; }
+    .card-header { font-size: 14px; }
 }
 
-.card-header {
-    font-size: 14px;
-}
-}
-
-@media (max-width: 576px) { .header_nav h1 { font-size: 30px; }
-
-.header_nav nav {
-    display: flex;
-    flex-direction: column;
-}
-
-.header_nav nav a {
-    margin-bottom: 5px;
-}
+@media (max-width: 576px) {
+    .header_nav h1 { font-size: 30px; }
+    .header_nav nav { display: flex; flex-direction: column; }
+    .header_nav nav a { margin-bottom: 5px; }
 }
