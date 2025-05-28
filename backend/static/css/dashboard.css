@@ -2,17 +2,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
 
 { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: Arial, sans-serif; background-color: #f5f5f5; }
+body { 
+    font-family: Arial, sans-serif; 
+    background-color: #f8f9fa; /* Fondo más claro */
+}
 
 .contenedor { width: 90%; max-width: 1200px; margin: auto; }
 
 .bg_animate { 
     width: 100%; 
     height: 17vh; 
-    background: linear-gradient(#333, 
-    #9a6fb5, #333); 
+    background: linear-gradient(#444, #8a63a5, #444); /* Gradiente más claro */
     position: relative; 
     overflow: hidden; 
+}
+
+/* ESTILOS PARA GRÁFICAS - SE MANTIENEN LOS ORIGINALES */
+.chart-container, 
+.chartjs-render-monitor,
+.apexcharts-canvas {
+    /* Estos selectores mantienen los colores originales de las gráficas */
+    --chart-color-1: #B026FF !important;
+    --chart-color-2: #390c53 !important;
+    --chart-color-3: #58FAF4 !important;
 }
 
 .header_nav { width: 100%; position: absolute; top: 0; left: 0; }
@@ -31,19 +43,17 @@ body { font-family: Arial, sans-serif; background-color: #f5f5f5; }
     margin-top: 20px;
     font-weight: bold; 
     text-shadow:
-        /* Efecto de neón más suave */
-        0 0 7px #d9b3ff,
-        0 0 15px #d9b3ff,
-        0 0 25px #d9b3ff,
-        /* Contorno más suave */
-        -1px -1px 0 #555,
-         1px -1px 0 #555,
-        -1px  1px 0 #555,
-         1px  1px 0 #555,
-        -1px  0   0 #555,
-         1px  0   0 #555,
-         0   -1px 0 #555,
-         0    1px 0 #555;
+        0 0 7px #c77dff, /* Morado más claro */
+        0 0 15px #c77dff,
+        0 0 25px #c77dff,
+        -1px -1px 0 #333,
+         1px -1px 0 #333,
+        -1px  1px 0 #333,
+         1px  1px 0 #333,
+        -1px  0   0 #333,
+         1px  0   0 #333,
+         0   -1px 0 #333,
+         0    1px 0 #333;
 }
 
 .header_nav nav a {
@@ -67,53 +77,43 @@ body { font-family: Arial, sans-serif; background-color: #f5f5f5; }
     100% { transform: translateY(0); } 
 }
 
-/* Estilos para la visualización del mapa responsivo */ 
 #heatmap-container { 
     width: 100% !important; 
     height: 100% !important; 
     overflow: hidden; 
     border-radius: 5px; 
+    background-color: #eaeaea !important; /* Fondo más claro */
 }
 
 #heatmap-container iframe { 
     border: none; 
     width: 100%; 
     height: 100%; 
-    background-color: #e0e0e0; 
 }
 
-/* Efecto neón suave para títulos en las tarjetas */ 
+/* Resto de estilos con colores modificados (excepto gráficas) */
 .card-header { 
-    border-bottom-color: #d9b3ff !important;
-    box-shadow: 0 0 10px rgba(217, 179, 255, 0.3);
+    border-bottom-color: #c77dff !important; /* Morado más claro */
+    box-shadow: 0 0 10px rgba(199, 125, 255, 0.3);
     animation: header-neon-glow 2s infinite alternate ease-in-out;
 }
 
-/* Keyframes for the card hover glow animation */
 @keyframes card-hover-glow {
-    0% {
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 0 15px rgba(217, 179, 255, 0.2);
-    }
-    50% {
-        box-shadow: 0 0 18px rgba(0, 0, 0, 0.15), 0 0 25px rgba(217, 179, 255, 0.4);
-    }
-    100% {
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 0 15px rgba(217, 179, 255, 0.2);
-    }
+    0% { box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 0 15px rgba(199, 125, 255, 0.2); }
+    50% { box-shadow: 0 0 18px rgba(0, 0, 0, 0.15), 0 0 25px rgba(199, 125, 255, 0.4); }
+    100% { box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 0 15px rgba(199, 125, 255, 0.2); }
 }
 
-/* Keyframes for the header neon glow animation */
 @keyframes header-neon-glow {
-    0% { box-shadow: 0 0 5px rgba(217, 179, 255, 0.3), 0 0 10px rgba(217, 179, 255, 0.2); }
-    50% { box-shadow: 0 0 15px rgba(217, 179, 255, 0.5), 0 0 25px rgba(217, 179, 255, 0.4); }
-    100% { box-shadow: 0 0 5px rgba(217, 179, 255, 0.3), 0 0 10px rgba(217, 179, 255, 0.2); }
+    0% { box-shadow: 0 0 5px rgba(199, 125, 255, 0.3), 0 0 10px rgba(199, 125, 255, 0.2); }
+    50% { box-shadow: 0 0 15px rgba(199, 125, 255, 0.5), 0 0 25px rgba(199, 125, 255, 0.4); }
+    100% { box-shadow: 0 0 5px rgba(199, 125, 255, 0.3), 0 0 10px rgba(199, 125, 255, 0.2); }
 }
 
-/* Mejorar la visualización de los contenedores de tarjetas */
 .card {
     border-radius: 6px;
     overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 0 15px rgba(217, 179, 255, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 0 15px rgba(199, 125, 255, 0.2);
     transition: transform 0.3s ease;
     background-color: #fff;
 }
@@ -123,41 +123,29 @@ body { font-family: Arial, sans-serif; background-color: #f5f5f5; }
     transform: translateY(-3px);
 }
 
-/* Animations */ 
 @keyframes glow { 
-    0% { text-shadow: 0 0 5px #d9b3ff, 0 0 10px #d9b3ff; } 
-    50% { text-shadow: 0 0 20px #d9b3ff, 0 0 30px #d9b3ff; } 
-    100% { text-shadow: 0 0 5px #d9b3ff, 0 0 10px #d9b3ff; } 
+    0% { text-shadow: 0 0 5px #c77dff, 0 0 10px #c77dff; } 
+    50% { text-shadow: 0 0 20px #c77dff, 0 0 30px #c77dff; } 
+    100% { text-shadow: 0 0 5px #c77dff, 0 0 10px #c77dff; } 
 }
 
-/* Neon effect for interactive elements (dropdowns, inputs, buttons) */
 .neon-interactive {
     transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
-    border: 1px solid #aaa;
+    border: 1px solid #bbb;
     border-radius: 4px;
     background-color: #fff;
     color: #555;
 }
 
 .neon-interactive:hover {
-    border-color: #d9b3ff;
-    box-shadow: 0 0 8px rgba(217, 179, 255, 0.4), 0 0 12px rgba(217, 179, 255, 0.3);
+    border-color: #c77dff;
+    box-shadow: 0 0 8px rgba(199, 125, 255, 0.4), 0 0 12px rgba(199, 125, 255, 0.3);
 }
 
-/* Keyframes for the interactive element focus glow animation */
 @keyframes neon-focus-glow {
-    0% {
-        border-color: #d9b3ff;
-        box-shadow: 0 0 8px rgba(200, 255, 253, 0.3), 0 0 12px rgba(217, 179, 255, 0.2);
-    }
-    50% {
-        border-color: #c8fffd;
-        box-shadow: 0 0 15px rgba(200, 255, 253, 0.6), 0 0 25px rgba(200, 255, 253, 0.4);
-    }
-    100% {
-        border-color: #d9b3ff;
-        box-shadow: 0 0 8px rgba(200, 255, 253, 0.3), 0 0 12px rgba(217, 179, 255, 0.2);
-    }
+    0% { border-color: #c77dff; box-shadow: 0 0 8px rgba(168, 255, 252, 0.3), 0 0 12px rgba(199, 125, 255, 0.2); }
+    50% { border-color: #a8fffc; box-shadow: 0 0 15px rgba(168, 255, 252, 0.6), 0 0 25px rgba(168, 255, 252, 0.4); }
+    100% { border-color: #c77dff; box-shadow: 0 0 8px rgba(168, 255, 252, 0.3), 0 0 12px rgba(199, 125, 255, 0.2); }
 }
 
 .neon-interactive:focus,
@@ -166,29 +154,15 @@ body { font-family: Arial, sans-serif; background-color: #f5f5f5; }
     outline: none;
 }
 
-/* Media queries para responsividad */ 
+/* Media queries */
 @media (max-width: 768px) { 
     .header_nav h1 { font-size: 40px; }
-
-    .header_nav nav a {
-        font-size: 16px;
-        margin-right: 5px;
-    }
-
-    .card-header {
-        font-size: 14px;
-    }
+    .header_nav nav a { font-size: 16px; margin-right: 5px; }
+    .card-header { font-size: 14px; }
 }
 
 @media (max-width: 576px) { 
     .header_nav h1 { font-size: 30px; }
-
-    .header_nav nav {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .header_nav nav a {
-        margin-bottom: 5px;
-    }
+    .header_nav nav { flex-direction: column; }
+    .header_nav nav a { margin-bottom: 5px; }
 }
