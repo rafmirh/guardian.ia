@@ -159,7 +159,7 @@ body {
     height: auto;
     object-fit: contain;
     display: block;
-    margin-right: 50px;              /* Ajusta cuánto la mueves a la izquierda */
+    margin-right: 0px;              /* Ajusta cuánto la mueves a la izquierda */
     transform: translateX(0px);     /* La empuja un poco más a la derecha */
 }
 
