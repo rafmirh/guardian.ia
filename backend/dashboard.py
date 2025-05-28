@@ -196,39 +196,39 @@ def init_dashboard(server):
                 ], width=3)
             ], className="mb-4"),
 
-            # Main row for the chart grid and heatmap
-            dbc.Row([
-                # Left column for the 2x2 grid of charts
-                dbc.Col([
-                    dbc.Row([
-                        dbc.Col([
-                            dbc.Card([
-                                dbc.CardHeader("Distribución por Sexo", style={'backgroundColor': '#390c53', 'color': 'white'}),
-                                dbc.CardBody([dcc.Graph(id='pie-sexo', style={'height': '30vh'}, config={'responsive': True})])
-                            ], style={'height': '100%', 'backgroundColor': '#222', 'borderColor': '#B026FF'})
-                        ], md=6),
-                        dbc.Col([
-                            dbc.Card([
-                                dbc.CardHeader("Distribución por Edad", style={'backgroundColor': '#390c53', 'color': 'white'}),
-                                dbc.CardBody([dcc.Graph(id='bar-edad', style={'height': '30vh'}, config={'responsive': True})])
-                            ], style={'height': '100%', 'backgroundColor': '#222', 'borderColor': '#B026FF'})
-                        ], md=6)
-                    ], className="mb-4"),
-                    dbc.Row([
-                        dbc.Col([
-                            dbc.Card([
-                                dbc.CardHeader("Tendencia por Año", style={'backgroundColor': '#390c53', 'color': 'white'}),
-                                dbc.CardBody([dcc.Graph(id='line-anio', style={'height': '30vh'}, config={'responsive': True})])
-                            ], style={'height': '100%', 'backgroundColor': '#222', 'borderColor': '#B026FF'})
-                        ], md=6),
-                        dbc.Col([
-                            dbc.Card([
-                                dbc.CardHeader("Distribución por Colonia", style={'backgroundColor': '#390c53', 'color': 'white'}),
-                                dbc.CardBody([dcc.Graph(id='treemap-colonia', style={'height': '30vh'}, config={'responsive': True})])
-                            ], style={'height': '100%', 'backgroundColor': '#222', 'borderColor': '#B026FF'})
-                        ], md=6)
-                    ])
-                ], md=8),
+           # Main row for the chart grid and heatmap
+dbc.Row([
+    # Left column for the 2x2 grid of charts
+    dbc.Col([
+        dbc.Row([
+            dbc.Col([
+                dbc.Card([
+                    dbc.CardHeader("Distribución por Sexo", style={'backgroundColor': '#9c7bad', 'color': 'white'}),
+                    dbc.CardBody([dcc.Graph(id='pie-sexo', style={'height': '30vh'}, config={'responsive': True})])
+                ], style={'height': '100%', 'backgroundColor': '#f8f9fa', 'borderColor': '#d1b3e0'})
+            ], md=6),
+            dbc.Col([
+                dbc.Card([
+                    dbc.CardHeader("Distribución por Edad", style={'backgroundColor': '#9c7bad', 'color': 'white'}),
+                    dbc.CardBody([dcc.Graph(id='bar-edad', style={'height': '30vh'}, config={'responsive': True})])
+                ], style={'height': '100%', 'backgroundColor': '#f8f9fa', 'borderColor': '#d1b3e0'})
+            ], md=6)
+        ], className="mb-4"),
+        dbc.Row([
+            dbc.Col([
+                dbc.Card([
+                    dbc.CardHeader("Tendencia por Año", style={'backgroundColor': '#9c7bad', 'color': 'white'}),
+                    dbc.CardBody([dcc.Graph(id='line-anio', style={'height': '30vh'}, config={'responsive': True})])
+                ], style={'height': '100%', 'backgroundColor': '#f8f9fa', 'borderColor': '#d1b3e0'})
+            ], md=6),
+            dbc.Col([
+                dbc.Card([
+                    dbc.CardHeader("Distribución por Colonia", style={'backgroundColor': '#9c7bad', 'color': 'white'}),
+                    dbc.CardBody([dcc.Graph(id='treemap-colonia', style={'height': '30vh'}, config={'responsive': True})])
+                ], style={'height': '100%', 'backgroundColor': '#f8f9fa', 'borderColor': '#d1b3e0'})
+            ], md=6)
+        ])
+    ], md=8),
 
                 # Right column for the Heatmap
                 dbc.Col([
