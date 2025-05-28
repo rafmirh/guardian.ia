@@ -2,58 +2,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
 
 { margin: 0; padding: 0; box-sizing: border-box; }
-body { 
-    font-family: Arial, sans-serif; 
-    background-color: #f8f9fa; /* Fondo más claro */
-}
+body { font-family: Arial, sans-serif; }
 
 .contenedor { width: 90%; max-width: 1200px; margin: auto; }
 
-.bg_animate { 
-    width: 100%; 
-    height: 17vh; 
-    background: linear-gradient(#444, #8a63a5, #444); /* Gradiente más claro */
-    position: relative; 
-    overflow: hidden; 
-}
-
-/* ESTILOS PARA GRÁFICAS - SE MANTIENEN LOS ORIGINALES */
-.chart-container, 
-.chartjs-render-monitor,
-.apexcharts-canvas {
-    /* Estos selectores mantienen los colores originales de las gráficas */
-    --chart-color-1: #B026FF !important;
-    --chart-color-2: #390c53 !important;
-    --chart-color-3: #58FAF4 !important;
-}
+.bg_animate { width: 100%; height: 17vh; background: linear-gradient(#000, 
+#6d3d8d, #000); position: relative; overflow: hidden; }
 
 .header_nav { width: 100%; position: absolute; top: 0; left: 0; }
 
-.header_nav .contenedor { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 15px 0; 
-}
+.header_nav .contenedor { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
 
 .header_nav h1 {
     color: #fff;
-    font-family: 'Audiowide', sans-serif;
+    font-family: 'Audiowide', sans-serif; /* Cambiada la fuente a Audiowide con un fallback genérico */
     font-size: 60px;
     margin-top: 20px;
     font-weight: bold; 
     text-shadow:
-        0 0 7px #c77dff, /* Morado más claro */
-        0 0 15px #c77dff,
-        0 0 25px #c77dff,
-        -1px -1px 0 #333,
-         1px -1px 0 #333,
-        -1px  1px 0 #333,
-         1px  1px 0 #333,
-        -1px  0   0 #333,
-         1px  0   0 #333,
-         0   -1px 0 #333,
-         0    1px 0 #333;
+        /* Efecto de neón */
+        0 0 7px #d37bff,
+        0 0 15px #d37bff,
+        0 0 25px #d37bff,
+        /* Contorno negro */
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000,
+        -1px  0   0 #000,
+         1px  0   0 #000,
+         0   -1px 0 #000,
+         0    1px 0 #000;
 }
 
 .header_nav nav a {
@@ -71,98 +50,114 @@ body {
 
 .banner_img img { width: 600px; display: block; }
 
-@keyframes movimiento { 
-    0% { transform: translateY(0); } 
-    50% { transform: translateY(30px); } 
-    100% { transform: translateY(0); } 
-}
+@keyframes movimiento { 0% { transform: translateY(0); } 50% { transform: translateY(30px); } 100% { transform: translateY(0); } }
 
-#heatmap-container { 
-    width: 100% !important; 
-    height: 100% !important; 
-    overflow: hidden; 
-    border-radius: 5px; 
-    background-color: #eaeaea !important; /* Fondo más claro */
-}
+/* Estilos para la visualización del mapa responsivo */ #heatmap-container { width: 100% !important; height: 100% !important; overflow: hidden; border-radius: 5px; }
 
-#heatmap-container iframe { 
-    border: none; 
-    width: 100%; 
-    height: 100%; 
-}
+#heatmap-container iframe { border: none; width: 100%; height: 100%; background-color: #444; }
 
-/* Resto de estilos con colores modificados (excepto gráficas) */
-.card-header { 
-    border-bottom-color: #c77dff !important; /* Morado más claro */
-    box-shadow: 0 0 10px rgba(199, 125, 255, 0.3);
+/* Efecto neón para títulos en las tarjetas */ .card-header { border-bottom-color: 
+#d37bff !important;
+    box-shadow: 0 0 10px rgba(211, 123, 255, 0.5); /* Initial shadow */
+    /* Add neon glow animation */
     animation: header-neon-glow 2s infinite alternate ease-in-out;
 }
 
+/* Keyframes for the card hover glow animation */
 @keyframes card-hover-glow {
-    0% { box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 0 15px rgba(199, 125, 255, 0.2); }
-    50% { box-shadow: 0 0 18px rgba(0, 0, 0, 0.15), 0 0 25px rgba(199, 125, 255, 0.4); }
-    100% { box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 0 15px rgba(199, 125, 255, 0.2); }
+    0% {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(211, 123, 255, 0.3); /* Base card shadow */
+    }
+    50% {
+        box-shadow: 0 0 18px rgba(0, 0, 0, 0.6), 0 0 25px rgba(211, 123, 255, 0.6); /* Intensified glow */
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(211, 123, 255, 0.3); /* Base card shadow */
+    }
 }
 
+/* Keyframes for the header neon glow animation */
 @keyframes header-neon-glow {
-    0% { box-shadow: 0 0 5px rgba(199, 125, 255, 0.3), 0 0 10px rgba(199, 125, 255, 0.2); }
-    50% { box-shadow: 0 0 15px rgba(199, 125, 255, 0.5), 0 0 25px rgba(199, 125, 255, 0.4); }
-    100% { box-shadow: 0 0 5px rgba(199, 125, 255, 0.3), 0 0 10px rgba(199, 125, 255, 0.2); }
+    0% { box-shadow: 0 0 5px rgba(211, 123, 255, 0.5), 0 0 10px rgba(211, 123, 255, 0.3); }
+    50% { box-shadow: 0 0 15px rgba(211, 123, 255, 0.8), 0 0 25px rgba(211, 123, 255, 0.6); }
+    100% { box-shadow: 0 0 5px rgba(211, 123, 255, 0.5), 0 0 10px rgba(211, 123, 255, 0.3); }
 }
-
+/* Mejorar la visualización de los contenedores de tarjetas */
 .card {
     border-radius: 6px;
     overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 0 15px rgba(199, 125, 255, 0.2);
-    transition: transform 0.3s ease;
-    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(211, 123, 255, 0.3); /* Base shadow */
+    transition: transform 0.3s ease; /* Keep transform transition separate */
 }
 
 .card:hover {
-    animation: card-hover-glow 1.5s infinite alternate ease-in-out;
-    transform: translateY(-3px);
+    animation: card-hover-glow 1.5s infinite alternate ease-in-out; /* Apply animation on hover */
+    transform: translateY(-3px); /* Keep existing transform */
 }
 
-@keyframes glow { 
-    0% { text-shadow: 0 0 5px #c77dff, 0 0 10px #c77dff; } 
-    50% { text-shadow: 0 0 20px #c77dff, 0 0 30px #c77dff; } 
-    100% { text-shadow: 0 0 5px #c77dff, 0 0 10px #c77dff; } 
-}
+/* Animations */ @keyframes glow { 0% { text-shadow: 0 0 5px 
+#d37bff, 0 0 10px 
+#d37bff; } 50% { text-shadow: 0 0 20px 
+#d37bff, 0 0 30px 
+#d37bff; } 100% { text-shadow: 0 0 5px 
+#d37bff, 0 0 10px 
+#d37bff; } }
 
+/* Neon effect for interactive elements (dropdowns, inputs, buttons) */
 .neon-interactive {
     transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
-    border: 1px solid #bbb;
-    border-radius: 4px;
-    background-color: #fff;
-    color: #555;
+    border: 1px solid #777; /* Default border, can be subtle */
+    border-radius: 4px; /* Consistent rounding */
+    /* Let the element itself define its background-color and color */
 }
 
 .neon-interactive:hover {
-    border-color: #c77dff;
-    box-shadow: 0 0 8px rgba(199, 125, 255, 0.4), 0 0 12px rgba(199, 125, 255, 0.3);
+    border-color: #d37bff; /* Purple neon */
+    box-shadow: 0 0 8px rgba(211, 123, 255, 0.6), 0 0 12px rgba(211, 123, 255, 0.4);
 }
 
+/* Keyframes for the interactive element focus glow animation */
 @keyframes neon-focus-glow {
-    0% { border-color: #c77dff; box-shadow: 0 0 8px rgba(168, 255, 252, 0.3), 0 0 12px rgba(199, 125, 255, 0.2); }
-    50% { border-color: #a8fffc; box-shadow: 0 0 15px rgba(168, 255, 252, 0.6), 0 0 25px rgba(168, 255, 252, 0.4); }
-    100% { border-color: #c77dff; box-shadow: 0 0 8px rgba(168, 255, 252, 0.3), 0 0 12px rgba(199, 125, 255, 0.2); }
+    0% {
+        border-color: #d37bff; /* Start with purple */
+        box-shadow: 0 0 8px rgba(152, 255, 250, 0.4), 0 0 12px rgba(211, 123, 255, 0.3); /* Mix of cyan and purple */
+    }
+    50% {
+        border-color: #98fffa; /* Transition to cyan */
+        box-shadow: 0 0 15px rgba(152, 255, 250, 0.8), 0 0 25px rgba(152, 255, 250, 0.6); /* Strong cyan glow */
+    }
+    100% {
+        border-color: #d37bff; /* Back to purple */
+        box-shadow: 0 0 8px rgba(152, 255, 250, 0.4), 0 0 12px rgba(211, 123, 255, 0.3); /* Mix of cyan and purple */
+    }
 }
 
 .neon-interactive:focus,
-.neon-interactive:focus-within {
+.neon-interactive:focus-within { /* focus-within for components like Dropdown that contain an input */
     animation: neon-focus-glow 2s infinite alternate ease-in-out;
-    outline: none;
+    outline: none; /* Remove default browser outline */
 }
 
-/* Media queries */
-@media (max-width: 768px) { 
-    .header_nav h1 { font-size: 40px; }
-    .header_nav nav a { font-size: 16px; margin-right: 5px; }
-    .card-header { font-size: 14px; }
+/* Media queries para responsividad */ @media (max-width: 768px) { .header_nav h1 { font-size: 40px; }
+
+.header_nav nav a {
+    font-size: 16px;
+    margin-right: 5px;
 }
 
-@media (max-width: 576px) { 
-    .header_nav h1 { font-size: 30px; }
-    .header_nav nav { flex-direction: column; }
-    .header_nav nav a { margin-bottom: 5px; }
+.card-header {
+    font-size: 14px;
+}
+}
+
+@media (max-width: 576px) { .header_nav h1 { font-size: 30px; }
+
+.header_nav nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.header_nav nav a {
+    margin-bottom: 5px;
+}
 }
