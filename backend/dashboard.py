@@ -197,8 +197,8 @@ def init_dashboard(server):
             ], className="mb-4"),
 
            # Main row for the chart grid and heatmap
+           # Main row for the chart grid and heatmap
 dbc.Row([
-    # Left column for the 2x2 grid of charts
     dbc.Col([
         dbc.Row([
             dbc.Col([
@@ -229,7 +229,7 @@ dbc.Row([
             ], md=6)
         ])
     ], md=8),
-
+           
                 # Right column for the Heatmap
                 dbc.Col([
                     dbc.Card([
