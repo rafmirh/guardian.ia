@@ -448,3 +448,11 @@ body {
         font-size: 16px;
     }
 }
+
+/* Estilo para justificar el texto dentro del aviso de privacidad */
+    #privacy-modal .modal-body p {
+        text-align: justify;
+        line-height: 1.6;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
