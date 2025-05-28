@@ -11,35 +11,31 @@
       height: 100%;
       margin: 0;
       padding: 0;
-      overflow: hidden; /* Muy importante para evitar barras de desplazamiento no deseadas */
+      overflow: hidden;
       background: linear-gradient(#000, #390c53, #000);
       color: #ffffff;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-
+    
     .dashboard-iframe {
       width: 100%;
-      height: 100vh; /* Establecemos 100vh inicialmente, JavaScript lo ajustará */
+      height: calc(100vh - 100px); /* Altura ajustada para dejar espacio al header */
       border: none;
-      /* margin-top será ajustado por JavaScript */
-      position: absolute; /* Esto permite que el iframe se posicione correctamente */
-      top: 0; /* Lo movemos al top para que JavaScript lo ajuste desde ahí */
-      left: 0;
+      margin-top: 100px; /* Espacio para el header */
     }
-
+    
     /* Header styles */
     .header_nav {
       width: 100%;
-      position: fixed; /* Esto es crucial para que el header no afecte el flujo del documento */
+      position: fixed;
       top: 0;
       left: 0;
       z-index: 1000;
       background: rgba(0, 0, 0, 0.7);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid #B026FF;
-      box-sizing: border-box; /* Asegura que el padding y el border no aumenten el ancho total */
     }
-
+    
     /* Loading indicator */
     .loading {
       position: absolute;
@@ -48,9 +44,8 @@
       transform: translate(-50%, -50%);
       text-align: center;
       z-index: 500;
-      /* Asegura que el indicador de carga esté sobre el iframe antes de que cargue */
     }
-
+    
     .loading-text {
       margin-top: 20px;
       font-size: 18px;
@@ -58,7 +53,7 @@
       font-weight: bold;
       text-shadow: 0 0 10px #B026FF;
     }
-
+    
     .spinner {
       width: 60px;
       height: 60px;
@@ -69,7 +64,7 @@
       margin: 0 auto;
       box-shadow: 0 0 15px #B026FF;
     }
-
+    
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
@@ -90,11 +85,13 @@
     </div>
   </header>
 
+  <!-- Loading indicator -->
   <div class="loading" id="loading-indicator">
     <div class="spinner"></div>
     <div class="loading-text">Cargando dashboard...</div>
   </div>
 
+  <!-- Iframe para cargar el dashboard de Dash -->
   <iframe src="/dashapp/" class="dashboard-iframe" id="dashboard-frame" onload="hideLoading()"></iframe>
 
   <script>
@@ -102,30 +99,29 @@
     function hideLoading() {
       document.getElementById('loading-indicator').style.display = 'none';
     }
-
-    // Función para ajustar la altura y la posición del iframe
-    function adjustIframeHeight() {
+    
+    // Script para ajustar la altura del iframe al tamaño de la ventana
+    window.addEventListener('resize', function() {
       const header = document.querySelector('.header_nav');
-      const headerHeight = header.offsetHeight; // Obtiene la altura calculada del header
+      const headerHeight = header.offsetHeight;
       const dashboardFrame = document.getElementById('dashboard-frame');
-
-      // Ajusta la altura del iframe para que ocupe el resto de la ventana
       dashboardFrame.style.height = `calc(100vh - ${headerHeight}px)`;
-      // Ajusta la posición superior del iframe para que esté justo debajo del header
       dashboardFrame.style.marginTop = `${headerHeight}px`;
-    }
-
-    // Ejecutar la función cuando la ventana se redimensiona
-    window.addEventListener('resize', adjustIframeHeight);
-
-    // Ejecutar la función cuando la página se carga
-    // Esto asegura que la altura se ajuste correctamente al inicio, incluso si el header no tiene una altura predefinida en CSS
-    window.addEventListener('load', adjustIframeHeight);
-
+    });
+    
+    // Ejecutar una vez al cargar la página
+    window.addEventListener('load', function() {
+      const header = document.querySelector('.header_nav');
+      const headerHeight = header.offsetHeight;
+      const dashboardFrame = document.getElementById('dashboard-frame');
+      dashboardFrame.style.height = `calc(100vh - ${headerHeight}px)`;
+      dashboardFrame.style.marginTop = `${headerHeight}px`;
+    });
+    
     // Si el iframe no carga en 10 segundos, mostrar un mensaje de error
     setTimeout(function() {
       if (document.getElementById('loading-indicator').style.display !== 'none') {
-        document.getElementById('loading-indicator').innerHTML =
+        document.getElementById('loading-indicator').innerHTML = 
           '<p style="color: #B026FF; font-size: 18px;">El dashboard está tardando en cargar. Verifica que el servidor esté funcionando correctamente.</p>';
       }
     }, 10000);
