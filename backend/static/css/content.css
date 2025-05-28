@@ -143,25 +143,25 @@ body {
 
 .banner_img {
     display: flex;
-    justify-content: center;     /* centra la imagen */
+    justify-content: flex-end;       /* Mueve la imagen hacia la derecha */
     align-items: center;
-    margin: 50px auto;           /* margen superior/inferior */
-    height: auto;
+    margin: 100px auto;
+    height: auto;                    /* Se ajusta al tamaño del contenido */
     width: 100%;
     max-width: 100%;
     background-color: transparent;
-    padding: 0;                  /* elimina padding que pueda limitar el espacio */
+    padding: 0;                      /* Sin padding que estorbe */
 }
 
 .banner_img img {
-    width: 100%;                 /* ocupa todo el ancho del contenedor */
-    max-width: none;             /* elimina límite de tamaño */
+    width: 100%;                     /* Ocupa todo el ancho disponible */
+    max-width: 2000px;               /* Puedes aumentar esto si necesitas más tamaño */
     height: auto;
     object-fit: contain;
     display: block;
+    margin-right: 50px;              /* Ajusta cuánto la mueves a la izquierda */
+    transform: translateX(50px);     /* La empuja un poco más a la derecha */
 }
-
-
 
 @media (min-width: 768px) {
     .banner {
