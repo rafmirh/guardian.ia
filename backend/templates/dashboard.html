@@ -6,91 +6,69 @@
   <title>Dashboard de Usurpación de Identidad</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
   <style>
-    /* Estilos generales */
-body, html {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background: linear-gradient(#eaf2f8, #d6eaf8, #eaf2f8); /* Azul muy claro */
-  color: #2c3e50; /* Azul oscuro para mejor contraste */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Contenedor del iframe */
-.dashboard-iframe {
-  width: 100%;
-  height: calc(100vh - 100px); /* Ajuste para dejar espacio al header */
-  border: none;
-  margin-top: 100px; /* Espacio para el header */
-  background-color: #f8fbfe; /* Fondo más claro */
-}
-
-/* Estilos del header con tonos más suaves */
-.header_nav {
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  background: rgba(255, 255, 255, 0.8); /* Blanco con transparencia */
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid #85c1e9; /* Azul pastel */
-}
-
-.header_nav h1 {
-  color: #2980b9; /* Azul intermedio */
-}
-
-/* Indicador de carga */
-.loading {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  z-index: 500;
-}
-
-.loading-text {
-  margin-top: 20px;
-  font-size: 18px;
-  color: #85c1e9; /* Azul pastel */
-  font-weight: bold;
-  text-shadow: 0 0 10px #85c1e9;
-}
-
-.spinner {
-  width: 60px;
-  height: 60px;
-  border: 5px solid rgba(133, 193, 233, 0.3); /* Azul pastel */
-  border-radius: 50%;
-  border-top: 5px solid #85c1e9; /* Azul pastel */
-  animation: spin 1s linear infinite;
-  margin: 0 auto;
-  box-shadow: 0 0 15px #85c1e9;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Protección de colores para gráficas con tonos pastel */
-.dash-graph,
-.js-plotly-plot,
-.plot-container,
-.modebar-container {
-  --primary-color: #aed6f1 !important; /* Azul claro */
-  --secondary-color: #d5f5e3 !important; /* Verde pastel */
-  --accent-color: #f9e79f !important; /* Amarillo pastel */
-  --color4: #ffefbb !important; /* Amarillo suave */
-  --color5: #f5b7b1 !important; /* Rojo pastel */
-  --color6: #d7dbdd !important; /* Gris claro */
-  --color7: #f9e79f !important; /* Dorado pastel */
-  --color8: #aed6f1 !important; /* Azul medio pastel */
-}
-
+    /* Estilos específicos para el dashboard */
+    body, html {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: linear-gradient(#000, #390c53, #000);
+      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    .dashboard-iframe {
+      width: 100%;
+      height: calc(100vh - 100px); /* Altura ajustada para dejar espacio al header */
+      border: none;
+      margin-top: 100px; /* Espacio para el header */
+    }
+    
+    /* Header styles */
+    .header_nav {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #B026FF;
+    }
+    
+    /* Loading indicator */
+    .loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 500;
+    }
+    
+    .loading-text {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #B026FF;
+      font-weight: bold;
+      text-shadow: 0 0 10px #B026FF;
+    }
+    
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 5px solid rgba(176, 38, 255, 0.3);
+      border-radius: 50%;
+      border-top: 5px solid #B026FF;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+      box-shadow: 0 0 15px #B026FF;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
   </style>
 </head>
 <body>
@@ -107,20 +85,22 @@ body, html {
     </div>
   </header>
 
-  <!-- Indicador de carga -->
+  <!-- Loading indicator -->
   <div class="loading" id="loading-indicator">
     <div class="spinner"></div>
     <div class="loading-text">Cargando dashboard...</div>
   </div>
 
-  <!-- Iframe del dashboard -->
+  <!-- Iframe para cargar el dashboard de Dash -->
   <iframe src="/dashapp/" class="dashboard-iframe" id="dashboard-frame" onload="hideLoading()"></iframe>
 
   <script>
+    // Ocultar indicador de carga cuando el iframe se carga
     function hideLoading() {
       document.getElementById('loading-indicator').style.display = 'none';
     }
-
+    
+    // Script para ajustar la altura del iframe al tamaño de la ventana
     window.addEventListener('resize', function() {
       const header = document.querySelector('.header_nav');
       const headerHeight = header.offsetHeight;
@@ -128,7 +108,8 @@ body, html {
       dashboardFrame.style.height = `calc(100vh - ${headerHeight}px)`;
       dashboardFrame.style.marginTop = `${headerHeight}px`;
     });
-
+    
+    // Ejecutar una vez al cargar la página
     window.addEventListener('load', function() {
       const header = document.querySelector('.header_nav');
       const headerHeight = header.offsetHeight;
@@ -136,11 +117,12 @@ body, html {
       dashboardFrame.style.height = `calc(100vh - ${headerHeight}px)`;
       dashboardFrame.style.marginTop = `${headerHeight}px`;
     });
-
+    
+    // Si el iframe no carga en 10 segundos, mostrar un mensaje de error
     setTimeout(function() {
       if (document.getElementById('loading-indicator').style.display !== 'none') {
         document.getElementById('loading-indicator').innerHTML = 
-          '<p style="color: #85c1e9; font-size: 18px;">El dashboard está tardando en cargar. Verifica que el servidor esté funcionando correctamente.</p>';
+          '<p style="color: #B026FF; font-size: 18px;">El dashboard está tardando en cargar. Verifica que el servidor esté funcionando correctamente.</p>';
       }
     }, 10000);
   </script>
