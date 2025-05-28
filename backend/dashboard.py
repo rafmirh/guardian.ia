@@ -372,7 +372,7 @@ def init_dashboard(server):
                 'height': '100%',
                 'border': 'none',
                 'borderRadius': '5px',
-                'backgroundColor': '#222'
+                'backgroundColor': '#ddd'
             }
         )
 
