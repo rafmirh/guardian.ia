@@ -230,18 +230,18 @@ dbc.Row([
         ])
     ], md=8),
            
-                # Right column for the Heatmap
-                dbc.Col([
-                    dbc.Card([
-                        dbc.CardHeader("Mapa de riesgo - CDMX", style={'backgroundColor': '#390c53', 'color': 'dark'}),
-                        dbc.CardBody([
-                            html.Div(id='heatmap-container', style={'height': '100%', 'width': '100%'}) # Ensure heatmap div fills card body
-                        ])
-                    ], style={'height': '100%', 'backgroundColor': '#222', 'borderColor': '#B026FF'}) # Card fills the column height
-                ], md=4)
-            ], className="mb-4")
-        ], fluid=True, style={'backgroundColor': '#0d1117', 'minHeight': '100vh', 'padding': '20px'})
-    ])
+     # Right column for the Heatmap
+dbc.Col([
+    dbc.Card([
+        dbc.CardHeader("Mapa de riesgo - CDMX", style={'backgroundColor': '#9c7bad', 'color': 'white'}),
+        dbc.CardBody([
+            html.Div(id='heatmap-container', style={'height': '100%', 'width': '100%'}) # Ensure heatmap div fills card body
+        ])
+    ], style={'height': '100%', 'backgroundColor': '#f8f9fa', 'borderColor': '#d1b3e0'}) # Card fills the column height
+], md=4)
+], className="mb-4")
+], fluid=True, style={'backgroundColor': '#f0f2f5', 'minHeight': '100vh', 'padding': '20px'})
+])
 
     @dash_app.callback(
         [Output('pie-sexo', 'figure'),
