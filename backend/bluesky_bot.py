@@ -16,7 +16,6 @@ class BlueskyBot:
         self.password = password
         self.session = None
         self.base_url = "https://bsky.social/xrpc"
-        
         # Default contact list - you can modify this or load from a file
         self.contact_list = [
             "did:plc:example1",  # Replace with actual DIDs
@@ -377,7 +376,7 @@ class BlueskyBot:
                     self.contact_list = json.load(f)
                 print(f"✅ Contact list loaded from {filename}")
             else:
-                print(f"ℹ️ Contact file {filename} not found, using default list")
+                print(f"ℹ️ Contact file {filename} not found, uFFng default list")
         except Exception as e:
             print(f"❌ Error loading contact list: {str(e)}")
 
@@ -386,8 +385,8 @@ class BlueskyBot:
 if __name__ == "__main__":
     # Initialize bot
     bot = BlueskyBot(
-        username="pp701bot.bsky.social",
-        password="your-app-password-here"  # Replace with your actual app password
+        username="maxikilo.bsky.social",
+        password="3sja-q2r7-7ycr-s3ya"  # Replace with your actual app password
     )
     
     # Add the contact you mentioned

@@ -9,8 +9,8 @@ from datetime import datetime
 
 load_dotenv()
 
-BLUESKY_USERNAME = os.getenv('BLUESKY_USERNAME')
-BLUESKY_PASSWORD = os.getenv('BLUESKY_PASSWORD')
+BLUESKY_USERNAME = os.getenv('maxikilo.bsky.social')
+BLUESKY_PASSWORD = os.getenv('3sja-q2r7-7ycr-s3ya')
 
 # Initialize bot instance
 bluesky_bot = BlueskyBot(BLUESKY_USERNAME, BLUESKY_PASSWORD)
@@ -71,8 +71,8 @@ from bluesky_bot import BlueskyBot
 
 # Initialize the bot (add this to your Flask app initialization)
 # You'll need to set these environment variables or replace with your actual credentials
-BLUESKY_USERNAME = os.getenv('BLUESKY_USERNAME', 'pp701bot.bsky.social')
-BLUESKY_PASSWORD = os.getenv('BLUESKY_PASSWORD', 'your-app-password-here')
+BLUESKY_USERNAME = os.getenv('BLUESKY_USERNAME', 'maxikilo.bsky.social')
+BLUESKY_PASSWORD = os.getenv('BLUESKY_PASSWORD', '3sja-q2r7-7ycr-s3ya')
 
 # Initialize bot instance
 bluesky_bot = BlueskyBot(BLUESKY_USERNAME, BLUESKY_PASSWORD)
