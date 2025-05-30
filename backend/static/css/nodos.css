@@ -98,12 +98,43 @@ header p {
     font-size: 14px;
 }
 
+.main-layout-grid {
+    display: flex;
+    padding: 0 40px 30px 40px; /* Add some padding around the grid */
+    gap: 20px; /* Space between columns */
+    align-items: flex-start; /* Align items to the top */
+}
+
+.left-sidebar {
+    flex: 0 0 240px; /* Reduced width for left sidebar */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between stats panel and node details */
+}
+
+.graph-area {
+    flex: 1; /* Takes remaining space */
+    min-width: 0; /* Prevents flex item from overflowing */
+}
+
+.right-sidebar {
+    flex: 0 0 180px; /* Reduced width for right sidebar */
+}
+
+
 .stats-panel {
     display: flex;
     padding: 20px 40px;
+    flex-direction: column; /* Stack stat items vertically */
+    align-items: stretch; /* Make items take full width of sidebar */
+    padding: 20px; /* Adjusted padding */
     background: #fff;
     border-bottom: 1px solid #e9ecef;
     justify-content: space-around;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    /* border-bottom: 1px solid #e9ecef; */ /* Removed as it's now a self-contained card */
+    /* justify-content: space-around; */ /* Removed */
 }
 
 .stat-item {
@@ -127,8 +158,11 @@ header p {
 
 .graph-container {
     position: relative;
-    height: 600px;
+    height: 600px; /* Keep the fixed height for now */
     background: #fff;
+    background: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
 }
 
 #graph {
@@ -162,8 +196,12 @@ header p {
 
 .legend {
     padding: 20px 40px;
+    padding: 20px;
     background: #f8f9fa;
     border-top: 1px solid #e9ecef;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    /* border-top: 1px solid #e9ecef; */ /* Removed */
 }
 
 .legend h3 {
@@ -199,8 +237,12 @@ header p {
 
 .node-details {
     padding: 20px 40px;
+    padding: 20px;
     background: #fff;
     border-top: 1px solid #e9ecef;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    /* border-top: 1px solid #e9ecef; */ /* Removed */
 }
 
 .node-details h3 {
@@ -276,9 +318,20 @@ header p {
         flex-direction: column;
     }
     
+    .main-layout-grid {
+        flex-direction: column; /* Stack columns on smaller screens */
+        padding: 0 20px 20px 20px;
+    }
+
+    .left-sidebar, .right-sidebar, .graph-area {
+        flex-basis: auto; /* Reset flex-basis */
+        width: 100%; /* Take full width when stacked */
+    }
+
     .stats-panel {
         flex-wrap: wrap;
         padding: 15px 20px;
+        flex-direction: row; /* Allow stat items to wrap if needed */
     }
     
     .stat-item {

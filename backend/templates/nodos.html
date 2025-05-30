@@ -25,52 +25,60 @@
             </div>
         </div>
 
-        <div class="stats-panel" id="statsPanel" style="display: none;">
-            <div class="stat-item">
-                <span class="stat-value" id="totalNodes">0</span>
-                <span class="stat-label">Total Nodes</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-value" id="totalReplies">0</span>
-                <span class="stat-label">Replies</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-value" id="totalReposts">0</span>
-                <span class="stat-label">Reposts</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-value" id="totalInteractions">0</span>
-                <span class="stat-label">Total Interactions</span>
-            </div>
-        </div>
+        <div class="main-layout-grid">
+            <aside class="left-sidebar">
+                <div class="stats-panel" id="statsPanel" style="display: none;">
+                    <div class="stat-item">
+                        <span class="stat-value" id="totalNodes">0</span>
+                        <span class="stat-label">Total Nodes</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="totalReplies">0</span>
+                        <span class="stat-label">Replies</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="totalReposts">0</span>
+                        <span class="stat-label">Reposts</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="totalInteractions">0</span>
+                        <span class="stat-label">Total Interactions</span>
+                    </div>
+                </div>
 
-        <div class="graph-container">
-            <div id="loading" style="display: none;">
-                <div class="spinner"></div>
-                <p>Analyzing post propagation...</p>
-            </div>
-            <svg id="graph"></svg>
-        </div>
+                <div class="node-details" id="nodeDetails" style="display: none;">
+                    <h3>Node Details</h3>
+                    <div id="nodeContent"></div>
+                </div>
+            </aside>
 
-        <div class="legend">
-            <h3>Legend</h3>
-            <div class="legend-item">
-                <div class="legend-circle original"></div>
-                <span>Original Post</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-circle reply"></div>
-                <span>Reply</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-circle repost"></div>
-                <span>Repost</span>
-            </div>
-        </div>
+            <main class="graph-area">
+                <div class="graph-container">
+                    <div id="loading" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>Analyzing post propagation...</p>
+                    </div>
+                    <svg id="graph"></svg>
+                </div>
+            </main>
 
-        <div class="node-details" id="nodeDetails" style="display: none;">
-            <h3>Node Details</h3>
-            <div id="nodeContent"></div>
+            <aside class="right-sidebar">
+                <div class="legend">
+                    <h3>Legend</h3>
+                    <div class="legend-item">
+                        <div class="legend-circle original"></div>
+                        <span>Original Post</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-circle reply"></div>
+                        <span>Reply</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-circle repost"></div>
+                        <span>Repost</span>
+                    </div>
+                </div>
+            </aside>
         </div>
     </div>
 
