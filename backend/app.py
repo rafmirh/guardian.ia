@@ -5,7 +5,7 @@ import os, sys
 from bluesky_bot import BlueskyBot
 from dotenv import load_dotenv
 from datetime import datetime
-
+from nodos import analyze_post_propagation, get_mock_data
 
 load_dotenv()
 
@@ -172,6 +172,28 @@ def test_bot_connection():
             'success': False,
             'error': f'Error de conexión: {str(e)}'
         }), 500
+    
+@app.route('/nodos')
+def nodos():
+    return render_template('nodos.html')
+
+@app.route('/nodos/analyze', methods=['POST'])
+def analyze_nodos():
+    try:
+        data = request.get_json()
+        post_url = data.get('post_url', '')
+        
+        if not post_url:
+            # Return mock data for demonstration
+            graph_data = get_mock_data()
+        else:
+            # Analyze the actual post
+            graph_data = analyze_post_propagation(post_url)
+        
+        return jsonify(graph_data)
+    
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 # Run app
 if __name__ == '__main__':

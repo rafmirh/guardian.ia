@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bluesky Post Propagation Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nodos.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bluesky Post Propagation Analysis</h1>
+            <p>Analyze how posts spread through the Bluesky network</p>
+        </header>
+
+        <div class="controls">
+            <div class="input-group">
+                <input type="url" id="postUrl" placeholder="Enter Bluesky post URL (e.g., https://bsky.app/profile/user.bsky.social/post/xxxxx)" />
+                <button id="analyzeBtn">Analyze Post</button>
+            </div>
+            <div class="demo-note">
+                <p>💡 Enter a Bluesky post URL to analyze its propagation, or leave empty for demo data</p>
+                <p><strong>Example:</strong> https://bsky.app/profile/alice.bsky.social/post/3kb2c7qm4ts2s</p>
+            </div>
+        </div>
+
+        <div class="stats-panel" id="statsPanel" style="display: none;">
+            <div class="stat-item">
+                <span class="stat-value" id="totalNodes">0</span>
+                <span class="stat-label">Total Nodes</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="totalReplies">0</span>
+                <span class="stat-label">Replies</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="totalReposts">0</span>
+                <span class="stat-label">Reposts</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="totalInteractions">0</span>
+                <span class="stat-label">Total Interactions</span>
+            </div>
+        </div>
+
+        <div class="graph-container">
+            <div id="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Analyzing post propagation...</p>
+            </div>
+            <svg id="graph"></svg>
+        </div>
+
+        <div class="legend">
+            <h3>Legend</h3>
+            <div class="legend-item">
+                <div class="legend-circle original"></div>
+                <span>Original Post</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-circle reply"></div>
+                <span>Reply</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-circle repost"></div>
+                <span>Repost</span>
+            </div>
+        </div>
+
+        <div class="node-details" id="nodeDetails" style="display: none;">
+            <h3>Node Details</h3>
+            <div id="nodeContent"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/nodos.js') }}"></script>
+</body>
+</html>
