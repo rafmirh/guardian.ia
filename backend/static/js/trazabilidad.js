@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (data.public_post_sent) {
                 results.push({
                     type: 'info',
-                    message: '📢 Mensaje también publicado públicamente en Bluesky.'
+                    message: '📢 Mensaje también publicado en el feed.'
                 });
             }
             
