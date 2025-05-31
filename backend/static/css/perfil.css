@@ -64,8 +64,8 @@ body {
 /* BOTÓN "GUARDIÁN IA" (SIMILAR A BOTÓN GUARDIA) */
 .button {
     --border-right: 6px; /* Adjusted border size */
-    --text-stroke-color: rgba(255,255,255,0.6); /* Adjusted transparency */
-    --animation-color: #37FF8B; /* Changed to a vibrant green */
+    --text-stroke-color: rgb(203, 253, 65); /* Adjusted transparency */
+    --animation-color: #fff5f5; /* Changed to a vibrant green */
     --fs-size: 1.8rem; /* Adjusted font size unit */
     letter-spacing: 3px;
     font-size: var(--fs-size);
@@ -148,7 +148,7 @@ body {
 .bg_animate {
     width: 100%;
     min-height: 100vh; /* Changed from height to min-height */
-    background: linear-gradient(90deg,rgba(31, 111, 143, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(117, 204, 86, 1) 100%); /* Reverted to original gradient */
+    background: linear-gradient(185deg,rgba(42, 123, 155, 1) 26%, rgba(39, 217, 116, 1) 53%, rgba(163, 147, 75, 1) 100%);
     position: relative;
     overflow: hidden;
     padding-top: 100px; /* Added padding-top */
