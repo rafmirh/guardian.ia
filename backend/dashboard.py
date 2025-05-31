@@ -71,14 +71,14 @@ def create_heatmap(df, zoom_start=11):
         # Añadir el mapa de calor a la visualización con colores en tema neón
         HeatMap(
             heat_data,
-            radius=2,
+            radius=5,
             blur=2,
             gradient={
-                0.1: '#390c53',  # Morado oscuro
-                0.2: '#6a0dad',  # Morado
-                0.5: '#9500ff',  # Morado brillante
-                0.7: '#b026ff',  # Violeta
-                1.0: '#e0aaff'   # Lavanda claro
+                0.5: "#ff07c9",  # Morado oscuro
+                0.6: "#46FFFF",  # Morado
+                0.8: "#42ff7b",  # Morado brillante
+                0.9: "#fffc52",  # Violeta
+                1.0: "#FFFFFF"   # Lavanda claro
             },
             min_opacity=0.5
         ).add_to(m)
@@ -107,27 +107,6 @@ def create_heatmap(df, zoom_start=11):
             popup=f"Mayor concentración en 5 km: {counts[max_idx]} casos",
             icon=folium.Icon(color='purple', icon='info-sign')
         ).add_to(m)
-
-
-
-        '''
-        # Añadir un pequeño marcador para la ubicación con mayor intensidad
-        if len(valid_data) > 0:
-            # Crear un mapa de frecuencia de coordenadas
-            coord_freq = valid_data.groupby(['latitud', 'longitud']).size().reset_index(name='count')
-            # Ordenar por frecuencia descendente
-            coord_freq = coord_freq.sort_values('count', ascending=False)
-            
-            if not coord_freq.empty:
-                top_location = coord_freq.iloc[0]
-                folium.Marker(
-                    location=[top_location['latitud'], top_location['longitud']],
-                    popup=f"Punto de mayor incidencia: {top_location['count']} casos",
-                    icon=folium.Icon(color='purple', icon='info-sign')
-                ).add_to(m)
-        '''
-
-
     
     # Convertir el mapa a HTML
     return m._repr_html_()
@@ -149,7 +128,7 @@ def init_dashboard(server):
     df = load_data()
     sexos = [{'label': 'Todos', 'value': 'Todos'}] + [{'label': s, 'value': s} for s in df['sexo_texto'].unique()]
     alcaldias = [{'label': 'Todas', 'value': 'Todas'}] + [{'label': a, 'value': a} for a in sorted(df['alcaldia_catalogo'].unique())]
-    años = [{'label': 'Todos', 'value': 'Todos'}] + [{'label': str(a), 'value': a} for a in sorted(df['anio_hecho'].unique())]
+    años = [{'label': 'Todos', 'value': 'Todos'}] + [{'label': str(a), 'value': a} for a in sorted(df['anio_hecho'].unique(), reverse=True)]
     meses = [{'label': 'Todos', 'value': 'Todos'}] + [{'label': str(m), 'value': m} for m in range(1, 13)]
 
     dash_app.layout = html.Div([
@@ -310,7 +289,7 @@ def init_dashboard(server):
             y_reg = anio_counts['Cantidad'].values
 
             # Crear características polinómicas de grado 3
-            poly = PolynomialFeatures(degree=3)
+            poly = PolynomialFeatures(degree=1)
             X_poly_reg = poly.fit_transform(X_reg)
 
             model = LinearRegression()
