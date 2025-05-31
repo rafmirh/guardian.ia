@@ -40,13 +40,13 @@ body {
     gap: 15px;
 }
 
-/*BOTON GUARDIA*/
+//* BOTÓN GUARDIA - VERSIÓN COMPACTA */
 .button {
-    --border-right: 6px;
+    --border-right: 4px; /* Reducido de 6px */
     --text-stroke-color: rgba(255,255,255,0.6);
     --animation-color: #f8f8f8;
-    --fs-size: 1.8rem;
-    letter-spacing: 3px;
+    --fs-size: 1.4rem; /* Reducido de 1.8rem */
+    letter-spacing: 1px; /* Reducido de 3px */
     font-size: var(--fs-size);
     font-family: 'Audiowide', sans-serif;
     position: relative;
@@ -57,11 +57,13 @@ body {
     border: none;
     cursor: pointer;
     padding: 0;
-    margin: 10px 0;
+    margin: 2px 0; /* Reducido de 10px 0 */
+    line-height: 1.2; /* Añadido para compactar altura */
 }
 
 .actual-text {
     position: relative;
+    display: inline-block; /* Optimiza el espacio */
 }
 
 .hover-text {
@@ -79,14 +81,16 @@ body {
 
 .button:hover .hover-text {
     width: 100%;
-    filter: drop-shadow(0 0 23px var(--animation-color));
+    filter: drop-shadow(0 0 15px var(--animation-color)); /* Reducido de 23px */
 }
 
 .header_nav nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 5px; /* Reducido de 10px */
+    align-items: center; /* Mejor alineación vertical */
+    padding: 2px 0; /* Mínimo padding vertical */
 }
 
 /* CONTENEDOR PRINCIPAL DE LA BARRA DE NAVEGACIÓN */
