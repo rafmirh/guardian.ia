@@ -89,7 +89,17 @@ body {
     gap: 10px;
 }
 
-/*BOTONES BARRA*/
+/* BARRA DE NAVEGACIÓN */
+nav {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    gap: 20px; /* Espacio entre botones */
+    padding: 15px 0; /* Espacio interno arriba/abajo */
+    width: 100%; /* Ocupa todo el ancho disponible */
+}
+
+/* BOTONES BARRA (tu código existente) */
 .nav-button {
     display: inline-block;
     padding: 12px 20px;
