@@ -52,10 +52,8 @@ def calculate_risk_statistics(df):
     if df.empty:
         return {
             'risk_rate': 0,
-            'total_cases': 0,
-            'avg_age': 0,
+            'total_cases': 0, 'avg_age': 0,
             'most_affected_area': 'N/A',
-            'trend_percentage': 0,
             'high_risk_areas': 0
         }
     
@@ -63,7 +61,7 @@ def calculate_risk_statistics(df):
     # Asumiendo una población base para el cálculo
     estimated_population = 100000  # Base para el cálculo
     risk_rate = (len(df) / estimated_population) * 100000
-    
+
     # Total de casos
     total_cases = len(df)
     
@@ -76,16 +74,6 @@ def calculate_risk_statistics(df):
     else:
         most_affected_area = 'N/A'
     
-    # Calcular tendencia (comparación con período anterior)
-    current_year = df['anio_hecho'].max() if not df['anio_hecho'].isna().all() else 2024
-    current_cases = len(df[df['anio_hecho'] == current_year])
-    previous_cases = len(df[df['anio_hecho'] == (current_year - 1)])
-    
-    if previous_cases > 0:
-        trend_percentage = ((current_cases - previous_cases) / previous_cases) * 100
-    else:
-        trend_percentage = 0
-    
     # Áreas de alto riesgo (colonias con más de la media de casos)
     if 'colonia_catalogo' in df.columns:
         colonia_counts = df['colonia_catalogo'].value_counts()
@@ -95,11 +83,9 @@ def calculate_risk_statistics(df):
         high_risk_areas = 0
     
     return {
-        'risk_rate': round(risk_rate, 2),
         'total_cases': total_cases,
         'avg_age': round(avg_age, 1),
         'most_affected_area': most_affected_area,
-        'trend_percentage': round(trend_percentage, 1),
         'high_risk_areas': high_risk_areas
     }
 
@@ -281,16 +267,6 @@ def init_dashboard(server):
                 dbc.Col([
                     dbc.Card([
                         dbc.CardBody([
-                            html.H4(id='risk-rate-value', className='text-center mb-0', 
-                                   style={'color': '#B026FF', 'fontSize': '2.5rem', 'fontWeight': 'bold'}),
-                            html.P("Tasa de Riesgo", className='text-center mb-0', 
-                                  style={'color': '#ffffff', 'fontSize': '0.9rem'})
-                        ])
-                    ], style={'backgroundColor': '#222', 'borderColor': '#B026FF', 'border': '2px solid'})
-                ], md=2),
-                dbc.Col([
-                    dbc.Card([
-                        dbc.CardBody([
                             html.H4(id='total-cases-value', className='text-center mb-0', 
                                    style={'color': '#46FFFF', 'fontSize': '2.5rem', 'fontWeight': 'bold'}),
                             html.P("Total de Casos", className='text-center mb-0', 
@@ -321,23 +297,13 @@ def init_dashboard(server):
                 dbc.Col([
                     dbc.Card([
                         dbc.CardBody([
-                            html.H4(id='trend-percentage-value', className='text-center mb-0', 
-                                   style={'fontSize': '2.5rem', 'fontWeight': 'bold'}),
-                            html.P("Tendencia Anual", className='text-center mb-0', 
-                                  style={'color': '#ffffff', 'fontSize': '0.9rem'})
-                        ])
-                    ], style={'backgroundColor': '#222', 'borderColor': '#f79de3', 'border': '2px solid'})
-                ], md=2),
-                dbc.Col([
-                    dbc.Card([
-                        dbc.CardBody([
                             html.H4(id='high-risk-areas-value', className='text-center mb-0', 
                                    style={'color': '#E0AAFF', 'fontSize': '2.5rem', 'fontWeight': 'bold'}),
                             html.P("Zonas de Alto Riesgo", className='text-center mb-0', 
                                   style={'color': '#ffffff', 'fontSize': '0.9rem'})
                         ])
                     ], style={'backgroundColor': '#222', 'borderColor': '#E0AAFF', 'border': '2px solid'})
-                ], md=2)
+                ], md=3) # Ajustado md para distribuir el espacio
             ], className="mb-4")
             
         ], fluid=True, style={'backgroundColor': '#0d1117', 'minHeight': '100vh', 'padding': '20px'})
@@ -349,12 +315,9 @@ def init_dashboard(server):
          Output('line-anio', 'figure'),
          Output('treemap-colonia', 'figure'),
          Output('heatmap-container', 'children'),
-         Output('risk-rate-value', 'children'),
          Output('total-cases-value', 'children'),
          Output('avg-age-value', 'children'),
          Output('most-affected-area-value', 'children'),
-         Output('trend-percentage-value', 'children'),
-         Output('trend-percentage-value', 'style'),
          Output('high-risk-areas-value', 'children')], 
         [Input('sexo-filter', 'value'),
          Input('alcaldia-filter', 'value'),
@@ -383,9 +346,8 @@ def init_dashboard(server):
                                     style={'color': 'white', 'text-align': 'center', 'padding-top': '50px'})
             
             # Return empty values for statistics
-            trend_style = {'color': '#f79de3', 'fontSize': '2.5rem', 'fontWeight': 'bold'}
             return (empty_fig, empty_fig, empty_fig, empty_fig, empty_heatmap,
-                    "0", "0", "0", "N/A", "0%", trend_style, "0")
+                    "0", "0", "N/A", "0")
 
         sexo_counts = filtered_df['sexo_texto'].value_counts().reset_index()
         sexo_counts.columns = ['Sexo', 'Cantidad']
@@ -491,25 +453,14 @@ def init_dashboard(server):
         )
 
         # Format statistics for display
-        risk_rate_display = f"{stats['risk_rate']}"
         total_cases_display = f"{stats['total_cases']}"
         avg_age_display = f"{stats['avg_age']}"
         most_affected_area_display = stats['most_affected_area']
-        trend_percentage_display = f"{stats['trend_percentage']:+.1f}%"
         high_risk_areas_display = f"{stats['high_risk_areas']}"
 
-        # Color code the trend percentage
-        if stats['trend_percentage'] > 0:
-            trend_style = {'color': '#ff4444', 'fontSize': '2.5rem', 'fontWeight': 'bold'}  # Red for increase
-        elif stats['trend_percentage'] < 0:
-            trend_style = {'color': '#42ff7b', 'fontSize': '2.5rem', 'fontWeight': 'bold'}  # Green for decrease
-        else:
-            trend_style = {'color': '#f79de3', 'fontSize': '2.5rem', 'fontWeight': 'bold'}  # Pink for no change
-
         return (pie_fig, bar_fig, line_fig, treemap_fig, heatmap_container,
-                risk_rate_display, total_cases_display, avg_age_display, 
-                most_affected_area_display, trend_percentage_display, 
-                trend_style, high_risk_areas_display)
+                total_cases_display, avg_age_display, 
+                most_affected_area_display, high_risk_areas_display)
 
        
 
