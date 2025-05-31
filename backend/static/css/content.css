@@ -40,13 +40,13 @@ body {
     gap: 15px;
 }
 
-//* BOTÓN GUARDIA - VERSIÓN COMPACTA */
+/*BOTON GUARDIA*/
 .button {
-    --border-right: 4px; /* Reducido de 6px */
+    --border-right: 6px;
     --text-stroke-color: rgba(255,255,255,0.6);
     --animation-color: #f8f8f8;
-    --fs-size: 1.4rem; /* Reducido de 1.8rem */
-    letter-spacing: 1px; /* Reducido de 3px */
+    --fs-size: 1.8rem;
+    letter-spacing: 3px;
     font-size: var(--fs-size);
     font-family: 'Audiowide', sans-serif;
     position: relative;
@@ -57,13 +57,11 @@ body {
     border: none;
     cursor: pointer;
     padding: 0;
-    margin: 2px 0; /* Reducido de 10px 0 */
-    line-height: 1.2; /* Añadido para compactar altura */
+    margin: 10px 0;
 }
 
 .actual-text {
     position: relative;
-    display: inline-block; /* Optimiza el espacio */
 }
 
 .hover-text {
@@ -81,45 +79,32 @@ body {
 
 .button:hover .hover-text {
     width: 100%;
-    filter: drop-shadow(0 0 15px var(--animation-color)); /* Reducido de 23px */
+    filter: drop-shadow(0 0 23px var(--animation-color));
 }
 
 .header_nav nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 5px; /* Reducido de 10px */
-    align-items: center; /* Mejor alineación vertical */
-    padding: 2px 0; /* Mínimo padding vertical */
+    gap: 10px;
 }
 
-/* CONTENEDOR PRINCIPAL DE LA BARRA DE NAVEGACIÓN */
-nav {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    width: 100%;
-    background: transparent; /* O el color de fondo que uses */
-    padding: 15px 0; /* Espacio interno vertical */
-}
-
-/* BOTONES BARRA - VERSIÓN MEJORADA Y CENTRADA */
+/*BOTONES BARRA*/
 .nav-button {
     display: inline-block;
-    padding: 15px 30px; /* Más grandes que antes */
+    padding: 12px 20px;
     border-radius: 50px;
     background-color: rgba(255, 255, 255, 0.411);
     box-shadow: rgba(211, 205, 205, 0.7) 0 0 8px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-family: Arial, sans-serif;
     color: black;
     text-decoration: none;
     transition: all 0.3s ease;
     text-align: center;
-    min-width: 160px;
-    margin: 0 15px; /* Más espacio entre botones */
+    min-width: 140px;
 }
 
 .nav-button:hover {
@@ -127,7 +112,6 @@ nav {
     color: #080808;
     animation: multiColorShift 5s infinite;
     box-shadow: 0 0 15px rgba(2, 247, 216, 0.7);
-    transform: scale(1.05);
 }
 
 @keyframes multiColorShift {
