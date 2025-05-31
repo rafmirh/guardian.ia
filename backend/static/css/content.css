@@ -90,6 +90,16 @@ body {
 }
 
 /* BOTONES BARRA - VERSIÓN MEJORADA Y CENTRADA */
+
+nav {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    width: 100%;
+    background: transparent; /* O el color de fondo que uses */
+    padding: 15px 0; /* Espacio interno vertical */
+}
+
 .nav-button {
     display: inline-block;
     padding: 15px 30px; /* Más grandes que antes */
