@@ -65,7 +65,7 @@ body {
 .button {
     --border-right: 6px;
     --text-stroke-color: rgba(255,255,255,0.6);
-    --animation-color: #37FF8B;
+    --animation-color: #1079f0;
     --fs-size: 1.8rem;
     letter-spacing: 3px;
     font-size: var(--fs-size);
