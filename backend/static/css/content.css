@@ -89,32 +89,33 @@ body {
     gap: 10px;
 }
 
-/* BOTONES BARRA - VERSIÓN MEJORADA */
+/* CONTENEDOR PRINCIPAL DE LA BARRA DE NAVEGACIÓN */
+nav {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    width: 100%;
+    background: transparent; /* O el color de fondo que uses */
+    padding: 15px 0; /* Espacio interno vertical */
+}
+
+/* BOTONES BARRA - VERSIÓN MEJORADA Y CENTRADA */
 .nav-button {
     display: inline-block;
-    padding: 15px 25px; /* Aumenté el padding para hacerlos más grandes */
+    padding: 15px 30px; /* Más grandes que antes */
     border-radius: 50px;
     background-color: rgba(255, 255, 255, 0.411);
     box-shadow: rgba(211, 205, 205, 0.7) 0 0 8px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    font-size: 1rem; /* Aumenté el tamaño de fuente */
+    font-size: 1rem;
     font-family: Arial, sans-serif;
     color: black;
     text-decoration: none;
     transition: all 0.3s ease;
     text-align: center;
-    min-width: 160px; /* Aumenté el ancho mínimo */
-    margin: 0 10px; /* Espacio entre botones */
-}
-
-/* Contenedor para centrar los botones */
-.nav-buttons-container {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    width: 100%;
-    padding: 15px 0; /* Espacio vertical */
+    min-width: 160px;
+    margin: 0 15px; /* Más espacio entre botones */
 }
 
 .nav-button:hover {
@@ -122,7 +123,7 @@ body {
     color: #080808;
     animation: multiColorShift 5s infinite;
     box-shadow: 0 0 15px rgba(2, 247, 216, 0.7);
-    transform: scale(1.05); /* Efecto de crecimiento al hover */
+    transform: scale(1.05);
 }
 
 @keyframes multiColorShift {
