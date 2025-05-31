@@ -304,7 +304,7 @@ def init_dashboard(server):
                         ])
                     ], style={'backgroundColor': '#222', 'borderColor': '#E0AAFF', 'border': '2px solid'})
                 ], md=3) # Ajustado md para distribuir el espacio
-            ], className="mb-4")
+            ], className="mb-4", justify="center")
             
         ], fluid=True, style={'backgroundColor': '#0d1117', 'minHeight': '100vh', 'padding': '20px'})
     ])
