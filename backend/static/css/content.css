@@ -37,10 +37,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px; /* Ajustado para que el botón esté fuera del flex de nav */
+    gap: 15px;
 }
 
-/* BOTON GUARDIA - MODIFICADO PARA SER MÁS GRANDE Y NO DESPLAZARSE */
+/* BOTON GUARDIA */
 .button {
     --border-right: 6px;
     --text-stroke-color: rgba(255,255,255,0.6);
@@ -77,8 +77,6 @@ body {
     white-space: nowrap;
     -webkit-text-stroke: 1px var(--animation-color);
     transition: width 0.6s ease;
-    /* Asegura que el texto se alinee perfectamente para evitar desplazamiento */
-    /* text-align: center; (No necesario si el botón tiene el width de su contenido) */
 }
 
 .button:hover .hover-text {
@@ -93,10 +91,7 @@ body {
     gap: 10px;
 }
 
-/* BOTONES BARRA - VERSIÓN MEJORADA Y CENTRADA */
-/* Nota: La regla 'nav' aquí es redundante si ya tienes .header_nav nav.
-   Consolida o asegúrate de que no haya conflictos.
-   La he dejado como estaba en tu código original. */
+/* BOTONES BARRA*/
 nav {
     display: flex;
     justify-content: center; /* Centra horizontalmente */
@@ -181,7 +176,7 @@ nav {
     transform: translateX(0px);     /* La empuja un poco más a la derecha */
 }
 
-/* SECCIÓN SOBRE NOSOTROS (Banner Title) */
+/* SECCIÓN SOBRE NOSOTROS */
 .banner_title {
     width: 80%;
     padding: 30px;
