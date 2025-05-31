@@ -11,31 +11,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="static/css/content.css">
-    <style>
-        /* ESTILO PARA CENTRAR EL BOTÓN SIN AFECTAR EL LAYOUT */
-        .centered-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            text-align: center;
-            z-index: 5;
-            pointer-events: none;
-        }
-        
-        .centered-button .button {
-            pointer-events: auto;
-        }
-        
-        .header-content {
-            position: relative;
-            min-height: 100vh;
-        }
-    </style>
 </head>
 <body>
-    <header class="header-content bg_animate">                             
+    <header class="bg_animate">                             
         <div class="header_nav">
             <div class="contenedor">
                 <nav>
@@ -46,25 +24,25 @@
             </div>
         </div>
 
-        <!-- Botón centrado en pantalla -->
-        <div class="centered-button">
-            <button class="button" data-text="Awesome">
-                <span class="actual-text">&nbsp;Guardián IA&nbsp;</span>
-                <span aria-hidden="true" class="hover-text">&nbsp;Guardián IA&nbsp;</span>
-            </button>
-        </div>
+   <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <button class="button" data-text="Awesome">
+        <span class="actual-text">&nbsp;Guardián IA&nbsp;</span>
+        <span aria-hidden="true" class="hover-text">&nbsp;Guardián IA&nbsp;</span>
+    </button>
+</div>
+     <section class="banner bg_animate">
+    <div class="banner_title">
 
-        <section class="banner">
-            <div class="banner_title">
-                <h2>Misión</h2>
-                <p>Analizar la usurpación de identidad.</p>
-                <h2>Visión</h2>
-                <p>Impulsar la innovación con la ciencia de datos para salvaguardar la integridad digital de las personas.</p>
-            </div>
-            <div class="banner_img">
-                <img src="https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/core-512.png" alt="IA">
-            </div>
-        </section>
+    <h2>Misión</h2>
+    <p>Analizar la usurpación de identidad.</p>
+    <h2>Visión</h2>
+    <p>Impulsar la innovación con la ciencia de datos para salvaguardar la integridad digital de las personas.</p>
+
+ </div>
+    <div class="banner_img">
+        <img src="https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/core-512.png" alt="IA">
+    </div>
+</section>
 
         <div class="burbujas">
             <div class="burbuja"></div>
@@ -79,7 +57,6 @@
             <div class="burbuja"></div>
         </div>
     </header>
-
     <script>
      const modal = document.getElementById("modalImagen");
      const img = document.getElementById("modeloImg");
@@ -101,28 +78,27 @@
         }
     }
     </script>
-</body>
-
-<footer>
-    <div class="footer">
-        <div class="row">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-instagram"></i></a>
-            <a href="#"><i class="fa fa-youtube"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
+    </body>
+    <footer>
+        <div class="footer">
+            <div class="row">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+            </div>
+            <div class="row">
+                <ul>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">Our Services</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Career</a></li>
+                </ul>
+            </div>
+            <div class="row">
+                **Guardián IA Copyright © 2025 Guardián IA - All rights reserved || Designed By: LCDN: EQUIPO 4 701**
+            </div>
         </div>
-        <div class="row">
-            <ul>
-                <li><a href="#">Contact us</a></li>
-                <li><a href="#">Our Services</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms & Conditions</a></li>
-                <li><a href="#">Career</a></li>
-            </ul>
-        </div>
-        <div class="row">
-            **Guardián IA Copyright © 2025 Guardián IA - All rights reserved || Designed By: LCDN: EQUIPO 4 701**
-        </div>
-    </div>
-</footer>
+    </footer>
 </html>
