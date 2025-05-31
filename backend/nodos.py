@@ -161,7 +161,7 @@ def get_post_interactions(post_uri, original_post):
         interactions.extend(reposts)
         
         # Limit to prevent overwhelming visualization
-        return interactions[:100]  # Limit to 50 interactions
+        return interactions[:1000]  # Limit to 50 interactions
     
     except Exception as e:
         print(f"Error getting interactions: {e}")
@@ -180,7 +180,7 @@ def get_post_replies(post_uri):
         thread_response = analyzer.client.get_post_thread(post_uri)
         
         if hasattr(thread_response.thread, 'replies') and thread_response.thread.replies:
-            for reply in thread_response.thread.replies[:100]:  # Limit replies
+            for reply in thread_response.thread.replies[:1000]:  # Limit replies
                 if hasattr(reply, 'post'):
                     reply_post = reply.post
                     replies.append({
@@ -225,31 +225,65 @@ def get_post_replies(post_uri):
 
 def get_post_reposts(post_uri):
     """Get reposts of a specific post"""
-    reposts = []
-    
+    reposts_data = []
+
     try:
-        # Get reposts using the API
-        repost_response = analyzer.client.get_reposts(post_uri, limit=100)
-        
-        for repost in repost_response.reposts:
-            reposts.append({
-                'type': 'repost',
-                'id': f"repost_{repost.actor.did}_{post_uri}",
-                'author': repost.actor.handle,
-                'author_display_name': repost.actor.display_name or repost.actor.handle,
-                'parent_id': post_uri,
-                'created_at': repost.created_at,
-                'metrics': {
-                    'replies': 0,  # Reposts don't have direct metrics
-                    'reposts': 0,
-                    'likes': 0
-                }
-            })
-    
+        print(f"[get_post_reposts] Attempting to fetch original post for text context: {post_uri}")
+        # Get the original post's content to display in repost nodes
+        original_post_view_response = analyzer.client.get_post(post_uri)
+
+        if not (original_post_view_response and \
+                original_post_view_response.post and \
+                hasattr(original_post_view_response.post, 'record') and \
+                hasattr(original_post_view_response.post.record, 'text')):
+            print(f"[get_post_reposts] Could not fetch original post content (or text attribute missing) for URI {post_uri}.")
+            return []
+        original_text = original_post_view_response.post.record.text
+        print(f"[get_post_reposts] Original post text fetched successfully for {post_uri}: '{original_text[:70]}...'")
+
+        # Use get_reposted_by to find out who reposted the post.
+        # This endpoint has a maximum limit of 100.
+        print(f"[get_post_reposts] Calling client.get_reposted_by for {post_uri} with limit 100.")
+        response = analyzer.client.get_reposted_by(uri=post_uri, limit=100)
+
+        if response and response.reposted_by:
+            print(f"[get_post_reposts] client.get_reposted_by returned {len(response.reposted_by)} reposter(s).")
+            for reposter_profile in response.reposted_by:
+                # reposter_profile is models.AppBskyActorDefs.ProfileView
+                if not reposter_profile.did or not reposter_profile.handle:
+                    print(f"[get_post_reposts] Skipping reposter due to missing DID or handle: {reposter_profile}")
+                    continue
+                # It contains .did, .handle, .display_name
+                # It does NOT contain the timestamp of when this specific user reposted.
+                reposts_data.append({
+                    'type': 'repost',
+                    'id': f"repost_{reposter_profile.did}_{post_uri}", # Unique ID for the repost node
+                    'author': reposter_profile.handle,
+                    'author_display_name': reposter_profile.display_name or reposter_profile.handle,
+                    'parent_id': post_uri, # Link to the original post
+                    'text': original_text, # Display text of the original post (reposts embed original content)
+                    'created_at': None,    # Timestamp of the repost action is NOT directly available here.
+                                           # Your JS (nodos.js) handles null created_at by showing "Unknown".
+                    'metrics': { # Reposts themselves don't have individual engagement metrics like replies/likes
+                        'replies': 0,
+                        'reposts': 0,
+                        'likes': 0
+                    }
+                })
+            print(f"[get_post_reposts] Successfully processed {len(reposts_data)} valid reposters for {post_uri}.")
+        elif response: # Response object exists, but reposted_by might be empty or None
+            actual_reposted_by_count = len(response.reposted_by) if response.reposted_by is not None else 0
+            print(f"[get_post_reposts] client.get_reposted_by for {post_uri} returned a response, but 'reposted_by' list is empty or None. Actual count: {actual_reposted_by_count}.")
+        else: # Response itself is None
+            print(f"[get_post_reposts] client.get_reposted_by for {post_uri} returned a None response object. This is unexpected.")
+
     except Exception as e:
-        print(f"Error getting reposts: {e}")
-    
-    return reposts
+        print(f"[get_post_reposts] Exception occurred while getting reposts for {post_uri}: {str(e)}")
+        import traceback # Ensure traceback is imported and used
+        traceback.print_exc() # Print full traceback for detailed debugging
+
+    print(f"[get_post_reposts] Finished fetching reposts for {post_uri}. Found {len(reposts_data)} repost entries to return.")
+    return reposts_data
 
 def build_graph_data(original_post, interactions):
     """
