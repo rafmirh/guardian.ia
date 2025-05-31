@@ -1,48 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
-<link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guardián IA</title>
-    <link rel="stylesheet" href="static/css/trazabilidad.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Fredoka+One&family=Play&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/trazabilidad.css">
     <link rel="stylesheet" href="static/css/content.css">
 </head>
 <body>
-    <header class="bg_animate">                             
+    <header class="bg_animate">
         <div class="header_nav">
             <div class="contenedor">
                 <nav>
-                     <a href="/dashboard" class="nav-button">Dashboard</a>
-                     <a href="/perfil" class="nav-button">Perfil de Riesgo</a>
-                     <a href="/trazabilidad" class="nav-button">Trazabilidad</a>
+                    <a href="/dashboard" class="nav-button">Dashboard</a>
+                    <a href="/perfil" class="nav-button">Perfil de Riesgo</a>
+                    <a href="/trazabilidad" class="nav-button">Trazabilidad</a>
                 </nav>
+                <button class="button" data-text="Awesome">
+                    <span class="actual-text">&nbsp;Guardián IA&nbsp;</span>
+                    <span aria-hidden="true" class="hover-text">&nbsp;Guardián IA&nbsp;</span>
+                </button>
             </div>
         </div>
 
-        <div style="display: flex; justify-content: center; align-items: center; height: 25vh;">
-    <button class="button" data-text="Awesome">
-        <span class="actual-text">&nbsp;Guardián IA&nbsp;</span>
-        <span aria-hidden="true" class="hover-text">&nbsp;Guardián IA&nbsp;</span>
-    </button>
-</div>
-
-     <section class="banner bg_animate">
-    <div class="banner_title">
-    <h2>Misión</h2>
-    <p>Analizar la usurpación de identidad.</p>
-    <h2>Visión</h2>
-    <p>Impulsar la innovación con la ciencia de datos para salvaguardar la integridad digital de las personas.</p>
-
- </div>
-    <div class="banner_img">
-        <img src="https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/core-512.png" alt="IA">
-    </div>
-</section>
+        <section class="banner bg_animate">
+            <div class="banner_title">
+                <h2>Misión</h2>
+                <p>Analizar la usurpación de identidad.</p>
+                <h2>Visión</h2>
+                <p>Impulsar la innovación con la ciencia de datos para salvaguardar la integridad digital de las personas.</p>
+            </div>
+            <div class="banner_img">
+                <img src="https://cdn2.iconfinder.com/data/icons/artificial-intelligence-81/64/core-512.png" alt="IA">
+            </div>
+        </section>
 
         <div class="burbujas">
             <div class="burbuja"></div>
@@ -57,28 +51,40 @@
             <div class="burbuja"></div>
         </div>
     </header>
+
     <script>
-     const modal = document.getElementById("modalImagen");
-     const img = document.getElementById("modeloImg");
-     const modalImg = document.getElementById("imgAmpliada");
-     const cerrar = document.getElementsByClassName("cerrar")[0];
-     
-     img.onclick = function () {
-        modal.style.display = "block";
-        modalImg.src = this.src;
-    }
-    
-    cerrar.onclick = function () {
-        modal.style.display = "none";
-    }
-    
-    window.onclick = function(event) {
-        if (event.target === modal) {
-            modal.style.display = "none";
+        const modal = document.getElementById("modalImagen");
+        const img = document.getElementById("modeloImg"); // Elemento que activa el modal
+        const modalImg = document.getElementById("imgAmpliada"); // Imagen dentro del modal
+        const cerrar = document.getElementsByClassName("cerrar")[0]; // Botón para cerrar el modal
+
+        // Solo adjuntamos los eventos si los elementos existen para evitar errores.
+        if (img) {
+            img.onclick = function () {
+                if (modal && modalImg) {
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                }
+            }
         }
-    }
+
+        if (cerrar) {
+            cerrar.onclick = function () {
+                if (modal) {
+                    modal.style.display = "none";
+                }
+            }
+        }
+
+        if (modal) {
+            window.onclick = function(event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            }
+        }
     </script>
-    </body>
+
     <footer>
         <div class="footer">
             <div class="row">
@@ -97,8 +103,9 @@
                 </ul>
             </div>
             <div class="row">
-                **Guardián IA Copyright © 2025 Guardián IA - All rights reserved || Designed By: LCDN: EQUIPO 4 701**
+                Guardián IA Copyright © 2025 Guardián IA - All rights reserved || Designed By: LCDN: EQUIPO 4 701
             </div>
         </div>
     </footer>
+</body>
 </html>
