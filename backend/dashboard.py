@@ -90,8 +90,8 @@ def create_heatmap(df, zoom_start=11):
         # Crear árbol con métrica haversine (distancia en esfera)
         tree = BallTree(coords, metric='haversine')
 
-        # 3 km en radianes (la Tierra tiene radio ~6371 km)
-        radius_km = 3
+        # 1 km en radianes (la Tierra tiene radio ~6371 km)
+        radius_km = 1
         radius_rad = radius_km / 6371.0
 
         # Contar vecinos dentro de 5 km para cada punto
@@ -104,7 +104,7 @@ def create_heatmap(df, zoom_start=11):
         # Añadir el marcador al mapa
         folium.Marker(
             location=[top_location['latitud'], top_location['longitud']],
-            popup=f"Mayor concentración en 3 km: {counts[max_idx]} casos",
+            popup=f"Mayor concentración en 1 km: {counts[max_idx]} casos",
             icon=folium.Icon(color='purple', icon='info-sign')
         ).add_to(m)
     
