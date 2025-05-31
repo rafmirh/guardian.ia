@@ -380,6 +380,55 @@ class BlueskyBot:
         except Exception as e:
             print(f"❌ Error loading contact list: {str(e)}")
 
+    def get_user_feed(self, limit: int = 10) -> Optional[List[Dict]]:
+        """
+        Get the authenticated user's feed (their posts).
+
+        Args:
+            limit: Number of posts to fetch.
+
+        Returns:
+            List[Dict]: A list of post objects, or None if an error occurs.
+        """
+        if not self.session:
+            print("❌ Not authenticated. Please authenticate first.")
+            if not self.authenticate(): # Try to authenticate if not already
+                return None
+
+        try:
+            feed_url = f"{self.base_url}/app.bsky.feed.getAuthorFeed"
+            headers = {
+                "Authorization": f"Bearer {self.session['accessJwt']}",
+            }
+            params = {
+                "actor": self.session["did"], # Get feed for the authenticated user (the bot itself)
+                "limit": limit
+            }
+
+            response = requests.get(feed_url, headers=headers, params=params)
+
+            if response.status_code == 200:
+                feed_data = response.json().get("feed", [])
+                user_posts = []
+                for item in feed_data:
+                    # Ensure we are getting actual posts by the bot, not reposts of others' content appearing in its feed view
+                    if item.get("post") and item["post"]["author"]["did"] == self.session["did"]:
+                        post_record = item["post"]["record"]
+                        user_posts.append({
+                            "text": post_record.get("text", ""),
+                            "createdAt": post_record.get("createdAt", ""),
+                            "uri": item["post"].get("uri", "")
+                        })
+                print(f"✅ Successfully fetched {len(user_posts)} posts for {self.username}")
+                return user_posts
+            else:
+                print(f"❌ Failed to get user feed: {response.status_code} - {response.text}")
+                return None
+
+        except Exception as e:
+            print(f"❌ Error getting user feed: {str(e)}")
+            return None
+
 
 # Example usage and testing
 if __name__ == "__main__":

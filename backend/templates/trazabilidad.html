@@ -22,9 +22,9 @@
                     <span aria-hidden="true" class="hover-text">&nbsp;Guardián IA&nbsp;</span>
                 </button>
                 <nav>
+                    <a href="/content" class="nav-button">Contenido</a>
                      <a href="/dashboard" class="nav-button">Dashboard</a>
                      <a href="/perfil" class="nav-button">Perfil de Riesgo</a>
-                     <a href="/content" class="nav-button">Contenido</a>
                 </nav>
             </div>
         </div>
@@ -41,72 +41,138 @@
     </header>
 
     <!-- Message Form Section -->
-    <section class="message-section">
-        <div class="contenedor">
-            <div class="message-form-container">
-                <h3>Simulación de Mensajes spam en Bluesky</h3>
-                
-                <form id="messageForm" class="message-form">
-                    <div class="form-group">
-                        <label for="messageText">Mensaje:</label>
-                        <textarea 
-                            id="messageText" 
-                            name="message" 
-                            placeholder="Escribe texto del mensaje..." 
-                            rows="4" 
-                            required></textarea>
-                    </div>
-                    
-                    <div class="form-options">
-                        <label class="checkbox-container">
-                            <input type="checkbox" id="includePublicPost" name="include_public">
-                            <span class="checkmark"></span>
-                            Publicar en feed
-                        </label>
-                    </div>
-                    
-                    <div class="form-actions">
-                        <button type="submit" id="simularBtn" class="btn-simular">
-                            <span class="btn-text">Simular</span>
-                            <span class="btn-loading" style="display: none;">
-                                <span class="spinner"></span>
-                                Enviando...
-                            </span>
-                        </button>
-                    </div>
-                </form>
-                
-                <!-- Results Display -->
-                <div id="resultsContainer" class="results-container" style="display: none;">
-                    <h4>Resultados del Envío</h4>
-                    <div id="resultsContent"></div>
+    <!-- Main Content Area for Trazabilidad -->
+    <div class="trazabilidad-main-container">
+        <div class="spam-form-column">
+            <h2>Simulación de Mensajes spam en Bluesky</h2>
+            <!-- Your existing form for sending messages, with updated IDs -->
+            <form id="spamForm">
+                <div>
+                    <label for="message">Mensaje:</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Escribe texto del mensaje..." required></textarea>
                 </div>
+                <div class="form-options">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="include_public" name="include_public">
+                        <span class="checkmark"></span>
+                        Publicar también en feed público (sin menciones)
+                    </label>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" id="simularBtn" class="btn-simular">
+                        <span class="btn-text">Enviar Mensaje</span>
+                        <span class="btn-loading" style="display: none;">
+                            <span class="spinner"></span>
+                            Enviando...
+                        </span>
+                    </button>
+                </div>
+            </form>
+            <div id="responseArea" class="results-container" style="margin-top: 20px; display: none;">
+                 <h4>Resultados del Envío</h4>
+                 <div id="resultsContent"></div>
             </div>
         </div>
-    </section>
+
+        <div class="feed-display-column">
+            <h3>Feed de @<span id="botUsername">cargando...</span></h3>
+            <div id="botFeedArea">
+                <p>Cargando feed...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- You can move these styles to your trazabilidad.css file -->
+    <style>
+        .trazabilidad-main-container {
+            display: flex;
+            flex-wrap: wrap; /* Allows wrapping on smaller screens if necessary */
+            gap: 20px; /* Space between the two columns */
+            padding: 20px;
+            max-width: 1200px; /* Or your preferred max width */
+            margin: 20px auto; /* Center the container */
+        }
+        .spam-form-column, .feed-display-column {
+            flex: 1; /* Takes up 50% of the space, adjust as needed */
+            min-width: 300px; /* Minimum width before wrapping */
+            padding: 20px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            background-color: #2a2a2a; /* Darker background for the container */
+            color: #e0e0e0;
+        }
+        .spam-form-column h2, .feed-display-column h3 {
+            margin-top: 0;
+            color: #00c6ff; /* Neon blue for title */
+            font-family: 'Audiowide', cursive;
+        }
+        #botFeedArea {
+            max-height: 450px; /* Or any height you prefer */
+            overflow-y: auto; /* Add scroll for overflow */
+            padding-right: 10px; /* Space for scrollbar */
+        }
+        .feed-post {
+            border-bottom: 1px solid #383838;
+            padding: 10px 0;
+            margin-bottom: 10px;
+        }
+        .feed-post:last-child {
+            border-bottom: none;
+        }
+        .post-text {
+            margin-bottom: 5px;
+            white-space: pre-wrap; /* Preserve line breaks in posts */
+        }
+        .post-meta {
+            font-size: 0.8em;
+            color: #888; /* Dimmer color for metadata */
+        }
+        .post-meta a {
+            color: #00c6ff;
+            text-decoration: none;
+        }
+        .post-meta a:hover {
+            text-decoration: underline;
+        }
+
+        /* Styles for form elements from your original CSS, adapted */
+        .spam-form-column label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .spam-form-column textarea {
+            width: 95%; /* Adjust as needed */
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #555;
+            background-color: #333;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        .form-options { margin-bottom: 15px; }
+        /* Ensure your existing .checkbox-container, .btn-simular, .results-container styles from trazabilidad.css apply or add them here if needed */
+
+    </style>
 
     <script src="{{ url_for('static', filename='js/trazabilidad.js') }}"></script>
 </body>
 <footer>
-        <div class="footer">
-            <div class="row">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-                <a href="#"><i class="fa fa-youtube"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-            </div>
-            <div class="row">
-                <ul>
-                    <li><a href="#">Contact us</a></li>
-                    <li><a href="#">Our Services</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Career</a></li>
-                </ul>
-            </div>
-            <div class="row">
-                **Guardián IA Copyright © 2025 Guardián IA - All rights reserved || Designed By: LCDN EQUIPO 4 701**
-            </div>
+    <div class="footer">
+        <div class="row">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+            <a href="#"><i class="fa fa-youtube"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
         </div>
-    </footer>
+        <div class="row">
+            <ul>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Our Services</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Career</a></li>
+            </ul>
+        </div>
+        <div class="row">
+            **Guardián IA Copyright © 2025 Guardián IA - All rights reserved || Designed By: Mahesh**
+        </div>
+    </div>
+</footer>
 </html>

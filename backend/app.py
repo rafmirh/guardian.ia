@@ -1,28 +1,27 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
 import pandas as pd
 import os, sys
+import traceback # Added import
 from bluesky_bot import BlueskyBot
 from dotenv import load_dotenv
 from datetime import datetime
 from nodos import analyze_post_propagation, get_mock_data
 
 load_dotenv()
+app = Flask(__name__) # Moved Flask app initialization up
+CORS(app)
 
-BLUESKY_USERNAME = os.getenv('maxikilo.bsky.social')
-BLUESKY_PASSWORD = os.getenv('3sja-q2r7-7ycr-s3ya')
+# Correctly initialize Bluesky Bot once using .env variables
+# These environment variables (BLUESKY_USERNAME, BLUESKY_PASSWORD) should be defined in your .env file
+BLUESKY_USERNAME_ENV = os.getenv('BLUESKY_USERNAME')
+BLUESKY_PASSWORD_ENV = os.getenv('BLUESKY_PASSWORD')
 
 # Initialize bot instance
-bluesky_bot = BlueskyBot(BLUESKY_USERNAME, BLUESKY_PASSWORD)
-
+bluesky_bot = BlueskyBot(BLUESKY_USERNAME_ENV, BLUESKY_PASSWORD_ENV)
 # Load contacts on startup
 bluesky_bot.load_contact_list()
 
-# Crear la app Flask
-app = Flask(__name__)
-CORS(app)
-
-# Manejar posibles errores de importación
 try:
     from dashboard import create_dashboard
     # Register Dash app with Flask
@@ -64,21 +63,7 @@ def dashboard_status():
     else:
         return jsonify({"status": "ok"})
 
-# Add these imports to your Flask app
-from flask import Flask, render_template, request, jsonify
-import os
-from bluesky_bot import BlueskyBot
-
-# Initialize the bot (add this to your Flask app initialization)
-# You'll need to set these environment variables or replace with your actual credentials
-BLUESKY_USERNAME = os.getenv('BLUESKY_USERNAME', 'maxikilo.bsky.social')
-BLUESKY_PASSWORD = os.getenv('BLUESKY_PASSWORD', '3sja-q2r7-7ycr-s3ya')
-
-# Initialize bot instance
-bluesky_bot = BlueskyBot(BLUESKY_USERNAME, BLUESKY_PASSWORD)
-
 # Load contacts on startup
-bluesky_bot.load_contact_list()
 
 # Add/modify your trazabilidad route
 @app.route('/trazabilidad', methods=['GET', 'POST'])
@@ -145,6 +130,31 @@ def trazabilidad():
                 'success': False,
                 'error': f'Error interno del servidor: {str(e)}'
             }), 500
+
+# Optional: Add route to test bot connection
+@app.route('/trazabilidad/get_bot_feed', methods=['GET'])
+def get_bot_feed():
+    """Endpoint to get the bot's own feed."""
+    if not bluesky_bot.session:
+        # Attempt to authenticate if not already
+        if not bluesky_bot.authenticate():
+            return jsonify({'success': False, 'error': 'Bluesky authentication failed', 'username': bluesky_bot.username}), 500
+
+    limit = request.args.get('limit', 10, type=int) # Get 10 posts by default
+    feed_items = bluesky_bot.get_user_feed(limit=limit)
+
+    if feed_items is not None:
+        return jsonify({'success': True, 'feed': feed_items, 'username': bluesky_bot.username})
+    else:
+        # feed_items is None, meaning bluesky_bot.get_user_feed() returned None.
+        # This happens if authentication within get_user_feed fails, or if the API call to getAuthorFeed fails.
+        if not bluesky_bot.session or not bluesky_bot.session.get('accessJwt'):
+            error_message = f"Bluesky authentication failed for user {bluesky_bot.username}. Please check credentials in .env or Bluesky service status."
+        else:
+            # Session exists, so authentication was successful at some point, but fetching feed failed.
+            error_message = f"Failed to fetch feed for {bluesky_bot.username} from Bluesky. The account might have no posts visible via API, or there could be a temporary API issue."
+        return jsonify({'success': False, 'error': error_message, 'username': bluesky_bot.username}), 500
+
 
 # Optional: Add route to test bot connection
 @app.route('/trazabilidad/test', methods=['POST'])
