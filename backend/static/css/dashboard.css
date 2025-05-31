@@ -1,77 +1,170 @@
 /* Estilos para el dashboard de Usurpación de Identidad */
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
 
-{ margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: Arial, sans-serif; }
+/* --- REGLAS GLOBALES Y RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-.contenedor { width: 90%; max-width: 1200px; margin: auto; }
+body, html {
+    height: 100%;
+    /* margin: 0; y padding: 0; ya están en el reset universal */
+    overflow: hidden; /* Esto es importante para que el iframe no genere scroll extra */
+    background: linear-gradient(#000, #390c53, #000); /* Fondo principal de la página */
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-.bg_animate { width: 100%; height: 17vh; background: linear-gradient(#000, 
-#390c53, #000); position: relative; overflow: hidden; }
+.contenedor {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
 
-.header_nav { width: 100%; position: absolute; top: 0; left: 0; }
+/* --- ESTILOS DEL ENCABEZADO (HEADER) --- */
+/* .bg_animate envuelve el header_nav, su animación de fondo no es fija */
+.bg_animate {
+    width: 100%;
+    height: 17vh; /* Ajusta según el tamaño de la animación que quieras para el fondo */
+    background: linear-gradient(#000, #390c53, #000); /* Este fondo probablemente será cubierto por el de header_nav */
+    position: relative;
+    overflow: hidden;
+}
 
-.header_nav .contenedor { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
+.header_nav {
+    width: 100%;
+    position: fixed; /* Hace que el encabezado se quede arriba al hacer scroll */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente del header */
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+    border-bottom: 1px solid #B026FF;
+    padding: 15px 0; /* Añadido padding aquí para el contenido del header */
+}
+
+.header_nav .contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 15px 0; ya movido a .header_nav */
+}
 
 .header_nav h1 {
     color: #fff;
     font-family: 'Audiowide', sans-serif;
     font-size: 60px;
     margin-top: 20px;
-    font-weight: bold; 
+    font-weight: bold;
     text-shadow:
         0 0 7px #B026FF,
         0 0 15px #B026FF,
         0 0 25px #B026FF,
         -1px -1px 0 #000,
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000,
-        -1px  0   0 #000,
-         1px  0   0 #000,
-         0   -1px 0 #000,
-         0    1px 0 #000;
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        -1px 0 0 #000,
+        1px 0 0 #000,
+        0 -1px 0 #000,
+        0 1px 0 #000;
 }
 
 .header_nav nav a {
     color: #fff;
     font-size: 20px;
-    font-weight: bold; 
+    font-weight: bold;
     text-decoration: none;
     margin-right: 10px;
-    margin-top: 20px;   
+    margin-top: 20px;
 }
 
-.banner { display: flex; justify-content: space-between; align-items: center; height: 100%; }
+/* --- ESTILOS DEL IFRAME Y CARGA --- */
+.dashboard-iframe {
+    width: 100%;
+    height: calc(100vh - 100px); /* Altura ajustada para dejar espacio al header, manejada por JS */
+    border: none;
+    margin-top: 100px; /* Espacio para el header, manejada por JS */
+}
+
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 500; /* Asegura que esté sobre el iframe mientras carga */
+}
+
+.loading-text {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #B026FF;
+    font-weight: bold;
+    text-shadow: 0 0 10px #B026FF;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 5px solid rgba(176, 38, 255, 0.3);
+    border-radius: 50%;
+    border-top: 5px solid #B026FF;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+    box-shadow: 0 0 15px #B026FF;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- ESTILOS DEL BANNER (si aplica en esta página) --- */
+.banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
 
 .banner_img { animation: movimiento 2.5s linear infinite; }
-
 .banner_img img { width: 600px; display: block; }
 
-@keyframes movimiento { 0% { transform: translateY(0); } 50% { transform: translateY(30px); } 100% { transform: translateY(0); } }
+@keyframes movimiento {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(30px); }
+    100% { transform: translateY(0); }
+}
 
-/* Estilos para la visualización del mapa responsivo */
-#heatmap-container { width: 100% !important; height: 100% !important; overflow: hidden; border-radius: 5px; }
+/* --- ESTILOS PARA MAPA/TARJETAS (si aplica en esta página) --- */
+#heatmap-container {
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden;
+    border-radius: 5px;
+}
 
-#heatmap-container iframe { border: none; width: 100%; height: 100%; background-color: #222; }
+#heatmap-container iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+    background-color: #222;
+}
 
 /* Efecto neón para títulos en las tarjetas */
-.card-header { border-bottom-color: 
-#B026FF !important;
+.card-header {
+    border-bottom-color: #B026FF !important;
     box-shadow: 0 0 10px rgba(176, 38, 255, 0.5);
     animation: header-neon-glow 2s infinite alternate ease-in-out;
 }
 
 @keyframes card-hover-glow {
-    0% {
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(176, 38, 255, 0.3);
-    }
-    50% {
-        box-shadow: 0 0 18px rgba(0, 0, 0, 0.6), 0 0 25px rgba(176, 38, 255, 0.6);
-    }
-    100% {
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(176, 38, 255, 0.3);
-    }
+    0% { box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(176, 38, 255, 0.3); }
+    50% { box-shadow: 0 0 18px rgba(0, 0, 0, 0.6), 0 0 25px rgba(176, 38, 255, 0.6); }
+    100% { box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(176, 38, 255, 0.3); }
 }
 
 @keyframes header-neon-glow {
@@ -92,10 +185,10 @@ body { font-family: Arial, sans-serif; }
     transform: translateY(-3px);
 }
 
-@keyframes glow { 
-    0% { text-shadow: 0 0 5px #B026FF, 0 0 10px #B026FF; } 
-    50% { text-shadow: 0 0 20px #B026FF, 0 0 30px #B026FF; } 
-    100% { text-shadow: 0 0 5px #B026FF, 0 0 10px #B026FF; } 
+@keyframes glow {
+    0% { text-shadow: 0 0 5px #B026FF, 0 0 10px #B026FF; }
+    50% { text-shadow: 0 0 20px #B026FF, 0 0 30px #B026FF; }
+    100% { text-shadow: 0 0 5px #B026FF, 0 0 10px #B026FF; }
 }
 
 .neon-interactive {
@@ -110,18 +203,9 @@ body { font-family: Arial, sans-serif; }
 }
 
 @keyframes neon-focus-glow {
-    0% {
-        border-color: #B026FF;
-        box-shadow: 0 0 8px rgba(88, 250, 244, 0.4), 0 0 12px rgba(176, 38, 255, 0.3);
-    }
-    50% {
-        border-color: #58FAF4;
-        box-shadow: 0 0 15px rgba(88, 250, 244, 0.8), 0 0 25px rgba(88, 250, 244, 0.6);
-    }
-    100% {
-        border-color: #B026FF;
-        box-shadow: 0 0 8px rgba(88, 250, 244, 0.4), 0 0 12px rgba(176, 38, 255, 0.3);
-    }
+    0% { border-color: #B026FF; box-shadow: 0 0 8px rgba(88, 250, 244, 0.4), 0 0 12px rgba(176, 38, 255, 0.3); }
+    50% { border-color: #58FAF4; box-shadow: 0 0 15px rgba(88, 250, 244, 0.8), 0 0 25px rgba(88, 250, 244, 0.6); }
+    100% { border-color: #B026FF; box-shadow: 0 0 8px rgba(88, 250, 244, 0.4), 0 0 12px rgba(176, 38, 255, 0.3); }
 }
 
 .neon-interactive:focus,
