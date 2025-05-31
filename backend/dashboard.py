@@ -74,7 +74,7 @@ def create_heatmap(df, zoom_start=11):
             radius=5,
             blur=2,
             gradient={
-                0.5: "#ff07c9",  # Morado oscuro
+                0.5: "#f79de3",  # Morado oscuro
                 0.6: "#46FFFF",  # Morado
                 0.8: "#42ff7b",  # Morado brillante
                 0.9: "#fffc52",  # Violeta
