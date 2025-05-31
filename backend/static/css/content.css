@@ -45,19 +45,19 @@ body {
     --border-right: 6px;
     --text-stroke-color: rgba(255,255,255,0.6);
     --animation-color: #f8f8f8;
-    --fs-size: 1.8rem;
-    letter-spacing: 3px;
+    --fs-size: 3rem; /* Aumenta el tamaño del texto */
+    letter-spacing: 4px;
     font-size: var(--fs-size);
     font-family: 'Audiowide', sans-serif;
     position: relative;
     text-transform: uppercase;
     color: transparent;
-    -webkit-text-stroke: 1px var(--text-stroke-color);
+    -webkit-text-stroke: 1.2px var(--text-stroke-color);
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0;
-    margin: 10px 0;
+    padding: 20px 40px; /* Aumenta el espacio alrededor */
+    margin: 20px 0;
 }
 
 .actual-text {
