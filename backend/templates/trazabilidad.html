@@ -22,7 +22,7 @@
                     <span aria-hidden="true" class="hover-text">&nbsp;Guardián IA&nbsp;</span>
                 </button>
                 <nav>
-                    <a href="/content" class="nav-button">Contenido</a>
+                     <a href="/content" class="nav-button">Contenido</a>
                      <a href="/dashboard" class="nav-button">Dashboard</a>
                      <a href="/perfil" class="nav-button">Perfil de Riesgo</a>
                 </nav>
@@ -55,7 +55,7 @@
                     <label class="checkbox-container">
                         <input type="checkbox" id="include_public" name="include_public">
                         <span class="checkmark"></span>
-                        Publicar también en feed público (sin menciones)
+                        Publicar también en feed
                     </label>
                 </div>
                 <div class="form-actions">
@@ -80,6 +80,12 @@
                 <p>Cargando feed...</p>
             </div>
         </div>
+
+        <div class="nav-button-wrapper">
+                <nav>
+                    <a href="/nodos" class="nav-button">análisis de propagación</a>
+                </nav>
+        </div>
     </div>
 
     <!-- You can move these styles to your trazabilidad.css file -->
@@ -90,6 +96,7 @@
             gap: 20px; /* Space between the two columns */
             padding: 20px;
             max-width: 1200px; /* Or your preferred max width */
+            background-color: #222222; /* New background color */
             margin: 20px auto; /* Center the container */
         }
         .spam-form-column, .feed-display-column {
@@ -103,7 +110,8 @@
         }
         .spam-form-column h2, .feed-display-column h3 {
             margin-top: 0;
-            color: #00c6ff; /* Neon blue for title */
+            margin-bottom: 20px; /* Added space below the h2 title */
+            color: #00ff26; /* Neon blue for title */
             font-family: 'Audiowide', cursive;
         }
         #botFeedArea {
@@ -112,7 +120,7 @@
             padding-right: 10px; /* Space for scrollbar */
         }
         .feed-post {
-            border-bottom: 1px solid #383838;
+            border-bottom: 2px solid #555555; /* Made border thicker and lighter */
             padding: 10px 0;
             margin-bottom: 10px;
         }
@@ -136,18 +144,31 @@
         }
 
         /* Styles for form elements from your original CSS, adapted */
-        .spam-form-column label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .spam-form-column label {
+            display: block;
+            margin-bottom: 8px; /* Increased space below the label */
+            font-weight: bold;
+        }
         .spam-form-column textarea {
             width: 95%; /* Adjust as needed */
             padding: 10px;
             border-radius: 5px;
             border: 1px solid #555;
-            background-color: #333;
-            color: #fff;
+            background-color: #ffffff; /* White background */
+            color: #000000; /* Black text */
             margin-bottom: 15px;
         }
         .form-options { margin-bottom: 15px; }
+        .spam-form-column .checkbox-container {
+            color: #ffffff; /* White text for the checkbox label */
+            /* Add other styles for checkbox-container if needed, like alignment */
+        }
         /* Ensure your existing .checkbox-container, .btn-simular, .results-container styles from trazabilidad.css apply or add them here if needed */
+        .nav-button-wrapper {
+            display: flex;
+            align-items: center; /* This will vertically center the nav (and its button) */
+            justify-content: center; /* This will horizontally center the nav. Remove if not needed. */
+        }
 
     </style>
 
