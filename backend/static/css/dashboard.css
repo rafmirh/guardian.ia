@@ -143,6 +143,34 @@ body { font-family: Arial, sans-serif; }
     .header_nav nav a { margin-bottom: 5px; }
 }
 
+/* Force white text for the selected value */
+.Select-control, .Select-value, .Select-value-label {
+    background-color: #222 !important;
+    color: white !important;
+    border-color: white !important;
+}
+
+/* Optional: match the dropdown arrow color */
+.Select-arrow {
+    border-top-color: white !important;
+}
+
+/* Cambia el color de fondo de la lista desplegable */
+.Select-menu-outer {
+    background-color: #222 !important;
+}
+
+/* Cambia el color de fondo y texto de los ítems */
+.Select-option {
+    background-color: #222 !important;
+    color: white !important;
+}
+
+/* Estilo cuando se pasa el mouse por encima */
+.Select-option.is-focused {
+    background-color: #5c2c63 !important;
+}
+
 /* BOTONES BARRA */
 .nav-button {
     display: inline-block;

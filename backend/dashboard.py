@@ -90,8 +90,8 @@ def create_heatmap(df, zoom_start=11):
         # Crear árbol con métrica haversine (distancia en esfera)
         tree = BallTree(coords, metric='haversine')
 
-        # 5 km en radianes (la Tierra tiene radio ~6371 km)
-        radius_km = 5
+        # 3 km en radianes (la Tierra tiene radio ~6371 km)
+        radius_km = 3
         radius_rad = radius_km / 6371.0
 
         # Contar vecinos dentro de 5 km para cada punto
@@ -104,7 +104,7 @@ def create_heatmap(df, zoom_start=11):
         # Añadir el marcador al mapa
         folium.Marker(
             location=[top_location['latitud'], top_location['longitud']],
-            popup=f"Mayor concentración en 5 km: {counts[max_idx]} casos",
+            popup=f"Mayor concentración en 3 km: {counts[max_idx]} casos",
             icon=folium.Icon(color='purple', icon='info-sign')
         ).add_to(m)
     
@@ -114,7 +114,7 @@ def create_heatmap(df, zoom_start=11):
 # Aplicación Dash
 def init_dashboard(server):
     external_stylesheets = [
-        dbc.themes.DARKLY,
+        dbc.themes.CYBORG,
         "https://fonts.googleapis.com/css2?family=Audiowide&display=swap"
     ]
 
@@ -156,22 +156,22 @@ def init_dashboard(server):
                 dbc.Col([
                     html.Label("Sexo:", style={'color': '#ffffff'}),
                     dcc.Dropdown(id='sexo-filter', options=sexos, value='Todos', 
-                        className='mb-3 neon-interactive', style={'backgroundColor': '#222', 'color': '#000'})
+                        className='mb-3 neon-interactive', style={'backgroundColor': '#222', 'color': '#FFFFFF'})
                 ], width=3),
                 dbc.Col([
-                    html.Label("Alcaldía:", style={'color': '#ffffff'}),
+                    html.Label("Alcaldía:", style={'color': '#FFFFFF'}),
                     dcc.Dropdown(id='alcaldia-filter', options=alcaldias, value='Todas', 
-                        className='mb-3 neon-interactive', style={'backgroundColor': '#222', 'color': '#000'})
+                        className='mb-3 neon-interactive', style={'backgroundColor': '#222', 'color': '#FFFFFF'})
                 ], width=3),
                 dbc.Col([
                     html.Label("Año:", style={'color': '#ffffff'}),
                     dcc.Dropdown(id='anio-filter', options=años, value='Todos', 
-                        className='mb-3 neon-interactive', style={'backgroundColor': '#222', 'color': '#000'})
+                        className='mb-3 neon-interactive', style={'backgroundColor': '#222', 'color': '#FFFFFF'})
                 ], width=3),
                 dbc.Col([
                     html.Label("Mes:", style={'color': '#ffffff'}),
                     dcc.Dropdown(id='mes-filter', options=meses, value='Todos', 
-                        className='mb-3 neon-interactive', style={'backgroundColor': '#222', 'color': '#000'})
+                        className='mb-3 neon-interactive', style={'backgroundColor': '#222', 'color': '#FFFFFF'})
                 ], width=3)
             ], className="mb-4"),
 
@@ -227,7 +227,7 @@ def init_dashboard(server):
          Output('bar-edad', 'figure'),
          Output('line-anio', 'figure'),
          Output('treemap-colonia', 'figure'),
-         Output('heatmap-container', 'children')],  # Conservamos este output pero eliminamos risk-index
+         Output('heatmap-container', 'children')], 
         [Input('sexo-filter', 'value'),
          Input('alcaldia-filter', 'value'),
          Input('anio-filter', 'value'),
