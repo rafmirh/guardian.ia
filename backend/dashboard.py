@@ -57,11 +57,6 @@ def calculate_risk_statistics(df):
             'high_risk_areas': 0
         }
     
-    # Calcular tasa de riesgo (casos por 100,000 habitantes - estimación basada en datos)
-    # Asumiendo una población base para el cálculo
-    estimated_population = 100000  # Base para el cálculo
-    risk_rate = (len(df) / estimated_population) * 100000
-
     # Total de casos
     total_cases = len(df)
     
@@ -254,7 +249,7 @@ def init_dashboard(server):
                 # Right column for the Heatmap
                 dbc.Col([
                     dbc.Card([
-                        dbc.CardHeader("Mapa de riesgo - CDMX", style={'backgroundColor': '#390c53', 'color': 'dark'}),
+                        dbc.CardHeader("Mapa de riesgo - CDMX", style={'backgroundColor': '#390c53', 'color': 'white'}),
                         dbc.CardBody([
                             html.Div(id='heatmap-container', style={'height': '100%', 'width': '100%'}) # Ensure heatmap div fills card body
                         ])
@@ -267,42 +262,46 @@ def init_dashboard(server):
                 dbc.Col([
                     dbc.Card([
                         dbc.CardBody([
-                            html.H4(id='total-cases-value', className='text-center mb-0', 
-                                   style={'color': '#46FFFF', 'fontSize': '2.5rem', 'fontWeight': 'bold'}),
-                            html.P("Total de Casos", className='text-center mb-0', 
-                                  style={'color': '#ffffff', 'fontSize': '0.9rem'})
+                            html.H4(id='total-cases-value', className='text-center mb-0',
+                                    style={'fontSize': '2.5rem', 'fontWeight': 'bold', 'color': "#F5EDFD",
+                                        'textShadow': '0 0 7px #B026FF, 0 0 15px #B026FF, 0 0 25px #B026FF'}),
+                            html.P("Total de Casos", className='text-center mb-0',
+                                style={'color': '#ffffff', 'fontSize': '0.9rem'})
                         ])
-                    ], style={'backgroundColor': '#222', 'borderColor': '#46FFFF', 'border': '2px solid'})
+                    ], className='neon-purple-card')
                 ], md=2),
                 dbc.Col([
                     dbc.Card([
                         dbc.CardBody([
-                            html.H4(id='avg-age-value', className='text-center mb-0', 
-                                   style={'color': '#42ff7b', 'fontSize': '2.5rem', 'fontWeight': 'bold'}),
-                            html.P("Edad Promedio", className='text-center mb-0', 
-                                  style={'color': '#ffffff', 'fontSize': '0.9rem'})
+                            html.H4(id='avg-age-value', className='text-center mb-0',
+                                    style={'fontSize': '2.5rem', 'fontWeight': 'bold', 'color': "#F5EDFD",
+                                        'textShadow': '0 0 7px #B026FF, 0 0 15px #B026FF, 0 0 25px #B026FF'}),
+                            html.P("Edad Promedio", className='text-center mb-0',
+                                style={'color': '#ffffff', 'fontSize': '0.9rem'})
                         ])
-                    ], style={'backgroundColor': '#222', 'borderColor': '#42ff7b', 'border': '2px solid'})
+                    ], className='neon-purple-card')
                 ], md=2),
                 dbc.Col([
                     dbc.Card([
                         dbc.CardBody([
-                            html.H6(id='most-affected-area-value', className='text-center mb-0', 
-                                   style={'color': '#fffc52', 'fontSize': '1.2rem', 'fontWeight': 'bold'}),
-                            html.P("Área Más Afectada", className='text-center mb-0', 
-                                  style={'color': '#ffffff', 'fontSize': '0.9rem'})
+                            html.H4(id='most-affected-area-value', className='text-center mb-0',
+                                    style={'fontSize': '1.95rem', 'fontWeight': 'bold', 'color': "#F5EDFD",
+                                        'textShadow': '0 0 7px #B026FF, 0 0 15px #B026FF, 0 0 25px #B026FF'}),
+                            html.P("Área Más Afectada", className='text-center mb-0',
+                                style={'color': '#ffffff', 'fontSize': '0.9rem'})
                         ])
-                    ], style={'backgroundColor': '#222', 'borderColor': '#fffc52', 'border': '2px solid'})
+                    ], className='neon-purple-card')
                 ], md=2),
                 dbc.Col([
                     dbc.Card([
                         dbc.CardBody([
-                            html.H4(id='high-risk-areas-value', className='text-center mb-0', 
-                                   style={'color': '#E0AAFF', 'fontSize': '2.5rem', 'fontWeight': 'bold'}),
-                            html.P("Zonas de Alto Riesgo", className='text-center mb-0', 
-                                  style={'color': '#ffffff', 'fontSize': '0.9rem'})
+                            html.H4(id='high-risk-areas-value', className='text-center mb-0',
+                                    style={'fontSize': '2.5rem', 'fontWeight': 'bold', 'color': "#F5EDFD",
+                                        'textShadow': '0 0 7px #B026FF, 0 0 15px #B026FF, 0 0 25px #B026FF'}),
+                            html.P("Zonas de Alto Riesgo", className='text-center mb-0',
+                                style={'color': '#ffffff', 'fontSize': '0.9rem'})
                         ])
-                    ], style={'backgroundColor': '#222', 'borderColor': '#E0AAFF', 'border': '2px solid'})
+                    ], className='neon-purple-card')
                 ], md=3) # Ajustado md para distribuir el espacio
             ], className="mb-4", justify="center")
             

@@ -1,24 +1,49 @@
 /* Estilos para el dashboard de Usurpación de Identidad */
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
 
-{ margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: Arial, sans-serif; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-.contenedor { width: 90%; max-width: 1200px; margin: auto; }
+body {
+    font-family: 'Audiowide', sans-serif;
+}
 
-.bg_animate { width: 100%; height: 17vh; background: linear-gradient(#000, 
-#390c53, #000); position: relative; overflow: hidden; }
+.contenedor {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
 
-.header_nav { width: 100%; position: absolute; top: 0; left: 0; }
+.bg_animate {
+    width: 100%;
+    height: 17vh;
+    background: linear-gradient(#000, #390c53, #000);
+    position: relative;
+    overflow: hidden;
+}
 
-.header_nav .contenedor { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
+.header_nav {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.header_nav .contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
 
 .header_nav h1 {
     color: #fff;
-    font-family: 'Audiowide', sans-serif;
     font-size: 60px;
     margin-top: 20px;
-    font-weight: bold; 
+    font-weight: bold;
     text-shadow:
         0 0 7px #B026FF,
         0 0 15px #B026FF,
@@ -36,28 +61,50 @@ body { font-family: Arial, sans-serif; }
 .header_nav nav a {
     color: #fff;
     font-size: 20px;
-    font-weight: bold; 
+    font-weight: bold;
     text-decoration: none;
     margin-right: 10px;
-    margin-top: 20px;   
+    margin-top: 20px;
 }
 
-.banner { display: flex; justify-content: space-between; align-items: center; height: 100%; }
+.banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
 
-.banner_img { animation: movimiento 2.5s linear infinite; }
+.banner_img {
+    animation: movimiento 2.5s linear infinite;
+}
 
-.banner_img img { width: 600px; display: block; }
+.banner_img img {
+    width: 600px;
+    display: block;
+}
 
-@keyframes movimiento { 0% { transform: translateY(0); } 50% { transform: translateY(30px); } 100% { transform: translateY(0); } }
+@keyframes movimiento {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(30px); }
+    100% { transform: translateY(0); }
+}
 
-/* Estilos para la visualización del mapa responsivo */
-#heatmap-container { width: 100% !important; height: 100% !important; overflow: hidden; border-radius: 5px; }
+#heatmap-container {
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden;
+    border-radius: 5px;
+}
 
-#heatmap-container iframe { border: none; width: 100%; height: 100%; background-color: #222; }
+#heatmap-container iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+    background-color: #222;
+}
 
-/* Efecto neón para títulos en las tarjetas */
-.card-header { border-bottom-color: 
-#B026FF !important;
+.card-header {
+    border-bottom-color: #B026FF !important;
     box-shadow: 0 0 10px rgba(176, 38, 255, 0.5);
     animation: header-neon-glow 2s infinite alternate ease-in-out;
 }
@@ -92,10 +139,10 @@ body { font-family: Arial, sans-serif; }
     transform: translateY(-3px);
 }
 
-@keyframes glow { 
-    0% { text-shadow: 0 0 5px #B026FF, 0 0 10px #B026FF; } 
-    50% { text-shadow: 0 0 20px #B026FF, 0 0 30px #B026FF; } 
-    100% { text-shadow: 0 0 5px #B026FF, 0 0 10px #B026FF; } 
+@keyframes glow {
+    0% { text-shadow: 0 0 5px #B026FF, 0 0 10px #B026FF; }
+    50% { text-shadow: 0 0 20px #B026FF, 0 0 30px #B026FF; }
+    100% { text-shadow: 0 0 5px #B026FF, 0 0 10px #B026FF; }
 }
 
 .neon-interactive {
@@ -143,30 +190,26 @@ body { font-family: Arial, sans-serif; }
     .header_nav nav a { margin-bottom: 5px; }
 }
 
-/* Force white text for the selected value */
+/* Select */
 .Select-control, .Select-value, .Select-value-label {
     background-color: #222 !important;
     color: white !important;
     border-color: white !important;
 }
 
-/* Optional: match the dropdown arrow color */
 .Select-arrow {
     border-top-color: white !important;
 }
 
-/* Cambia el color de fondo de la lista desplegable */
 .Select-menu-outer {
     background-color: #222 !important;
 }
 
-/* Cambia el color de fondo y texto de los ítems */
 .Select-option {
     background-color: #222 !important;
     color: white !important;
 }
 
-/* Estilo cuando se pasa el mouse por encima */
 .Select-option.is-focused {
     background-color: #5c2c63 !important;
 }
@@ -181,7 +224,7 @@ body { font-family: Arial, sans-serif; }
     letter-spacing: 1px;
     text-transform: uppercase;
     font-size: 0.8rem;
-    font-family: Arial, sans-serif;
+    font-family: 'Audiowide', sans-serif;
     color: black;
     text-decoration: none;
     transition: all 0.3s ease;
