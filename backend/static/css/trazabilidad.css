@@ -147,7 +147,7 @@ body {
 .bg_animate {
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(90deg,rgba(31, 111, 143, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(117, 204, 86, 1) 100%);
+    background: linear-gradient(0deg,rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
     position: relative;
     overflow: hidden;
     padding-top: 100px;
