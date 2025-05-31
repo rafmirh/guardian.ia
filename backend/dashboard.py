@@ -354,7 +354,12 @@ def init_dashboard(server):
                          color_discrete_sequence=["#62039A", "#9C62FA"], hole=0.4)
         pie_fig.update_layout(plot_bgcolor='#222', paper_bgcolor='#222', font=dict(color='white'),
                               margin=dict(t=10, b=10, l=10, r=10))
-        pie_fig.update_traces(textinfo='percent+label')
+        pie_fig.update_traces(textinfo='percent+label',
+                                  textfont=dict(
+                                    family='Arial Black, Arial, sans-serif',
+                                    size=14,
+                                    color='white'
+                                ))
 
         edad_counts = filtered_df['rango_edad'].value_counts().reset_index()
         edad_counts.columns = ['Rango de Edad', 'Cantidad']
