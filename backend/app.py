@@ -7,6 +7,8 @@ from bluesky_bot import BlueskyBot
 from dotenv import load_dotenv
 from datetime import datetime
 from nodos import analyze_post_propagation, get_mock_data
+from perfil import leer_datos_csv, calcular_probabilidad_riesgo, validar_inputs, obtener_alcaldias
+
 
 load_dotenv()
 app = Flask(__name__) # Moved Flask app initialization up
@@ -42,9 +44,43 @@ def home():
 def content_page():
     return render_template('content.html')
 
-@app.route('/perfil')
-def perfil_page():
-    return render_template('perfil.html')
+# Modificar la ruta existente /perfil para manejar GET y POST
+@app.route('/perfil', methods=['GET', 'POST'])
+def perfil():
+    alcaldias = obtener_alcaldias()
+    
+    if request.method == 'POST':
+        try:
+            # Obtener datos del formulario
+            sexo = int(request.form.get('sexo', -1))
+            edad = int(request.form.get('edad', -1))
+            alcaldia_idx = int(request.form.get('alcaldia', -1))
+            
+            # Validar inputs
+            if not validar_inputs(sexo, edad, alcaldia_idx):
+                return render_template('perfil.html', 
+                                     alcaldias=alcaldias, 
+                                     error="Introducir datos válidos")
+            
+            # Leer datos y calcular probabilidad
+            df = leer_datos_csv()
+            probabilidad = calcular_probabilidad_riesgo(sexo, edad, alcaldia_idx, df)
+            
+            return render_template('perfil.html', 
+                                 alcaldias=alcaldias, 
+                                 probabilidad=probabilidad)
+        
+        except (ValueError, TypeError):
+            return render_template('perfil.html', 
+                                 alcaldias=alcaldias, 
+                                 error="Introducir datos válidos")
+        except Exception:
+            return render_template('perfil.html', 
+                                 alcaldias=alcaldias, 
+                                 error="Error interno del servidor")
+    
+    # Método GET - mostrar formulario vacío
+    return render_template('perfil.html', alcaldias=alcaldias, enumerate=enumerate)
 
 #@app.route('/dashboard')
 #def show_plotly_dashboard():

@@ -11,6 +11,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/perfil.css') }}">
+    <!-- Chart.js for gauge chart -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        /* Risk Analysis Section Styles */
+        .risk-analysis-section { padding: 60px 0; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); }
+        .section-title { text-align: center; color: #37FF8B; font-family: 'Audiowide', sans-serif; font-size: 2.5rem; margin-bottom: 40px; }
+        .analysis-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1000px; margin: 0 auto; }
+        .input-panel, .results-panel { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 15px; padding: 30px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; color: #37FF8B; font-weight: bold; margin-bottom: 8px; }
+        .form-group select, .form-group input { width: 100%; padding: 12px; border: 2px solid #37FF8B; border-radius: 8px; background: rgba(0,0,0,0.7); color: white; font-size: 16px; }
+        .btn-calcular { width: 100%; padding: 15px; background: linear-gradient(45deg, #37FF8B, #02F7D8); border: none; border-radius: 8px; color: black; font-weight: bold; font-size: 18px; cursor: pointer; transition: all 0.3s ease; }
+        .btn-calcular:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(55,255,139,0.3); }
+        .error-message { background: rgba(255,0,0,0.2); color: #ff6b6b; padding: 15px; border-radius: 8px; margin-top: 15px; border: 1px solid rgba(255,0,0,0.3); }
+        .gauge-container { position: relative; text-align: center; margin-bottom: 20px; }
+        .risk-percentage { position: absolute; top: 60%; left: 50%; transform: translate(-50%, -50%); font-size: 2.5rem; font-weight: bold; color: #37FF8B; font-family: 'Audiowide', sans-serif; }
+        .risk-description { text-align: center; color: #e0e0e0; font-size: 1.1rem; line-height: 1.6; }
+        @media (max-width: 768px) { .analysis-container { grid-template-columns: 1fr; gap: 20px; } .section-title { font-size: 2rem; } }
+    </style>
 </head>
 <body>
     <header class="bg_animate">
@@ -31,13 +50,80 @@
         <section class="banner contenedor">
             <section class="banner_title">
                 <h2>Perfil de Riesgo</h2>
-                <p>Consulta la evaluación de perfiles potencialmente riesgosos en el entorno digital.</p>
+                <p>En un entorno digital cada vez más interconectado, la trazabilidad se ha vuelto un pilar fundamental para la ciberseguridad. Ante incidentes como el spam o el phishing, es crucial poder rastrear cómo se originan y propagan estos mensajes maliciosos para mitigar su impacto y prevenir futuros ataques. Guardián IA ha desarrollado herramientas como un bot de simulación de spam en la red social Bluesky y un gráfico interactivo de nodos que ilustra la difusión de un post, permitiendo visualizar en tiempo real la red de alcance de un mensaje. Estas herramientas son clave para entender los patrones de propagación, identificar puntos críticos de infección digital y fortalecer los protocolos de defensa de una organización, ayudando a proteger tanto la infraestructura como a los usuarios frente a amenazas emergentes..</p>
             </section>
             <div class="banner_img">
                 <img src="https://cdn-icons-png.flaticon.com/512/2176/2176912.png" alt="IA">
             </div>
         </section>
     </header>
+
+    <!-- Risk Analysis Section -->
+    <section class="risk-analysis-section">
+        <div class="contenedor">
+            <h2 class="section-title">Análisis de Riesgo de Identity Theft</h2>
+            
+            <div class="analysis-container">
+                <!-- Input Form -->
+                <div class="input-panel">
+                    <form id="risk-form" method="POST" action="/perfil">
+                        <div class="form-group">
+                            <label for="sexo">Sexo:</label>
+                            <select id="sexo" name="sexo" required>
+                                <option value="">Seleccionar...</option>
+                                <option value="0">Mujer</option>
+                                <option value="1">Hombre</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edad">Edad:</label>
+                            <input type="number" id="edad" name="edad" min="0" max="120" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="alcaldia">Alcaldía:</label>
+                                <select id="alcaldia" name="alcaldia" required>
+                                    <option value="">Seleccionar...</option>
+                                    {% for alcaldia in alcaldias %}
+                                        <option value="{{ loop.index0 }}">{{ alcaldia }}</option>
+                                    {% endfor %}
+                                </select>
+                        </div>
+                        
+                        <button type="submit" class="btn-calcular">Calcular Probabilidad</button>
+                    </form>
+                    
+                    {% if error %}
+                    <div class="error-message">{{ error }}</div>
+                    {% endif %}
+                </div>
+                
+                <!-- Results Panel -->
+                <div class="results-panel">
+                    <div class="gauge-container">
+                        <canvas id="riskGauge" width="300" height="300"></canvas>
+                        <div class="risk-percentage" id="riskPercentage">
+                            {% if probabilidad %}{{ "%.1f"|format(probabilidad) }}%{% else %}0.0%{% endif %}
+                        </div>
+                    </div>
+                    <div class="risk-description" id="riskDescription">
+                        {% if probabilidad %}
+                            {% if probabilidad < 25 %}
+                            <p>Riesgo Bajo - Perfil con baja probabilidad de robo de identidad</p>
+                            {% elif probabilidad < 50 %}
+                            <p>Riesgo Moderado - Se recomienda precaución adicional</p>
+                            {% elif probabilidad < 75 %}
+                            <p>Riesgo Alto - Implementar medidas de seguridad reforzadas</p>
+                            {% else %}
+                            <p>Riesgo Muy Alto - Requerimiento de protección inmediata</p>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 <div id="privacy-modal" class="modal">
     <div class="modal-content">
@@ -119,7 +205,6 @@
         <button class="close-button" id="accept-btn" onclick="closeModal()" disabled>Aceptar y continuar</button>
     </div>
 </div>
-
 
     <script>
         // Cierra el modal al aceptar
