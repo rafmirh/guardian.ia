@@ -23,7 +23,7 @@ def calcular_probabilidad_riesgo(sexo, edad, indice_alcaldia, df):
         return 15.0  # Probabilidad base
     
     # Calcular riesgo basado en frecuencia relativa
-    total_casos = len(df)
+    total_casos = len(df[df['anio_hecho'] == 2024])
     casos_similares = len(similares)
     
     # Factores de riesgo
