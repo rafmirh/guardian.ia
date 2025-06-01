@@ -72,7 +72,7 @@ class NodosGraph {
         // Show loading state
         loadingEl.style.display = 'block';
         analyzeBtn.disabled = true;
-        analyzeBtn.textContent = 'Analyzing...';
+        analyzeBtn.textContent = 'Analizando...';
 
         try {
             const response = await fetch('/nodos/analyze', {
@@ -98,7 +98,7 @@ class NodosGraph {
             // Hide loading state
             loadingEl.style.display = 'none';
             analyzeBtn.disabled = false;
-            analyzeBtn.textContent = 'Analyze Post';
+            analyzeBtn.textContent = 'Analizar post';
         }
     }
 
