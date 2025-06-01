@@ -103,7 +103,7 @@ nav {
 
 .nav-button {
     display: inline-block;
-    padding: 15px 30px; /* Más grandes que antes */
+    padding: 15px 10px; /* Más grandes que antes */
     border-radius: 50px;
     background-color: rgba(255, 255, 255, 0.411);
     box-shadow: rgba(211, 205, 205, 0.7) 0 0 8px;
@@ -116,7 +116,7 @@ nav {
     transition: all 0.3s ease;
     text-align: center;
     min-width: 160px;
-    margin: 0 15px; /* Más espacio entre botones */
+    margin: 0 10px; /* Más espacio entre botones */
 }
 
 .nav-button:hover {
@@ -175,40 +175,13 @@ nav {
 .container {
     max-width: 95%; /* Keep it wide for the graph */
     margin: 20px auto; /* Centered with top/bottom margin */
-    background: #2c2c2c; /* Darker card background */
+    background: #f4f7f6; /* Light background for the container */
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Softer shadow for light theme */
     padding: 20px; /* Add padding inside the container */
-    /* overflow: hidden; is fine */
+    color: #333; /* Default dark text color for the container */
 }
 
-/* This old header style will be replaced by the banner styles later */
-/* header {
-    background: linear-gradient(135deg, #1DA1F2, #17BF63);
-    color: white;
-    padding: 40px;
-    text-align: center;
-}
-*/
-/* These h1 and p styles were for the old header, banner_title now handles this */
-/*
-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    font-weight: 700;
-}
-header p {
-    font-size: 1.1rem;
-    opacity: 0.9;
-}
-
-.controls {
-    padding: 30px 40px;
-    background: #333; /* Darker background for controls section */
-    color: #f0f0f0; /* Light text for controls */
-    border-bottom: 1px solid #444; /* Separator line */
-    border-radius: 6px 6px 0 0; /* Rounded top corners if it's the first element */
-}
 
 .input-group {
     display: flex;
@@ -219,32 +192,31 @@ header p {
 #postUrl {
     flex: 1;
     padding: 12px 16px;
-    border: 1px solid #555; /* Darker border */
+    border: 1px solid #ccc; /* Lighter border for light theme */
     border-radius: 8px;
     font-size: 16px;
     transition: border-color 0.3s ease;
-    background-color: #444; /* Dark input background */
-    color: #f0f0f0; /* Light text in input */
+    background-color: #fff; /* White input background */
+    color: #333; /* Dark text in input */
 }
 
 #postUrl:focus {
     outline: none;
-    border-color: #00c6ff; /* Highlight color on focus */
-    box-shadow: 0 0 0 3px rgba(29, 161, 242, 0.1);
+    border-color: #1DA1F2; /* Primary blue for focus */
+    box-shadow: 0 0 0 3px rgba(29, 161, 242, 0.15);
 }
 
 #analyzeBtn {
     padding: 12px 24px;
     background: linear-gradient(135deg, #1DA1F2, #17BF63);
     color: white;
-    border: none; 
+    border: none;
     border-radius: 8px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 #analyzeBtn:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(29, 161, 242, 0.3);
@@ -255,14 +227,14 @@ header p {
 }
 
 .demo-note {
-    background: #3a3a3a; /* Darker note background */
+    background: #e9f5ff; /* Light blueish background for note */
     padding: 12px 16px;
     border-radius: 8px;
-    border-left: 4px solid #00c6ff; /* Highlight border */
+    border-left: 4px solid #1DA1F2; /* Primary blue border */
 }
 
 .demo-note p {
-    color: #c0c0c0; /* Lighter text for note */
+    color: #0056b3; /* Darker blue text for note */
     font-size: 14px;
 }
 
@@ -295,14 +267,10 @@ header p {
     padding: 20px 40px;
     flex-direction: column; /* Stack stat items vertically */
     align-items: stretch; /* Make items take full width of sidebar */
-    padding: 20px; /* Adjusted padding */
-    background: #333; /* Slightly different dark shade for panels */
-    /* border-bottom: 1px solid #e9ecef; */ /* Replaced by border below */
-    /* justify-content: space-around; */
-    border: 1px solid #444; /* Darker border */
+    padding: 20px;
+    background: #ffffff; /* White background for panels */
+    border: 1px solid #e0e0e0; /* Light border for panels */
     border-radius: 8px;
-    /* border-bottom: 1px solid #e9ecef; */ /* Removed as it's now a self-contained card */
-    /* justify-content: space-around; */ /* Removed */
 }
 
 .stat-item {
@@ -313,14 +281,14 @@ header p {
 .stat-value {
     display: block;
     font-size: 2rem;
-    font-weight: 600; /* Slightly less bold */
-    color: #00c6ff; /* Consistent highlight color */
+    font-weight: 600;
+    color: #1DA1F2; /* Primary blue for values */
     margin-bottom: 5px;
 }
 
 .stat-label {
     font-size: 14px;
-    color: #b0b0b0; /* Lighter label color */
+    color: #555; /* Darker grey for labels */
     font-weight: 500;
 }
 
@@ -328,8 +296,9 @@ header p {
     position: relative;
     height: 600px; /* Keep the fixed height for now */
     background: #2c2c2c; /* Darker background for graph area */
-    border: 1px solid #444; /* Darker border */
-    border-radius: 8px; 
+    background: #ffffff; /* White background for graph area */
+    border: 1px solid #e0e0e0; /* Light border */
+    border-radius: 8px;
 }
 
 #graph {
@@ -349,8 +318,8 @@ header p {
 .spinner {
     width: 40px;
     height: 40px;
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #1DA1F2;
+    border: 4px solid #e0e0e0; /* Lighter grey for spinner track */
+    border-top: 4px solid #1DA1F2; /* Primary blue for spinner active part */
     border-radius: 50%;
     animation: spin 1s linear infinite;
     margin: 0 auto 15px;
@@ -364,25 +333,22 @@ header p {
 .legend {
     padding: 20px 40px;
     padding: 20px;
-    background: #333; /* Consistent panel background */
-    /* border-top: 1px solid #e9ecef; */
-    border: 1px solid #444; /* Darker border */
+    background: #ffffff; /* White background for legend */
+    border: 1px solid #e0e0e0; /* Light border */
     border-radius: 8px;
-    /* border-top: 1px solid #e9ecef; */ /* Removed */
 }
 
 .legend h3 {
     margin-bottom: 15px;
-    color: #f0f0f0; /* Light text for heading */
+    color: #333; /* Dark text for heading */
 }
 
 .legend-item {
-    display: flex; /* Changed to flex for better alignment if text wraps */
+    display: flex;
     align-items: center;
     margin-right: 25px;
     margin-bottom: 10px;
 }
-
 .legend-circle {
     width: 16px;
     height: 16px;
@@ -391,7 +357,7 @@ header p {
 }
 
 .legend-item span { /* Style for the text next to the circle */
-    color: #d0d0d0; /* Light text for legend items */
+    color: #444; /* Dark grey text for legend items */
 }
 
 .legend-circle.original {
@@ -409,57 +375,57 @@ header p {
 .node-details {
     padding: 20px 40px;
     padding: 20px;
-    background: #333; /* Consistent panel background */
-    /* border-top: 1px solid #e9ecef; */
-    border: 1px solid #444; /* Darker border */
+    background: #ffffff; /* White background for node details */
+    border: 1px solid #e0e0e0; /* Light border */
     border-radius: 8px;
-    /* border-top: 1px solid #e9ecef; */ /* Removed */
 }
 
 .node-details h3 {
     margin-bottom: 15px;
-    color: #f0f0f0; /* Light text for heading */
+    color: #333; /* Dark text for heading */
 }
 
 /* Styles for content within .node-details (dynamically added by JS) */
 .node-details-content {
     padding: 15px;
-    background-color: #3a3a3a; /* Slightly lighter than panel bg for contrast */
+    background-color: #f9f9f9; /* Very light grey for content block */
     border-radius: 6px;
-    color: #e0e0e0;
+    color: #333; /* Dark text */
 }
 
 .node-details-label {
     margin-top: 0;
     margin-bottom: 5px;
-    color: #00c6ff; /* Consistent highlight color */
+    color: #1DA1F2; /* Primary blue for label */
     font-size: 1.3em;
     font-weight: 600;
 }
 
 .node-details-handle {
     margin-bottom: 10px;
-    color: #a0a0a0; /* Lighter grey for handle */
+    color: #555; /* Darker grey for handle */
     font-size: 0.9em;
 }
 
 .node-details-info {
     margin-bottom: 8px;
     font-size: 0.95em;
+    color: #444; /* Dark grey for info text */
 }
 
 .node-details-text-block {
     margin: 15px 0;
     padding: 12px;
-    background: #2c2c2c; /* Darker background for text block */
+    background: #eef1f2; /* Slightly off-white for text block */
     border-radius: 4px;
-    border-left: 3px solid #00c6ff; /* Highlight border */
+    border-left: 3px solid #1DA1F2; /* Primary blue border */
 }
 
 .node-full-text {
     line-height: 1.5;
     margin: 0;
     word-break: break-word; /* Prevent long text from overflowing */
+    color: #333; /* Dark text for full text */
 }
 
 .node-details-metrics {
@@ -471,12 +437,13 @@ header p {
 
 .metric-item {
     font-size: 0.9em;
+    color: #444; /* Dark grey for metric items */
 }
 
 /* Node and link styles */
 .node {
     cursor: pointer;
-    stroke: #444; /* Darker stroke for light nodes on dark bg */
+    stroke: #bbb; /* Lighter grey stroke for nodes on light bg */
     stroke-width: 2px;
     transition: all 0.3s ease;
 }
@@ -487,29 +454,29 @@ header p {
 }
 
 .node.selected {
-    stroke: #ff6b6b;
+    stroke: #d9534f; /* A contrasting red for selected node */
     stroke-width: 4px;
 }
 
 .link {
-    stroke: #999;
+    stroke: #aaa; /* Medium grey for links */
     stroke-opacity: 0.6;
     stroke-width: 2px;
     fill: none;
 }
-
 .node-label {
     font-size: 12px;
     font-weight: 500;
-    fill: #f0f0f0; /* Light fill for labels on dark bg */
+    fill: #333; /* Dark fill for labels on light bg */
     text-anchor: middle;
     pointer-events: none;
 }
 
 .tooltip {
     position: absolute;
-    background: rgba(0, 0, 0, 0.9);
-    color: #f0f0f0;
+    background: rgba(255, 255, 255, 0.95); /* Light background for tooltip */
+    color: #333; /* Dark text for tooltip */
+    border: 1px solid #ddd; /* Light border for tooltip */
     padding: 10px;
     border-radius: 6px;
     font-size: 12px;

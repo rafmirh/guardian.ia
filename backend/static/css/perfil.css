@@ -37,7 +37,7 @@ body {
 .header_nav .contenedor {
     display: flex;
     flex-direction: column; /* Changed to column for small screens, like original */
-    align-items: center; /* Added for alignment */
+
     gap: 15px; /* Added for spacing */
 }
 
