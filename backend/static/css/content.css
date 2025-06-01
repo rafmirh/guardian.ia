@@ -139,7 +139,7 @@ nav {
 .bg_animate {
     width: 100%;
     min-height: 100vh; /* Asegura que ocupe al menos toda la altura de la vista */
-    background: linear-gradient(183deg,rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    background: linear-gradient(93deg,rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
     position: relative;
     overflow: hidden;
     padding-top: 50px;
@@ -184,12 +184,15 @@ nav {
     font-size: 1.05rem;
     line-height: 1.8;
     margin: 20px auto;
-    overflow-y: auto;
-    max-height: 70vh;
+    overflow-y: auto;          /* Scroll vertical activado */
+    max-height: 70vh;          /* Limita la altura para mostrar scroll */
     font-family: 'Play', sans-serif;
     border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.05); /* opcional para contraste */
+    scrollbar-gutter: stable;  /* evita que el contenido salte al aparecer el scroll */
 }
 
+/* Títulos */
 .banner_title h2 {
     color: #37FF8B;
     margin: 20px 0 15px;
@@ -200,6 +203,7 @@ nav {
     letter-spacing: 1px;
 }
 
+/* Párrafos */
 .banner_title p {
     margin-bottom: 15px;
     text-align: justify;
@@ -208,6 +212,21 @@ nav {
     color: #d8d9dd;
 }
 
+/* Listas */
+.banner_title ul {
+    margin: 10px 20px;
+    padding-left: 20px;
+    list-style-type: disc;
+    color: #d8d9dd;
+}
+
+.banner_title ul li {
+    margin-bottom: 12px;
+    text-align: justify;
+    font-size: 1.05rem;
+}
+
+/* Ítems resaltados con punto */
 .banner_title strong {
     color: #e9c46a;
     font-weight: bold;
@@ -227,29 +246,21 @@ nav {
     line-height: 1;
 }
 
-/* AJUSTES PARA CONTENIDO LARGO */
-.info-section {
-    margin-bottom: 15px;
-}
-
-.info-section p {
-    margin-bottom: 10px;
-}
-
-/* SCROLL BARRA */
+/* Scroll personalizado */
 .banner_title::-webkit-scrollbar {
     width: 6px;
 }
 
 .banner_title::-webkit-scrollbar-track {
-    background: rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.2);
     border-radius: 3px;
 }
 
 .banner_title::-webkit-scrollbar-thumb {
-    background: #04050585;
+    background: #37ff8b6e;
     border-radius: 3px;
 }
+
 
 /* BURBUJAS ANIMADAS */
 .burbujas {
