@@ -200,7 +200,7 @@ def get_post_replies(post_uri):
                     
                     # Get nested replies (one level deep)
                     if hasattr(reply, 'replies') and reply.replies:
-                        for nested_reply in reply.replies[:5]:  # Limit nested replies
+                        for nested_reply in reply.replies[:10]:  # Limit nested replies
                             if hasattr(nested_reply, 'post'):
                                 nested_post = nested_reply.post
                                 replies.append({
@@ -244,7 +244,7 @@ def get_post_reposts(post_uri):
         # Use get_reposted_by to find out who reposted the post.
         # This endpoint has a maximum limit of 100.
         print(f"[get_post_reposts] Calling client.get_reposted_by for {post_uri} with limit 100.")
-        response = analyzer.client.get_reposted_by(uri=post_uri, limit=100)
+        response = analyzer.client.get_reposted_by(uri=post_uri, limit=1000)
 
         if response and response.reposted_by:
             print(f"[get_post_reposts] client.get_reposted_by returned {len(response.reposted_by)} reposter(s).")
