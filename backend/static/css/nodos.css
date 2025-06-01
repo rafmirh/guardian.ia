@@ -43,7 +43,7 @@ body {
 /* BOTON GUARDIA */
 .button {
     --border-right: 6px;
-    --text-stroke-color: rgba(255,255,255,0.6);
+    --text-stroke-color: rgba(255, 255, 255, 0.753);
     --animation-color: #f8f8f8;
     --fs-size: 2.5rem; /* Tamaño base para móviles y pantallas pequeñas (más grande) */
     letter-spacing: 3px;
@@ -105,7 +105,7 @@ nav {
     display: inline-block;
     padding: 15px 10px; /* Más grandes que antes */
     border-radius: 50px;
-    background-color: rgba(255, 255, 255, 0.411);
+    background-color: rgba(255, 255, 255, 0.555);
     box-shadow: rgba(211, 205, 205, 0.7) 0 0 8px;
     letter-spacing: 1px;
     text-transform: uppercase;
