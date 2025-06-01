@@ -443,9 +443,10 @@ nav {
 /* Node and link styles */
 .node {
     cursor: pointer;
-    stroke: #bbb; /* Lighter grey stroke for nodes on light bg */
-    stroke-width: 2px;
+    stroke: #000000; /* Lighter grey stroke for nodes on light bg */
+    stroke-width: 1px;
     transition: all 0.3s ease;
+    filter: brightness(1.05);
 }
 
 .node:hover {
@@ -474,9 +475,9 @@ nav {
 
 .tooltip {
     position: absolute;
-    background: rgba(255, 255, 255, 0.95); /* Light background for tooltip */
-    color: #333; /* Dark text for tooltip */
-    border: 1px solid #ddd; /* Light border for tooltip */
+    background: rgba(40, 40, 40, 0.95); /* Light background for tooltip */
+    color: #e0e0e0; /* Dark text for tooltip */
+    border: 1px solid #555; /* Light border for tooltip */
     padding: 10px;
     border-radius: 6px;
     font-size: 12px;
@@ -484,6 +485,17 @@ nav {
     z-index: 1000;
     max-width: 250px;
     line-height: 1.4;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Subtle shadow for dark theme */
+}
+
+/* Ensure links or specific elements within the tooltip are also styled for dark theme if needed */
+.tooltip strong {
+    color: #00c6ff; /* Light blue for emphasis, matches banner title */
+}
+
+.tooltip small {
+    color: #b0b0b0; /* Lighter grey for secondary text */
+
 }
 
 /* Responsive design */
