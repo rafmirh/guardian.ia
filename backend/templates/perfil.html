@@ -202,32 +202,11 @@
                 Ciudad de México, 1 de abril de 2025.
             </p>
         </div>
-        <button class="close-button" id="accept-btn" onclick="closeModal()" disabled>Aceptar y continuar</button>
+        <button class="close-button" id="accept-btn" disabled>Aceptar y continuar</button>
     </div>
 </div>
 
-    <script>
-        // Cierra el modal al aceptar
-        function closeModal() {
-            document.getElementById("privacy-modal").style.display = "none";
-        }
-
-        // Detectar scroll hasta abajo
-        const scrollBox = document.getElementById('modal-scrollbox');
-        const acceptBtn = document.getElementById('accept-btn');
-
-        scrollBox.addEventListener('scroll', function () {
-            if (scrollBox.scrollTop + scrollBox.clientHeight >= scrollBox.scrollHeight - 5) {
-                acceptBtn.disabled = false;
-                acceptBtn.classList.add('enabled');
-            }
-        });
-    </script>
-
-    <script src="{{ url_for('static', filename='js/perfil.js') }}"></script>
-</body>
-
-<footer>
+    
         <div class="footer">
             <div class="row">
                 <a href="#"><i class="fa fa-facebook"></i></a>
@@ -249,24 +228,7 @@
             </div>
         </div>
     </footer>
-</html>
 
-<script>
-  // Función para cerrar el modal
-        function closeModal() {
-            document.getElementById("privacy-modal").style.display = "none";
-        }
-
-        // Detectar scroll hasta abajo
-        const scrollBox = document.getElementById('modal-scrollbox');
-        const acceptBtn = document.getElementById('accept-btn');
-
-        scrollBox.addEventListener('scroll', function () {
-            if (scrollBox.scrollTop + scrollBox.clientHeight >= scrollBox.scrollHeight - 5) {
-                acceptBtn.disabled = false;
-                acceptBtn.classList.add('enabled');
-            }
-        });
-    </script>
+    <script src="{{ url_for('static', filename='js/perfil.js') }}"></script>
 </body>
 </html>
