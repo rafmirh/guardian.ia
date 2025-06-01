@@ -264,21 +264,21 @@ class NodosGraph {
         const createdDate = node.created_at ? new Date(node.created_at).toLocaleString() : 'Unknown';
         
         const metricsHtml = `
-            <div style="display: flex; gap: 20px; margin: 10px 0;">
-                <span><strong>Replies:</strong> ${node.metrics.replies}</span>
-                <span><strong>Reposts:</strong> ${node.metrics.reposts}</span>
-                <span><strong>Likes:</strong> ${node.metrics.likes}</span>
+            <div class="node-details-metrics">
+                <span class="metric-item"><strong>Replies:</strong> ${node.metrics.replies}</span>
+                <span class="metric-item"><strong>Reposts:</strong> ${node.metrics.reposts}</span>
+                <span class="metric-item"><strong>Likes:</strong> ${node.metrics.likes}</span>
             </div>
         `;
 
         contentEl.innerHTML = `
-            <div style="padding: 15px; background: #f8f9fa; border-radius: 8px;">
-                <h4 style="margin-bottom: 5px; color: #1DA1F2;">${node.label}</h4>
-                <p style="margin-bottom: 10px; color: #666; font-size: 14px;">@${node.handle || node.label}</p>
-                <p style="margin-bottom: 10px;"><strong>Type:</strong> ${node.type}</p>
-                <p style="margin-bottom: 10px;"><strong>Created:</strong> ${createdDate}</p>
-                <div style="margin-bottom: 15px; padding: 12px; background: white; border-radius: 6px; border-left: 3px solid #1DA1F2;">
-                    <p style="line-height: 1.5; margin: 0;">${node.full_text || node.text}</p>
+            <div class="node-details-content">
+                <h4 class="node-details-label">${node.label}</h4>
+                <p class="node-details-handle">@${node.handle || node.label}</p>
+                <p class="node-details-info"><strong>Type:</strong> ${node.type}</p>
+                <p class="node-details-info"><strong>Created:</strong> ${createdDate}</p>
+                <div class="node-details-text-block">
+                    <p class="node-full-text">${node.full_text || node.text}</p>
                 </div>
                 ${metricsHtml}
             </div>
@@ -286,7 +286,7 @@ class NodosGraph {
         
         detailsEl.style.display = 'block';
     }
-
+    
     updateStats(stats) {
         document.getElementById('totalNodes').textContent = stats.total_nodes;
         document.getElementById('totalReplies').textContent = stats.replies;

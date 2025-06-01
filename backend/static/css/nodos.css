@@ -1,42 +1,238 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Keep this, it's good practice */
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
-    padding-top: 20px;    /* Preserve top space for the container */
-    padding-left: 0;      /* Remove side body padding */
-    padding-right: 0;     /* Remove side body padding */
-    padding-bottom: 0;    /* Remove bottom body padding, footer will be flush */
+    font-family: 'Play', sans-serif; /* Consistent font from Batch 1 */
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a; /* Dark background from Batch 1 */
+    color: #e0e0e0; /* Light text from Batch 1 */
+    line-height: 1.6;
 }
 
-.container {
-    max-width: 1400px;
+/* Header Styles (from Batch 1, ensure they are present) */
+.bg_animate {
+    background: linear-gradient(-45deg, #000428, #004e92, #000428, #004e92);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    padding-bottom: 1px; 
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.header_nav {
+    padding: 15px 0;
+}
+
+.header_nav .contenedor {
+    max-width: 1200px;
     margin: 0 auto;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 16px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    overflow: hidden; 
-    margin-bottom: 20px; /* Add space above the full-width footer */
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-header {
+/* Guardián IA Animated Button Styles (NEW) */
+.button {
+    position: relative;
+    padding: 10px 22px;
+    border-radius: 6px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    background-color: transparent;
+    transition: all 0.2s ease;
+    font-family: 'Audiowide', cursive;
+    font-size: 2.5em; /* Further increased font size */
+    padding: 12px 28px; /* Further adjusted padding */
+    text-decoration: none;
+}
+
+.button:active {
+    transform: scale(0.96);
+}
+
+.button:before,
+.button:after {
+    position: absolute;
+    content: "";
+    width: 150%;
+    left: 50%;
+    height: 100%;
+    transform: translateX(-50%);
+    z-index: -1000;
+    background-repeat: no-repeat;
+}
+
+.button:hover:before {
+    top: -70%;
+    background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+        radial-gradient(circle, transparent 20%, #7d2ae8 20%, transparent 30%),
+        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+        radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
+        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+        radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+        10% 10%, 18% 18%;
+    background-position: 50% 120%;
+    animation: greentopBubbles 0.6s ease;
+}
+
+@keyframes greentopBubbles {
+    0% { background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%; }
+    50% { background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%; }
+    100% { background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%; background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
+}
+
+.button:hover::after {
+    bottom: -70%;
+    background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+        radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
+        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+        radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+    background-position: 50% 0%;
+    animation: greenbottomBubbles 0.6s ease;
+}
+
+@keyframes greenbottomBubbles {
+    0% { background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 25% -10%, 0% -10%; }
+    50% { background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%; }
+    100% { background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%; background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
+}
+
+.actual-text, .hover-text {
+    transition: all 0.2s ease;
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-weight: bold; /* Make the button text bold */
+    color: transparent;
+}
+
+.actual-text {
+    background: linear-gradient(90deg, #00c6ff, #0072ff); /* Bluesky-like gradient */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.button:hover .actual-text { opacity: 0; }
+
+.hover-text {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #7d2ae8, #aa367c); /* Hover gradient */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    opacity: 0;
+}
+
+.button:hover .hover-text { opacity: 1; }
+
+.header_nav nav { /* Styles for the nav container itself */
+    display: flex;
+    align-items: center; /* Vertically align nav items */
+    gap: 15px; /* Space between nav buttons */
+}
+
+/* Styles for Navigation Buttons */
+.nav-button {
+    padding: 10px 22px; /* Further increased padding */
+    color: #e0e0e0;    /* Light text color */
+    background-color: rgba(255, 255, 255, 0.08); /* Subtle semi-transparent background */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+    border-radius: 20px; /* Creates the oval shape */
+    text-decoration: none;
+    font-family: 'Play', sans-serif; /* Consistent font */
+    font-size: 1.1em; /* Further increased font size */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    display: inline-block; /* Ensures padding and other block-like properties apply */
+}
+
+.nav-button:hover {
+    background-color: rgba(0, 198, 255, 0.7); /* Brighter, accent background on hover */
+    color: #ffffff; /* White text on hover */
+    border-color: rgba(0, 198, 255, 0.9); /* Accent border on hover */
+    transform: translateY(-1px); /* Slight lift effect */
+}
+
+/* Banner Section Styles (NEW) */
+.banner.contenedor { /* .contenedor class is on the banner section itself */
+    max-width: 1200px;
+    margin: 0 auto; /* This will center it */
+    padding: 30px 20px; /* Padding inside the banner */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff; /* Text color for banner content */
+}
+
+.banner_title {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.banner_title h2 {
+    font-family: 'Audiowide', cursive;
+    color: #00c6ff; /* Light blue, consistent with button */
+    font-size: 2.2em;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.banner_title p {
+    font-size: 1.1em;
+    color: #f0f0f0; /* Light grey for subtitle */
+    margin-bottom: 0;
+}
+
+.banner_img img {
+    max-width: 120px; /* Or your preferred size */
+    height: auto;
+    opacity: 0.8;
+}
+
+/* Main content container for nodos page - Adjustments */
+.container {
+    max-width: 95%; /* Keep it wide for the graph */
+    margin: 20px auto; /* Centered with top/bottom margin */
+    background: #2c2c2c; /* Darker card background */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px; /* Add padding inside the container */
+    /* overflow: hidden; is fine */
+}
+
+/* This old header style will be replaced by the banner styles later */
+/* header {
     background: linear-gradient(135deg, #1DA1F2, #17BF63);
     color: white;
     padding: 40px;
     text-align: center;
 }
-
+*/
+/* These h1 and p styles were for the old header, banner_title now handles this */
+/*
 header h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
     font-weight: 700;
 }
-
 header p {
     font-size: 1.1rem;
     opacity: 0.9;
@@ -44,8 +240,10 @@ header p {
 
 .controls {
     padding: 30px 40px;
-    background: #f8f9fa;
-    border-bottom: 1px solid #e9ecef;
+    background: #333; /* Darker background for controls section */
+    color: #f0f0f0; /* Light text for controls */
+    border-bottom: 1px solid #444; /* Separator line */
+    border-radius: 6px 6px 0 0; /* Rounded top corners if it's the first element */
 }
 
 .input-group {
@@ -57,15 +255,17 @@ header p {
 #postUrl {
     flex: 1;
     padding: 12px 16px;
-    border: 2px solid #ddd;
+    border: 1px solid #555; /* Darker border */
     border-radius: 8px;
     font-size: 16px;
     transition: border-color 0.3s ease;
+    background-color: #444; /* Dark input background */
+    color: #f0f0f0; /* Light text in input */
 }
 
 #postUrl:focus {
     outline: none;
-    border-color: #1DA1F2;
+    border-color: #00c6ff; /* Highlight color on focus */
     box-shadow: 0 0 0 3px rgba(29, 161, 242, 0.1);
 }
 
@@ -73,7 +273,7 @@ header p {
     padding: 12px 24px;
     background: linear-gradient(135deg, #1DA1F2, #17BF63);
     color: white;
-    border: none;
+    border: none; 
     border-radius: 8px;
     font-size: 16px;
     font-weight: 600;
@@ -91,14 +291,14 @@ header p {
 }
 
 .demo-note {
-    background: #e3f2fd;
+    background: #3a3a3a; /* Darker note background */
     padding: 12px 16px;
     border-radius: 8px;
-    border-left: 4px solid #1DA1F2;
+    border-left: 4px solid #00c6ff; /* Highlight border */
 }
 
 .demo-note p {
-    color: #1565c0;
+    color: #c0c0c0; /* Lighter text for note */
     font-size: 14px;
 }
 
@@ -132,10 +332,10 @@ header p {
     flex-direction: column; /* Stack stat items vertically */
     align-items: stretch; /* Make items take full width of sidebar */
     padding: 20px; /* Adjusted padding */
-    background: #fff;
-    border-bottom: 1px solid #e9ecef;
-    justify-content: space-around;
-    border: 1px solid #e9ecef;
+    background: #333; /* Slightly different dark shade for panels */
+    /* border-bottom: 1px solid #e9ecef; */ /* Replaced by border below */
+    /* justify-content: space-around; */
+    border: 1px solid #444; /* Darker border */
     border-radius: 8px;
     /* border-bottom: 1px solid #e9ecef; */ /* Removed as it's now a self-contained card */
     /* justify-content: space-around; */ /* Removed */
@@ -149,24 +349,23 @@ header p {
 .stat-value {
     display: block;
     font-size: 2rem;
-    font-weight: 700;
-    color: #1DA1F2;
+    font-weight: 600; /* Slightly less bold */
+    color: #00c6ff; /* Consistent highlight color */
     margin-bottom: 5px;
 }
 
 .stat-label {
     font-size: 14px;
-    color: #6c757d;
+    color: #b0b0b0; /* Lighter label color */
     font-weight: 500;
 }
 
 .graph-container {
     position: relative;
     height: 600px; /* Keep the fixed height for now */
-    background: #fff;
-    background: #ffffff;
-    border: 1px solid #e9ecef;
-    border-radius: 8px;
+    background: #2c2c2c; /* Darker background for graph area */
+    border: 1px solid #444; /* Darker border */
+    border-radius: 8px; 
 }
 
 #graph {
@@ -201,20 +400,20 @@ header p {
 .legend {
     padding: 20px 40px;
     padding: 20px;
-    background: #f8f9fa;
-    border-top: 1px solid #e9ecef;
-    border: 1px solid #e9ecef;
+    background: #333; /* Consistent panel background */
+    /* border-top: 1px solid #e9ecef; */
+    border: 1px solid #444; /* Darker border */
     border-radius: 8px;
     /* border-top: 1px solid #e9ecef; */ /* Removed */
 }
 
 .legend h3 {
     margin-bottom: 15px;
-    color: #343a40;
+    color: #f0f0f0; /* Light text for heading */
 }
 
 .legend-item {
-    display: inline-flex;
+    display: flex; /* Changed to flex for better alignment if text wraps */
     align-items: center;
     margin-right: 25px;
     margin-bottom: 10px;
@@ -225,6 +424,10 @@ header p {
     height: 16px;
     border-radius: 50%;
     margin-right: 8px;
+}
+
+.legend-item span { /* Style for the text next to the circle */
+    color: #d0d0d0; /* Light text for legend items */
 }
 
 .legend-circle.original {
@@ -242,22 +445,74 @@ header p {
 .node-details {
     padding: 20px 40px;
     padding: 20px;
-    background: #fff;
-    border-top: 1px solid #e9ecef;
-    border: 1px solid #e9ecef;
+    background: #333; /* Consistent panel background */
+    /* border-top: 1px solid #e9ecef; */
+    border: 1px solid #444; /* Darker border */
     border-radius: 8px;
     /* border-top: 1px solid #e9ecef; */ /* Removed */
 }
 
 .node-details h3 {
     margin-bottom: 15px;
-    color: #343a40;
+    color: #f0f0f0; /* Light text for heading */
+}
+
+/* Styles for content within .node-details (dynamically added by JS) */
+.node-details-content {
+    padding: 15px;
+    background-color: #3a3a3a; /* Slightly lighter than panel bg for contrast */
+    border-radius: 6px;
+    color: #e0e0e0;
+}
+
+.node-details-label {
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: #00c6ff; /* Consistent highlight color */
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.node-details-handle {
+    margin-bottom: 10px;
+    color: #a0a0a0; /* Lighter grey for handle */
+    font-size: 0.9em;
+}
+
+.node-details-info {
+    margin-bottom: 8px;
+    font-size: 0.95em;
+}
+
+.node-details-text-block {
+    margin: 15px 0;
+    padding: 12px;
+    background: #2c2c2c; /* Darker background for text block */
+    border-radius: 4px;
+    border-left: 3px solid #00c6ff; /* Highlight border */
+}
+
+.node-full-text {
+    line-height: 1.5;
+    margin: 0;
+    word-break: break-word; /* Prevent long text from overflowing */
+}
+
+.node-details-metrics {
+    display: flex;
+    gap: 15px; /* Spacing between metric items */
+    margin-top: 15px;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.metric-item {
+    font-size: 0.9em;
 }
 
 /* Node and link styles */
 .node {
     cursor: pointer;
-    stroke: #fff;
+    stroke: #444; /* Darker stroke for light nodes on dark bg */
     stroke-width: 2px;
     transition: all 0.3s ease;
 }
@@ -282,7 +537,7 @@ header p {
 .node-label {
     font-size: 12px;
     font-weight: 500;
-    fill: #333;
+    fill: #f0f0f0; /* Light fill for labels on dark bg */
     text-anchor: middle;
     pointer-events: none;
 }
@@ -290,7 +545,7 @@ header p {
 .tooltip {
     position: absolute;
     background: rgba(0, 0, 0, 0.9);
-    color: white;
+    color: #f0f0f0;
     padding: 10px;
     border-radius: 6px;
     font-size: 12px;
@@ -303,10 +558,11 @@ header p {
 /* Responsive design */
 @media (max-width: 768px) {
     body {
-        padding: 10px;
+        /* padding: 10px; */ /* Body padding is 0 now */
     }
     
-    header {
+    /* This old header style will be replaced by banner */
+    /* header {
         padding: 20px;
     }
     
@@ -314,6 +570,7 @@ header p {
         font-size: 2rem;
     }
     
+    */
     .controls {
         padding: 20px;
     }
@@ -354,10 +611,11 @@ header p {
 }
 
 /* FOOTER */
-.footer {
-    background: #000;
+.footer { /* This class is on the div inside the footer element */
+    background: #111; /* Slightly lighter than pure black, consistent */
     padding: 15px 0;
     font-family: 'Play', sans-serif;
+    color: #aaa; /* Base text color for footer */
     text-align: center;
     margin-top: auto; /* Empuja el footer hacia abajo si el contenido es corto */
 }
@@ -366,13 +624,13 @@ header p {
     width: 100%;
     margin: 1% 0;
     padding: 0.6% 0;
-    color: gray;
+    /* color: #aaa; */ /* Moved to .footer */
     font-size: 0.8em;
 }
 
 .footer .row a {
     text-decoration: none;
-    color: gray;
+    color: #00c6ff; /* Consistent link color */
     transition: 0.3s;
     margin: 0 10px;
 }
@@ -395,4 +653,10 @@ header p {
 .footer .row a i {
     font-size: 1.5em;
     margin: 0 5px;
+}
+
+/* Ensure the footer element itself takes full width and has a background */
+footer {
+    background-color: #111; /* Match .footer div background */
+    width: 100%;
 }

@@ -1,30 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bluesky Post Propagation Analysis</title>
+    <title>Análisis de Propagación - Guardián IA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Fredoka+One&family=Play&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Play&display=swap" rel="stylesheet">
-    <title>Bluesky Post Propagation Analysis</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/nodos.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Bluesky Post Propagation Analysis</h1>
-            <p>Analyze how posts spread through the Bluesky network</p>
-        </header>
+    <header class="bg_animate">
+        <div class="header_nav">
+            <div class="contenedor">
+                <button class="button" data-text="Awesome" onclick="window.location.href='/content'">
+                    <span class="actual-text">&nbsp;Guardián IA&nbsp;</span>
+                    <span aria-hidden="true" class="hover-text">&nbsp;Guardián IA&nbsp;</span>
+                </button>
+                <nav>
+                    <a href="/dashboard" class="nav-button">Dashboard</a>
+                    <a href="/perfil" class="nav-button">Perfil de Riesgo</a>
+                    <a href="/trazabilidad" class="nav-button">Trazabilidad</a>
+                </nav>
+            </div>
+        </div>
+    </header>
 
+    <div class="container">
         <div class="controls">
             <div class="input-group">
-                <input type="url" id="postUrl" placeholder="Enter Bluesky post URL (e.g., https://bsky.app/profile/user.bsky.social/post/xxxxx)" />
-                <button id="analyzeBtn">Analyze Post</button>
+                <input type="url" id="postUrl" placeholder="Analizar URL de post de Bluesky (e.g., https://bsky.app/profile/user.bsky.social/post/xxxxx)" />
+                <button id="analyzeBtn">Analizar Post</button>
             </div>
             <div class="demo-note">
-                <p>💡 Enter a Bluesky post URL to analyze its propagation, or leave empty for demo data</p>
-                <p><strong>Example:</strong> https://bsky.app/profile/alice.bsky.social/post/3kb2c7qm4ts2s</p>
+                <p>Proporciona un URL de Bluesky o dejar en blanco para visualizar demo</p>
+                <p><strong>Ejemplo:</strong> https://bsky.app/profile/alice.bsky.social/post/3kb2c7qm4ts2s</p>
             </div>
         </div>
 
@@ -33,11 +45,11 @@
                 <div class="stats-panel" id="statsPanel" style="display: none;">
                     <div class="stat-item">
                         <span class="stat-value" id="totalNodes">0</span>
-                        <span class="stat-label">Total Nodes</span>
+                        <span class="stat-label">Nodos totales</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-value" id="totalReplies">0</span>
-                        <span class="stat-label">Replies</span>
+                        <span class="stat-label">Respuestas</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-value" id="totalReposts">0</span>
@@ -45,12 +57,12 @@
                     </div>
                     <div class="stat-item">
                         <span class="stat-value" id="totalInteractions">0</span>
-                        <span class="stat-label">Total Interactions</span>
+                        <span class="stat-label">Total de interacciones</span>
                     </div>
                 </div>
 
                 <div class="node-details" id="nodeDetails" style="display: none;">
-                    <h3>Node Details</h3>
+                    <h3>Detalles del nodo</h3>
                     <div id="nodeContent"></div>
                 </div>
             </aside>
@@ -59,7 +71,7 @@
                 <div class="graph-container">
                     <div id="loading" style="display: none;">
                         <div class="spinner"></div>
-                        <p>Analyzing post propagation...</p>
+                        <p>Analizar propagación...</p>
                     </div>
                     <svg id="graph"></svg>
                 </div>
@@ -67,14 +79,14 @@
 
             <aside class="right-sidebar">
                 <div class="legend">
-                    <h3>Legend</h3>
+                    <h3>Simbología</h3>
                     <div class="legend-item">
                         <div class="legend-circle original"></div>
-                        <span>Original Post</span>
+                        <span>Post original</span>
                     </div>
                     <div class="legend-item">
                         <div class="legend-circle reply"></div>
-                        <span>Reply</span>
+                        <span>Respuestas</span>
                     </div>
                     <div class="legend-item">
                         <div class="legend-circle repost"></div>
@@ -105,7 +117,7 @@
                 </ul>
             </div>
             <div class="row">
-                **Guardián IA Copyright © 2025 Guardián IA - All rights reserved || Designed By: Mahesh**
+                **Guardián IA Copyright © 2025 Guardián IA - All rights reserved || Designed By: LCDN: EQUIPO 4 701
             </div>
         </div>
     </footer>
