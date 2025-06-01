@@ -40,135 +40,99 @@ body {
     align-items: center;
 }
 
-/* Guardián IA Animated Button Styles (NEW) */
+/* BOTON GUARDIA */
 .button {
+    --border-right: 6px;
+    --text-stroke-color: rgba(255,255,255,0.6);
+    --animation-color: #f8f8f8;
+    --fs-size: 2.5rem; /* Tamaño base para móviles y pantallas pequeñas (más grande) */
+    letter-spacing: 3px;
+    font-size: var(--fs-size);
+    font-family: 'Audiowide', sans-serif;
     position: relative;
-    padding: 10px 22px;
-    border-radius: 6px;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    background-color: transparent;
-    transition: all 0.2s ease;
-    font-family: 'Audiowide', cursive;
-    font-size: 2.5em; /* Further increased font size */
-    padding: 12px 28px; /* Further adjusted padding */
-    text-decoration: none;
-}
-
-.button:active {
-    transform: scale(0.96);
-}
-
-.button:before,
-.button:after {
-    position: absolute;
-    content: "";
-    width: 150%;
-    left: 50%;
-    height: 100%;
-    transform: translateX(-50%);
-    z-index: -1000;
-    background-repeat: no-repeat;
-}
-
-.button:hover:before {
-    top: -70%;
-    background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
-        radial-gradient(circle, transparent 20%, #7d2ae8 20%, transparent 30%),
-        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
-        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
-        radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
-        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
-        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
-        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
-        radial-gradient(circle, #7d2ae8 20%, transparent 20%);
-    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
-        10% 10%, 18% 18%;
-    background-position: 50% 120%;
-    animation: greentopBubbles 0.6s ease;
-}
-
-@keyframes greentopBubbles {
-    0% { background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%; }
-    50% { background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%; }
-    100% { background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%; background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
-}
-
-.button:hover::after {
-    bottom: -70%;
-    background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
-        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
-        radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
-        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
-        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
-        radial-gradient(circle, #7d2ae8 20%, transparent 20%),
-        radial-gradient(circle, #7d2ae8 20%, transparent 20%);
-    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
-    background-position: 50% 0%;
-    animation: greenbottomBubbles 0.6s ease;
-}
-
-@keyframes greenbottomBubbles {
-    0% { background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 25% -10%, 0% -10%; }
-    50% { background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%; }
-    100% { background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%; background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
-}
-
-.actual-text, .hover-text {
-    transition: all 0.2s ease;
-    -webkit-background-clip: text;
-    background-clip: text;
-    font-weight: bold; /* Make the button text bold */
+    text-transform: uppercase;
     color: transparent;
+    -webkit-text-stroke: 1px var(--text-stroke-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 10px 0; /* Margen para separar un poco del contenido adyacente */
+    display: inline-block; /* Crucial para que el ancho se ajuste al contenido */
+    white-space: nowrap; /* Evita saltos de línea en el texto del botón */
 }
 
 .actual-text {
-    background: linear-gradient(90deg, #00c6ff, #0072ff); /* Bluesky-like gradient */
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    position: relative;
 }
-
-.button:hover .actual-text { opacity: 0; }
 
 .hover-text {
     position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, #7d2ae8, #aa367c); /* Hover gradient */
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    opacity: 0;
+    top: 0;
+    left: 0;
+    color: var(--animation-color);
+    border-right: var(--border-right) solid var(--animation-color);
+    overflow: hidden;
+    width: 0%;
+    white-space: nowrap;
+    -webkit-text-stroke: 1px var(--animation-color);
+    transition: width 0.6s ease;
 }
 
-.button:hover .hover-text { opacity: 1; }
+.button:hover .hover-text {
+    width: 100%;
+    filter: drop-shadow(0 0 23px var(--animation-color));
+}
 
-.header_nav nav { /* Styles for the nav container itself */
+.header_nav nav {
     display: flex;
-    align-items: center; /* Vertically align nav items */
-    gap: 15px; /* Space between nav buttons */
+    flex-wrap: wrap;
+    justify-content: center; /* Centra horizontalmente */
+    gap: 10px;
 }
 
-/* Styles for Navigation Buttons */
+/* BOTONES BARRA*/
+nav {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    width: 100%;
+    background: transparent; /* O el color de fondo que uses */
+    padding: 15px 0; /* Espacio interno vertical */
+}
+
 .nav-button {
-    padding: 10px 22px; /* Further increased padding */
-    color: #e0e0e0;    /* Light text color */
-    background-color: rgba(255, 255, 255, 0.08); /* Subtle semi-transparent background */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
-    border-radius: 20px; /* Creates the oval shape */
+    display: inline-block;
+    padding: 15px 30px; /* Más grandes que antes */
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.411);
+    box-shadow: rgba(211, 205, 205, 0.7) 0 0 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+    color: black;
     text-decoration: none;
-    font-family: 'Play', sans-serif; /* Consistent font */
-    font-size: 1.1em; /* Further increased font size */
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
-    display: inline-block; /* Ensures padding and other block-like properties apply */
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 160px;
+    margin: 0 15px; /* Más espacio entre botones */
 }
 
 .nav-button:hover {
-    background-color: rgba(0, 198, 255, 0.7); /* Brighter, accent background on hover */
-    color: #ffffff; /* White text on hover */
-    border-color: rgba(0, 198, 255, 0.9); /* Accent border on hover */
-    transform: translateY(-1px); /* Slight lift effect */
+    letter-spacing: 2px;
+    color: #080808;
+    animation: multiColorShift 5s infinite;
+    box-shadow: 0 0 15px rgba(2, 247, 216, 0.7);
+    transform: scale(1.05);
+}
+
+@keyframes multiColorShift {
+    0% { background-color: hsl(14, 90%, 55%); box-shadow: 0 0 15px hsl(14, 90%, 55%); }
+    25% { background-color: hsl(271, 85%, 55%); box-shadow: 0 0 15px hsl(271, 85%, 55%); }
+    50% { background-color: hsl(330, 80%, 60%); box-shadow: 0 0 15px hsl(330, 80%, 60%); }
+    75% { background-color: hsl(120, 70%, 45%); box-shadow: 0 0 15px hsl(120, 70%, 45%); }
+    100% { background-color: hsl(14, 90%, 55%); box-shadow: 0 0 15px hsl(14, 90%, 55%); }
 }
 
 /* Banner Section Styles (NEW) */
