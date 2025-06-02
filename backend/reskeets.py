@@ -47,11 +47,28 @@ def get_post_data(uri, token):
         "likes": post.get("likeCount", 0)
     }
 
-def get_reposts(uri, token):
+def get_reposts(uri, token, max_reposts_to_fetch=200): # Añadido límite opcional
     headers = {"Authorization": f"Bearer {token}"}
-    res = requests.get(REPOSTS_ENDPOINT, params={"uri": uri}, headers=headers)
-    res.raise_for_status()
-    return res.json().get("repostedBy", [])
+    all_reposters = []
+    cursor = None
+    
+    while len(all_reposters) < max_reposts_to_fetch:
+        params = {"uri": uri, "limit": 100} # Pedir de 100 en 100
+        if cursor:
+            params["cursor"] = cursor
+            
+        res = requests.get(REPOSTS_ENDPOINT, params=params, headers=headers)
+        res.raise_for_status()
+        data = res.json()
+        
+        reposters_page = data.get("repostedBy", [])
+        all_reposters.extend(reposters_page)
+        
+        cursor = data.get("cursor")
+        if not cursor or not reposters_page: # Si no hay cursor o no hay más reposters, parar
+            break
+            
+    return all_reposters[:max_reposts_to_fetch] # Asegurar que no excedemos el límite
 
 # This is the function to import in nodos.py
 def fetch_reposts_data(post_url):
