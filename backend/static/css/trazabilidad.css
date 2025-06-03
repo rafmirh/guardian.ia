@@ -176,27 +176,48 @@ body {
     display: block;
 }
 
-/* Styles for the banner title paragraphs */
-.banner_title p{
-    margin-top: 50px;
+/* Estilo general uniforme */
+.banner_title p,
+.banner_title ul {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
     max-width: 95%;
-    color: white; /* Makes the text color white */
-    text-align: justify; /* Justifies the text */
-    margin-bottom: 20px; /* Adds space between paragraphs */
-    line-height: 1.6;   /* Improves readability by increasing space between lines */
-    font-size: 1.05em;  /* Slightly increases font size for better legibility */
-    font-weight: bold; /* Makes the text bold */
-    text-shadow: -1px -1px 0 rgba(0,0,0,0.4), 1px -1px 0 rgba(0,0,0,0.4), -1px 1px 0 rgba(0,0,0,0.4), 1px 1px 0 rgba(0,0,0,0.4); /* Adds a subtle black contour */
+    color: rgb(12, 12, 12);
+    text-align: justify;
+    line-height: 1.6;
+    font-size: 1.05em;
+    font-weight: bold;
 }
 
-/* Optional: If you want to ensure the h2 title is also white and stands out */
-.banner_title h2 {
-    color: white;
-    margin-top: 20px;
-    margin-bottom: 20px; /* Adds some space below the title */
-        font-weight: bold; /* Makes the text bold */
-    text-shadow: -1px -1px 0 rgba(0,0,0,0.4), 1px -1px 0 rgba(0,0,0,0.4), -1px 1px 0 rgba(0,0,0,0.4), 1px 1px 0 rgba(0,0,0,0.4);
+/* Espaciado específico solo para párrafos */
+.banner_title p {
+    margin-top: 50px;
+    margin-bottom: 20px;
 }
+
+/* Título */
+.banner_title h2 {
+    color: rgb(12, 12, 12);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Lista y elementos */
+.banner_title ul {
+    list-style-type: disc;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.banner_title ul li {
+    margin-bottom: 12px;
+    text-align: justify;
+    font-size: 1.05em;
+}
+
+
 
 /* SECCIÓN DE FORMULARIO */
 .message-section {
