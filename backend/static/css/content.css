@@ -210,21 +210,7 @@ nav {
     padding: 0 10px;
     font-size: 1.05rem;
     color: #d8d9dd;
-}
-
-/* Listas */
-.banner_title ul {
-    margin: 10px 20px;
-    padding-left: 20px;
-    list-style-type: disc;
-    color: #d8d9dd;
-}
-
-.banner_title ul li {
-    margin-bottom: 12px;
-    text-align: justify;
-    font-size: 1.05rem;
-}
+}   
 
 /* Ítems resaltados con punto */
 .banner_title strong {
