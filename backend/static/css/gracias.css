@@ -1,0 +1,119 @@
+/* General body and html styling */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Prevents scrollbars */
+    background-color: #000;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Canvas for the matrix background effect */
+#matrix-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Behind the content */
+}
+
+/* Container to center the chip and hold the pulses */
+.content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative; /* Needed for absolute positioning of pulses */
+    z-index: 2; /* In front of the canvas */
+}
+
+/* The AI chip image */
+#ai-chip {
+    max-width: 300px; /* Adjust size as needed */
+    width: 90%; /* Intended for responsiveness on smaller screens */
+    position: relative;
+    z-index: 10; /* Above the pulses */
+    /* Add a subtle glow to the chip */
+    filter: drop-shadow(0 0 15px rgba(57, 255, 20, 0.4));
+    /* No horizontal margin here, text elements will provide spacing */
+}
+
+/* Neon text styling */
+.neon-text {
+    font-family: 'Courier New', Courier, monospace; /* Consistent with body font */
+    font-size: 5rem; /* Base font size, adjust as needed */
+    font-weight: bold;
+    color: #fff; /* Bright white core of the text */
+    margin: 0 10px; /* Reduced spacing between text and chip */
+    line-height: 1; /* Ensure consistent line height */
+    user-select: none; /* Make text non-selectable as it's decorative */
+    /* Apply the pulsating animation */
+    animation: pulsateNeon 2.5s infinite alternate ease-in-out;
+}
+
+/* Keyframes for the pulsating neon effect */
+@keyframes pulsateNeon {
+    0%, 100% { /* Start and end state (dimmer glow) */
+        text-shadow:
+            /* Core white glow */
+            0 0 7px #fff,
+            0 0 10px #fff,
+            /* Sharper, darker green contour (consistent) */
+            0 0 5px #2a940c,
+            0 0 10px #2a940c,
+            /* Main lime green outer glow (dimmer) */
+            0 0 30px #39ff14,
+            0 0 50px #39ff14,
+            0 0 70px #39ff14;
+    }
+    50% { /* Mid-animation state (brighter glow) */
+        text-shadow:
+            /* Core white glow (slightly brighter) */
+            0 0 8px #fff,
+            0 0 12px #fff,
+            /* Sharper, darker green contour (consistent) */
+            0 0 5px #2a940c,
+            0 0 10px #2a940c,
+            /* Main lime green outer glow (brighter and more spread) */
+            0 0 50px #39ff14,
+            0 0 90px #39ff14,
+            0 0 110px #39ff14,
+            0 0 160px #39ff14;
+    }
+}
+
+/* Responsive adjustments for neon text and chip */
+@media (max-width: 768px) { /* Tablets and large phones */
+    .neon-text {
+        font-size: 3.5rem; /* Smaller font size */
+        margin: 0 8px; /* Adjust margin */
+    }
+    #ai-chip {
+        max-width: 200px; /* Slightly smaller chip */
+    }
+}
+
+@media (max-width: 480px) { /* Small phones */
+    .neon-text {
+        font-size: 2.5rem; /* Even smaller font size */
+        margin: 0 5px; /* Adjust margin */
+    }
+    #ai-chip {
+        max-width: 120px; /* Smaller chip */
+    }
+}
+
+/* Base style for the electrical pulses */
+.pulse {
+    position: absolute;
+    width: 15px; /* Size of the pulse */
+    height: 15px;
+    background-color: #39ff14; /* Neon lime green */
+    border-radius: 50%;
+    box-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14, 0 0 30px #39ff14;
+    z-index: 5; /* Between chip and canvas */
+    transform-origin: center center;
+    pointer-events: none; /* Pulses should not be interactive */
+}

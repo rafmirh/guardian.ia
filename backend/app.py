@@ -240,6 +240,11 @@ def analyze_nodos():
     
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
+@app.route('/gracias')
+def gracias_page():
+    # This will find and render templates/gracias.html
+    return render_template('gracias.html')
 
 # Run app
 if __name__ == '__main__':

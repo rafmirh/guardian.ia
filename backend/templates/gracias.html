@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gracias</title>
+    <!-- Path updated to point to the /css subdirectory -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gracias.css') }}">
+</head>
+<body>
+    <!-- Canvas for the Matrix digital rain background -->
+    <canvas id="matrix-canvas"></canvas>
+
+    <!-- Main container to center the content -->
+    <div class="content-container">
+        <span class="neon-text text-grac">GRAC</span>
+        <img id="ai-chip" src="{{ url_for('static', filename='ai_chip_matrix.png') }}" alt="AI Chip">
+        <span class="neon-text text-s">S</span>
+    </div>
+
+    <!-- Path updated to point to the /js subdirectory -->
+    <script src="{{ url_for('static', filename='js/gracias.js') }}"></script>
+</body>
+</html>
