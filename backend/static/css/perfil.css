@@ -456,3 +456,74 @@ body {
         padding-right: 10px;
         padding-left: 10px;
     }
+
+    /* SECCIÓN SOBRE NOSOTROS */
+.banner_title {
+    width: 80%;
+    padding: 30px;
+    color: #050505;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin: 20px auto;
+    overflow-y: auto;          /* Scroll vertical activado */
+    max-height: 70vh;          /* Limita la altura para mostrar scroll */
+    font-family: 'Play', sans-serif;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.05); /* opcional para contraste */
+    scrollbar-gutter: stable;  /* evita que el contenido salte al aparecer el scroll */
+}
+
+/* Títulos */
+.banner_title h2 {
+    color: #051c3f;
+    margin: 20px 0 15px;
+    font-size: 1.6rem;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+    padding-bottom: 5px;
+    font-family: 'Audiowide', sans-serif;
+    letter-spacing: 1px;
+}
+
+/* Párrafos */
+.banner_title p {
+    margin-bottom: 15px;
+    text-align: justify;
+    padding: 0 10px;
+    font-size: 1.05rem;
+    color: #151516;
+}   
+
+/* Ítems resaltados con punto */
+.banner_title strong {
+    color: #e9c46a;
+    font-weight: bold;
+    display: block;
+    margin: 15px 0 8px;
+    font-size: 1rem;
+    position: relative;
+    padding-left: 18px;
+}
+
+.banner_title strong::before {
+    content: "•";
+    color: #acbae2;
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+/* Scroll personalizado */
+.banner_title::-webkit-scrollbar {
+    width: 6px;
+}
+
+.banner_title::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.banner_title::-webkit-scrollbar-thumb {
+    background: #37ff8b6e;
+    border-radius: 3px;
+}
