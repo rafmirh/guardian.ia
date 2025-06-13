@@ -47,7 +47,7 @@ def get_post_data(uri, token):
         "likes": post.get("likeCount", 0)
     }
 
-def get_reposts(uri, token, max_reposts_to_fetch=200): # Añadido límite opcional
+def get_reposts(uri, token, max_reposts_to_fetch=75): # Añadido límite opcional
     headers = {"Authorization": f"Bearer {token}"}
     all_reposters = []
     cursor = None

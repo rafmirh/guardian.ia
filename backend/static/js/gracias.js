@@ -57,6 +57,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const chip = document.getElementById('ai-chip');
     const container = document.querySelector('.content-container');
 
+    // Add click event listener to the chip
+    if (chip) {
+        chip.addEventListener('click', () => {
+            window.location.href = '/';
+        });
+    }
+
     // Define pin locations on the chip as percentages of its width/height
     // This makes it responsive to the chip's size
     const pins = [
